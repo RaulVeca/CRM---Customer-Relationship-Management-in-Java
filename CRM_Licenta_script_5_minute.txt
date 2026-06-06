@@ -1,0 +1,25 @@
+CRM Training IT - script de prezentare pentru 5 minute
+
+Slide 1 - Titlu (0:00-0:20)
+Bună ziua. Proiectul meu de licență se numește CRM Training IT. Este o aplicație Java pentru o companie care vinde cursuri IT și are nevoie să gestioneze lead-uri individuale, clienți corporate, oportunități de vânzare și înscrieri la cursuri.
+
+Slide 2 - Context și obiectiv (0:20-1:00)
+Problema de la care pleacă proiectul este fragmentarea informației. Într-o firmă de training, datele despre contacte, discuții, cursuri și oportunități pot ajunge în fișiere separate sau în emailuri. Aplicația centralizează aceste date și ajută echipa de vânzări să vadă rapid ce lead-uri merită prioritate, ce activități sunt programate și ce oportunități B2B sunt active.
+
+Slide 3 - Funcționalități principale (1:00-1:40)
+Funcționalitățile sunt grupate pe fluxurile principale ale unui CRM. Pot crea lead-uri B2C și clienți corporate B2B, pot căuta contacte după email și pot schimba statusul unui lead. Aplicația calculează un lead score, afișează lead-uri fierbinți, gestionează oportunități în pipeline, păstrează activități precum apeluri sau emailuri și oferă statistici rapide despre contacte, statusuri și cursuri active.
+
+Slide 4 - Arhitectură (1:40-2:25)
+Arhitectura este pe straturi. În partea de sus se află ConsoleUI, folosită pentru demonstrație. UI-ul comunică prin CrmFacade, care ascunde complexitatea sistemului. Sub fațadă se află serviciile de business, apoi repository-urile și DAO-urile care lucrează cu baza de date. Lateral, CommandInvoker încapsulează operațiile importante, iar EventBus publică evenimente către observatori pentru audit, emailuri și actualizări automate.
+
+Slide 5 - Model de date (2:25-3:00)
+Modelul de date este construit în jurul entității Contacts, care poate reprezenta atât persoane individuale, cât și companii. Contactele sunt legate de activități, oportunități, înscrieri și facturi. Cursurile și sesiunile reprezintă oferta educațională, iar users și trainers acoperă personalul intern. Schema include indexuri și view-uri pentru interogări frecvente, cum ar fi hot leads și active pipeline.
+
+Slide 6 - Design patterns (3:00-3:50)
+Un obiectiv important al proiectului este aplicarea pattern-urilor de proiectare în contexte reale. Singleton este folosit pentru configurare, conexiune la baza de date și servicii. Facade simplifică accesul prin CrmFacade. Builder ajută la construirea contactelor și oportunităților. Repository și DAO separă business-ul de SQL. Command încapsulează acțiunile, Observer tratează evenimentele, Strategy calculează scoring și pricing, iar Chain of Responsibility validează datele contactelor.
+
+Slide 7 - Demo recomandat (3:50-4:35)
+Pentru demo, pornesc aplicația și arăt meniul. Apoi rulez opțiunea de demo rapid, care creează un lead B2C, adaugă o activitate, finalizează activitatea și schimbă statusul. După aceea creează un client corporate și o oportunitate B2B, apoi mută oportunitatea în pipeline. La final pot arăta lead-urile fierbinți, pipeline-ul activ, statisticile și lista de cursuri.
+
+Slide 8 - Concluzii (4:35-5:00)
+În concluzie, aplicația demonstrează un CRM funcțional și modular pentru zona de training IT. Principalul avantaj este că transformă informația despre clienți și cursuri într-un flux urmăribil: lead, activitate, scoring, oportunitate și înscriere. Proiectul poate fi extins natural cu interfață web, autentificare, dashboard-uri, API REST și teste automate.

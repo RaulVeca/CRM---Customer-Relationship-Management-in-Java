@@ -1,0 +1,21 @@
+2026-06-06 12:18:33.894 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-06 12:18:33.901 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
+2026-06-06 12:18:33.901 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-06 12:18:33.910 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-06 12:18:33.910 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-06 12:18:33.910 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
+2026-06-06 12:18:33.927 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-06 12:18:34.106 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-06 12:18:34.107 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-06 12:18:34.108 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
+2026-06-06 12:18:34.119 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-06 12:18:34.124 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-06 12:18:34.129 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-06 12:18:34.134 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-06 12:18:34.135 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
+2026-06-06 12:18:34.293 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-06 12:18:38.479 [Thread-1] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
+2026-06-06 12:18:38.480 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-06 12:18:38.485 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-06 12:18:38.485 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-06 12:18:38.485 [Thread-1] INFO  crm.CrmApplication - Aplicație oprită.
