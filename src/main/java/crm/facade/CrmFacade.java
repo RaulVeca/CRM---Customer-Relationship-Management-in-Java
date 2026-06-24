@@ -11,8 +11,10 @@ import crm.command.opportunity.MoveOpportunityStageCommand;
 import crm.model.entity.*;
 import crm.model.enums.*;
 import crm.service.activity.ActivityService;
+import crm.service.auction.AuctionService;
 import crm.service.contact.ContactService;
 import crm.service.course.CourseService;
+import crm.service.employee.EmployeeService;
 import crm.service.enrollment.EnrollmentService;
 import crm.service.opportunity.OpportunityService;
 import crm.strategy.PricingStrategy;
@@ -46,6 +48,8 @@ public class CrmFacade {
     private final EnrollmentService enrollmentService;
     private final OpportunityService opportunityService;
     private final ActivityService activityService;
+    private final EmployeeService employeeService;
+    private final AuctionService auctionService;
     private final CommandInvoker commandInvoker;
 
     private CrmFacade() {
@@ -54,6 +58,8 @@ public class CrmFacade {
         this.enrollmentService = EnrollmentService.getInstance();
         this.opportunityService = OpportunityService.getInstance();
         this.activityService = ActivityService.getInstance();
+        this.employeeService = EmployeeService.getInstance();
+        this.auctionService = AuctionService.getInstance();
         this.commandInvoker = CommandInvoker.getInstance();
         logger.info("CrmFacade inițializat");
     }
@@ -89,6 +95,22 @@ public class CrmFacade {
         return contactService.searchContacts(query, page, pageSize);
     }
 
+    public List<Contact> getAllContacts(int page, int pageSize) {
+        return contactService.getContactsPage(page, pageSize);
+    }
+
+    public List<Contact> listContactsByStatus(LeadStatus status) {
+        return contactService.getContactsByStatus(status);
+    }
+
+    public Contact updateContact(Contact contact) {
+        return contactService.updateContact(contact);
+    }
+
+    public boolean deleteContact(Long id) {
+        return contactService.deleteContact(id);
+    }
+
     public List<Contact> getHotLeads(int limit) {
         return contactService.getHotLeads(limit);
     }
@@ -119,6 +141,18 @@ public class CrmFacade {
 
     public Course getCourse(Long id) {
         return courseService.getById(id);
+    }
+
+    public Course updateCourse(Course course) {
+        return courseService.updateCourse(course);
+    }
+
+    public void deactivateCourse(Long id) {
+        courseService.deactivateCourse(id);
+    }
+
+    public Optional<Course> findCourseByCode(String code) {
+        return courseService.findByCode(code);
     }
 
     // =====================================================
@@ -176,6 +210,10 @@ public class CrmFacade {
         return opportunityService.getByClient(clientId);
     }
 
+    public Opportunity getOpportunity(Long id) {
+        return opportunityService.getById(id);
+    }
+
     // =====================================================
     // ACTIVITIES
     // =====================================================
@@ -194,6 +232,66 @@ public class CrmFacade {
 
     public List<Activity> getUpcomingActivities(Long userId, int days) {
         return activityService.getUpcomingForUser(userId, days);
+    }
+
+    // =====================================================
+    // EMPLOYEES (of corporate clients)
+    // =====================================================
+
+    public Employee addEmployee(Employee employee) {
+        return employeeService.addEmployee(employee);
+    }
+
+    public Employee updateEmployee(Employee employee) {
+        return employeeService.updateEmployee(employee);
+    }
+
+    public Employee getEmployee(Long id) {
+        return employeeService.getById(id);
+    }
+
+    public List<Employee> getEmployeesForCompany(Long companyId) {
+        return employeeService.getByCompany(companyId);
+    }
+
+    public long countEmployeesForCompany(Long companyId) {
+        return employeeService.countByCompany(companyId);
+    }
+
+    public boolean deleteEmployee(Long id) {
+        return employeeService.deleteEmployee(id);
+    }
+
+    // =====================================================
+    // AUCTIONS / BIDDING (B2B course auctions)
+    // =====================================================
+
+    public Auction createAuction(Auction auction) {
+        return auctionService.createAuction(auction);
+    }
+
+    public List<Auction> getOpenAuctions() {
+        return auctionService.getOpenAuctions();
+    }
+
+    public List<Auction> getAllAuctions() {
+        return auctionService.getAllAuctions();
+    }
+
+    public Auction getAuction(Long id) {
+        return auctionService.getAuction(id);
+    }
+
+    public List<Bid> getBids(Long auctionId) {
+        return auctionService.getBids(auctionId);
+    }
+
+    public Bid placeBid(Long auctionId, Long companyId, java.math.BigDecimal amount) {
+        return auctionService.placeBid(auctionId, companyId, amount);
+    }
+
+    public Auction closeAuction(Long auctionId) {
+        return auctionService.closeAuction(auctionId);
     }
 
     // =====================================================

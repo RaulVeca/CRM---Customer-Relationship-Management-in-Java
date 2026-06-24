@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* The app uses an explicit light theme via Tailwind utility classes on
+   <body> (see layout.tsx); we intentionally do not follow the OS dark mode. */
+html {
+  color-scheme: light;
+  background: #f8fafc; /* slate-50 */
+}

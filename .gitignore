@@ -28,3 +28,12 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Secrets / local config (never commit API keys) ###
+.env
+.env.local
+application-local.properties
+src/main/resources/application-local.properties
+
+### Build output ###
+target/
