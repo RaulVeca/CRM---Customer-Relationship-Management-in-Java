@@ -1,0 +1,266 @@
+2026-06-18 10:57:51.741 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 10:57:51.773 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
+2026-06-18 10:57:51.774 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 10:57:51.794 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 10:57:51.796 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 10:57:51.796 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
+2026-06-18 10:57:51.864 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 10:57:52.532 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 10:57:52.535 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 10:57:52.535 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
+2026-06-18 10:57:52.560 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-18 10:57:52.569 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-18 10:57:52.571 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-18 10:57:52.586 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-18 10:57:52.587 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
+2026-06-18 10:57:52.979 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 11:10:09.827 [CrmHikariPool housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Thread starvation or clock leap detected (housekeeper delta=11m17s149ms145µs400ns).
+2026-06-18 11:13:10.336 [Thread-1] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
+2026-06-18 11:13:10.336 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-18 11:13:10.340 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-18 11:13:10.340 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-18 11:13:10.340 [Thread-1] INFO  crm.CrmApplication - Aplicație oprită.
+2026-06-18 11:13:17.670 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 11:13:17.672 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
+2026-06-18 11:13:17.672 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 11:13:17.678 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 11:13:17.679 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 11:13:17.679 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
+2026-06-18 11:13:17.691 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 11:13:17.813 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 11:13:17.813 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 11:13:17.813 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
+2026-06-18 11:13:17.821 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-18 11:13:17.824 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-18 11:13:17.827 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-18 11:13:17.830 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-18 11:13:17.830 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
+2026-06-18 11:13:17.947 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 11:14:30.440 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: UpdateLeadStatusCommand
+2026-06-18 11:14:30.440 [main] DEBUG crm.command.contact.UpdateLeadStatusCommand - Executare comandă: UpdateLeadStatusCommand
+2026-06-18 11:14:30.476 [main] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@3043fe0e, contactType=INDIVIDUAL, firstName=Mihai, lastName=Radulescu, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=mihai.radulescu04@e-uvt.ro, phone=+40 768737531, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=INTERESTED, leadScore=100, experienceLevel=BEGINNER, learningGoal=Reconversie profesională, firstContactDate=2026-06-03T19:09:32, lastContactDate=2026-06-18T11:14:30.475, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-03T19:09:33, marketingConsent=false)
+2026-06-18 11:14:30.478 [main] DEBUG crm.dao.ContactDao - Entitate actualizată în contacts: ID=6
+2026-06-18 11:14:30.478 [main] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-06-18 11:14:30.482 [main] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 6: NEW -> INTERESTED
+2026-06-18 11:14:30.482 [main] DEBUG crm.command.contact.UpdateLeadStatusCommand - Comandă finalizată: UpdateLeadStatusCommand (durata: 42ms)
+2026-06-18 11:17:36.089 [main] DEBUG crm.repository.ActivityRepository - Salvare Activity : Activity(super=crm.model.entity.Activity@80503, activityType=MEETING, contactId=6, opportunityId=null, subject=JAVA-ADV-MEET, description=null, scheduledDate=2026-06-19T11:17:36.022, completedDate=null, durationMinutes=60, assignedTo=1, status=SCHEDULED, priority=HIGH, outcome=null, nextSteps=null, requiresFollowup=null, followupDate=null, createdBy=null)
+2026-06-18 11:17:36.096 [main] DEBUG crm.dao.ActivityDao - Entitate salvată în activities: ID=8
+2026-06-18 11:17:36.096 [main] INFO  crm.service.activity.ActivityService - Activitate creată: JAVA-ADV-MEET (tip: MEETING)
+2026-06-18 11:23:54.483 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: MoveOpportunityStageCommand
+2026-06-18 11:23:54.484 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Executare comandă: MoveOpportunityStageCommand
+2026-06-18 11:23:54.485 [main] DEBUG crm.repository.OpportunityRepository - Salvare Opportunity : Opportunity(super=crm.model.entity.Opportunity@2a742aa2, clientId=3, title=#1 Opportunity, description=null, estimatedParticipants=5, customRequirements=null, deliveryMode=ON_SITE, preferredLocation=null, desiredStartDate=null, estimatedValue=1000.00, quotedValue=null, probabilityPercent=70, stage=NEGOTIATION, expectedCloseDate=2026-08-13, actualCloseDate=null, assignedTo=null, competitors=null, lostReason=null)
+2026-06-18 11:23:54.488 [main] DEBUG crm.dao.OpportunityDao - Entitate actualizată în opportunities: ID=3
+2026-06-18 11:23:54.488 [main] DEBUG crm.observer.EventBus - Notificare eveniment: OPPORTUNITY_STAGE_CHANGED de la OpportunityService
+2026-06-18 11:23:54.495 [main] INFO  crm.service.opportunity.OpportunityService - Oportunitate 3 mutată: LEAD_QUALIFICATION -> NEGOTIATION
+2026-06-18 11:23:54.496 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Comandă finalizată: MoveOpportunityStageCommand (durata: 12ms)
+2026-06-18 11:25:11.958 [CrmHikariPool housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Thread starvation or clock leap detected (housekeeper delta=53s839ms915µs800ns).
+2026-06-18 11:34:36.059 [CrmHikariPool housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Thread starvation or clock leap detected (housekeeper delta=7m54s80ms939µs500ns).
+2026-06-18 11:40:04.349 [Thread-1] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
+2026-06-18 11:40:04.350 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-18 11:40:04.355 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-18 11:40:04.355 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-18 11:40:04.356 [Thread-1] INFO  crm.CrmApplication - Aplicație oprită.
+2026-06-18 11:40:13.000 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 11:40:13.003 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
+2026-06-18 11:40:13.003 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 11:40:13.009 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 11:40:13.010 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 11:40:13.010 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
+2026-06-18 11:40:13.024 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 11:40:13.209 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 11:40:13.209 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 11:40:13.209 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
+2026-06-18 11:40:13.220 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-18 11:40:13.224 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-18 11:40:13.227 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-18 11:40:13.231 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-18 11:40:13.231 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
+2026-06-18 11:40:13.394 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 11:53:23.802 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: CreateContactCommand
+2026-06-18 11:53:23.802 [main] DEBUG crm.command.contact.CreateContactCommand - Executare comandă: CreateContactCommand
+2026-06-18 11:53:23.803 [main] INFO  crm.service.contact.ContactService - Creare contact: maria.demo.1781772803790@example.com
+2026-06-18 11:53:23.820 [main] DEBUG crm.strategy.LeadScoringContext - Scor inițial pentru contact maria.demo.1781772803790@example.com (strategie: SimpleLeadScoring): 100
+2026-06-18 11:53:23.821 [main] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@467aecef, contactType=INDIVIDUAL, firstName=Maria, lastName=Demo, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=maria.demo.1781772803790@example.com, phone=0712345678, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=100, experienceLevel=BEGINNER, learningGoal=Reconversie profesională în IT, firstContactDate=2026-06-18T11:53:23.786, lastContactDate=2026-06-18T11:53:23.807, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-18T11:53:23.796, marketingConsent=true)
+2026-06-18 11:53:23.825 [main] DEBUG crm.dao.ContactDao - Entitate salvată în contacts: ID=14
+2026-06-18 11:53:23.825 [main] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-06-18 11:53:23.845 [main] INFO  crm.service.notification.NotificationService - [EMAIL] Către: maria.demo.1781772803790@example.com, Subiect: Bine ai venit la Training IT!
+2026-06-18 11:53:23.845 [main] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Maria Demo,
+
+Îți mulțumim pentru interesul față de cursurile noastre!
+
+Suntem o companie specializată în training IT și oferim cursuri de Java, Python, AI și multe altele.
+
+Un consultant te va contacta în curând pentru a discuta opțiunile potrivite.
+
+Cu drag,
+Echipa Training IT
+2026-06-18 11:53:23.845 [main] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email trimis către: maria.demo.1781772803790@example.com
+2026-06-18 11:53:23.845 [main] INFO  crm.service.contact.ContactService - Contact creat cu ID: 14 (scor: 100)
+2026-06-18 11:53:23.845 [main] DEBUG crm.command.contact.CreateContactCommand - Comandă finalizată: CreateContactCommand (durata: 42ms)
+2026-06-18 11:53:23.852 [main] DEBUG crm.repository.ActivityRepository - Salvare Activity : Activity(super=crm.model.entity.Activity@6f195bc3, activityType=CALL, contactId=14, opportunityId=null, subject=Consultare inițială, description=null, scheduledDate=2026-06-19T11:53:23.845, completedDate=null, durationMinutes=30, assignedTo=1, status=SCHEDULED, priority=HIGH, outcome=null, nextSteps=null, requiresFollowup=null, followupDate=null, createdBy=null)
+2026-06-18 11:53:23.854 [main] DEBUG crm.dao.ActivityDao - Entitate salvată în activities: ID=9
+2026-06-18 11:53:23.855 [main] INFO  crm.service.activity.ActivityService - Activitate creată: Consultare inițială (tip: CALL)
+2026-06-18 11:53:23.861 [main] DEBUG crm.repository.ActivityRepository - Salvare Activity : Activity(super=crm.model.entity.Activity@6f195bc3, activityType=CALL, contactId=14, opportunityId=null, subject=Consultare inițială, description=null, scheduledDate=2026-06-19T11:53:23, completedDate=2026-06-18T11:53:23.861, durationMinutes=30, assignedTo=1, status=COMPLETED, priority=HIGH, outcome=Persoana este interesată, nextSteps=Trimite ofertă, requiresFollowup=false, followupDate=null, createdBy=null)
+2026-06-18 11:53:23.863 [main] DEBUG crm.dao.ActivityDao - Entitate actualizată în activities: ID=9
+2026-06-18 11:53:23.863 [main] DEBUG crm.observer.EventBus - Notificare eveniment: ACTIVITY_COMPLETED de la ActivityService
+2026-06-18 11:53:23.870 [main] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@467aecef, contactType=INDIVIDUAL, firstName=Maria, lastName=Demo, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=maria.demo.1781772803790@example.com, phone=0712345678, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=100, experienceLevel=BEGINNER, learningGoal=Reconversie profesională în IT, firstContactDate=2026-06-18T11:53:23, lastContactDate=2026-06-18T11:53:23, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-18T11:53:23, marketingConsent=true)
+2026-06-18 11:53:23.871 [main] DEBUG crm.dao.ContactDao - Entitate actualizată în contacts: ID=14
+2026-06-18 11:53:23.873 [main] INFO  crm.service.contact.ContactService - Scor actualizat pentru contact 14: 100 -> 100 (CALLBACK_REQUESTED)
+2026-06-18 11:53:23.874 [main] DEBUG crm.observer.listeners.LeadScoreUpdateObserver - Scor lead actualizat pentru contact 14 după activitate CALLBACK_REQUESTED
+2026-06-18 11:53:23.874 [main] INFO  crm.service.activity.ActivityService - Activitate finalizată: 9
+2026-06-18 11:53:23.876 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: UpdateLeadStatusCommand
+2026-06-18 11:53:23.876 [main] DEBUG crm.command.contact.UpdateLeadStatusCommand - Executare comandă: UpdateLeadStatusCommand
+2026-06-18 11:53:23.877 [main] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@467aecef, contactType=INDIVIDUAL, firstName=Maria, lastName=Demo, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=maria.demo.1781772803790@example.com, phone=0712345678, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=INTERESTED, leadScore=100, experienceLevel=BEGINNER, learningGoal=Reconversie profesională în IT, firstContactDate=2026-06-18T11:53:23, lastContactDate=2026-06-18T11:53:23.877, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-18T11:53:23, marketingConsent=true)
+2026-06-18 11:53:23.879 [main] DEBUG crm.dao.ContactDao - Entitate actualizată în contacts: ID=14
+2026-06-18 11:53:23.879 [main] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-06-18 11:53:23.880 [main] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 14: NEW -> INTERESTED
+2026-06-18 11:53:23.880 [main] DEBUG crm.command.contact.UpdateLeadStatusCommand - Comandă finalizată: UpdateLeadStatusCommand (durata: 4ms)
+2026-06-18 11:53:23.880 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: CreateContactCommand
+2026-06-18 11:53:23.880 [main] DEBUG crm.command.contact.CreateContactCommand - Executare comandă: CreateContactCommand
+2026-06-18 11:53:23.881 [main] INFO  crm.service.contact.ContactService - Creare contact: contact.demo.1781772803880@techcorp.ro
+2026-06-18 11:53:23.884 [main] DEBUG crm.strategy.LeadScoringContext - Scor inițial pentru contact contact.demo.1781772803880@techcorp.ro (strategie: B2BLeadScoring): 85
+2026-06-18 11:53:23.884 [main] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@467aecef, contactType=CORPORATE, firstName=null, lastName=null, birthDate=null, companyName=TechCorp SRL Demo, fiscalCode=RO12345678, registrationNumber=J40/1234/2020, industry=IT & Software, employeeCount=150, email=contact.demo.1781772803880@techcorp.ro, phone=0212345678, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=REFERRAL, leadStatus=NEW, leadScore=85, experienceLevel=null, learningGoal=null, firstContactDate=2026-06-18T11:53:23.880, lastContactDate=2026-06-18T11:53:23.881, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-18T11:53:23.880, marketingConsent=false)
+2026-06-18 11:53:23.886 [main] DEBUG crm.dao.ContactDao - Entitate salvată în contacts: ID=15
+2026-06-18 11:53:23.886 [main] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-06-18 11:53:23.887 [main] INFO  crm.service.notification.NotificationService - [EMAIL] Către: contact.demo.1781772803880@techcorp.ro, Subiect: Bine ai venit la Training IT!
+2026-06-18 11:53:23.888 [main] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut TechCorp SRL Demo,
+
+Îți mulțumim pentru interesul față de cursurile noastre!
+
+Suntem o companie specializată în training IT și oferim cursuri de Java, Python, AI și multe altele.
+
+Un consultant te va contacta în curând pentru a discuta opțiunile potrivite.
+
+Cu drag,
+Echipa Training IT
+2026-06-18 11:53:23.888 [main] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email trimis către: contact.demo.1781772803880@techcorp.ro
+2026-06-18 11:53:23.888 [main] INFO  crm.service.contact.ContactService - Contact creat cu ID: 15 (scor: 85)
+2026-06-18 11:53:23.888 [main] DEBUG crm.command.contact.CreateContactCommand - Comandă finalizată: CreateContactCommand (durata: 7ms)
+2026-06-18 11:53:23.894 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: CreateOpportunityCommand
+2026-06-18 11:53:23.894 [main] DEBUG crm.command.opportunity.CreateOpportunityCommand - Executare comandă: CreateOpportunityCommand
+2026-06-18 11:53:23.894 [main] DEBUG crm.repository.OpportunityRepository - Salvare Opportunity : Opportunity(super=crm.model.entity.Opportunity@11438d26, clientId=15, title=Training Java pentru echipa dev, description=null, estimatedParticipants=20, customRequirements=null, deliveryMode=ON_SITE, preferredLocation=null, desiredStartDate=null, estimatedValue=25000, quotedValue=null, probabilityPercent=25, stage=NEEDS_ANALYSIS, expectedCloseDate=2026-07-18, actualCloseDate=null, assignedTo=null, competitors=null, lostReason=null)
+2026-06-18 11:53:23.896 [main] DEBUG crm.dao.OpportunityDao - Entitate salvată în opportunities: ID=7
+2026-06-18 11:53:23.897 [main] INFO  crm.service.opportunity.OpportunityService - Oportunitate creată: Training Java pentru echipa dev (client=15, valoare=25000)
+2026-06-18 11:53:23.897 [main] DEBUG crm.command.opportunity.CreateOpportunityCommand - Comandă finalizată: CreateOpportunityCommand (durata: 3ms)
+2026-06-18 11:53:23.899 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: MoveOpportunityStageCommand
+2026-06-18 11:53:23.899 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Executare comandă: MoveOpportunityStageCommand
+2026-06-18 11:53:23.900 [main] DEBUG crm.repository.OpportunityRepository - Salvare Opportunity : Opportunity(super=crm.model.entity.Opportunity@11438d26, clientId=15, title=Training Java pentru echipa dev, description=null, estimatedParticipants=20, customRequirements=null, deliveryMode=ON_SITE, preferredLocation=null, desiredStartDate=null, estimatedValue=25000.00, quotedValue=null, probabilityPercent=50, stage=PROPOSAL_SENT, expectedCloseDate=2026-07-18, actualCloseDate=null, assignedTo=null, competitors=null, lostReason=null)
+2026-06-18 11:53:23.902 [main] DEBUG crm.dao.OpportunityDao - Entitate actualizată în opportunities: ID=7
+2026-06-18 11:53:23.902 [main] DEBUG crm.observer.EventBus - Notificare eveniment: OPPORTUNITY_STAGE_CHANGED de la OpportunityService
+2026-06-18 11:53:23.908 [main] INFO  crm.service.opportunity.OpportunityService - Oportunitate 7 mutată: NEEDS_ANALYSIS -> PROPOSAL_SENT
+2026-06-18 11:53:23.908 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Comandă finalizată: MoveOpportunityStageCommand (durata: 9ms)
+2026-06-18 12:09:47.828 [Thread-1] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
+2026-06-18 12:09:47.829 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-18 12:09:47.835 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-18 12:09:47.836 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-18 12:09:47.836 [Thread-1] INFO  crm.CrmApplication - Aplicație oprită.
+2026-06-18 12:10:43.357 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 12:10:43.363 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 12:10:43.373 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 12:10:43.589 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 12:10:43.589 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 12:10:43.737 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 12:12:02.121 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 12:12:02.125 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 12:12:02.137 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 12:12:02.353 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 12:12:02.353 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 12:12:02.414 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 12:14:13.816 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 12:14:13.818 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
+2026-06-18 12:14:13.819 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 12:14:13.820 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 12:14:13.821 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 12:14:13.821 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
+2026-06-18 12:14:13.838 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 12:14:14.087 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 12:14:14.087 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 12:14:14.088 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
+2026-06-18 12:14:14.095 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-18 12:14:14.099 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-18 12:14:14.104 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-18 12:14:14.108 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-18 12:14:14.108 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
+2026-06-18 12:14:14.179 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 12:16:33.697 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: UpdateLeadStatusCommand
+2026-06-18 12:16:33.697 [main] DEBUG crm.command.contact.UpdateLeadStatusCommand - Executare comandă: UpdateLeadStatusCommand
+2026-06-18 12:16:33.772 [main] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@3043fe0e, contactType=INDIVIDUAL, firstName=Bogdan, lastName=Tudor, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=bogdan.tudor@example.com, phone=0722333666, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=FACEBOOK, leadStatus=INTERESTED, leadScore=35, experienceLevel=BEGINNER, learningGoal=Hobby, firstContactDate=2026-06-03T19:06:22, lastContactDate=2026-06-18T12:16:33.770, assignedTo=3, gdprConsent=true, gdprConsentDate=null, marketingConsent=false)
+2026-06-18 12:16:33.777 [main] DEBUG crm.dao.ContactDao - Entitate actualizată în contacts: ID=3
+2026-06-18 12:16:33.777 [main] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-06-18 12:16:33.786 [main] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 3: NEW -> INTERESTED
+2026-06-18 12:16:33.786 [main] DEBUG crm.command.contact.UpdateLeadStatusCommand - Comandă finalizată: UpdateLeadStatusCommand (durata: 89ms)
+2026-06-18 12:17:52.056 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: MoveOpportunityStageCommand
+2026-06-18 12:17:52.057 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Executare comandă: MoveOpportunityStageCommand
+2026-06-18 12:17:52.066 [main] DEBUG crm.repository.OpportunityRepository - Salvare Opportunity : Opportunity(super=crm.model.entity.Opportunity@69a3d1d, clientId=3, title=#1 Opportunity, description=null, estimatedParticipants=5, customRequirements=null, deliveryMode=ON_SITE, preferredLocation=null, desiredStartDate=null, estimatedValue=1000.00, quotedValue=null, probabilityPercent=50, stage=PROPOSAL_SENT, expectedCloseDate=2026-08-13, actualCloseDate=null, assignedTo=null, competitors=null, lostReason=null)
+2026-06-18 12:17:52.078 [main] DEBUG crm.dao.OpportunityDao - Entitate actualizată în opportunities: ID=3
+2026-06-18 12:17:52.078 [main] DEBUG crm.observer.EventBus - Notificare eveniment: OPPORTUNITY_STAGE_CHANGED de la OpportunityService
+2026-06-18 12:17:52.091 [main] INFO  crm.service.opportunity.OpportunityService - Oportunitate 3 mutată: NEGOTIATION -> PROPOSAL_SENT
+2026-06-18 12:17:52.091 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Comandă finalizată: MoveOpportunityStageCommand (durata: 34ms)
+2026-06-18 12:23:18.759 [Thread-1] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
+2026-06-18 12:23:18.760 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-18 12:23:18.771 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-18 12:23:18.772 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-18 12:23:18.772 [Thread-1] INFO  crm.CrmApplication - Aplicație oprită.
+2026-06-18 18:33:04.205 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 18:33:04.209 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
+2026-06-18 18:33:04.209 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 18:33:04.219 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 18:33:04.219 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 18:33:04.220 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
+2026-06-18 18:33:04.250 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 18:33:04.567 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 18:33:04.567 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 18:33:04.567 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
+2026-06-18 18:33:04.585 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-18 18:33:04.590 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-18 18:33:04.595 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-18 18:33:04.600 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-18 18:33:04.600 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
+2026-06-18 18:33:04.820 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 18:35:22.662 [Thread-1] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
+2026-06-18 18:35:22.662 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-18 18:35:22.668 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-18 18:35:22.668 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-18 18:35:22.668 [Thread-1] INFO  crm.CrmApplication - Aplicație oprită.
+2026-06-18 18:35:28.713 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 18:35:28.716 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 18:35:28.728 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 18:35:28.916 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 18:35:28.916 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 18:35:28.976 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 18:35:41.598 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 18:35:41.603 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 18:35:41.616 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 18:35:41.797 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 18:35:41.798 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 18:35:41.852 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 18:38:36.739 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 18:38:36.742 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 18:38:36.753 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 18:38:36.917 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 18:38:36.918 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 18:38:37.001 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 18:38:53.828 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 18:38:53.832 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
+2026-06-18 18:38:53.832 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-18 18:38:53.835 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-18 18:38:53.836 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-18 18:38:53.837 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
+2026-06-18 18:38:53.859 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-18 18:38:54.180 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-18 18:38:54.181 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-18 18:38:54.181 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
+2026-06-18 18:38:54.192 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-18 18:38:54.197 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-18 18:38:54.205 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-18 18:38:54.210 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-18 18:38:54.211 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
+2026-06-18 18:38:54.277 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-18 18:39:47.442 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: CreateOpportunityCommand
+2026-06-18 18:39:47.442 [main] DEBUG crm.command.opportunity.CreateOpportunityCommand - Executare comandă: CreateOpportunityCommand
+2026-06-18 18:39:47.442 [main] DEBUG crm.repository.OpportunityRepository - Salvare Opportunity : Opportunity(super=crm.model.entity.Opportunity@51cdd8a, clientId=12, title=Java Beginner Guide, description=null, estimatedParticipants=1, customRequirements=null, deliveryMode=ON_SITE, preferredLocation=null, desiredStartDate=null, estimatedValue=300, quotedValue=null, probabilityPercent=10, stage=LEAD_QUALIFICATION, expectedCloseDate=2026-08-18, actualCloseDate=null, assignedTo=null, competitors=null, lostReason=null)
+2026-06-18 18:39:47.459 [main] DEBUG crm.dao.OpportunityDao - Entitate salvată în opportunities: ID=8
+2026-06-18 18:39:47.463 [main] INFO  crm.service.opportunity.OpportunityService - Oportunitate creată: Java Beginner Guide (client=12, valoare=300)
+2026-06-18 18:39:47.463 [main] DEBUG crm.command.opportunity.CreateOpportunityCommand - Comandă finalizată: CreateOpportunityCommand (durata: 21ms)
