@@ -1,40 +1,88 @@
-2026-06-19 03:40:29.290 [Thread-1] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
-2026-06-19 03:40:29.296 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-06-19 03:40:29.300 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-06-19 03:40:29.300 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
-2026-06-19 03:40:29.300 [Thread-1] INFO  crm.CrmApplication - Aplicație oprită.
-2026-06-19 19:36:27.898 [main] INFO  crm.CrmApplication - ===================================================
-2026-06-19 19:36:27.900 [main] INFO  crm.CrmApplication - Pornire CRM Training IT
-2026-06-19 19:36:27.900 [main] INFO  crm.CrmApplication - ===================================================
-2026-06-19 19:36:27.905 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-19 19:36:27.906 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
-2026-06-19 19:36:27.906 [main] INFO  crm.CrmApplication - Aplicație: CRM Training IT v1.0.0
-2026-06-19 19:36:27.921 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-19 19:36:28.093 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-19 19:36:28.093 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-19 19:36:28.093 [main] INFO  crm.CrmApplication - Conexiune DB inițializată
-2026-06-19 19:36:28.105 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-19 19:36:28.110 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-19 19:36:28.114 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-19 19:36:28.118 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-19 19:36:28.118 [main] INFO  crm.CrmApplication - Observer-i înregistrați cu succes
-2026-06-19 19:36:28.278 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-19 19:36:49.012 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: MoveOpportunityStageCommand
-2026-06-19 19:36:49.012 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Executare comandă: MoveOpportunityStageCommand
-2026-06-19 19:36:49.044 [main] DEBUG crm.repository.OpportunityRepository - Salvare Opportunity : Opportunity(super=crm.model.entity.Opportunity@2173f6d9, clientId=4, title=Training Java Spring pentru echipa Dev, description=Companie bancară dorește training intensiv, estimatedParticipants=25, customRequirements=null, deliveryMode=ON_SITE, preferredLocation=null, desiredStartDate=null, estimatedValue=35000.00, quotedValue=32000.00, probabilityPercent=70, stage=NEGOTIATION, expectedCloseDate=2026-08-01, actualCloseDate=null, assignedTo=4, competitors=null, lostReason=null)
-2026-06-19 19:36:49.049 [main] DEBUG crm.dao.OpportunityDao - Entitate actualizată în opportunities: ID=1
-2026-06-19 19:36:49.056 [main] DEBUG crm.observer.EventBus - Notificare eveniment: OPPORTUNITY_STAGE_CHANGED de la OpportunityService
-2026-06-19 19:36:49.063 [main] INFO  crm.service.opportunity.OpportunityService - Oportunitate 1 mutată: PROPOSAL_SENT -> NEGOTIATION
-2026-06-19 19:36:49.063 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Comandă finalizată: MoveOpportunityStageCommand (durata: 51ms)
-2026-06-19 19:37:23.697 [main] DEBUG crm.command.CommandInvoker - Invocare comandă: MoveOpportunityStageCommand
-2026-06-19 19:37:23.697 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Executare comandă: MoveOpportunityStageCommand
-2026-06-19 19:37:23.699 [main] DEBUG crm.repository.OpportunityRepository - Salvare Opportunity : Opportunity(super=crm.model.entity.Opportunity@2173f6d9, clientId=15, title=Training Java pentru echipa dev, description=null, estimatedParticipants=20, customRequirements=null, deliveryMode=ON_SITE, preferredLocation=null, desiredStartDate=null, estimatedValue=25000.00, quotedValue=null, probabilityPercent=70, stage=NEGOTIATION, expectedCloseDate=2026-07-18, actualCloseDate=null, assignedTo=null, competitors=null, lostReason=null)
-2026-06-19 19:37:23.704 [main] DEBUG crm.dao.OpportunityDao - Entitate actualizată în opportunities: ID=7
-2026-06-19 19:37:23.705 [main] DEBUG crm.observer.EventBus - Notificare eveniment: OPPORTUNITY_STAGE_CHANGED de la OpportunityService
-2026-06-19 19:37:23.710 [main] INFO  crm.service.opportunity.OpportunityService - Oportunitate 7 mutată: PROPOSAL_SENT -> NEGOTIATION
-2026-06-19 19:37:23.710 [main] DEBUG c.command.opportunity.MoveOpportunityStageCommand - Comandă finalizată: MoveOpportunityStageCommand (durata: 13ms)
-2026-06-19 21:40:49.899 [Thread-0] INFO  crm.CrmApplication - Oprire aplicație - cleanup resurse...
-2026-06-19 21:40:49.901 [Thread-0] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-06-19 21:40:49.915 [Thread-0] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-06-19 21:40:49.915 [Thread-0] INFO  crm.config.DatabaseConnection - Connection pool închis
-2026-06-19 21:40:49.915 [Thread-0] INFO  crm.CrmApplication - Aplicație oprită.
+2026-06-24 16:30:24.440 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-24 16:30:24.456 [main] INFO  crm.CrmApplication - Starting CRM Training IT
+2026-06-24 16:30:24.456 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-24 16:30:24.464 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-24 16:30:24.464 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-24 16:30:24.464 [main] INFO  crm.CrmApplication - Application: CRM Training IT v1.0.0
+2026-06-24 16:30:24.479 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-24 16:30:24.719 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-24 16:30:24.719 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-24 16:30:24.719 [main] INFO  crm.CrmApplication - Database connection initialized
+2026-06-24 16:30:24.731 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-24 16:30:24.731 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-24 16:30:24.731 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-24 16:30:24.731 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-24 16:30:24.731 [main] INFO  crm.CrmApplication - Observers registered
+2026-06-24 16:46:40.458 [Thread-0] INFO  crm.CrmApplication - Shutting down application resources
+2026-06-24 16:46:40.458 [Thread-0] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-24 16:46:40.463 [Thread-0] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-24 16:46:40.463 [Thread-0] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-24 16:46:40.463 [Thread-0] INFO  crm.CrmApplication - Application stopped
+2026-06-24 16:49:40.284 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-24 16:49:40.286 [main] INFO  crm.CrmApplication - Starting CRM Training IT
+2026-06-24 16:49:40.286 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-24 16:49:40.290 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-24 16:49:40.290 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-24 16:49:40.290 [main] INFO  crm.CrmApplication - Application: CRM Training IT v1.0.0
+2026-06-24 16:49:40.314 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-24 16:49:40.519 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-24 16:49:40.519 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-24 16:49:40.519 [main] INFO  crm.CrmApplication - Database connection initialized
+2026-06-24 16:49:40.524 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-24 16:49:40.530 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-24 16:49:40.534 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-24 16:49:40.534 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-24 16:49:40.534 [main] INFO  crm.CrmApplication - Observers registered
+2026-06-24 16:49:40.672 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-24 16:50:36.347 [Thread-1] INFO  crm.CrmApplication - Shutting down application resources
+2026-06-24 16:50:36.347 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-24 16:50:36.352 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-24 16:50:36.352 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-24 16:50:36.352 [Thread-1] INFO  crm.CrmApplication - Application stopped
+2026-06-24 16:51:13.807 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-24 16:51:13.807 [main] INFO  crm.CrmApplication - Starting CRM Training IT
+2026-06-24 16:51:13.807 [main] INFO  crm.CrmApplication - ===================================================
+2026-06-24 16:51:13.807 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-24 16:51:13.807 [main] WARN  crm.config.AppConfig - Fișier nu găsit, folosesc valori default
+2026-06-24 16:51:13.807 [main] INFO  crm.CrmApplication - Application: CRM Training IT v1.0.0
+2026-06-24 16:51:13.830 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-24 16:51:13.996 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-24 16:51:13.996 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-24 16:51:13.996 [main] INFO  crm.CrmApplication - Database connection initialized
+2026-06-24 16:51:13.996 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-24 16:51:13.996 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-24 16:51:14.005 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-24 16:51:14.005 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-24 16:51:14.005 [main] INFO  crm.CrmApplication - Observers registered
+2026-06-24 17:04:28.359 [AWT-EventQueue-0] DEBUG crm.repository.ActivityRepository - Salvare Activity : Activity(super=crm.model.entity.Activity@59d73e5e, activityType=MEETING, contactId=6, opportunityId=null, subject=JAVA-ADV-MEET, description=null, scheduledDate=2026-06-19T11:17:36, completedDate=2026-06-24T17:04:28.359, durationMinutes=60, assignedTo=1, status=COMPLETED, priority=HIGH, outcome=GOOD, nextSteps=, requiresFollowup=false, followupDate=null, createdBy=null)
+2026-06-24 17:04:28.370 [AWT-EventQueue-0] DEBUG crm.dao.ActivityDao - Entitate actualizată în activities: ID=8
+2026-06-24 17:04:28.370 [AWT-EventQueue-0] DEBUG crm.observer.EventBus - Notificare eveniment: ACTIVITY_COMPLETED de la ActivityService
+2026-06-24 17:04:28.386 [AWT-EventQueue-0] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@edb297d, contactType=INDIVIDUAL, firstName=Mihai, lastName=Radulescu, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=mihai.radulescu04@e-uvt.ro, phone=+40 768737531, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=INTERESTED, leadScore=100, experienceLevel=BEGINNER, learningGoal=Reconversie profesională, firstContactDate=2026-06-03T19:09:32, lastContactDate=2026-06-18T11:14:30, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-03T19:09:33, marketingConsent=false)
+2026-06-24 17:04:28.386 [AWT-EventQueue-0] DEBUG crm.dao.ContactDao - Entitate actualizată în contacts: ID=6
+2026-06-24 17:04:28.386 [AWT-EventQueue-0] INFO  crm.service.contact.ContactService - Scor actualizat pentru contact 6: 100 -> 100 (MEETING_ATTENDED)
+2026-06-24 17:04:28.386 [AWT-EventQueue-0] DEBUG crm.observer.listeners.LeadScoreUpdateObserver - Scor lead actualizat pentru contact 6 după activitate MEETING_ATTENDED
+2026-06-24 17:04:28.386 [AWT-EventQueue-0] INFO  crm.service.activity.ActivityService - Activitate finalizată: 8
+2026-06-24 18:23:32.463 [AWT-EventQueue-0] INFO  crm.service.contact.ContactService - Creare contact: flavius.cornelius@gmail.com
+2026-06-24 18:23:32.479 [AWT-EventQueue-0] DEBUG crm.strategy.LeadScoringContext - Scor inițial pentru contact flavius.cornelius@gmail.com (strategie: SimpleLeadScoring): 85
+2026-06-24 18:23:32.479 [AWT-EventQueue-0] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@edb297d, contactType=INDIVIDUAL, firstName=Flavius, lastName=Cornelius, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=flavius.cornelius@gmail.com, phone=0768676564, addressStreet=Izlaz, addressCity=Timisoara, addressCounty=Timis, addressPostalCode=300013, leadSource=COLD_CALL, leadStatus=ENROLLED, leadScore=85, experienceLevel=ADVANCED, learningGoal=To study., firstContactDate=2026-06-24T18:23:32.463, lastContactDate=2026-06-24T18:23:32.479, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-24T18:23:32.463, marketingConsent=true)
+2026-06-24 18:23:32.495 [AWT-EventQueue-0] DEBUG crm.dao.ContactDao - Entitate salvată în contacts: ID=16
+2026-06-24 18:23:32.495 [AWT-EventQueue-0] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-06-24 18:23:32.511 [AWT-EventQueue-0] INFO  crm.service.notification.NotificationService - [EMAIL] Către: flavius.cornelius@gmail.com, Subiect: Bine ai venit la Training IT!
+2026-06-24 18:23:32.511 [AWT-EventQueue-0] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Flavius Cornelius,
+
+Îți mulțumim pentru interesul față de cursurile noastre!
+
+Suntem o companie specializată în training IT și oferim cursuri de Java, Python, AI și multe altele.
+
+Un consultant te va contacta în curând pentru a discuta opțiunile potrivite.
+
+Cu drag,
+Echipa Training IT
+2026-06-24 18:23:32.511 [AWT-EventQueue-0] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email trimis către: flavius.cornelius@gmail.com
+2026-06-24 18:23:32.511 [AWT-EventQueue-0] INFO  crm.service.contact.ContactService - Contact creat cu ID: 16 (scor: 85)
+2026-06-24 18:24:09.525 [Thread-1] INFO  crm.CrmApplication - Shutting down application resources
+2026-06-24 18:24:09.525 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-24 18:24:09.530 [Thread-1] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-24 18:24:09.530 [Thread-1] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-24 18:24:09.530 [Thread-1] INFO  crm.CrmApplication - Application stopped
