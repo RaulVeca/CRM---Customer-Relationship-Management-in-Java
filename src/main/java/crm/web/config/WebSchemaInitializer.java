@@ -65,6 +65,14 @@ public final class WebSchemaInitializer {
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             INDEX idx_bids_auction (auction_id)
         )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS course_metrics (
+            course_id BIGINT PRIMARY KEY,
+            impressions BIGINT NOT NULL DEFAULT 0,
+            clicks BIGINT NOT NULL DEFAULT 0,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        )
         """
     };
 

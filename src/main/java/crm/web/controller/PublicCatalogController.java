@@ -94,11 +94,31 @@ public class PublicCatalogController {
                 .orElse(new CourseReviewDto("", stars, req.comment(), null));
     }
 
+    // =====================================================
+    // CLICK-THROUGH TRACKING (feeds the admin CTR metric)
+    // =====================================================
+
+    /** Records that these courses were shown in the catalog (impressions). */
+    @PostMapping("/metrics/impressions")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void impressions(@RequestBody ImpressionsRequest req) {
+        facade.recordCourseImpressions(req.courseIds());
+    }
+
+    /** Records that a visitor clicked through on a course (click). */
+    @PostMapping("/courses/{courseId}/click")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void click(@PathVariable Long courseId) {
+        facade.recordCourseClick(courseId);
+    }
+
     public record PurchaseRequest(String email, String firstName, String lastName) {}
 
     public record PurchaseResponse(Long enrollmentId, String message) {}
 
     public record ReviewRequest(String email, Integer rating, String comment) {}
+
+    public record ImpressionsRequest(List<Long> courseIds) {}
 
     @GetMapping("/categories")
     public List<CategoryDto> categories() {

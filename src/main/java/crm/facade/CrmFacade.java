@@ -16,6 +16,8 @@ import crm.service.contact.ContactService;
 import crm.service.course.CourseService;
 import crm.service.employee.EmployeeService;
 import crm.service.enrollment.EnrollmentService;
+import crm.service.analytics.AnalyticsService;
+import crm.service.analytics.MetricsService;
 import crm.service.enrollment.PurchaseHistoryService;
 import crm.service.opportunity.OpportunityService;
 import crm.service.review.ReviewService;
@@ -54,6 +56,8 @@ public class CrmFacade {
     private final AuctionService auctionService;
     private final ReviewService reviewService;
     private final PurchaseHistoryService purchaseHistoryService;
+    private final AnalyticsService analyticsService;
+    private final MetricsService metricsService;
     private final CommandInvoker commandInvoker;
 
     private CrmFacade() {
@@ -66,6 +70,8 @@ public class CrmFacade {
         this.auctionService = AuctionService.getInstance();
         this.reviewService = ReviewService.getInstance();
         this.purchaseHistoryService = PurchaseHistoryService.getInstance();
+        this.analyticsService = AnalyticsService.getInstance();
+        this.metricsService = MetricsService.getInstance();
         this.commandInvoker = CommandInvoker.getInstance();
         logger.info("CrmFacade inițializat");
     }
@@ -213,6 +219,25 @@ public class CrmFacade {
     /** Full purchase (enrollment) history for the admin view. */
     public List<PurchaseHistoryService.PurchaseRecord> getPurchaseHistory() {
         return purchaseHistoryService.getHistory();
+    }
+
+    // =====================================================
+    // ANALYTICS
+    // =====================================================
+
+    /** Aggregated admin analytics: demographics, churn and click-through rate. */
+    public AnalyticsService.Analytics getAnalytics() {
+        return analyticsService.getAnalytics();
+    }
+
+    /** Records catalog impressions for the click-through-rate metric. */
+    public void recordCourseImpressions(List<Long> courseIds) {
+        metricsService.recordImpressions(courseIds);
+    }
+
+    /** Records a catalog click-through for the click-through-rate metric. */
+    public void recordCourseClick(Long courseId) {
+        metricsService.recordClick(courseId);
     }
 
     // =====================================================

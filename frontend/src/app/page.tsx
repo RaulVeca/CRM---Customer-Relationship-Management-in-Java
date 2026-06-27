@@ -6,6 +6,33 @@ import CourseQuiz from "@/components/CourseQuiz";
 import CourseCard from "@/components/CourseCard";
 import type { Category, PublicCourse } from "@/lib/types";
 
+const SEEN_KEY = "ctrSeenCourses";
+
+/**
+ * Count a catalog impression only the first time this browser sees a course.
+ * Re-entering Courses, refreshing or switching category no longer inflates the
+ * view count — the same visitor is only counted once per course.
+ */
+function trackImpressions(courseIds: number[]) {
+  if (courseIds.length === 0) return;
+  let seen: number[] = [];
+  try {
+    seen = JSON.parse(localStorage.getItem(SEEN_KEY) ?? "[]");
+  } catch {
+    seen = [];
+  }
+  const seenSet = new Set(seen);
+  const fresh = courseIds.filter((id) => !seenSet.has(id));
+  if (fresh.length === 0) return;
+
+  api.post("/api/public/metrics/impressions", { courseIds: fresh }).catch(() => {});
+  try {
+    localStorage.setItem(SEEN_KEY, JSON.stringify([...seenSet, ...fresh]));
+  } catch {
+    /* localStorage unavailable — skip persistence */
+  }
+}
+
 export default function Home() {
   const [courses, setCourses] = useState<PublicCourse[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
@@ -25,6 +52,9 @@ export default function Home() {
       .then((data) => {
         setCourses(data);
         setError(null);
+        // Track catalog impressions (feeds the admin click-through-rate metric),
+        // counting each course only once per browser.
+        trackImpressions(data.map((c) => c.id));
       })
       .catch((e) => setError(e.message))
       .finally(() => setLoading(false));

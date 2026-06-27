@@ -48,7 +48,11 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
   function toggleExpanded() {
     const next = !expanded;
     setExpanded(next);
-    if (next && reviews === null) void loadReviews();
+    if (next && reviews === null) {
+      // First open = a click-through; track it for the admin CTR metric.
+      api.post(`/api/public/courses/${course.id}/click`, null).catch(() => {});
+      void loadReviews();
+    }
   }
 
   async function loadReviews() {

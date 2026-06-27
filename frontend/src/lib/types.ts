@@ -27,6 +27,48 @@ export interface CourseReviews {
   reviews: CourseReview[];
 }
 
+export interface Demographics {
+  totalContacts: number;
+  byType: Record<string, number>;
+  byExperience: Record<string, number>;
+  byLeadSource: Record<string, number>;
+  byCounty: Record<string, number>;
+  byIndustry: Record<string, number>;
+}
+
+export interface Churn {
+  leadChurnRate: number;
+  lostLeads: number;
+  enrolledLeads: number;
+  enrollmentDropoutRate: number;
+  droppedEnrollments: number;
+  totalEnrollments: number;
+  opportunityLossRate: number;
+  lostOpportunities: number;
+  wonOpportunities: number;
+}
+
+export interface CtrRow {
+  courseId: number;
+  courseName: string;
+  impressions: number;
+  clicks: number;
+  ctr: number;
+}
+
+export interface Ctr {
+  overallCtr: number;
+  totalImpressions: number;
+  totalClicks: number;
+  courses: CtrRow[];
+}
+
+export interface Analytics {
+  demographics: Demographics;
+  churn: Churn;
+  ctr: Ctr;
+}
+
 export interface Purchase {
   enrollmentId: number;
   studentName: string;
