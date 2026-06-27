@@ -17,9 +17,15 @@ public record PublicCourseDto(
         String categoryLabel,
         String level,
         Integer durationHours,
-        BigDecimal priceIndividual
+        BigDecimal priceIndividual,
+        double averageRating,
+        int reviewCount
 ) {
     public static PublicCourseDto from(Course c) {
+        return from(c, 0.0, 0);
+    }
+
+    public static PublicCourseDto from(Course c, double averageRating, int reviewCount) {
         return new PublicCourseDto(
                 c.getId(),
                 c.getCode(),
@@ -29,7 +35,9 @@ public record PublicCourseDto(
                 c.getCategory() == null ? null : c.getCategory().getLabel(),
                 c.getLevel() == null ? null : c.getLevel().name(),
                 c.getDurationHours(),
-                c.getPriceIndividual()
+                c.getPriceIndividual(),
+                averageRating,
+                reviewCount
         );
     }
 }

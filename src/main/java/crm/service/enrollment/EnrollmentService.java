@@ -142,6 +142,22 @@ public class EnrollmentService {
                 enrollmentId, grade, enrollment.getExamPassed());
     }
 
+    /**
+     * Salvează review-ul (rating 1-5 + feedback) lăsat de cursant pe înscrierea sa.
+     * Folosit de fluxul public de recenzii al site-ului.
+     */
+    public Enrollment saveReview(Long enrollmentId, int rating, String feedback) {
+        if (rating < 1 || rating > 5) {
+            throw new BusinessException("Rating-ul trebuie să fie între 1 și 5 stele");
+        }
+        Enrollment enrollment = enrollmentRepository.getById(enrollmentId);
+        enrollment.setRating(rating);
+        enrollment.setFeedback(feedback);
+        Enrollment saved = enrollmentRepository.save(enrollment);
+        logger.info("Review salvat: enrollment={}, rating={}", enrollmentId, rating);
+        return saved;
+    }
+
     public List<Enrollment> getByContactId(Long contactId) {
         return enrollmentRepository.findByContactId(contactId);
     }

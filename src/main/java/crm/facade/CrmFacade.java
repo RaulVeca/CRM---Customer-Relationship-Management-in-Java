@@ -17,6 +17,7 @@ import crm.service.course.CourseService;
 import crm.service.employee.EmployeeService;
 import crm.service.enrollment.EnrollmentService;
 import crm.service.opportunity.OpportunityService;
+import crm.service.review.ReviewService;
 import crm.strategy.PricingStrategy;
 
 import java.util.List;
@@ -50,6 +51,7 @@ public class CrmFacade {
     private final ActivityService activityService;
     private final EmployeeService employeeService;
     private final AuctionService auctionService;
+    private final ReviewService reviewService;
     private final CommandInvoker commandInvoker;
 
     private CrmFacade() {
@@ -60,6 +62,7 @@ public class CrmFacade {
         this.activityService = ActivityService.getInstance();
         this.employeeService = EmployeeService.getInstance();
         this.auctionService = AuctionService.getInstance();
+        this.reviewService = ReviewService.getInstance();
         this.commandInvoker = CommandInvoker.getInstance();
         logger.info("CrmFacade inițializat");
     }
@@ -180,6 +183,28 @@ public class CrmFacade {
 
     public List<Enrollment> getUnpaidEnrollments() {
         return enrollmentService.getUnpaid();
+    }
+
+    // =====================================================
+    // COURSE REVIEWS (public website)
+    // =====================================================
+
+    /** Cumpărarea publică a unui curs (client identificat prin email). */
+    public Enrollment purchaseCourse(String email, String firstName, String lastName, Long courseId) {
+        return reviewService.purchaseCourse(email, firstName, lastName, courseId);
+    }
+
+    /** Recenzie publică (1-5 stele) - permisă doar după cumpărare. */
+    public Enrollment reviewCourse(String email, Long courseId, int rating, String comment) {
+        return reviewService.reviewCourse(email, courseId, rating, comment);
+    }
+
+    public List<ReviewService.CourseReviewView> getCourseReviews(Long courseId) {
+        return reviewService.getReviews(courseId);
+    }
+
+    public ReviewService.RatingSummary getCourseRating(Long courseId) {
+        return reviewService.getRatingSummary(courseId);
     }
 
     // =====================================================

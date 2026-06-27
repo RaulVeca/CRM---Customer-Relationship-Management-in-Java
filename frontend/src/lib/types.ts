@@ -10,6 +10,21 @@ export interface PublicCourse {
   level: string | null;
   durationHours: number | null;
   priceIndividual: number | null;
+  averageRating: number;
+  reviewCount: number;
+}
+
+export interface CourseReview {
+  author: string;
+  rating: number;
+  comment: string | null;
+  date: string | null;
+}
+
+export interface CourseReviews {
+  average: number;
+  count: number;
+  reviews: CourseReview[];
 }
 
 export interface PublicCompany {
