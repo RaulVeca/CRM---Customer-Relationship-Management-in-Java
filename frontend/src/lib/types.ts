@@ -27,6 +27,19 @@ export interface CourseReviews {
   reviews: CourseReview[];
 }
 
+export interface Purchase {
+  enrollmentId: number;
+  studentName: string;
+  studentEmail: string | null;
+  courseName: string;
+  courseCode: string | null;
+  amount: number | null;
+  paymentStatus: string | null;
+  status: string | null;
+  date: string | null;
+  rating: number | null;
+}
+
 export interface PublicCompany {
   id: number;
   companyName: string;

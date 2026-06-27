@@ -158,6 +158,10 @@ public class EnrollmentService {
         return saved;
     }
 
+    public List<Enrollment> getAll() {
+        return enrollmentRepository.findAll();
+    }
+
     public List<Enrollment> getByContactId(Long contactId) {
         return enrollmentRepository.findByContactId(contactId);
     }

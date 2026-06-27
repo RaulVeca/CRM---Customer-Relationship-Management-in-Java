@@ -16,6 +16,7 @@ import crm.service.contact.ContactService;
 import crm.service.course.CourseService;
 import crm.service.employee.EmployeeService;
 import crm.service.enrollment.EnrollmentService;
+import crm.service.enrollment.PurchaseHistoryService;
 import crm.service.opportunity.OpportunityService;
 import crm.service.review.ReviewService;
 import crm.strategy.PricingStrategy;
@@ -52,6 +53,7 @@ public class CrmFacade {
     private final EmployeeService employeeService;
     private final AuctionService auctionService;
     private final ReviewService reviewService;
+    private final PurchaseHistoryService purchaseHistoryService;
     private final CommandInvoker commandInvoker;
 
     private CrmFacade() {
@@ -63,6 +65,7 @@ public class CrmFacade {
         this.employeeService = EmployeeService.getInstance();
         this.auctionService = AuctionService.getInstance();
         this.reviewService = ReviewService.getInstance();
+        this.purchaseHistoryService = PurchaseHistoryService.getInstance();
         this.commandInvoker = CommandInvoker.getInstance();
         logger.info("CrmFacade inițializat");
     }
@@ -205,6 +208,11 @@ public class CrmFacade {
 
     public ReviewService.RatingSummary getCourseRating(Long courseId) {
         return reviewService.getRatingSummary(courseId);
+    }
+
+    /** Full purchase (enrollment) history for the admin view. */
+    public List<PurchaseHistoryService.PurchaseRecord> getPurchaseHistory() {
+        return purchaseHistoryService.getHistory();
     }
 
     // =====================================================

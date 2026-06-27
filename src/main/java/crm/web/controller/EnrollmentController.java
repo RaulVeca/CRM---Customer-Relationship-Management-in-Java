@@ -2,6 +2,7 @@ package crm.web.controller;
 
 import crm.facade.CrmFacade;
 import crm.model.entity.Enrollment;
+import crm.web.dto.PurchaseDto;
 import crm.strategy.CorporatePricingStrategy;
 import crm.strategy.IndividualPricingStrategy;
 import crm.strategy.PricingStrategy;
@@ -37,6 +38,14 @@ public class EnrollmentController {
     @GetMapping("/unpaid")
     public List<Enrollment> unpaid() {
         return facade.getUnpaidEnrollments();
+    }
+
+    /** Admin purchase history: every enrollment enriched with course & buyer. */
+    @GetMapping("/history")
+    public List<PurchaseDto> history() {
+        return facade.getPurchaseHistory().stream()
+                .map(PurchaseDto::from)
+                .toList();
     }
 
     @PostMapping
