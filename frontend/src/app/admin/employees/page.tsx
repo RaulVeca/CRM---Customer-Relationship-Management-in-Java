@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { SparkleIcon } from "@/components/icons";
 import type { CourseRecommendation, Employee, Option, PublicCompany } from "@/lib/types";
 
 export default function EmployeesPage() {
@@ -108,7 +109,7 @@ export default function EmployeesPage() {
         <select
           value={companyId ?? ""}
           onChange={(e) => setCompanyId(Number(e.target.value))}
-          className="rounded-md border border-slate-300 px-3 py-1.5 text-sm"
+          className="rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-3 py-1.5 text-sm"
         >
           {companies.map((c) => (
             <option key={c.id} value={c.id}>{c.companyName}</option>
@@ -120,7 +121,14 @@ export default function EmployeesPage() {
             disabled={recsLoading}
             className="ml-auto rounded-md bg-violet-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-violet-700 disabled:opacity-50"
           >
-            {recsLoading ? "Thinking…" : "✨ AI course recommendations"}
+            {recsLoading ? (
+              "Thinking…"
+            ) : (
+              <span className="inline-flex items-center gap-1.5">
+                <SparkleIcon className="h-4 w-4" />
+                AI course recommendations
+              </span>
+            )}
           </button>
         )}
       </div>
@@ -135,7 +143,7 @@ export default function EmployeesPage() {
           ) : (
             <ul className="space-y-2">
               {recs.map((r) => (
-                <li key={r.courseId} className="flex items-start gap-3 rounded-lg bg-white p-3 shadow-sm">
+                <li key={r.courseId} className="flex items-start gap-3 rounded-lg bg-white p-3 shadow-sm dark:bg-slate-800">
                   <span className="mt-0.5 rounded-full bg-violet-600 px-2 py-0.5 text-xs font-bold text-white">
                     {r.matchScore}
                   </span>
@@ -151,9 +159,9 @@ export default function EmployeesPage() {
       )}
 
       <div className="grid gap-6 lg:grid-cols-3">
-        <div className="lg:col-span-2 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+        <div className="lg:col-span-2 overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 shadow-sm">
           <table className="w-full text-sm">
-            <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500">
+            <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
               <tr>
                 <th className="px-4 py-3">Name</th>
                 <th className="px-4 py-3">Role</th>
@@ -162,13 +170,13 @@ export default function EmployeesPage() {
                 <th className="px-4 py-3"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-slate-100">
+            <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
               {employees.map((emp) => (
-                <tr key={emp.id} className="hover:bg-slate-50">
+                <tr key={emp.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                   <td className="px-4 py-3 font-medium">{emp.fullName || `${emp.firstName ?? ""} ${emp.lastName ?? ""}`}</td>
                   <td className="px-4 py-3 text-slate-500">{emp.jobTitle ?? "—"}</td>
                   <td className="px-4 py-3">
-                    <span className="rounded bg-slate-100 px-2 py-0.5 text-xs">{label(profileAreas, emp.workProfile)}</span>
+                    <span className="rounded bg-slate-100 px-2 py-0.5 text-xs dark:bg-slate-700 dark:text-slate-200">{label(profileAreas, emp.workProfile)}</span>
                   </td>
                   <td className="px-4 py-3">
                     <div className="flex flex-wrap gap-1">
@@ -189,22 +197,22 @@ export default function EmployeesPage() {
           {employees.length === 0 && <p className="p-4 text-slate-500">No employees yet for this company.</p>}
         </div>
 
-        <form onSubmit={submit} className="space-y-3 rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+        <form onSubmit={submit} className="space-y-3 rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-5 shadow-sm">
           <h3 className="font-semibold">Add employee</h3>
           <div className="grid grid-cols-2 gap-2">
-            <input className="rounded-md border border-slate-300 px-2 py-1.5 text-sm" placeholder="First name"
+            <input className="rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="First name"
               value={form.firstName} onChange={(e) => setForm({ ...form, firstName: e.target.value })} />
-            <input className="rounded-md border border-slate-300 px-2 py-1.5 text-sm" placeholder="Last name"
+            <input className="rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="Last name"
               value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
           </div>
-          <input className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm" placeholder="Job title"
+          <input className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="Job title"
             value={form.jobTitle} onChange={(e) => setForm({ ...form, jobTitle: e.target.value })} />
-          <select className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+          <select className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm"
             value={form.workProfile} onChange={(e) => setForm({ ...form, workProfile: e.target.value })}>
             <option value="">Work profile…</option>
             {profileAreas.map((p) => <option key={p.name} value={p.name}>{p.label}</option>)}
           </select>
-          <select className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm"
+          <select className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm"
             value={form.experienceLevel} onChange={(e) => setForm({ ...form, experienceLevel: e.target.value })}>
             <option value="">Experience level…</option>
             {levels.map((p) => <option key={p.name} value={p.name}>{p.label}</option>)}

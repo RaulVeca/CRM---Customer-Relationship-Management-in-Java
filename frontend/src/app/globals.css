@@ -1,13 +1,21 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode (toggled by adding `.dark` on <html>). */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-/* The app uses an explicit light theme via Tailwind utility classes on
-   <body> (see layout.tsx); we intentionally do not follow the OS dark mode. */
+/* Background + native color-scheme follow the active theme to avoid any flash
+   on the document edges / overscroll area. The visible surfaces are themed via
+   Tailwind `dark:` utilities on the elements themselves. */
 html {
   color-scheme: light;
   background: #f8fafc; /* slate-50 */
+}
+html.dark {
+  color-scheme: dark;
+  background: #020617; /* slate-950 */
 }

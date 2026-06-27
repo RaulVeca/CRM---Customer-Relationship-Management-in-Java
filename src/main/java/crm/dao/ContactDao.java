@@ -149,6 +149,27 @@ public class ContactDao extends AbstractDao<Contact> {
     // Custom queries
     // =====================================================
 
+    /**
+     * Override paginat al listării: persoanele individuale (B2C) apar înaintea
+     * companiilor (B2B). Doar ordinea de afișare se schimbă - valorile
+     * atributelor rămân neatinse.
+     */
+    @Override
+    public List<Contact> findAll(int offset, int limit) {
+        String sql = "SELECT * FROM contacts " +
+                "ORDER BY CASE WHEN contact_type = 'INDIVIDUAL' THEN 0 ELSE 1 END, id DESC " +
+                "LIMIT ? OFFSET ?";
+        try (Connection conn = db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setInt(1, limit);
+            ps.setInt(2, offset);
+            return mapResults(ps);
+        } catch (SQLException e) {
+            throw new DataAccessException("Eroare findAll ordonat (contacts)", e);
+        }
+    }
+
     public Optional<Contact> findByEmail(String email) {
         String sql = "SELECT * FROM contacts WHERE email = ?";
         try (Connection conn = db.getConnection();

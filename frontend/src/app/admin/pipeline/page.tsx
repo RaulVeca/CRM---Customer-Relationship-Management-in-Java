@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import ExportMenu from "@/components/ExportMenu";
+import { SparkleIcon } from "@/components/icons";
 import type { Opportunity } from "@/lib/types";
 
 const STAGES = [
@@ -44,7 +46,10 @@ export default function PipelinePage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold">Sales pipeline</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-lg font-semibold">Sales pipeline</h2>
+        <ExportMenu resource="pipeline" />
+      </div>
       {error && <p className="text-red-600">{error}</p>}
       {loading && <p className="text-slate-500">Loading…</p>}
 
@@ -52,13 +57,13 @@ export default function PipelinePage() {
         {STAGES.map((stage) => {
           const inStage = opps.filter((o) => o.stage === stage);
           return (
-            <div key={stage} className="rounded-xl bg-slate-100 p-3">
+            <div key={stage} className="rounded-xl bg-slate-100 p-3 dark:bg-slate-800/40">
               <h3 className="mb-2 text-xs font-semibold uppercase text-slate-500">
                 {stage.replace(/_/g, " ")} ({inStage.length})
               </h3>
               <div className="space-y-2">
                 {inStage.map((o) => (
-                  <div key={o.id} className="rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
+                  <div key={o.id} className="rounded-lg border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-3 shadow-sm">
                     <p className="text-sm font-medium">{o.title}</p>
                     <p className="mt-1 text-xs text-slate-500">
                       {o.estimatedValue != null ? `${o.estimatedValue} RON` : "—"} · {o.probabilityPercent ?? 0}%
@@ -69,7 +74,14 @@ export default function PipelinePage() {
                         disabled={adviceLoading === o.id}
                         className="mt-2 text-xs font-medium text-violet-600 hover:underline disabled:opacity-50"
                       >
-                        {adviceLoading === o.id ? "Thinking…" : "✨ Sales assistant"}
+                        {adviceLoading === o.id ? (
+                          "Thinking…"
+                        ) : (
+                          <span className="inline-flex items-center gap-1">
+                            <SparkleIcon className="h-3.5 w-3.5" />
+                            Sales assistant
+                          </span>
+                        )}
                       </button>
                     )}
                   </div>
@@ -87,14 +99,17 @@ export default function PipelinePage() {
           onClick={() => setAdvice(null)}
         >
           <div
-            className="max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl"
+            className="max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white p-6 shadow-2xl dark:bg-slate-900"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="mb-3 flex items-center justify-between">
-              <h3 className="font-semibold">✨ Sales assistant — {advice.title}</h3>
+              <h3 className="flex items-center gap-1.5 font-semibold">
+                <SparkleIcon className="h-4 w-4 text-violet-500" />
+                Sales assistant — {advice.title}
+              </h3>
               <button onClick={() => setAdvice(null)} className="text-slate-400 hover:text-slate-700">×</button>
             </div>
-            <div className="whitespace-pre-wrap text-sm text-slate-700">{advice.text}</div>
+            <div className="whitespace-pre-wrap text-sm text-slate-700 dark:text-slate-200">{advice.text}</div>
           </div>
         </div>
       )}

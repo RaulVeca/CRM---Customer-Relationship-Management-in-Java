@@ -3,6 +3,7 @@ package crm.web.controller;
 import crm.web.ai.AiService;
 import crm.web.ai.dto.ChatMessage;
 import crm.web.ai.dto.CourseRecommendation;
+import crm.web.ai.dto.VisitorProfile;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +31,11 @@ public class AiController {
     @GetMapping("/recommendations/company/{companyId}")
     public List<CourseRecommendation> recommendations(@PathVariable Long companyId) {
         return ai.recommendCoursesForCompany(companyId);
+    }
+
+    @PostMapping("/recommendations/visitor")
+    public List<CourseRecommendation> visitorRecommendations(@RequestBody VisitorProfile profile) {
+        return ai.recommendCoursesForVisitor(profile);
     }
 
     @GetMapping("/sales/opportunity/{opportunityId}")

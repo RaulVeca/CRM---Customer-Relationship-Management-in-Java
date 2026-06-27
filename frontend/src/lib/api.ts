@@ -2,6 +2,9 @@
 
 const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080";
 
+/** Base URL of the REST API, exported for direct links such as file downloads. */
+export const API_BASE = BASE;
+
 export class ApiError extends Error {
   status: number;
   constructor(status: number, message: string) {

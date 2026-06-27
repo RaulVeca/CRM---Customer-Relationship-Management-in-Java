@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { TrophyIcon } from "@/components/icons";
 import type { Auction, Bid, PublicCompany } from "@/lib/types";
 
 function money(n: number | null) {
@@ -85,7 +86,7 @@ export default function AuctionsPage() {
             <button
               key={a.id}
               onClick={() => openAuction(a)}
-              className={`w-full rounded-xl border p-4 text-left shadow-sm ${selected?.id === a.id ? "border-indigo-400 bg-indigo-50" : "border-slate-200 bg-white"}`}
+              className={`w-full rounded-xl border p-4 text-left shadow-sm ${selected?.id === a.id ? "border-indigo-400 bg-indigo-50 dark:border-indigo-500 dark:bg-indigo-500/15" : "border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900"}`}
             >
               <div className="flex items-center justify-between">
                 <span className="font-medium">{a.title}</span>
@@ -101,11 +102,11 @@ export default function AuctionsPage() {
           ))}
           {auctions.length === 0 && <p className="text-slate-500">No auctions yet.</p>}
 
-          <form onSubmit={createAuction} className="space-y-2 rounded-xl border border-dashed border-slate-300 p-4">
+          <form onSubmit={createAuction} className="space-y-2 rounded-xl border border-dashed border-slate-300 p-4 dark:border-slate-700">
             <p className="text-sm font-medium">New auction</p>
-            <input className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm" placeholder="Title"
+            <input className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="Title"
               value={newAuction.title} onChange={(e) => setNewAuction({ ...newAuction, title: e.target.value })} required />
-            <input className="w-full rounded-md border border-slate-300 px-2 py-1.5 text-sm" placeholder="Starting price" type="number"
+            <input className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="Starting price" type="number"
               value={newAuction.startingPrice} onChange={(e) => setNewAuction({ ...newAuction, startingPrice: e.target.value })} required />
             <button className="w-full rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white">Create</button>
           </form>
@@ -128,15 +129,15 @@ export default function AuctionsPage() {
 
               {error && <p className="rounded-md bg-red-50 px-3 py-2 text-sm text-red-700">{error}</p>}
 
-              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+              <div className="overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 shadow-sm">
                 <table className="w-full text-sm">
-                  <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500">
+                  <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
                     <tr><th className="px-4 py-2">#</th><th className="px-4 py-2">Company</th><th className="px-4 py-2 text-right">Amount</th></tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100">
+                  <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                     {bids.map((b, idx) => (
                       <tr key={b.id} className={idx === 0 ? "bg-emerald-50" : ""}>
-                        <td className="px-4 py-2 text-slate-400">{idx === 0 ? "🏆" : idx + 1}</td>
+                        <td className="px-4 py-2 text-slate-400">{idx === 0 ? <TrophyIcon className="h-4 w-4 text-amber-500" /> : idx + 1}</td>
                         <td className="px-4 py-2 font-medium">{b.companyName ?? companyName(b.companyId)}</td>
                         <td className="px-4 py-2 text-right font-semibold">{money(b.amount)}</td>
                       </tr>
@@ -147,10 +148,10 @@ export default function AuctionsPage() {
               </div>
 
               {selected.status === "OPEN" && (
-                <form onSubmit={placeBid} className="flex flex-wrap items-end gap-2 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
+                <form onSubmit={placeBid} className="flex flex-wrap items-end gap-2 rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 p-4 shadow-sm">
                   <div>
                     <label className="block text-xs text-slate-500">Company</label>
-                    <select className="rounded-md border border-slate-300 px-2 py-1.5 text-sm" value={bidForm.companyId}
+                    <select className="rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" value={bidForm.companyId}
                       onChange={(e) => setBidForm({ ...bidForm, companyId: e.target.value })} required>
                       <option value="">Select…</option>
                       {companies.map((c) => <option key={c.id} value={c.id}>{c.companyName}</option>)}
@@ -158,7 +159,7 @@ export default function AuctionsPage() {
                   </div>
                   <div>
                     <label className="block text-xs text-slate-500">Amount</label>
-                    <input className="w-32 rounded-md border border-slate-300 px-2 py-1.5 text-sm" type="number"
+                    <input className="w-32 rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" type="number"
                       value={bidForm.amount} onChange={(e) => setBidForm({ ...bidForm, amount: e.target.value })} required />
                   </div>
                   <button className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white">Place bid</button>

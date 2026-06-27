@@ -9,6 +9,7 @@ import crm.model.entity.Opportunity;
 import crm.model.enums.ProfileArea;
 import crm.web.ai.dto.ChatMessage;
 import crm.web.ai.dto.CourseRecommendation;
+import crm.web.ai.dto.VisitorProfile;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -76,6 +77,44 @@ public class AiService {
         }
 
         user.append("\nCOURSE CATALOG:\n");
+        for (Course c : courses) {
+            user.append("- id=").append(c.getId())
+                .append(" | ").append(c.getName())
+                .append(" | category: ").append(c.getCategory() == null ? "?" : c.getCategory().getLabel())
+                .append(" | level: ").append(c.getLevel())
+                .append("\n");
+        }
+
+        String response = claude.complete(system, user.toString());
+        return parseRecommendations(response, courses);
+    }
+
+    /**
+     * Personalised recommendations for an individual website visitor, based on a
+     * short self-reported profile (interests, experience level, goal). Reuses the
+     * same Claude completion + JSON parsing as the company recommendations.
+     */
+    public List<CourseRecommendation> recommendCoursesForVisitor(VisitorProfile profile) {
+        List<Course> courses = facade.getActiveCourses();
+
+        String system = """
+                You are a friendly IT career advisor for an IT training company. Given an individual
+                visitor's interests, experience level and learning goal, recommend the courses from
+                the catalog that best fit them. Respond with ONLY a JSON array (no prose, no markdown
+                fences) where each element is an object with keys: courseId (number, from the catalog),
+                courseName (string), reason (string, one friendly sentence addressed directly to the
+                visitor explaining why it fits), matchScore (integer 0-100). Recommend at most 4
+                courses, ordered by matchScore descending.""";
+
+        StringBuilder user = new StringBuilder();
+        user.append("VISITOR PROFILE:\n")
+            .append("- Interested in: ")
+            .append(profile.interests() == null || profile.interests().isEmpty()
+                    ? "-" : String.join(", ", profile.interests())).append("\n")
+            .append("- Experience level: ").append(nullSafe(profile.experienceLevel())).append("\n")
+            .append("- Learning goal: ").append(nullSafe(profile.goal())).append("\n\n");
+
+        user.append("COURSE CATALOG:\n");
         for (Course c : courses) {
             user.append("- id=").append(c.getId())
                 .append(" | ").append(c.getName())
