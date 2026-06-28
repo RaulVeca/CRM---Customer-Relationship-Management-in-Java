@@ -94,24 +94,15 @@ CREATE TABLE courses (
 ) ENGINE=InnoDB;
 
 -- =====================================================
--- TRAINERS
+-- ADMINS (login pentru opțiunea "Cont admin")
+-- Trainerii care pot accesa zona de administrare. Autentificare doar pe email.
 -- =====================================================
-CREATE TABLE trainers (
+CREATE TABLE admins (
     id BIGINT PRIMARY KEY AUTO_INCREMENT,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    phone VARCHAR(20),
-    bio TEXT,
-    specializations VARCHAR(500),
-    years_experience INT,
-    hourly_rate DECIMAL(10,2),
-    average_rating DECIMAL(3,2),
-    total_sessions INT DEFAULT 0,
-    active BOOLEAN DEFAULT TRUE,
-    user_id BIGINT,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB;
 
 -- =====================================================
@@ -128,7 +119,6 @@ CREATE TABLE course_sessions (
     delivery_mode VARCHAR(20),
     location VARCHAR(200),
     meeting_link VARCHAR(500),
-    trainer_id BIGINT,
     max_participants INT,
     current_participants INT DEFAULT 0,
     status VARCHAR(20) DEFAULT 'PLANNED',
@@ -136,7 +126,6 @@ CREATE TABLE course_sessions (
     is_corporate BOOLEAN DEFAULT FALSE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (course_id) REFERENCES courses(id),
-    FOREIGN KEY (trainer_id) REFERENCES trainers(id),
     INDEX idx_start_date (start_date),
     INDEX idx_status (status)
 ) ENGINE=InnoDB;

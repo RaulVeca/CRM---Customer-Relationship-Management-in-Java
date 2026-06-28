@@ -1,7 +1,9 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { getSession } from "@/lib/auth";
 
 const tabs = [
   { href: "/admin", label: "Dashboard" },
@@ -16,6 +18,27 @@ const tabs = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  // Admin area is reachable only with an ADMIN session — anyone else (signed
+  // out, or signed in as a user) is bounced to the login screen.
+  const [allowed, setAllowed] = useState(false);
+
+  useEffect(() => {
+    const session = getSession();
+    if (session?.role === "ADMIN") {
+      setAllowed(true);
+    } else {
+      window.location.assign("/login");
+    }
+  }, []);
+
+  if (!allowed) {
+    return (
+      <p className="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+        Se redirecționează către autentificare…
+      </p>
+    );
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex gap-1 border-b border-slate-200 dark:border-slate-800">

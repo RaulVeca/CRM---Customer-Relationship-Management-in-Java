@@ -10,7 +10,6 @@ DROP TABLE IF EXISTS invoices CASCADE;
 DROP TABLE IF EXISTS opportunities CASCADE;
 DROP TABLE IF EXISTS course_sessions CASCADE;
 DROP TABLE IF EXISTS courses CASCADE;
-DROP TABLE IF EXISTS trainers CASCADE;
 DROP TABLE IF EXISTS contacts CASCADE;
 DROP TABLE IF EXISTS users CASCADE;
 
@@ -86,26 +85,6 @@ CREATE INDEX idx_contacts_lead_score ON contacts(lead_score DESC);
 CREATE INDEX idx_contacts_type ON contacts(contact_type);
 
 -- ========================================
--- TRAINERS
--- ========================================
-CREATE TABLE trainers (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    user_id BIGINT,
-    first_name VARCHAR(100) NOT NULL,
-    last_name VARCHAR(100) NOT NULL,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    phone VARCHAR(50),
-    specializations TEXT, -- JSON sau CSV: "Java,Spring,Microservices"
-    bio TEXT,
-    hourly_rate DECIMAL(10,2),
-    active BOOLEAN DEFAULT TRUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    
-    CONSTRAINT fk_trainer_user FOREIGN KEY (user_id) REFERENCES users(id)
-);
-
--- ========================================
 -- COURSES
 -- ========================================
 CREATE TABLE courses (
@@ -130,7 +109,6 @@ CREATE TABLE courses (
 CREATE TABLE course_sessions (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     course_id BIGINT NOT NULL,
-    trainer_id BIGINT,
     start_date DATE NOT NULL,
     end_date DATE NOT NULL,
     schedule_details TEXT, -- "Luni-Vineri 18:00-21:00"
@@ -142,8 +120,7 @@ CREATE TABLE course_sessions (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     
-    CONSTRAINT fk_session_course FOREIGN KEY (course_id) REFERENCES courses(id),
-    CONSTRAINT fk_session_trainer FOREIGN KEY (trainer_id) REFERENCES trainers(id)
+    CONSTRAINT fk_session_course FOREIGN KEY (course_id) REFERENCES courses(id)
 );
 
 -- ========================================
@@ -278,12 +255,6 @@ INSERT INTO users (username, email, password_hash, first_name, last_name, role) 
 ('ion.popescu', 'ion.popescu@trainingit.ro', '$2a$10$HASH', 'Ion', 'Popescu', 'SALES'),
 ('maria.ionescu', 'maria.ionescu@trainingit.ro', '$2a$10$HASH', 'Maria', 'Ionescu', 'COORDINATOR');
 
--- Trainers
-INSERT INTO trainers (first_name, last_name, email, phone, specializations, hourly_rate) VALUES
-('Andrei', 'Popa', 'andrei.popa@trainingit.ro', '0721123456', 'Java,Spring,Microservices', 150.00),
-('Elena', 'Dobre', 'elena.dobre@trainingit.ro', '0722234567', 'Python,Django,Data Science', 140.00),
-('Mihai', 'Stanciu', 'mihai.stanciu@trainingit.ro', '0723345678', 'JavaScript,React,Node.js', 135.00);
-
 -- Courses
 INSERT INTO courses (code, title, description, category, duration_hours, level, base_price) VALUES
 ('JAVA-101', 'Java Fundamentals', 'Curs introductiv în programarea Java', 'PROGRAMMING', 40, 'BEGINNER', 1200.00),
@@ -301,8 +272,8 @@ INSERT INTO contacts (contact_type, first_name, last_name, email, phone, lead_so
 UPDATE contacts SET company_name='TechCorp SRL', fiscal_code='RO12345678', industry='IT Software', employee_count=250 WHERE email='contact@techcorp.ro';
 
 -- Sample Course Session
-INSERT INTO course_sessions (course_id, trainer_id, start_date, end_date, schedule_details, delivery_mode, max_participants) VALUES
-(1, 1, DATE_ADD(CURDATE(), INTERVAL 30 DAY), DATE_ADD(CURDATE(), INTERVAL 60 DAY), 'Luni-Vineri 18:00-21:00', 'ONLINE', 15);
+INSERT INTO course_sessions (course_id, start_date, end_date, schedule_details, delivery_mode, max_participants) VALUES
+(1, DATE_ADD(CURDATE(), INTERVAL 30 DAY), DATE_ADD(CURDATE(), INTERVAL 60 DAY), 'Luni-Vineri 18:00-21:00', 'ONLINE', 15);
 
 -- Sample Enrollment
 INSERT INTO enrollments (contact_id, course_id, session_id, original_price, final_price, payment_status) VALUES

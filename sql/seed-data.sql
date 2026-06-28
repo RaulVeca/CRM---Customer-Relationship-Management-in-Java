@@ -27,15 +27,11 @@ INSERT INTO courses (code, name, description, category, level, duration_hours,
 ('WS-DOCKER', 'Workshop Docker & Kubernetes', 'Workshop intensiv 2 zile', 'WORKSHOP', 'INTERMEDIATE', 16, 
  800.00, 700.00, 1500.00, 5, 15, TRUE);
 
--- Traineri
-INSERT INTO trainers (first_name, last_name, email, phone, specializations, years_experience, 
-                      hourly_rate, average_rating, total_sessions, active) VALUES
-('Andrei', 'Mihai', 'andrei.mihai@trainingit.ro', '0722111222', 'Java, Spring, Microservices', 10, 
- 150.00, 4.8, 25, TRUE),
-('Elena', 'Vasilescu', 'elena.vasilescu@trainingit.ro', '0722111333', 'Python, AI, ML', 8, 
- 140.00, 4.9, 18, TRUE),
-('Mihai', 'Georgescu', 'mihai.georgescu@trainingit.ro', '0722111444', 'DevOps, Docker, Kubernetes', 12, 
- 160.00, 4.7, 30, TRUE);
+-- Admini (login "Cont admin") - traineri cu adrese @adminit.ro
+INSERT INTO admins (first_name, last_name, email) VALUES
+('Andrei', 'Birceanu', 'andreibirceanu@adminit.ro'),
+('Costache', 'Măzărescu', 'costachemazarescu@adminit.ro'),
+('Oana', 'Badache', 'oanabadache@adminit.ro');
 
 -- Contacte exemplu B2C
 INSERT INTO contacts (contact_type, first_name, last_name, email, phone, lead_source, 
@@ -58,15 +54,15 @@ INSERT INTO contacts (contact_type, company_name, email, phone, fiscal_code,
  'J40/5678/2018', 'Healthcare', 500, 'WEBSITE', 'NEW', 55, 4, TRUE, NOW());
 
 -- Sesiuni curs
-INSERT INTO course_sessions (course_id, session_code, start_date, end_date, 
-                              schedule_description, total_hours, delivery_mode, 
-                              location, trainer_id, max_participants, status) VALUES
-(1, 'JAVA-101-2026-01', '2026-06-01', '2026-07-15', 'L,M,J 18:00-21:00', 60, 'HYBRID', 
- 'București - Sala 1', 1, 15, 'OPEN_ENROLLMENT'),
-(3, 'PYTHON-101-2026-01', '2026-06-15', '2026-07-30', 'M,J 18:00-21:00', 50, 'ONLINE', 
- NULL, 2, 15, 'OPEN_ENROLLMENT'),
-(4, 'AI-INTRO-2026-01', '2026-07-01', '2026-08-15', 'L,M,V 18:00-21:00', 70, 'ONLINE', 
- NULL, 2, 12, 'PLANNED');
+INSERT INTO course_sessions (course_id, session_code, start_date, end_date,
+                              schedule_description, total_hours, delivery_mode,
+                              location, max_participants, status) VALUES
+(1, 'JAVA-101-2026-01', '2026-06-01', '2026-07-15', 'L,M,J 18:00-21:00', 60, 'HYBRID',
+ 'București - Sala 1', 15, 'OPEN_ENROLLMENT'),
+(3, 'PYTHON-101-2026-01', '2026-06-15', '2026-07-30', 'M,J 18:00-21:00', 50, 'ONLINE',
+ NULL, 15, 'OPEN_ENROLLMENT'),
+(4, 'AI-INTRO-2026-01', '2026-07-01', '2026-08-15', 'L,M,V 18:00-21:00', 70, 'ONLINE',
+ NULL, 12, 'PLANNED');
 
 -- Oportunitate B2B exemplu
 INSERT INTO opportunities (client_id, title, description, estimated_participants, 

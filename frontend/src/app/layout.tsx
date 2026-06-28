@@ -3,6 +3,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import Chatbot from "@/components/Chatbot";
 import ThemeToggle from "@/components/ThemeToggle";
+import AuthNav from "@/components/AuthNav";
+import AuthGuard from "@/components/AuthGuard";
+import PrimaryNav from "@/components/PrimaryNav";
 import "./globals.css";
 
 // Runs before paint to apply the saved/system theme and avoid a flash of the
@@ -33,24 +36,16 @@ export default function RootLayout({
             <Link href="/" className="font-bold text-indigo-600 dark:text-indigo-400">
               TrainingIT
             </Link>
-            <Link href="/" className="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
-              Courses
-            </Link>
-            <Link href="/companies" className="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
-              Companies
-            </Link>
+            <PrimaryNav />
             <div className="ml-auto flex items-center gap-4">
               <ThemeToggle />
-              <Link
-                href="/admin"
-                className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
-              >
-                Admin
-              </Link>
+              <AuthNav />
             </div>
           </nav>
         </header>
-        <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-8">{children}</main>
+        <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-8">
+          <AuthGuard>{children}</AuthGuard>
+        </main>
         <footer className="border-t border-slate-200 bg-white py-4 text-center text-xs text-slate-400 transition-colors dark:border-slate-800 dark:bg-slate-900 dark:text-slate-500">
           TrainingIT CRM — bachelor thesis project
         </footer>

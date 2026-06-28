@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
+import { getSession } from "@/lib/auth";
 import CourseQuiz from "@/components/CourseQuiz";
 import CourseCard from "@/components/CourseCard";
-import type { Category, PublicCourse } from "@/lib/types";
+import type { Category, MyPurchase, PublicCourse } from "@/lib/types";
 
 const SEEN_KEY = "ctrSeenCourses";
 
@@ -39,10 +40,29 @@ export default function Home() {
   const [active, setActive] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // Course ids the logged-in contact has already bought (personal to them).
+  const [purchasedIds, setPurchasedIds] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     api.get<Category[]>("/api/public/categories").then(setCategories).catch(() => {});
   }, []);
+
+  useEffect(() => {
+    const session = getSession();
+    if (!session) return;
+    api
+      .get<MyPurchase[]>(`/api/public/me/purchases?email=${encodeURIComponent(session.email)}`)
+      .then((data) => setPurchasedIds(new Set(data.map((p) => p.courseId))))
+      .catch(() => {});
+  }, []);
+
+  function markPurchased(courseId: number) {
+    setPurchasedIds((prev) => {
+      const next = new Set(prev);
+      next.add(courseId);
+      return next;
+    });
+  }
 
   useEffect(() => {
     setLoading(true);
@@ -96,7 +116,12 @@ export default function Home() {
 
         <div className="grid items-start gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {courses.map((c) => (
-            <CourseCard key={c.id} course={c} />
+            <CourseCard
+              key={c.id}
+              course={c}
+              purchased={purchasedIds.has(c.id)}
+              onPurchased={markPurchased}
+            />
           ))}
         </div>
         {!loading && courses.length === 0 && !error && (

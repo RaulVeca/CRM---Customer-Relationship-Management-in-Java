@@ -24,7 +24,6 @@ public class CourseSession extends BaseEntity {
     private DeliveryMode deliveryMode;
     private String location;
     private String meetingLink;
-    private Long trainerId;
     private Integer maxParticipants;
     private Integer currentParticipants;
     private SessionStatus status;

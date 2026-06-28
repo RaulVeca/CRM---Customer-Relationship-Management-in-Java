@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -73,7 +74,28 @@ public final class WebSchemaInitializer {
             clicks BIGINT NOT NULL DEFAULT 0,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
         )
+        """,
         """
+        CREATE TABLE IF NOT EXISTS admins (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(100) NOT NULL,
+            last_name VARCHAR(100) NOT NULL,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """
+    };
+
+    /**
+     * The trainers that may sign in through the "Cont admin" option, using their
+     * {@code @adminit.ro} sign-in addresses. Seeded idempotently
+     * ({@code INSERT IGNORE} on the unique email) so a restart never duplicates
+     * them.
+     */
+    private static final String[][] ADMIN_SEED = {
+        {"Andrei",   "Birceanu",   "andreibirceanu@adminit.ro"},
+        {"Costache", "Măzărescu",  "costachemazarescu@adminit.ro"},
+        {"Oana",     "Badache",    "oanabadache@adminit.ro"},
     };
 
     private WebSchemaInitializer() {
@@ -85,10 +107,24 @@ public final class WebSchemaInitializer {
             for (String ddl : DDL) {
                 st.execute(ddl);
             }
-            logger.info("Web feature tables ensured (employees, auctions, bids)");
+            seedAdmins(conn);
+            logger.info("Web feature tables ensured (employees, auctions, bids, admins)");
         } catch (SQLException e) {
             logger.error("Failed to ensure web feature tables", e);
             throw new IllegalStateException("Could not initialize web feature schema", e);
+        }
+    }
+
+    private static void seedAdmins(Connection conn) throws SQLException {
+        String sql = "INSERT IGNORE INTO admins (first_name, last_name, email) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            for (String[] admin : ADMIN_SEED) {
+                ps.setString(1, admin[0]);
+                ps.setString(2, admin[1]);
+                ps.setString(3, admin[2]);
+                ps.addBatch();
+            }
+            ps.executeBatch();
         }
     }
 }

@@ -216,6 +216,11 @@ public class CrmFacade {
         return reviewService.getRatingSummary(courseId);
     }
 
+    /** Cursurile cumpărate de un client (după email) - pagina personală "cursurile mele". */
+    public List<ReviewService.PurchasedCourse> getPurchasedCourses(String email) {
+        return reviewService.getPurchasedCourses(email);
+    }
+
     /** Full purchase (enrollment) history for the admin view. */
     public List<PurchaseHistoryService.PurchaseRecord> getPurchaseHistory() {
         return purchaseHistoryService.getHistory();

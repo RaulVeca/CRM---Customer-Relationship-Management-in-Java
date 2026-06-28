@@ -34,15 +34,15 @@ public class CourseSessionDao extends AbstractDao<CourseSession> {
     protected String getInsertSql() {
         return "INSERT INTO course_sessions (course_id, session_code, start_date, end_date, " +
                 "schedule_description, total_hours, delivery_mode, location, meeting_link, " +
-                "trainer_id, max_participants, current_participants, status, is_corporate) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "max_participants, current_participants, status, is_corporate) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override
     protected String getUpdateSql() {
         return "UPDATE course_sessions SET course_id=?, session_code=?, start_date=?, end_date=?, " +
                 "schedule_description=?, total_hours=?, delivery_mode=?, location=?, meeting_link=?, " +
-                "trainer_id=?, max_participants=?, current_participants=?, status=?, is_corporate=? " +
+                "max_participants=?, current_participants=?, status=?, is_corporate=? " +
                 "WHERE id=?";
     }
 
@@ -58,7 +58,6 @@ public class CourseSessionDao extends AbstractDao<CourseSession> {
         ps.setString(i++, s.getDeliveryMode() != null ? s.getDeliveryMode().name() : null);
         ps.setString(i++, s.getLocation());
         ps.setString(i++, s.getMeetingLink());
-        setLongOrNull(ps, i++, s.getTrainerId());
         setIntOrNull(ps, i++, s.getMaxParticipants());
         setIntOrNull(ps, i++, s.getCurrentParticipants());
         ps.setString(i++, s.getStatus() != null ? s.getStatus().name() : SessionStatus.PLANNED.name());
@@ -68,7 +67,7 @@ public class CourseSessionDao extends AbstractDao<CourseSession> {
     @Override
     protected void setUpdateParameters(PreparedStatement ps, CourseSession s) throws SQLException {
         setInsertParameters(ps, s);
-        ps.setLong(15, s.getId());
+        ps.setLong(14, s.getId());
     }
 
     @Override
@@ -93,8 +92,6 @@ public class CourseSessionDao extends AbstractDao<CourseSession> {
         if (dm != null) s.setDeliveryMode(DeliveryMode.valueOf(dm));
         s.setLocation(rs.getString("location"));
         s.setMeetingLink(rs.getString("meeting_link"));
-        long tid = rs.getLong("trainer_id");
-        if (!rs.wasNull()) s.setTrainerId(tid);
         s.setMaxParticipants(rs.getInt("max_participants"));
         s.setCurrentParticipants(rs.getInt("current_participants"));
         String st = rs.getString("status");
@@ -125,11 +122,6 @@ public class CourseSessionDao extends AbstractDao<CourseSession> {
         String sql = "SELECT * FROM course_sessions WHERE start_date >= CURDATE() " +
                 "AND status IN ('PLANNED', 'OPEN_ENROLLMENT') ORDER BY start_date LIMIT 20";
         return executeQuery(sql);
-    }
-
-    private void setLongOrNull(PreparedStatement ps, int idx, Long val) throws SQLException {
-        if (val == null) ps.setNull(idx, Types.BIGINT);
-        else ps.setLong(idx, val);
     }
 
     private void setIntOrNull(PreparedStatement ps, int idx, Integer val) throws SQLException {

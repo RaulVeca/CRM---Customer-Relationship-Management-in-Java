@@ -6,6 +6,7 @@ import crm.model.enums.CourseCategory;
 import crm.service.review.ReviewService.RatingSummary;
 import crm.web.dto.CourseReviewDto;
 import crm.web.dto.CourseReviewsResponse;
+import crm.web.dto.MyPurchaseDto;
 import crm.web.dto.PublicCompanyDto;
 import crm.web.dto.PublicCourseDto;
 import org.springframework.http.HttpStatus;
@@ -66,6 +67,19 @@ public class PublicCatalogController {
     public PurchaseResponse purchase(@PathVariable Long courseId, @RequestBody PurchaseRequest req) {
         var enrollment = facade.purchaseCourse(req.email(), req.firstName(), req.lastName(), courseId);
         return new PurchaseResponse(enrollment.getId(), "Course purchased successfully.");
+    }
+
+    /**
+     * The courses already bought by the logged-in contact (matched by email).
+     * Feeds their personal "my courses" page and the catalog's "already bought"
+     * button state, so the two roles stay personal: each contact only ever sees
+     * its own purchases.
+     */
+    @GetMapping("/me/purchases")
+    public List<MyPurchaseDto> myPurchases(@RequestParam String email) {
+        return facade.getPurchasedCourses(email).stream()
+                .map(MyPurchaseDto::from)
+                .toList();
     }
 
     /** All published reviews for a course plus their aggregate rating. */

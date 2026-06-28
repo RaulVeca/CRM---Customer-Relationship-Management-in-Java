@@ -1,5 +1,16 @@
 // Types mirroring the Spring Boot REST DTOs / domain entities.
 
+export type AuthRole = "USER" | "ADMIN";
+
+/** Identity returned by /api/auth/login/* and kept in the browser session. */
+export interface AuthSession {
+  role: AuthRole;
+  id: number;
+  firstName: string | null;
+  lastName: string | null;
+  email: string;
+}
+
 export interface PublicCourse {
   id: number;
   code: string;
@@ -12,6 +23,21 @@ export interface PublicCourse {
   priceIndividual: number | null;
   averageRating: number;
   reviewCount: number;
+}
+
+/** A course the logged-in contact has bought — for their "my courses" page. */
+export interface MyPurchase {
+  courseId: number;
+  code: string;
+  name: string;
+  description: string | null;
+  category: string | null;
+  categoryLabel: string | null;
+  level: string | null;
+  durationHours: number | null;
+  amountPaid: number | null;
+  purchaseDate: string | null;
+  rating: number | null;
 }
 
 export interface CourseReview {

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { api } from "@/lib/api";
+import { getSession } from "@/lib/auth";
 import { StarRating, StarInput } from "@/components/Stars";
 import type { CourseReviews, PublicCourse } from "@/lib/types";
 
@@ -15,11 +16,23 @@ function formatPrice(p: number | null) {
 }
 
 /**
- * A single course in the public catalog. Visitors can expand it to read the
- * description, buy the course (which registers a purchase by email) and — once
- * they have purchased it — leave a 1-5 star review.
+ * A single course in the public catalog. The visitor is a logged-in contact, so
+ * buying and reviewing use their session identity — no email/name to type.
+ *
+ * - {@code purchased === false}: a "Buy this course" button that registers the
+ *   purchase for the logged-in contact.
+ * - {@code purchased === true}: a disabled, greyed-out "Already bought" button,
+ *   and the review form unlocks (a course can only be reviewed once bought).
  */
-export default function CourseCard({ course }: { course: PublicCourse }) {
+export default function CourseCard({
+  course,
+  purchased,
+  onPurchased,
+}: {
+  course: PublicCourse;
+  purchased: boolean;
+  onPurchased: (courseId: number) => void;
+}) {
   const [expanded, setExpanded] = useState(false);
 
   const [average, setAverage] = useState(course.averageRating);
@@ -27,18 +40,12 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
   const [reviews, setReviews] = useState<CourseReviews["reviews"] | null>(null);
   const [reviewsError, setReviewsError] = useState<string | null>(null);
 
-  // Buy form
-  const [showBuy, setShowBuy] = useState(false);
-  const [buyEmail, setBuyEmail] = useState("");
-  const [buyFirst, setBuyFirst] = useState("");
-  const [buyLast, setBuyLast] = useState("");
+  // Buy
   const [buyLoading, setBuyLoading] = useState(false);
   const [buyError, setBuyError] = useState<string | null>(null);
-  const [buyDone, setBuyDone] = useState(false);
 
-  // Review form
+  // Review form (no email — taken from the session)
   const [showReview, setShowReview] = useState(false);
-  const [rvEmail, setRvEmail] = useState("");
   const [rvStars, setRvStars] = useState(0);
   const [rvComment, setRvComment] = useState("");
   const [rvLoading, setRvLoading] = useState(false);
@@ -67,20 +74,19 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
     }
   }
 
-  async function submitBuy(e: React.FormEvent) {
-    e.preventDefault();
+  async function buy() {
+    const session = getSession();
+    if (!session) {
+      setBuyError("Trebuie să fii autentificat pentru a cumpăra.");
+      return;
+    }
     setBuyLoading(true);
     setBuyError(null);
     try {
-      await api.post(`/api/public/courses/${course.id}/purchase`, {
-        email: buyEmail.trim(),
-        firstName: buyFirst.trim(),
-        lastName: buyLast.trim(),
-      });
-      setBuyDone(true);
-      setShowBuy(false);
-      // Pre-fill the review form with the same email and open it.
-      setRvEmail(buyEmail.trim());
+      // The logged-in contact's identity comes from the session — no form.
+      await api.post(`/api/public/courses/${course.id}/purchase`, { email: session.email });
+      onPurchased(course.id);
+      // Surface the review form straight away.
       setShowReview(true);
     } catch (err) {
       setBuyError((err as Error).message);
@@ -91,11 +97,16 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
 
   async function submitReview(e: React.FormEvent) {
     e.preventDefault();
+    const session = getSession();
+    if (!session) {
+      setRvError("Trebuie să fii autentificat pentru a lăsa o recenzie.");
+      return;
+    }
     setRvLoading(true);
     setRvError(null);
     try {
       await api.post(`/api/public/courses/${course.id}/reviews`, {
-        email: rvEmail.trim(),
+        email: session.email,
         rating: rvStars,
         comment: rvComment.trim() || null,
       });
@@ -165,56 +176,32 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
             </p>
 
             {/* ---- Buy ---- */}
-            {buyDone ? (
-              <p className="rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
-                Purchase confirmed — you can now leave a review below.
-              </p>
-            ) : showBuy ? (
-              <form onSubmit={submitBuy} className="space-y-2 rounded-lg bg-slate-50 p-3 dark:bg-slate-800/50">
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-500 dark:text-slate-400">
-                  Buy this course
-                </p>
-                <div className="flex gap-2">
-                  <input className={inputCls} placeholder="First name" value={buyFirst} onChange={(e) => setBuyFirst(e.target.value)} />
-                  <input className={inputCls} placeholder="Last name" value={buyLast} onChange={(e) => setBuyLast(e.target.value)} />
-                </div>
-                <input
-                  className={inputCls}
-                  type="email"
-                  required
-                  placeholder="your@email.com"
-                  value={buyEmail}
-                  onChange={(e) => setBuyEmail(e.target.value)}
-                />
-                {buyError && <p className="text-sm text-red-600 dark:text-red-400">{buyError}</p>}
-                <div className="flex gap-2">
-                  <button
-                    type="submit"
-                    disabled={buyLoading || !buyEmail.trim() || (!buyFirst.trim() && !buyLast.trim())}
-                    className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:from-indigo-700 hover:to-violet-700 disabled:cursor-not-allowed disabled:opacity-50"
-                  >
-                    {buyLoading ? "Processing…" : "Confirm purchase"}
-                  </button>
-                  <button type="button" onClick={() => setShowBuy(false)} className="rounded-lg px-3 py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
-                    Cancel
-                  </button>
-                </div>
-              </form>
+            {purchased ? (
+              <button
+                type="button"
+                disabled
+                aria-disabled="true"
+                className="w-full cursor-not-allowed rounded-lg bg-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-500 dark:bg-slate-700 dark:text-slate-400"
+              >
+                Already bought
+              </button>
             ) : (
               <button
                 type="button"
-                onClick={() => setShowBuy(true)}
-                className="w-full rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:from-indigo-700 hover:to-violet-700 hover:shadow active:scale-[0.99]"
+                onClick={buy}
+                disabled={buyLoading}
+                className="w-full rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:from-indigo-700 hover:to-violet-700 hover:shadow active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                Buy this course
+                {buyLoading ? "Processing…" : "Buy this course"}
               </button>
             )}
+            {buyError && <p className="text-sm text-red-600 dark:text-red-400">{buyError}</p>}
 
             {/* ---- Reviews ---- */}
             <div className="border-t border-slate-100 pt-3 dark:border-slate-800">
               <div className="mb-2 flex items-center justify-between">
                 <p className="text-sm font-semibold">Reviews</p>
-                {!showReview && !rvDone && (
+                {purchased && !showReview && !rvDone && (
                   <button
                     type="button"
                     onClick={() => setShowReview(true)}
@@ -225,6 +212,12 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
                 )}
               </div>
 
+              {!purchased && (
+                <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
+                  Buy this course to leave a review.
+                </p>
+              )}
+
               {rvDone && (
                 <p className="mb-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
                   Thanks for your review!
@@ -234,14 +227,6 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
               {showReview && (
                 <form onSubmit={submitReview} className="mb-3 space-y-2 rounded-lg bg-slate-50 p-3 dark:bg-slate-800/50">
                   <StarInput value={rvStars} onChange={setRvStars} />
-                  <input
-                    className={inputCls}
-                    type="email"
-                    required
-                    placeholder="The email you purchased with"
-                    value={rvEmail}
-                    onChange={(e) => setRvEmail(e.target.value)}
-                  />
                   <textarea
                     className={inputCls}
                     rows={3}
@@ -253,7 +238,7 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
                   <div className="flex gap-2">
                     <button
                       type="submit"
-                      disabled={rvLoading || rvStars < 1 || !rvEmail.trim()}
+                      disabled={rvLoading || rvStars < 1}
                       className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:from-indigo-700 hover:to-violet-700 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {rvLoading ? "Submitting…" : "Submit review"}
@@ -262,7 +247,6 @@ export default function CourseCard({ course }: { course: PublicCourse }) {
                       Cancel
                     </button>
                   </div>
-                  <p className="text-xs text-slate-400 dark:text-slate-500">You can only review a course you have purchased.</p>
                 </form>
               )}
 

@@ -22,7 +22,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -127,6 +129,42 @@ public class ReviewService {
         return enrollmentService.saveReview(enrollment.getId(), rating, comment);
     }
 
+    /**
+     * Cursurile cumpărate de un client (identificat prin email), cele mai noi
+     * primele. Fiecare curs apare o singură dată (cumpărarea e idempotentă),
+     * însoțit de suma plătită, data cumpărării și recenzia proprie (dacă există).
+     * Stă la baza paginii personale "cursurile mele" și a marcării butoanelor
+     * "already bought" din catalog.
+     */
+    public List<PurchasedCourse> getPurchasedCourses(String email) {
+        Optional<Contact> contact = contactService.findByEmail(email);
+        if (contact.isEmpty()) {
+            return List.of();
+        }
+        List<Enrollment> enrollments = new ArrayList<>(
+                enrollmentService.getByContactId(contact.get().getId()));
+        enrollments.sort(Comparator.comparing(
+                Enrollment::getEnrollmentDate,
+                Comparator.nullsLast(Comparator.reverseOrder())));
+
+        Map<Long, PurchasedCourse> byCourse = new LinkedHashMap<>();
+        for (Enrollment e : enrollments) {
+            CourseSession session = sessionDao.findById(e.getSessionId()).orElse(null);
+            if (session == null) continue;
+            Course course;
+            try {
+                course = courseService.getById(session.getCourseId());
+            } catch (RuntimeException ex) {
+                continue;
+            }
+            BigDecimal amount = e.getFinalPrice() != null ? e.getFinalPrice() : e.getPrice();
+            // most recent enrollment wins (list is already newest-first)
+            byCourse.putIfAbsent(course.getId(), new PurchasedCourse(
+                    course, amount, e.getEnrollmentDate(), e.getRating()));
+        }
+        return new ArrayList<>(byCourse.values());
+    }
+
     /** Toate recenziile publicate pentru un curs, cele mai noi primele. */
     public List<CourseReviewView> getReviews(Long courseId) {
         List<CourseReviewView> reviews = new ArrayList<>();
@@ -227,4 +265,7 @@ public class ReviewService {
 
     /** Media ratingului și numărul de recenzii pentru un curs. */
     public record RatingSummary(double average, int count) {}
+
+    /** Un curs cumpărat de un client, cu detaliile cumpărării. */
+    public record PurchasedCourse(Course course, BigDecimal amount, LocalDateTime date, Integer rating) {}
 }
