@@ -6,15 +6,6 @@ import { getSession } from "@/lib/auth";
 import { StarRating, StarInput } from "@/components/Stars";
 import type { CourseReviews, PublicCourse } from "@/lib/types";
 
-function formatPrice(p: number | null) {
-  if (p == null) return "—";
-  return new Intl.NumberFormat("ro-RO", {
-    style: "currency",
-    currency: "RON",
-    maximumFractionDigits: 0,
-  }).format(p);
-}
-
 /**
  * A single course in the public catalog. The visitor is a logged-in contact, so
  * buying and reviewing use their session identity — no email/name to type.
@@ -83,8 +74,14 @@ export default function CourseCard({
     setBuyLoading(true);
     setBuyError(null);
     try {
-      // The logged-in contact's identity comes from the session — no form.
-      await api.post(`/api/public/courses/${course.id}/purchase`, { email: session.email });
+      // The logged-in user's identity comes from the session — no form. The name
+      // is sent too so that, when the buyer isn't a contact yet (e.g. an
+      // employee), the contact auto-created at purchase has a proper name.
+      await api.post(`/api/public/courses/${course.id}/purchase`, {
+        email: session.email,
+        firstName: session.firstName,
+        lastName: session.lastName,
+      });
       onPurchased(course.id);
       // Surface the review form straight away.
       setShowReview(true);
@@ -147,9 +144,8 @@ export default function CourseCard({
         )}
       </div>
 
-      <div className="mt-4 flex items-center justify-between text-sm">
+      <div className="mt-4 flex items-center text-sm">
         <span className="text-slate-500 dark:text-slate-400">{course.durationHours ?? "—"} h</span>
-        <span className="font-semibold text-slate-900 dark:text-slate-100">{formatPrice(course.priceIndividual)}</span>
       </div>
 
       <button

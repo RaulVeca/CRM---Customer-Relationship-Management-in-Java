@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
 import { getSession } from "@/lib/auth";
+import { SCHEDULE_EVENT, closeSchedule, isScheduleOpen } from "@/lib/schedule";
 import { ArrowLeftIcon, ArrowRightIcon } from "@/components/icons";
 import type {
   BookingResponse,
@@ -59,6 +60,9 @@ function maxDurationFrom(start: number, day: DayAvailability | undefined): numbe
 
 export default function SchedulePage() {
   const [contact, setContact] = useState<{ id: number; email: string } | null>(null);
+  // null = not yet read (avoids a flash before the effect runs); the window may
+  // only be reached after pressing "Programează o ședință" in My courses.
+  const [windowOpen, setWindowOpen] = useState<boolean | null>(null);
   const [trainers, setTrainers] = useState<Trainer[] | null>(null);
   const [trainer, setTrainer] = useState<Trainer | null>(null);
 
@@ -84,12 +88,23 @@ export default function SchedulePage() {
   // --- session + trainers -------------------------------------------------
   useEffect(() => {
     const session = getSession();
-    if (!session) return;
+    setWindowOpen(isScheduleOpen());
+    const sync = () => setWindowOpen(isScheduleOpen());
+    window.addEventListener(SCHEDULE_EVENT, sync);
+    window.addEventListener("storage", sync);
+    if (!session) return () => {
+      window.removeEventListener(SCHEDULE_EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
     setContact({ id: session.id, email: session.email });
     api
       .get<Trainer[]>("/api/trainers")
       .then(setTrainers)
       .catch((e) => setError((e as Error).message));
+    return () => {
+      window.removeEventListener(SCHEDULE_EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
   }, []);
 
   // --- availability for the visible month ---------------------------------
@@ -174,6 +189,7 @@ export default function SchedulePage() {
       setStartHour(null);
       setDuration(1);
       setReloadKey((k) => k + 1); // refetch so the new booking shows on the calendar
+      closeSchedule(); // booking succeeded — the window disappears until reopened
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -196,6 +212,24 @@ export default function SchedulePage() {
           className="mt-3 inline-block rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
         >
           Autentificare
+        </Link>
+      </div>
+    );
+  }
+
+  // The window only exists once opened from My courses, and is gone after a
+  // booking. Still show the success message (result) before it disappears.
+  if (windowOpen === false && !result) {
+    return (
+      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
+        <p className="text-slate-600 dark:text-slate-300">
+          Apasă „Programează o ședință” în dreptul unui curs cumpărat pentru a deschide programarea.
+        </p>
+        <Link
+          href="/my-courses"
+          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
+        >
+          My courses
         </Link>
       </div>
     );

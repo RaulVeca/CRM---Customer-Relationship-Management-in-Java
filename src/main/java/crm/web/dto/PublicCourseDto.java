@@ -2,11 +2,9 @@ package crm.web.dto;
 
 import crm.model.entity.Course;
 
-import java.math.BigDecimal;
-
 /**
  * Public, read-only projection of a {@link Course} for the marketing site.
- * Hides internal pricing/configuration fields the public should not see.
+ * Hides internal configuration fields the public should not see.
  */
 public record PublicCourseDto(
         Long id,
@@ -17,7 +15,6 @@ public record PublicCourseDto(
         String categoryLabel,
         String level,
         Integer durationHours,
-        BigDecimal priceIndividual,
         double averageRating,
         int reviewCount
 ) {
@@ -35,7 +32,6 @@ public record PublicCourseDto(
                 c.getCategory() == null ? null : c.getCategory().getLabel(),
                 c.getLevel() == null ? null : c.getLevel().name(),
                 c.getDurationHours(),
-                c.getPriceIndividual(),
                 averageRating,
                 reviewCount
         );

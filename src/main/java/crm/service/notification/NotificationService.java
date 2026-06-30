@@ -60,11 +60,6 @@ public class NotificationService {
         }
     }
 
-    public void sendPaymentReminder(Contact contact, Enrollment enrollment) {
-        Notification email = emailFactory.createPaymentReminder(contact, enrollment);
-        send(email);
-    }
-
     public void sendSessionReminder(Contact contact, String sessionDetails) {
         Notification email = emailFactory.createSessionReminder(contact, sessionDetails);
         send(email);

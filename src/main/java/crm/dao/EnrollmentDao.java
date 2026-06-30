@@ -3,7 +3,6 @@ package crm.dao;
 import crm.exception.DataAccessException;
 import crm.model.entity.Enrollment;
 import crm.model.enums.EnrollmentStatus;
-import crm.model.enums.PaymentStatus;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -31,15 +30,13 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
 
     @Override
     protected String getInsertSql() {
-        return "INSERT INTO enrollments (session_id, contact_id, status, price, discount, " +
-                "final_price, payment_status, paid_amount, notes) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO enrollments (session_id, contact_id, status, notes) " +
+                "VALUES (?, ?, ?, ?)";
     }
 
     @Override
     protected String getUpdateSql() {
-        return "UPDATE enrollments SET session_id=?, contact_id=?, status=?, price=?, " +
-                "discount=?, final_price=?, payment_status=?, paid_amount=?, " +
+        return "UPDATE enrollments SET session_id=?, contact_id=?, status=?, " +
                 "attended_sessions=?, attendance_rate=?, exam_passed=?, final_grade=?, " +
                 "certificate_issued=?, certificate_number=?, rating=?, feedback=?, notes=? " +
                 "WHERE id=?";
@@ -51,11 +48,6 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
         ps.setLong(i++, e.getSessionId());
         ps.setLong(i++, e.getContactId());
         ps.setString(i++, e.getStatus() != null ? e.getStatus().name() : EnrollmentStatus.PENDING.name());
-        ps.setBigDecimal(i++, e.getPrice());
-        ps.setBigDecimal(i++, e.getDiscount());
-        ps.setBigDecimal(i++, e.getFinalPrice());
-        ps.setString(i++, e.getPaymentStatus() != null ? e.getPaymentStatus().name() : PaymentStatus.UNPAID.name());
-        ps.setBigDecimal(i++, e.getPaidAmount());
         ps.setString(i, e.getNotes());
     }
 
@@ -65,11 +57,6 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
         ps.setLong(i++, e.getSessionId());
         ps.setLong(i++, e.getContactId());
         ps.setString(i++, e.getStatus() != null ? e.getStatus().name() : null);
-        ps.setBigDecimal(i++, e.getPrice());
-        ps.setBigDecimal(i++, e.getDiscount());
-        ps.setBigDecimal(i++, e.getFinalPrice());
-        ps.setString(i++, e.getPaymentStatus() != null ? e.getPaymentStatus().name() : null);
-        ps.setBigDecimal(i++, e.getPaidAmount());
         if (e.getAttendedSessions() == null) ps.setNull(i++, Types.INTEGER);
         else ps.setInt(i++, e.getAttendedSessions());
         ps.setBigDecimal(i++, e.getAttendanceRate());
@@ -101,12 +88,6 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
         if (enrollDate != null) e.setEnrollmentDate(enrollDate.toLocalDateTime());
         String status = rs.getString("status");
         if (status != null) e.setStatus(EnrollmentStatus.valueOf(status));
-        e.setPrice(rs.getBigDecimal("price"));
-        e.setDiscount(rs.getBigDecimal("discount"));
-        e.setFinalPrice(rs.getBigDecimal("final_price"));
-        String ps = rs.getString("payment_status");
-        if (ps != null) e.setPaymentStatus(PaymentStatus.valueOf(ps));
-        e.setPaidAmount(rs.getBigDecimal("paid_amount"));
         e.setAttendedSessions(rs.getInt("attended_sessions"));
         e.setAttendanceRate(rs.getBigDecimal("attendance_rate"));
         e.setExamPassed(rs.getBoolean("exam_passed"));
@@ -149,9 +130,4 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
         }
     }
 
-    public List<Enrollment> findUnpaid() {
-        String sql = "SELECT * FROM enrollments WHERE payment_status IN ('UNPAID', 'PARTIAL') " +
-                     "ORDER BY enrollment_date DESC";
-        return executeQuery(sql);
-    }
 }

@@ -4,8 +4,6 @@ import lombok.*;
 import crm.model.enums.CourseCategory;
 import crm.model.enums.ExperienceLevel;
 
-import java.math.BigDecimal;
-
 @Getter
 @Setter
 @NoArgsConstructor
@@ -22,9 +20,6 @@ public class Course extends BaseEntity {
     private ExperienceLevel level;
     private String prerequisites;
     private Integer durationHours;
-    private BigDecimal priceIndividual;
-    private BigDecimal priceGroup;
-    private BigDecimal priceCorporatePerDay;
     private Integer minParticipants;
     private Integer maxParticipants;
     private Boolean active;

@@ -23,13 +23,6 @@ public class SmsNotificationFactory implements NotificationFactory {
     }
 
     @Override
-    public Notification createPaymentReminder(Contact contact, Enrollment enrollment) {
-        String body = "Reminder: ai " + enrollment.getRemainingAmount() + 
-                " RON restanti pentru curs. Te rugam efectueaza plata.";
-        return new Notification(contact.getPhone(), null, body, CHANNEL);
-    }
-
-    @Override
     public Notification createSessionReminder(Contact contact, String sessionDetails) {
         String body = "Reminder: sesiunea ta de curs incepe maine. Detalii: " + sessionDetails;
         return new Notification(contact.getPhone(), null, body, CHANNEL);

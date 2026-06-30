@@ -10,7 +10,6 @@ import crm.model.entity.Enrollment;
 import crm.service.contact.ContactService;
 import crm.service.course.CourseService;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -70,16 +69,12 @@ public class PurchaseHistoryService {
                     e.getContactId(),
                     id -> contactService.findById(id).orElse(null));
 
-            BigDecimal amount = e.getFinalPrice() != null ? e.getFinalPrice() : e.getPrice();
-
             history.add(new PurchaseRecord(
                     e.getId(),
                     contact == null ? "(unknown)" : contact.getFullName().orElse("(unknown)"),
                     contact == null ? null : contact.getEmail(),
                     course == null ? "(course removed)" : course.getName(),
                     course == null ? null : course.getCode(),
-                    amount,
-                    e.getPaymentStatus() == null ? null : e.getPaymentStatus().name(),
                     e.getStatus() == null ? null : e.getStatus().name(),
                     e.getEnrollmentDate(),
                     e.getRating()));
@@ -107,8 +102,6 @@ public class PurchaseHistoryService {
             String studentEmail,
             String courseName,
             String courseCode,
-            BigDecimal amount,
-            String paymentStatus,
             String status,
             LocalDateTime date,
             Integer rating) {}

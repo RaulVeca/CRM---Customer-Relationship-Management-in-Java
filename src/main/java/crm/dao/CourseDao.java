@@ -5,7 +5,6 @@ import crm.model.entity.Course;
 import crm.model.enums.CourseCategory;
 import crm.model.enums.ExperienceLevel;
 
-import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +36,14 @@ public class CourseDao extends AbstractDao<Course> {
     @Override
     protected String getInsertSql() {
         return "INSERT INTO courses (code, name, description, syllabus, category, level, " +
-                "prerequisites, duration_hours, price_individual, price_group, " +
-                "price_corporate_per_day, min_participants, max_participants, active) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "prerequisites, duration_hours, min_participants, max_participants, active) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override
     protected String getUpdateSql() {
         return "UPDATE courses SET code=?, name=?, description=?, syllabus=?, category=?, " +
-                "level=?, prerequisites=?, duration_hours=?, price_individual=?, " +
-                "price_group=?, price_corporate_per_day=?, min_participants=?, " +
+                "level=?, prerequisites=?, duration_hours=?, min_participants=?, " +
                 "max_participants=?, active=? WHERE id=?";
     }
 
@@ -61,9 +58,6 @@ public class CourseDao extends AbstractDao<Course> {
         ps.setString(i++, c.getLevel() != null ? c.getLevel().name() : null);
         ps.setString(i++, c.getPrerequisites());
         ps.setInt(i++, c.getDurationHours() != null ? c.getDurationHours() : 0);
-        ps.setBigDecimal(i++, c.getPriceIndividual());
-        ps.setBigDecimal(i++, c.getPriceGroup());
-        ps.setBigDecimal(i++, c.getPriceCorporatePerDay());
         ps.setInt(i++, c.getMinParticipants() != null ? c.getMinParticipants() : 3);
         ps.setInt(i++, c.getMaxParticipants() != null ? c.getMaxParticipants() : 15);
         ps.setBoolean(i, Boolean.TRUE.equals(c.getActive()));
@@ -72,7 +66,7 @@ public class CourseDao extends AbstractDao<Course> {
     @Override
     protected void setUpdateParameters(PreparedStatement ps, Course c) throws SQLException {
         setInsertParameters(ps, c);
-        ps.setLong(15, c.getId());
+        ps.setLong(12, c.getId());
     }
 
     @Override
@@ -95,9 +89,6 @@ public class CourseDao extends AbstractDao<Course> {
         if (lvl != null) c.setLevel(ExperienceLevel.valueOf(lvl));
         c.setPrerequisites(rs.getString("prerequisites"));
         c.setDurationHours(rs.getInt("duration_hours"));
-        c.setPriceIndividual(rs.getBigDecimal("price_individual"));
-        c.setPriceGroup(rs.getBigDecimal("price_group"));
-        c.setPriceCorporatePerDay(rs.getBigDecimal("price_corporate_per_day"));
         c.setMinParticipants(rs.getInt("min_participants"));
         c.setMaxParticipants(rs.getInt("max_participants"));
         c.setActive(rs.getBoolean("active"));

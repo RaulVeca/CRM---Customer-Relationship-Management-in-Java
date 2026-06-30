@@ -2,7 +2,6 @@ package crm.web.dto;
 
 import crm.service.enrollment.PurchaseHistoryService.PurchaseRecord;
 
-import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -15,8 +14,6 @@ public record PurchaseDto(
         String studentEmail,
         String courseName,
         String courseCode,
-        BigDecimal amount,
-        String paymentStatus,
         String status,
         String date,
         Integer rating
@@ -30,8 +27,6 @@ public record PurchaseDto(
                 r.studentEmail(),
                 r.courseName(),
                 r.courseCode(),
-                r.amount(),
-                r.paymentStatus(),
                 r.status(),
                 r.date() == null ? null : r.date().format(FMT),
                 r.rating());

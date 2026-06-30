@@ -11,7 +11,6 @@ import crm.command.opportunity.MoveOpportunityStageCommand;
 import crm.model.entity.*;
 import crm.model.enums.*;
 import crm.service.activity.ActivityService;
-import crm.service.auction.AuctionService;
 import crm.service.contact.ContactService;
 import crm.service.course.CourseService;
 import crm.service.employee.EmployeeService;
@@ -21,7 +20,6 @@ import crm.service.analytics.MetricsService;
 import crm.service.enrollment.PurchaseHistoryService;
 import crm.service.opportunity.OpportunityService;
 import crm.service.review.ReviewService;
-import crm.strategy.PricingStrategy;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +51,6 @@ public class CrmFacade {
     private final OpportunityService opportunityService;
     private final ActivityService activityService;
     private final EmployeeService employeeService;
-    private final AuctionService auctionService;
     private final ReviewService reviewService;
     private final PurchaseHistoryService purchaseHistoryService;
     private final AnalyticsService analyticsService;
@@ -67,7 +64,6 @@ public class CrmFacade {
         this.opportunityService = OpportunityService.getInstance();
         this.activityService = ActivityService.getInstance();
         this.employeeService = EmployeeService.getInstance();
-        this.auctionService = AuctionService.getInstance();
         this.reviewService = ReviewService.getInstance();
         this.purchaseHistoryService = PurchaseHistoryService.getInstance();
         this.analyticsService = AnalyticsService.getInstance();
@@ -171,15 +167,8 @@ public class CrmFacade {
     // ENROLLMENTS
     // =====================================================
 
-    public Enrollment enrollContact(Long contactId, Long sessionId, Long courseId, 
-                                     PricingStrategy pricingStrategy) {
-        Course course = courseService.getById(courseId);
-        return commandInvoker.invoke(new EnrollContactCommand(
-                contactId, sessionId, course, pricingStrategy));
-    }
-
-    public void recordPayment(Long enrollmentId, java.math.BigDecimal amount) {
-        enrollmentService.registerPayment(enrollmentId, amount);
+    public Enrollment enrollContact(Long contactId, Long sessionId) {
+        return commandInvoker.invoke(new EnrollContactCommand(contactId, sessionId));
     }
 
     public void completeCourse(Long enrollmentId, java.math.BigDecimal grade) {
@@ -188,10 +177,6 @@ public class CrmFacade {
 
     public List<Enrollment> getEnrollmentsForContact(Long contactId) {
         return enrollmentService.getByContactId(contactId);
-    }
-
-    public List<Enrollment> getUnpaidEnrollments() {
-        return enrollmentService.getUnpaid();
     }
 
     // =====================================================
@@ -323,38 +308,6 @@ public class CrmFacade {
 
     public boolean deleteEmployee(Long id) {
         return employeeService.deleteEmployee(id);
-    }
-
-    // =====================================================
-    // AUCTIONS / BIDDING (B2B course auctions)
-    // =====================================================
-
-    public Auction createAuction(Auction auction) {
-        return auctionService.createAuction(auction);
-    }
-
-    public List<Auction> getOpenAuctions() {
-        return auctionService.getOpenAuctions();
-    }
-
-    public List<Auction> getAllAuctions() {
-        return auctionService.getAllAuctions();
-    }
-
-    public Auction getAuction(Long id) {
-        return auctionService.getAuction(id);
-    }
-
-    public List<Bid> getBids(Long auctionId) {
-        return auctionService.getBids(auctionId);
-    }
-
-    public Bid placeBid(Long auctionId, Long companyId, java.math.BigDecimal amount) {
-        return auctionService.placeBid(auctionId, companyId, amount);
-    }
-
-    public Auction closeAuction(Long auctionId) {
-        return auctionService.closeAuction(auctionId);
     }
 
     // =====================================================

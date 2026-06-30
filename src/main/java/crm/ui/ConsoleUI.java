@@ -255,9 +255,9 @@ public class ConsoleUI {
     private void listCourses() {
         System.out.println("\n--- Cursuri Active ---");
         List<Course> courses = crm.getActiveCourses();
-        courses.forEach(c -> System.out.printf("  [%s] %s | %s | %d ore | %s RON%n",
+        courses.forEach(c -> System.out.printf("  [%s] %s | %s | %d ore%n",
                 c.getCode(), c.getName(), c.getCategory(),
-                c.getDurationHours(), c.getPriceIndividual()));
+                c.getDurationHours()));
         if (courses.isEmpty()) System.out.println("(niciun curs)");
     }
 

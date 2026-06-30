@@ -1,26 +1,9 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { StarRating } from "@/components/Stars";
 import type { Purchase } from "@/lib/types";
-
-function formatPrice(p: number | null) {
-  if (p == null) return "—";
-  return new Intl.NumberFormat("ro-RO", {
-    style: "currency",
-    currency: "RON",
-    maximumFractionDigits: 0,
-  }).format(p);
-}
-
-const PAYMENT_BADGE: Record<string, string> = {
-  PAID: "bg-emerald-50 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300",
-  PARTIAL: "bg-amber-50 text-amber-700 dark:bg-amber-500/15 dark:text-amber-300",
-  UNPAID: "bg-slate-100 text-slate-600 dark:bg-slate-700/50 dark:text-slate-300",
-  REFUNDED: "bg-rose-50 text-rose-700 dark:bg-rose-500/15 dark:text-rose-300",
-  OVERDUE: "bg-red-50 text-red-700 dark:bg-red-500/15 dark:text-red-300",
-};
 
 export default function AdminPurchasesPage() {
   const [purchases, setPurchases] = useState<Purchase[]>([]);
@@ -35,18 +18,6 @@ export default function AdminPurchasesPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  const { paidRevenue, paidCount } = useMemo(() => {
-    let revenue = 0;
-    let count = 0;
-    for (const p of purchases) {
-      if (p.paymentStatus === "PAID") {
-        revenue += p.amount ?? 0;
-        count += 1;
-      }
-    }
-    return { paidRevenue: revenue, paidCount: count };
-  }, [purchases]);
-
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Purchase history</h2>
@@ -60,14 +31,6 @@ export default function AdminPurchasesPage() {
             <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Total orders</p>
             <p className="mt-1 text-2xl font-bold">{purchases.length}</p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Paid orders</p>
-            <p className="mt-1 text-2xl font-bold">{paidCount}</p>
-          </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Revenue (paid)</p>
-            <p className="mt-1 text-2xl font-bold">{formatPrice(paidRevenue)}</p>
-          </div>
         </div>
       )}
 
@@ -77,8 +40,6 @@ export default function AdminPurchasesPage() {
             <tr>
               <th className="px-4 py-3">Student</th>
               <th className="px-4 py-3">Course</th>
-              <th className="px-4 py-3 text-right">Amount</th>
-              <th className="px-4 py-3">Payment</th>
               <th className="px-4 py-3">Status</th>
               <th className="px-4 py-3">Date</th>
               <th className="px-4 py-3">Rating</th>
@@ -94,14 +55,6 @@ export default function AdminPurchasesPage() {
                 <td className="px-4 py-3">
                   <div className="font-medium">{p.courseName}</div>
                   {p.courseCode && <div className="font-mono text-xs text-slate-400 dark:text-slate-500">{p.courseCode}</div>}
-                </td>
-                <td className="px-4 py-3 text-right font-semibold">{formatPrice(p.amount)}</td>
-                <td className="px-4 py-3">
-                  {p.paymentStatus && (
-                    <span className={`rounded px-2 py-0.5 text-xs font-medium ${PAYMENT_BADGE[p.paymentStatus] ?? PAYMENT_BADGE.UNPAID}`}>
-                      {p.paymentStatus}
-                    </span>
-                  )}
                 </td>
                 <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{p.status ?? "—"}</td>
                 <td className="px-4 py-3 whitespace-nowrap text-slate-500 dark:text-slate-400">{p.date ?? "—"}</td>

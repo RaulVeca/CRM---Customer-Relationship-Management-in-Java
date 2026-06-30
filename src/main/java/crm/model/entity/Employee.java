@@ -1,6 +1,5 @@
 package crm.model.entity;
 
-import crm.model.enums.ExperienceLevel;
 import crm.model.enums.ProfileArea;
 import lombok.*;
 
@@ -38,8 +37,6 @@ public class Employee extends BaseEntity {
     /** Areas the employee is interested in developing. */
     @Builder.Default
     private List<ProfileArea> interestProfiles = new ArrayList<>();
-
-    private ExperienceLevel experienceLevel;
 
     public String getFullName() {
         StringBuilder sb = new StringBuilder();

@@ -20,7 +20,6 @@ export interface PublicCourse {
   categoryLabel: string | null;
   level: string | null;
   durationHours: number | null;
-  priceIndividual: number | null;
   averageRating: number;
   reviewCount: number;
 }
@@ -35,7 +34,6 @@ export interface MyPurchase {
   categoryLabel: string | null;
   level: string | null;
   durationHours: number | null;
-  amountPaid: number | null;
   purchaseDate: string | null;
   rating: number | null;
 }
@@ -135,8 +133,6 @@ export interface Purchase {
   studentEmail: string | null;
   courseName: string;
   courseCode: string | null;
-  amount: number | null;
-  paymentStatus: string | null;
   status: string | null;
   date: string | null;
   rating: number | null;
@@ -178,20 +174,7 @@ export interface Course {
   category: string | null;
   level: string | null;
   durationHours: number | null;
-  priceIndividual: number | null;
   active: boolean | null;
-}
-
-export interface Opportunity {
-  id: number;
-  clientId: number | null;
-  title: string;
-  description: string | null;
-  estimatedValue: number | null;
-  quotedValue: number | null;
-  probabilityPercent: number | null;
-  stage: string;
-  estimatedParticipants: number | null;
 }
 
 export interface Option {
@@ -208,29 +191,7 @@ export interface Employee {
   jobTitle: string | null;
   workProfile: string | null;
   interestProfiles: string[];
-  experienceLevel: string | null;
   fullName?: string;
-}
-
-export interface Auction {
-  id: number;
-  courseId: number | null;
-  title: string;
-  description: string | null;
-  startingPrice: number;
-  status: "OPEN" | "AWARDED" | "CANCELLED";
-  closesAt: string | null;
-  winnerCompanyId: number | null;
-  winningAmount: number | null;
-}
-
-export interface Bid {
-  id: number;
-  auctionId: number;
-  companyId: number;
-  companyName: string | null;
-  amount: number;
-  createdAt: string | null;
 }
 
 export interface CourseRecommendation {
@@ -238,13 +199,4 @@ export interface CourseRecommendation {
   courseName: string;
   reason: string;
   matchScore: number;
-}
-
-export interface DashboardStats {
-  totalContacts: number;
-  hotLeads: number;
-  activeOpportunities: number;
-  weightedPipelineValue: number;
-  contactsByStatus: Record<string, number>;
-  pipelineByStage: Record<string, number>;
 }

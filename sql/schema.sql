@@ -81,9 +81,6 @@ CREATE TABLE courses (
     level VARCHAR(20),
     prerequisites TEXT,
     duration_hours INT NOT NULL,
-    price_individual DECIMAL(10,2),
-    price_group DECIMAL(10,2),
-    price_corporate_per_day DECIMAL(10,2),
     min_participants INT DEFAULT 3,
     max_participants INT DEFAULT 15,
     active BOOLEAN DEFAULT TRUE,
@@ -168,11 +165,6 @@ CREATE TABLE enrollments (
     contact_id BIGINT NOT NULL,
     enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(20) DEFAULT 'PENDING',
-    price DECIMAL(10,2) NOT NULL,
-    discount DECIMAL(10,2) DEFAULT 0,
-    final_price DECIMAL(10,2),
-    payment_status VARCHAR(20) DEFAULT 'UNPAID',
-    paid_amount DECIMAL(10,2) DEFAULT 0,
     attended_sessions INT DEFAULT 0,
     attendance_rate DECIMAL(5,2),
     exam_passed BOOLEAN,
@@ -185,8 +177,7 @@ CREATE TABLE enrollments (
     FOREIGN KEY (session_id) REFERENCES course_sessions(id),
     FOREIGN KEY (contact_id) REFERENCES contacts(id),
     UNIQUE KEY uk_enrollment (session_id, contact_id),
-    INDEX idx_status (status),
-    INDEX idx_payment_status (payment_status)
+    INDEX idx_status (status)
 ) ENGINE=InnoDB;
 
 -- =====================================================

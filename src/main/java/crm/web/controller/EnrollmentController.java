@@ -3,22 +3,14 @@ package crm.web.controller;
 import crm.facade.CrmFacade;
 import crm.model.entity.Enrollment;
 import crm.web.dto.PurchaseDto;
-import crm.strategy.CorporatePricingStrategy;
-import crm.strategy.IndividualPricingStrategy;
-import crm.strategy.PricingStrategy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
- * REST endpoints for course enrollments and their payments.
- *
- * <p>The {@code pricing} field on the enrollment request selects the
- * {@link PricingStrategy} (STRATEGY pattern) applied to compute the final
- * price.</p>
+ * REST endpoints for course enrollments.
  */
 @RestController
 @RequestMapping("/api/enrollments")
@@ -35,11 +27,6 @@ public class EnrollmentController {
         return facade.getEnrollmentsForContact(contactId);
     }
 
-    @GetMapping("/unpaid")
-    public List<Enrollment> unpaid() {
-        return facade.getUnpaidEnrollments();
-    }
-
     /** Admin purchase history: every enrollment enriched with course & buyer. */
     @GetMapping("/history")
     public List<PurchaseDto> history() {
@@ -51,30 +38,14 @@ public class EnrollmentController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Enrollment enroll(@RequestBody EnrollRequest req) {
-        return facade.enrollContact(req.contactId(), req.sessionId(), req.courseId(), req.toStrategy());
-    }
-
-    @PatchMapping("/{id}/payment")
-    public ResponseEntity<Void> recordPayment(@PathVariable Long id, @RequestParam BigDecimal amount) {
-        facade.recordPayment(id, amount);
-        return ResponseEntity.noContent().build();
+        return facade.enrollContact(req.contactId(), req.sessionId());
     }
 
     @PatchMapping("/{id}/complete")
-    public ResponseEntity<Void> complete(@PathVariable Long id, @RequestParam BigDecimal grade) {
+    public ResponseEntity<Void> complete(@PathVariable Long id, @RequestParam java.math.BigDecimal grade) {
         facade.completeCourse(id, grade);
         return ResponseEntity.noContent().build();
     }
 
-    /**
-     * @param pricing one of INDIVIDUAL or CORPORATE (defaults to INDIVIDUAL)
-     */
-    public record EnrollRequest(Long contactId, Long sessionId, Long courseId, String pricing) {
-        public PricingStrategy toStrategy() {
-            if ("CORPORATE".equalsIgnoreCase(pricing)) {
-                return new CorporatePricingStrategy();
-            }
-            return new IndividualPricingStrategy(false, false);
-        }
-    }
+    public record EnrollRequest(Long contactId, Long sessionId) {}
 }

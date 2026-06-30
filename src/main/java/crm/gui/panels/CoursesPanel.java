@@ -28,7 +28,6 @@ import java.awt.Frame;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
-import java.math.BigDecimal;
 import java.util.List;
 
 public class CoursesPanel extends JPanel {
@@ -36,7 +35,7 @@ public class CoursesPanel extends JPanel {
     private final CourseService courseService = CourseService.getInstance();
     private final CourseRepository courseRepository = CourseRepository.getInstance();
     private final DefaultTableModel tableModel = new DefaultTableModel(
-            new Object[]{"ID", "Code", "Name", "Category", "Level", "Hours", "Individual Price", "Active"}, 0) {
+            new Object[]{"ID", "Code", "Name", "Category", "Level", "Hours", "Active"}, 0) {
         @Override
         public boolean isCellEditable(int row, int column) {
             return false;
@@ -89,7 +88,6 @@ public class CoursesPanel extends JPanel {
                     UiSupport.enumName(course.getCategory()),
                     UiSupport.enumName(course.getLevel()),
                     course.getDurationHours(),
-                    UiSupport.money(course.getPriceIndividual()),
                     Boolean.TRUE.equals(course.getActive()) ? "Yes" : "No"
             });
         }
@@ -162,9 +160,6 @@ public class CoursesPanel extends JPanel {
         private final JComboBox<ExperienceLevel> levelCombo = UiSupport.enumCombo(ExperienceLevel.values());
         private final JTextField prerequisitesField = new JTextField(24);
         private final JTextField durationField = new JTextField(24);
-        private final JTextField individualPriceField = new JTextField(24);
-        private final JTextField groupPriceField = new JTextField(24);
-        private final JTextField corporatePriceField = new JTextField(24);
         private final JTextField minParticipantsField = new JTextField(24);
         private final JTextField maxParticipantsField = new JTextField(24);
         private final JCheckBox activeCheck = new JCheckBox("Active");
@@ -194,9 +189,6 @@ public class CoursesPanel extends JPanel {
             row = addRow(form, gbc, row, "Level:", levelCombo);
             row = addRow(form, gbc, row, "Prerequisites:", prerequisitesField);
             row = addRow(form, gbc, row, "Duration hours:", durationField);
-            row = addRow(form, gbc, row, "Individual price:", individualPriceField);
-            row = addRow(form, gbc, row, "Group price:", groupPriceField);
-            row = addRow(form, gbc, row, "Corporate price/day:", corporatePriceField);
             row = addRow(form, gbc, row, "Min participants:", minParticipantsField);
             row = addRow(form, gbc, row, "Max participants:", maxParticipantsField);
             addRow(form, gbc, row, "", activeCheck);
@@ -244,9 +236,6 @@ public class CoursesPanel extends JPanel {
             }
             prerequisitesField.setText(course.getPrerequisites());
             durationField.setText(course.getDurationHours() == null ? "" : String.valueOf(course.getDurationHours()));
-            individualPriceField.setText(UiSupport.money(course.getPriceIndividual()));
-            groupPriceField.setText(UiSupport.money(course.getPriceGroup()));
-            corporatePriceField.setText(UiSupport.money(course.getPriceCorporatePerDay()));
             minParticipantsField.setText(course.getMinParticipants() == null ? "" : String.valueOf(course.getMinParticipants()));
             maxParticipantsField.setText(course.getMaxParticipants() == null ? "" : String.valueOf(course.getMaxParticipants()));
             activeCheck.setSelected(Boolean.TRUE.equals(course.getActive()));
@@ -284,17 +273,10 @@ public class CoursesPanel extends JPanel {
                 throw new IllegalArgumentException("Duration hours must be positive.");
             }
             course.setDurationHours(durationHours);
-            course.setPriceIndividual(defaultMoney(UiSupport.parseMoney(individualPriceField.getText(), "Individual price")));
-            course.setPriceGroup(defaultMoney(UiSupport.parseMoney(groupPriceField.getText(), "Group price")));
-            course.setPriceCorporatePerDay(defaultMoney(UiSupport.parseMoney(corporatePriceField.getText(), "Corporate price/day")));
             course.setMinParticipants(UiSupport.parseInteger(minParticipantsField.getText(), "Min participants"));
             course.setMaxParticipants(UiSupport.parseInteger(maxParticipantsField.getText(), "Max participants"));
             course.setActive(activeCheck.isSelected());
             return course;
-        }
-
-        private BigDecimal defaultMoney(BigDecimal value) {
-            return value == null ? BigDecimal.ZERO : value;
         }
     }
 }

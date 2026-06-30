@@ -10,8 +10,8 @@ import type { AuthSession } from "@/lib/types";
  * thing an unauthenticated visitor sees, and the two roles are kept apart:
  *
  * - signed out  → may only see {@code /login}
- * - USER (contact) → the public site (Courses / Companies); never the admin area
- * - ADMIN (trainer) → only the admin area; lands straight on {@code /admin}
+ * - USER (contact) → the public site (Courses / My courses); never the admin area
+ * - ADMIN (trainer) → only the admin area; lands straight on {@code /admin/contacts}
  *
  * Anything outside a role's allowed area is redirected, and protected content is
  * never rendered while a redirect is pending (no flash).
@@ -24,7 +24,7 @@ function decideRedirect(session: AuthSession | null, pathname: string): string |
     return onLogin ? null : "/login";
   }
   if (session.role === "ADMIN") {
-    return onAdmin ? null : "/admin";
+    return onAdmin ? null : "/admin/contacts";
   }
   // USER (contact): public site only, never the admin area or the login screen.
   if (onAdmin) return "/";

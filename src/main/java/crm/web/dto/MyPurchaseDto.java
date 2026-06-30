@@ -3,13 +3,12 @@ package crm.web.dto;
 import crm.model.entity.Course;
 import crm.service.review.ReviewService.PurchasedCourse;
 
-import java.math.BigDecimal;
 import java.time.format.DateTimeFormatter;
 
 /**
  * A single course bought by the logged-in contact, for their personal
- * "my courses" page. Carries the course details plus how much was paid, when,
- * and the contact's own rating (if they reviewed it).
+ * "my courses" page. Carries the course details plus when it was bought and the
+ * contact's own rating (if they reviewed it).
  */
 public record MyPurchaseDto(
         Long courseId,
@@ -20,7 +19,6 @@ public record MyPurchaseDto(
         String categoryLabel,
         String level,
         Integer durationHours,
-        BigDecimal amountPaid,
         String purchaseDate,
         Integer rating
 ) {
@@ -37,7 +35,6 @@ public record MyPurchaseDto(
                 c.getCategory() == null ? null : c.getCategory().getLabel(),
                 c.getLevel() == null ? null : c.getLevel().name(),
                 c.getDurationHours(),
-                p.amount(),
                 p.date() == null ? null : p.date().format(FMT),
                 p.rating());
     }

@@ -4,17 +4,9 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api } from "@/lib/api";
 import { getSession } from "@/lib/auth";
+import { openSchedule } from "@/lib/schedule";
 import { StarRating } from "@/components/Stars";
 import type { MyPurchase } from "@/lib/types";
-
-function formatPrice(p: number | null) {
-  if (p == null) return "—";
-  return new Intl.NumberFormat("ro-RO", {
-    style: "currency",
-    currency: "RON",
-    maximumFractionDigits: 0,
-  }).format(p);
-}
 
 /**
  * The logged-in contact's personal page: every course they have bought, listed
@@ -43,21 +35,6 @@ export default function MyCoursesPage() {
         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
           {name ? `Cursurile cumpărate de ${name}` : "Cursurile pe care le-ai cumpărat"}
         </p>
-      </div>
-
-      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-indigo-200 bg-gradient-to-r from-indigo-50 to-violet-50 p-5 dark:border-indigo-500/30 dark:from-indigo-500/10 dark:to-violet-500/10">
-        <div>
-          <h2 className="font-semibold text-slate-900 dark:text-white">Ședințe online cu un trainer</h2>
-          <p className="mt-0.5 text-sm text-slate-600 dark:text-slate-300">
-            Programează o ședință individuală, alegând trainerul, ziua și ora.
-          </p>
-        </div>
-        <Link
-          href="/schedule"
-          className="shrink-0 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
-        >
-          Programează o ședință
-        </Link>
       </div>
 
       {error && <p className="text-red-600 dark:text-red-400">Could not load your courses: {error}</p>}
@@ -113,9 +90,15 @@ export default function MyCoursesPage() {
                     )}
                   </div>
                 </div>
-                <span className="shrink-0 text-right text-sm font-semibold text-slate-900 dark:text-slate-100">
-                  {formatPrice(p.amountPaid)}
-                </span>
+              </div>
+              <div className="mt-4 flex justify-end border-t border-slate-100 pt-4 dark:border-slate-800">
+                <Link
+                  href="/schedule"
+                  onClick={() => openSchedule()}
+                  className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
+                >
+                  Programează o ședință
+                </Link>
               </div>
             </li>
           ))}

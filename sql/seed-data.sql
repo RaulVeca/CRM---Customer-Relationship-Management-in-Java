@@ -11,21 +11,14 @@ INSERT INTO users (username, email, password_hash, first_name, last_name, role, 
 ('manager', 'dana.manager@trainingit.ro', '$2a$10$abcdefghijklmnop', 'Dana', 'Manager', 'SALES_MANAGER', TRUE);
 
 -- Cursuri
-INSERT INTO courses (code, name, description, category, level, duration_hours, 
-                     price_individual, price_group, price_corporate_per_day, 
+INSERT INTO courses (code, name, description, category, level, duration_hours,
                      min_participants, max_participants, active) VALUES
-('JAVA-101', 'Java Fundamentals', 'Curs introductiv în Java', 'PROGRAMMING', 'BEGINNER', 60, 
- 1500.00, 1200.00, 2500.00, 5, 15, TRUE),
-('JAVA-ADV', 'Java Advanced & Spring', 'Curs avansat Java cu Spring Framework', 'PROGRAMMING', 'ADVANCED', 80, 
- 2500.00, 2000.00, 3500.00, 5, 12, TRUE),
-('PYTHON-101', 'Python Fundamentals', 'Curs introductiv în Python', 'PROGRAMMING', 'BEGINNER', 50, 
- 1300.00, 1100.00, 2200.00, 5, 15, TRUE),
-('AI-INTRO', 'AI și Machine Learning', 'Introducere în AI și ML cu Python', 'AI', 'INTERMEDIATE', 70, 
- 2200.00, 1800.00, 3000.00, 5, 12, TRUE),
-('RECONV-IT', 'Reconversie Profesională IT', 'Program complet de reconversie 6 luni', 'PROFESSIONAL_RECONVERSION', 'BEGINNER', 480, 
- 6000.00, 5000.00, NULL, 10, 20, TRUE),
-('WS-DOCKER', 'Workshop Docker & Kubernetes', 'Workshop intensiv 2 zile', 'WORKSHOP', 'INTERMEDIATE', 16, 
- 800.00, 700.00, 1500.00, 5, 15, TRUE);
+('JAVA-101', 'Java Fundamentals', 'Curs introductiv în Java', 'PROGRAMMING', 'BEGINNER', 60, 5, 15, TRUE),
+('JAVA-ADV', 'Java Advanced & Spring', 'Curs avansat Java cu Spring Framework', 'PROGRAMMING', 'ADVANCED', 80, 5, 12, TRUE),
+('PYTHON-101', 'Python Fundamentals', 'Curs introductiv în Python', 'PROGRAMMING', 'BEGINNER', 50, 5, 15, TRUE),
+('AI-INTRO', 'AI și Machine Learning', 'Introducere în AI și ML cu Python', 'AI', 'INTERMEDIATE', 70, 5, 12, TRUE),
+('RECONV-IT', 'Reconversie Profesională IT', 'Program complet de reconversie 6 luni', 'PROFESSIONAL_RECONVERSION', 'BEGINNER', 480, 10, 20, TRUE),
+('WS-DOCKER', 'Workshop Docker & Kubernetes', 'Workshop intensiv 2 zile', 'WORKSHOP', 'INTERMEDIATE', 16, 5, 15, TRUE);
 
 -- Admini (login "Cont admin") - traineri cu adrese @adminit.ro
 INSERT INTO admins (first_name, last_name, email) VALUES

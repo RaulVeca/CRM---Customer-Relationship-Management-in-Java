@@ -27,21 +27,9 @@ public class EmailNotificationFactory implements NotificationFactory {
         String subject = "Confirmare înscriere curs";
         String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
                 "Înscrierea ta a fost confirmată cu succes!\n" +
-                "Status: " + enrollment.getStatus() + "\n" +
-                "Preț: " + enrollment.getFinalPrice() + " RON\n\n" +
+                "Status: " + enrollment.getStatus() + "\n\n" +
                 "Vei primi în curând detalii despre programul cursului și materialele necesare.\n\n" +
                 "Mult succes!\nEchipa Training IT";
-        return new Notification(contact.getEmail(), subject, body, CHANNEL);
-    }
-
-    @Override
-    public Notification createPaymentReminder(Contact contact, Enrollment enrollment) {
-        String subject = "Reminder plată curs";
-        String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
-                "Acesta este un reminder amical privind plata pentru cursul tău.\n" +
-                "Sumă restantă: " + enrollment.getRemainingAmount() + " RON\n\n" +
-                "Te rugăm să efectuezi plata cât de curând posibil.\n\n" +
-                "Mulțumim!\nEchipa Training IT";
         return new Notification(contact.getEmail(), subject, body, CHANNEL);
     }
 

@@ -10,7 +10,6 @@ export default function EmployeesPage() {
   const [companyId, setCompanyId] = useState<number | null>(null);
   const [employees, setEmployees] = useState<Employee[]>([]);
   const [profileAreas, setProfileAreas] = useState<Option[]>([]);
-  const [levels, setLevels] = useState<Option[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   // AI recommendations
@@ -24,7 +23,6 @@ export default function EmployeesPage() {
     lastName: "",
     jobTitle: "",
     workProfile: "",
-    experienceLevel: "",
     interestProfiles: [] as string[],
   });
 
@@ -34,7 +32,6 @@ export default function EmployeesPage() {
       if (c.length) setCompanyId(c[0].id);
     });
     api.get<Option[]>("/api/meta/profile-areas").then(setProfileAreas);
-    api.get<Option[]>("/api/meta/experience-levels").then(setLevels);
     api.get<{ enabled: boolean }>("/api/ai/status").then((s) => setAiEnabled(s.enabled)).catch(() => {});
   }, []);
 
@@ -84,10 +81,9 @@ export default function EmployeesPage() {
         lastName: form.lastName || null,
         jobTitle: form.jobTitle || null,
         workProfile: form.workProfile || null,
-        experienceLevel: form.experienceLevel || null,
         interestProfiles: form.interestProfiles,
       });
-      setForm({ firstName: "", lastName: "", jobTitle: "", workProfile: "", experienceLevel: "", interestProfiles: [] });
+      setForm({ firstName: "", lastName: "", jobTitle: "", workProfile: "", interestProfiles: [] });
       setError(null);
       loadEmployees(companyId);
     } catch (err) {
@@ -211,11 +207,6 @@ export default function EmployeesPage() {
             value={form.workProfile} onChange={(e) => setForm({ ...form, workProfile: e.target.value })}>
             <option value="">Work profile…</option>
             {profileAreas.map((p) => <option key={p.name} value={p.name}>{p.label}</option>)}
-          </select>
-          <select className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm"
-            value={form.experienceLevel} onChange={(e) => setForm({ ...form, experienceLevel: e.target.value })}>
-            <option value="">Experience level…</option>
-            {levels.map((p) => <option key={p.name} value={p.name}>{p.label}</option>)}
           </select>
           <div>
             <p className="mb-1 text-xs font-medium text-slate-500">Interested in</p>

@@ -6,14 +6,11 @@ import { usePathname } from "next/navigation";
 import { getSession } from "@/lib/auth";
 
 const tabs = [
-  { href: "/admin", label: "Dashboard" },
   { href: "/admin/contacts", label: "Contacts" },
   { href: "/admin/courses", label: "Courses" },
   { href: "/admin/purchases", label: "Purchases" },
   { href: "/admin/analytics", label: "Analytics" },
-  { href: "/admin/pipeline", label: "Pipeline" },
   { href: "/admin/employees", label: "Employees" },
-  { href: "/admin/auctions", label: "Auctions" },
 ];
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
@@ -43,7 +40,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     <div className="space-y-6">
       <div className="flex gap-1 border-b border-slate-200 dark:border-slate-800">
         {tabs.map((t) => {
-          const activeTab = t.href === "/admin" ? pathname === "/admin" : pathname.startsWith(t.href);
+          const activeTab = pathname.startsWith(t.href);
           return (
             <Link
               key={t.href}

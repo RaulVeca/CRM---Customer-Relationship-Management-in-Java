@@ -2,7 +2,6 @@ package crm.dao;
 
 import crm.exception.DataAccessException;
 import crm.model.entity.Employee;
-import crm.model.enums.ExperienceLevel;
 import crm.model.enums.ProfileArea;
 
 import java.sql.*;
@@ -40,14 +39,14 @@ public class EmployeeDao extends AbstractDao<Employee> {
     @Override
     protected String getInsertSql() {
         return "INSERT INTO employees (company_id, first_name, last_name, email, job_title, " +
-               "work_profile, interest_profiles, experience_level) " +
-               "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+               "work_profile, interest_profiles) " +
+               "VALUES (?, ?, ?, ?, ?, ?, ?)";
     }
 
     @Override
     protected String getUpdateSql() {
         return "UPDATE employees SET company_id=?, first_name=?, last_name=?, email=?, " +
-               "job_title=?, work_profile=?, interest_profiles=?, experience_level=? WHERE id=?";
+               "job_title=?, work_profile=?, interest_profiles=? WHERE id=?";
     }
 
     @Override
@@ -59,14 +58,13 @@ public class EmployeeDao extends AbstractDao<Employee> {
         ps.setString(i++, e.getEmail());
         ps.setString(i++, e.getJobTitle());
         ps.setString(i++, e.getWorkProfile() != null ? e.getWorkProfile().name() : null);
-        ps.setString(i++, profilesToCsv(e.getInterestProfiles()));
-        ps.setString(i, e.getExperienceLevel() != null ? e.getExperienceLevel().name() : null);
+        ps.setString(i, profilesToCsv(e.getInterestProfiles()));
     }
 
     @Override
     protected void setUpdateParameters(PreparedStatement ps, Employee e) throws SQLException {
         setInsertParameters(ps, e);
-        ps.setLong(9, e.getId());
+        ps.setLong(8, e.getId());
     }
 
     @Override
@@ -90,7 +88,6 @@ public class EmployeeDao extends AbstractDao<Employee> {
         e.setJobTitle(rs.getString("job_title"));
         e.setWorkProfile(parseEnum(rs.getString("work_profile"), ProfileArea.class));
         e.setInterestProfiles(csvToProfiles(rs.getString("interest_profiles")));
-        e.setExperienceLevel(parseEnum(rs.getString("experience_level"), ExperienceLevel.class));
         e.setCreatedAt(getLocalDateTime(rs, "created_at"));
         e.setUpdatedAt(getLocalDateTime(rs, "updated_at"));
         return e;
@@ -112,6 +109,25 @@ public class EmployeeDao extends AbstractDao<Employee> {
             }
         } catch (SQLException ex) {
             throw new DataAccessException("Eroare findByCompanyId", ex);
+        }
+    }
+
+    /**
+     * Looks up an employee by email, case-insensitively, so an employee can sign
+     * in regardless of how they typed their address. Employees with no email on
+     * file simply never match.
+     */
+    public java.util.Optional<Employee> findByEmail(String email) {
+        String sql = "SELECT * FROM employees WHERE LOWER(email) = LOWER(?)";
+        try (Connection conn = db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return java.util.Optional.of(mapResultSetToEntity(rs));
+                return java.util.Optional.empty();
+            }
+        } catch (SQLException ex) {
+            throw new DataAccessException("Eroare findByEmail (employees)", ex);
         }
     }
 

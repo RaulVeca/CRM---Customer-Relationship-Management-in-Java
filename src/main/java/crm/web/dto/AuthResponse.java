@@ -2,6 +2,7 @@ package crm.web.dto;
 
 import crm.model.entity.Admin;
 import crm.model.entity.Contact;
+import crm.model.entity.Employee;
 
 /**
  * Identity returned to the front-end after a successful email sign-in. The
@@ -21,5 +22,13 @@ public record AuthResponse(
 
     public static AuthResponse admin(Admin a) {
         return new AuthResponse("ADMIN", a.getId(), a.getFirstName(), a.getLastName(), a.getEmail());
+    }
+
+    /**
+     * An employee signs in as a regular USER, landing on the same client portal
+     * as contacts.
+     */
+    public static AuthResponse employee(Employee e) {
+        return new AuthResponse("USER", e.getId(), e.getFirstName(), e.getLastName(), e.getEmail());
     }
 }

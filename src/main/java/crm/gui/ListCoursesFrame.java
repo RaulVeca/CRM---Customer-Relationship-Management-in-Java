@@ -83,9 +83,9 @@ public class ListCoursesFrame extends JFrame implements ActionListener {
         StringBuilder sb = new StringBuilder();
         sb.append("--- Cursuri Active ---\n");
         List<Course> courses = crm.getActiveCourses();
-        courses.forEach(c -> sb.append(String.format("  [%s] %s | %s | %d ore | %s RON%n",
+        courses.forEach(c -> sb.append(String.format("  [%s] %s | %s | %d ore%n",
                 c.getCode(), c.getName(), c.getCategory(),
-                c.getDurationHours(), c.getPriceIndividual())));
+                c.getDurationHours())));
         if (courses.isEmpty()) {
             sb.append("(niciun curs)\n");
         }

@@ -32,7 +32,6 @@ export default function AdminCoursesPage() {
               <th className="px-4 py-3">Category</th>
               <th className="px-4 py-3">Level</th>
               <th className="px-4 py-3 text-right">Hours</th>
-              <th className="px-4 py-3 text-right">Price</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
@@ -43,7 +42,6 @@ export default function AdminCoursesPage() {
                 <td className="px-4 py-3 text-slate-500">{c.category}</td>
                 <td className="px-4 py-3 text-slate-500">{c.level}</td>
                 <td className="px-4 py-3 text-right">{c.durationHours ?? "—"}</td>
-                <td className="px-4 py-3 text-right font-semibold">{c.priceIndividual ?? "—"}</td>
               </tr>
             ))}
           </tbody>

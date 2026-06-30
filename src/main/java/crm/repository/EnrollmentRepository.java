@@ -39,8 +39,4 @@ public class EnrollmentRepository extends AbstractRepository<Enrollment> {
     public List<Enrollment> findBySessionId(Long sessionId) {
         return enrollmentDao.findBySessionId(sessionId);
     }
-
-    public List<Enrollment> findUnpaid() {
-        return enrollmentDao.findUnpaid();
-    }
 }

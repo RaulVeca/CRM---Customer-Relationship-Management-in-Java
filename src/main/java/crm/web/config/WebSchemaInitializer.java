@@ -10,8 +10,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Creates the tables introduced by the web/AI features (employees, opportunity
- * bids) if they do not already exist.
+ * Creates the tables introduced by the web/AI features (employees, course
+ * metrics, admins, trainers, meditation sessions) if they do not already exist.
  *
  * <p>The legacy {@code schema.sql} is out of sync with the live database, so the
  * new feature tables are provisioned here with idempotent {@code CREATE TABLE IF
@@ -33,38 +33,9 @@ public final class WebSchemaInitializer {
             job_title VARCHAR(150),
             work_profile VARCHAR(50),
             interest_profiles VARCHAR(500),
-            experience_level VARCHAR(50),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
             INDEX idx_employees_company (company_id)
-        )
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS auctions (
-            id BIGINT AUTO_INCREMENT PRIMARY KEY,
-            course_id BIGINT,
-            title VARCHAR(255) NOT NULL,
-            description TEXT,
-            starting_price DECIMAL(12,2) NOT NULL DEFAULT 0,
-            status VARCHAR(30) NOT NULL DEFAULT 'OPEN',
-            closes_at TIMESTAMP NULL,
-            winner_company_id BIGINT,
-            winning_amount DECIMAL(12,2),
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            INDEX idx_auctions_status (status)
-        )
-        """,
-        """
-        CREATE TABLE IF NOT EXISTS bids (
-            id BIGINT AUTO_INCREMENT PRIMARY KEY,
-            auction_id BIGINT NOT NULL,
-            company_id BIGINT NOT NULL,
-            company_name VARCHAR(255),
-            amount DECIMAL(12,2) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-            INDEX idx_bids_auction (auction_id)
         )
         """,
         """
@@ -140,12 +111,27 @@ public final class WebSchemaInitializer {
             for (String ddl : DDL) {
                 st.execute(ddl);
             }
+            relaxEnrollmentPrice(conn);
             seedAdmins(conn);
             seedTrainers(conn);
-            logger.info("Web feature tables ensured (employees, auctions, bids, admins, trainers, meditation_sessions)");
+            logger.info("Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions)");
         } catch (SQLException e) {
             logger.error("Failed to ensure web feature tables", e);
             throw new IllegalStateException("Could not initialize web feature schema", e);
+        }
+    }
+
+    /**
+     * Course pricing was removed, so the application no longer writes the legacy
+     * {@code enrollments.price} column (which is {@code NOT NULL} on older
+     * databases). Relax it to nullable so inserts that omit it succeed. Idempotent
+     * and best-effort: a failure here must not stop startup.
+     */
+    private static void relaxEnrollmentPrice(Connection conn) {
+        try (Statement st = conn.createStatement()) {
+            st.execute("ALTER TABLE enrollments MODIFY COLUMN price DECIMAL(10,2) NULL DEFAULT NULL");
+        } catch (SQLException e) {
+            logger.warn("Could not relax enrollments.price (already nullable or table absent): {}", e.getMessage());
         }
     }
 

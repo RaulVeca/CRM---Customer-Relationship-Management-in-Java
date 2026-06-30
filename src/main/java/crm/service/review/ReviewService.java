@@ -15,9 +15,7 @@ import crm.model.enums.SessionStatus;
 import crm.service.contact.ContactService;
 import crm.service.course.CourseService;
 import crm.service.enrollment.EnrollmentService;
-import crm.strategy.IndividualPricingStrategy;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -93,15 +91,8 @@ public class ReviewService {
         }
 
         CourseSession session = resolveSession(course);
-        Enrollment enrollment = enrollmentService.enrollContact(
-                contact.getId(), session.getId(), course,
-                new IndividualPricingStrategy(false, false));
+        Enrollment enrollment = enrollmentService.enrollContact(contact.getId(), session.getId());
 
-        BigDecimal toPay = enrollment.getFinalPrice() != null
-                ? enrollment.getFinalPrice() : enrollment.getPrice();
-        if (toPay != null && toPay.compareTo(BigDecimal.ZERO) > 0) {
-            enrollmentService.registerPayment(enrollment.getId(), toPay);
-        }
         logger.info("Curs cumpărat: client={}, curs={}, enrollment={}", email, courseId, enrollment.getId());
         return enrollment;
     }
@@ -157,10 +148,9 @@ public class ReviewService {
             } catch (RuntimeException ex) {
                 continue;
             }
-            BigDecimal amount = e.getFinalPrice() != null ? e.getFinalPrice() : e.getPrice();
             // most recent enrollment wins (list is already newest-first)
             byCourse.putIfAbsent(course.getId(), new PurchasedCourse(
-                    course, amount, e.getEnrollmentDate(), e.getRating()));
+                    course, e.getEnrollmentDate(), e.getRating()));
         }
         return new ArrayList<>(byCourse.values());
     }
@@ -205,10 +195,18 @@ public class ReviewService {
 
     private Contact findOrCreateContact(String email, String firstName, String lastName) {
         return contactService.findByEmail(email).orElseGet(() -> {
+            String first = blankToNull(firstName);
+            String last = blankToNull(lastName);
+            // An INDIVIDUAL contact requires a name. Buyers who aren't a contact
+            // yet (e.g. an employee) may purchase without one being supplied, so
+            // fall back to the email's local part instead of failing validation.
+            if (first == null && last == null) {
+                first = nameFromEmail(email);
+            }
             Contact contact = Contact.builder()
                     .contactType(ContactType.INDIVIDUAL)
-                    .firstName(blankToNull(firstName))
-                    .lastName(blankToNull(lastName))
+                    .firstName(first)
+                    .lastName(last)
                     .email(email)
                     .leadSource(LeadSource.WEBSITE)
                     .gdprConsent(Boolean.TRUE)
@@ -216,6 +214,14 @@ public class ReviewService {
                     .build();
             return contactService.createContact(contact);
         });
+    }
+
+    /** Derives a non-empty display name from an email's local part. */
+    private static String nameFromEmail(String email) {
+        if (email == null) return "Client";
+        int at = email.indexOf('@');
+        String local = (at > 0 ? email.substring(0, at) : email).trim();
+        return local.isEmpty() ? "Client" : local;
     }
 
     /** Întoarce o sesiune existentă a cursului sau creează una self-paced (online). */
@@ -267,5 +273,5 @@ public class ReviewService {
     public record RatingSummary(double average, int count) {}
 
     /** Un curs cumpărat de un client, cu detaliile cumpărării. */
-    public record PurchasedCourse(Course course, BigDecimal amount, LocalDateTime date, Integer rating) {}
+    public record PurchasedCourse(Course course, LocalDateTime date, Integer rating) {}
 }

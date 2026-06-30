@@ -13,7 +13,7 @@ const FORMATS = [
  * Uses plain anchor links to the backend, which streams each file with a
  * Content-Disposition header so the browser downloads it directly.
  */
-export default function ExportMenu({ resource }: { resource: "contacts" | "pipeline" }) {
+export default function ExportMenu({ resource }: { resource: "contacts" }) {
   return (
     <details className="relative">
       <summary className="flex cursor-pointer list-none items-center gap-1 rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">

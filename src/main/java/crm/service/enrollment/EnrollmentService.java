@@ -3,19 +3,14 @@ package crm.service.enrollment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import crm.exception.BusinessException;
-import crm.model.entity.Contact;
-import crm.model.entity.Course;
 import crm.model.entity.Enrollment;
 import crm.model.enums.EnrollmentStatus;
 import crm.model.enums.LeadStatus;
-import crm.model.enums.PaymentStatus;
 import crm.observer.EventBus;
 import crm.observer.events.EnrollmentCreatedEvent;
 import crm.repository.ContactRepository;
 import crm.repository.EnrollmentRepository;
 import crm.service.contact.ContactService;
-import crm.strategy.IndividualPricingStrategy;
-import crm.strategy.PricingStrategy;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -23,7 +18,7 @@ import java.util.List;
 
 /**
  * SINGLETON - EnrollmentService.
- * Folosește Strategy Pattern pentru calcul preț și Observer pentru notificări.
+ * Folosește Observer pentru notificări la crearea înscrierilor.
  */
 public class EnrollmentService {
 
@@ -52,11 +47,10 @@ public class EnrollmentService {
     }
 
     /**
-     * Creează o înscriere folosind strategia de pricing furnizată.
+     * Creează o înscriere pentru un contact la o sesiune de curs.
      */
-    public Enrollment enrollContact(Long contactId, Long sessionId, Course course, 
-                                     PricingStrategy pricingStrategy) {
-        Contact contact = contactRepository.getById(contactId);
+    public Enrollment enrollContact(Long contactId, Long sessionId) {
+        contactRepository.getById(contactId); // validează existența contactului
 
         // Verifică dacă deja există înscriere
         boolean alreadyEnrolled = enrollmentRepository.findByContactId(contactId).stream()
@@ -65,24 +59,11 @@ public class EnrollmentService {
             throw new BusinessException("Contactul este deja înscris la această sesiune");
         }
 
-        // STRATEGY PATTERN - calcul preț
-        if (pricingStrategy == null) {
-            pricingStrategy = new IndividualPricingStrategy(false, false);
-        }
-        BigDecimal price = course.getPriceIndividual();
-        BigDecimal discount = pricingStrategy.calculateDiscount(price, 1);
-        BigDecimal finalPrice = pricingStrategy.calculatePrice(course, 1);
-
         Enrollment enrollment = Enrollment.builder()
                 .sessionId(sessionId)
                 .contactId(contactId)
                 .enrollmentDate(LocalDateTime.now())
                 .status(EnrollmentStatus.PENDING)
-                .price(price)
-                .discount(discount)
-                .finalPrice(finalPrice)
-                .paymentStatus(PaymentStatus.UNPAID)
-                .paidAmount(BigDecimal.ZERO)
                 .build();
 
         Enrollment saved = enrollmentRepository.save(enrollment);
@@ -93,33 +74,8 @@ public class EnrollmentService {
         // OBSERVER - notifică crearea înscrierii
         eventBus.publish(new EnrollmentCreatedEvent(saved, "EnrollmentService"));
 
-        logger.info("Înscriere creată: contact={}, sesiune={}, preț={}", 
-                contactId, sessionId, finalPrice);
+        logger.info("Înscriere creată: contact={}, sesiune={}", contactId, sessionId);
         return saved;
-    }
-
-    /**
-     * Înregistrează o plată parțială sau totală.
-     */
-    public void registerPayment(Long enrollmentId, BigDecimal amount) {
-        Enrollment enrollment = enrollmentRepository.getById(enrollmentId);
-
-        BigDecimal currentPaid = enrollment.getPaidAmount() != null 
-                ? enrollment.getPaidAmount() : BigDecimal.ZERO;
-        BigDecimal newPaid = currentPaid.add(amount);
-
-        enrollment.setPaidAmount(newPaid);
-
-        if (newPaid.compareTo(enrollment.getFinalPrice()) >= 0) {
-            enrollment.setPaymentStatus(PaymentStatus.PAID);
-            enrollment.setStatus(EnrollmentStatus.CONFIRMED);
-        } else if (newPaid.compareTo(BigDecimal.ZERO) > 0) {
-            enrollment.setPaymentStatus(PaymentStatus.PARTIAL);
-        }
-
-        enrollmentRepository.save(enrollment);
-        logger.info("Plată înregistrată: enrollment={}, amount={}, total={}", 
-                enrollmentId, amount, newPaid);
     }
 
     /**
@@ -168,9 +124,5 @@ public class EnrollmentService {
 
     public List<Enrollment> getBySessionId(Long sessionId) {
         return enrollmentRepository.findBySessionId(sessionId);
-    }
-
-    public List<Enrollment> getUnpaid() {
-        return enrollmentRepository.findUnpaid();
     }
 }
