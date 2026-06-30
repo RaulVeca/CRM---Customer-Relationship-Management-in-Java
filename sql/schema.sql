@@ -106,6 +106,35 @@ CREATE TABLE admins (
 ) ENGINE=InnoDB;
 
 -- =====================================================
+-- TRAINERS (trainerii care livrează cursurile)
+-- Doar prenume, nume și email.
+-- =====================================================
+CREATE TABLE trainers (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+-- =====================================================
+-- MEDITATION SESSIONS (ședințe online cu un trainer)
+-- Un contact rezervă ore consecutive (08:00-20:00) într-o zi.
+-- =====================================================
+CREATE TABLE meditation_sessions (
+    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    trainer_id BIGINT NOT NULL,
+    contact_id BIGINT NOT NULL,
+    contact_email VARCHAR(255),
+    session_date DATE NOT NULL,
+    start_hour INT NOT NULL,
+    end_hour INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    INDEX idx_med_sessions_trainer_date (trainer_id, session_date),
+    CONSTRAINT fk_med_sessions_trainer FOREIGN KEY (trainer_id) REFERENCES trainers(id)
+) ENGINE=InnoDB;
+
+-- =====================================================
 -- COURSE SESSIONS
 -- =====================================================
 CREATE TABLE course_sessions (

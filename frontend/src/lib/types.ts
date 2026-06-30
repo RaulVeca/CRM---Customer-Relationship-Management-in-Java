@@ -40,6 +40,40 @@ export interface MyPurchase {
   rating: number | null;
 }
 
+/** One of the trainers a contact can book an online session with. */
+export interface Trainer {
+  id: number;
+  firstName: string | null;
+  lastName: string | null;
+  fullName: string;
+  email: string;
+}
+
+/** A booked hour range on a trainer's calendar, half-open: covers [start, end). */
+export interface BookedInterval {
+  start: number;
+  end: number;
+}
+
+/** A trainer's availability for a single calendar day. */
+export interface DayAvailability {
+  date: string; // ISO yyyy-MM-dd
+  working: boolean;
+  full: boolean;
+  booked: BookedInterval[];
+}
+
+/** Result of booking a session. */
+export interface BookingResponse {
+  id: number;
+  trainerId: number;
+  trainerName: string;
+  date: string;
+  startHour: number;
+  endHour: number;
+  message: string;
+}
+
 export interface CourseReview {
   author: string;
   rating: number;

@@ -1,411 +1,61 @@
-2026-06-28 17:23:03.365 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 17:23:03.422 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 21900 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 17:23:03.422 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 17:23:03.422 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 17:23:04.303 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 17:23:04.314 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:23:04.318 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 17:23:04.319 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 17:23:04.394 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 17:23:04.394 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 935 ms
-2026-06-28 17:23:04.642 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 17:23:04.646 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 17:23:04.659 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 17:23:04.671 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 17:23:04.776 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@7112ce6
-2026-06-28 17:23:04.777 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 17:23:04.777 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 17:23:04.813 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 17:23:04.829 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 17:23:04.832 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 17:23:04.837 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 17:23:04.840 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 17:23:04.840 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 17:23:04.840 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 17:23:05.074 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 17:23:05.371 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:23:05.394 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-28 17:23:05.400 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.304 seconds (process running for 2.789)
-2026-06-28 17:24:04.106 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-28 17:24:04.106 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-28 17:24:04.106 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2026-06-28 17:25:55.583 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 17:25:55.626 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 14124 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 17:25:55.626 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 17:25:55.627 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 17:25:56.348 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 17:25:56.357 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:25:56.360 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 17:25:56.360 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 17:25:56.415 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 17:25:56.415 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 750 ms
-2026-06-28 17:25:56.590 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 17:25:56.592 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 17:25:56.601 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 17:25:56.613 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 17:25:56.699 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@40de8f93
-2026-06-28 17:25:56.701 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 17:25:56.701 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 17:25:56.718 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 17:25:56.734 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 17:25:56.738 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 17:25:56.742 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 17:25:56.745 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 17:25:56.746 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 17:25:56.746 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 17:25:56.886 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 17:25:57.180 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:25:57.200 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-28 17:25:57.205 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.865 seconds (process running for 2.282)
-2026-06-28 17:26:11.914 [http-nio-8080-exec-5] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-28 17:26:11.914 [http-nio-8080-exec-5] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-28 17:26:11.914 [http-nio-8080-exec-5] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2026-06-28 17:27:47.345 [http-nio-8080-exec-8] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:27:47.345 [http-nio-8080-exec-2] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:27:47.738 [http-nio-8080-exec-3] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:27:47.738 [http-nio-8080-exec-4] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:27:50.676 [http-nio-8080-exec-8] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:27:50.676 [http-nio-8080-exec-9] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:27:50.939 [http-nio-8080-exec-5] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:27:50.939 [http-nio-8080-exec-10] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:33:04.994 [http-nio-8080-exec-7] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:33:04.994 [http-nio-8080-exec-10] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:33:05.831 [http-nio-8080-exec-2] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:33:05.831 [http-nio-8080-exec-1] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:33:08.014 [http-nio-8080-exec-2] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:33:08.014 [http-nio-8080-exec-3] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:33:08.552 [http-nio-8080-exec-6] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:33:08.552 [http-nio-8080-exec-1] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:33:54.171 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-28 17:33:54.184 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-06-28 17:33:54.187 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
-2026-06-28 17:33:54.187 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-06-28 17:33:54.191 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-06-28 17:33:54.191 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis
-2026-06-28 17:44:24.284 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 17:44:24.325 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 30276 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 17:44:24.326 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 17:44:24.326 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 17:44:25.233 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 17:44:25.244 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:44:25.246 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 17:44:25.247 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 17:44:25.322 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 17:44:25.322 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 965 ms
-2026-06-28 17:44:25.533 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 17:44:25.536 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 17:44:25.545 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 17:44:25.556 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 17:44:25.641 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@111d5c97
-2026-06-28 17:44:25.643 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 17:44:25.643 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 17:44:25.659 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 17:44:25.673 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 17:44:25.677 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 17:44:25.680 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 17:44:25.683 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 17:44:25.683 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 17:44:25.683 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 17:44:25.826 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 17:44:26.107 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:44:26.127 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-28 17:44:26.132 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.084 seconds (process running for 2.513)
-2026-06-28 17:44:29.118 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-28 17:44:29.118 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-28 17:44:29.118 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2026-06-28 17:48:27.266 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 17:48:27.316 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 10024 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 17:48:27.317 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 17:48:27.317 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 17:48:28.196 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 17:48:28.206 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:48:28.208 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 17:48:28.209 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 17:48:28.280 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 17:48:28.280 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 919 ms
-2026-06-28 17:48:28.491 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 17:48:28.494 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 17:48:28.496 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 17:48:28.507 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 17:48:28.601 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@1642eeae
-2026-06-28 17:48:28.603 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 17:48:28.603 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 17:48:28.617 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 17:48:28.633 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 17:48:28.639 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 17:48:28.643 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 17:48:28.647 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 17:48:28.647 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 17:48:28.648 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 17:48:28.789 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 17:48:29.056 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:48:29.063 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
-2026-06-28 17:48:29.063 [main] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
-2026-06-28 17:48:29.064 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-06-28 17:48:29.067 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-06-28 17:48:29.067 [main] INFO  crm.config.DatabaseConnection - Connection pool închis
-2026-06-28 17:48:29.079 [main] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2026-06-28 17:48:29.100 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-Web server failed to start. Port 8080 was already in use.
-
-Action:
-
-Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
-
-2026-06-28 17:49:53.481 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 17:49:53.531 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 24856 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 17:49:53.532 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 17:49:53.532 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 17:49:54.268 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 17:49:54.278 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:49:54.281 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 17:49:54.281 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 17:49:54.343 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 17:49:54.343 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 774 ms
-2026-06-28 17:49:54.528 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 17:49:54.531 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 17:49:54.533 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 17:49:54.545 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 17:49:54.634 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@6ff0b1cc
-2026-06-28 17:49:54.636 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 17:49:54.636 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 17:49:54.653 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 17:49:54.660 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 17:49:54.662 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 17:49:54.663 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 17:49:54.664 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 17:49:54.664 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 17:49:54.664 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 17:49:54.704 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 17:49:54.979 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:49:55.000 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-28 17:49:55.006 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.781 seconds (process running for 2.236)
-2026-06-28 17:50:32.114 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-28 17:50:32.124 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-06-28 17:50:32.127 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
-2026-06-28 17:50:32.127 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-06-28 17:50:32.130 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-06-28 17:50:32.130 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis
-2026-06-28 17:51:07.563 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 17:51:07.607 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 1688 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 17:51:07.608 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 17:51:07.608 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 17:51:08.356 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 17:51:08.367 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:51:08.369 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 17:51:08.369 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 17:51:08.428 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 17:51:08.429 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 787 ms
-2026-06-28 17:51:08.599 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 17:51:08.601 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 17:51:08.609 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 17:51:08.620 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 17:51:08.700 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@3440e9cd
-2026-06-28 17:51:08.701 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 17:51:08.702 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 17:51:08.715 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 17:51:08.730 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 17:51:08.735 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 17:51:08.739 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 17:51:08.743 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 17:51:08.743 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 17:51:08.743 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 17:51:08.870 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 17:51:09.128 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 17:51:09.148 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-28 17:51:09.153 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.814 seconds (process running for 2.228)
-2026-06-28 17:51:24.196 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-28 17:51:24.197 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-28 17:51:24.197 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2026-06-28 17:58:39.831 [http-nio-8080-exec-7] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:58:39.831 [http-nio-8080-exec-1] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 5 orders
-2026-06-28 17:58:40.240 [http-nio-8080-exec-6] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:58:40.240 [http-nio-8080-exec-5] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:58:41.520 [http-nio-8080-exec-3] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:58:41.518 [http-nio-8080-exec-2] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
-2026-06-28 17:58:55.555 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-28 17:58:55.564 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-06-28 17:58:55.566 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
-2026-06-28 17:58:55.566 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-06-28 17:58:55.569 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-06-28 17:58:55.569 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis
-2026-06-28 18:47:02.005 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 18:47:02.046 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 13408 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 18:47:02.046 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 18:47:02.046 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 18:47:02.819 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 18:47:02.828 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 18:47:02.829 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 18:47:02.829 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 18:47:02.892 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 18:47:02.892 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 816 ms
-2026-06-28 18:47:03.067 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 18:47:03.069 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 18:47:03.085 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 18:47:03.095 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 18:47:03.176 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@2f10f633
-2026-06-28 18:47:03.178 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 18:47:03.178 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 18:47:03.191 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 18:47:03.210 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 18:47:03.215 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 18:47:03.219 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 18:47:03.223 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 18:47:03.223 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 18:47:03.223 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 18:47:03.465 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 18:47:03.755 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 18:47:03.771 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-28 18:47:03.776 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.003 seconds (process running for 2.422)
-2026-06-28 18:47:07.838 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-28 18:47:07.839 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-28 18:47:07.839 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2026-06-28 18:47:35.899 [http-nio-8080-exec-6] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@6f1e29ed, sessionId=3, contactId=1, enrollmentDate=2026-06-28T18:47:35.899040100, status=PENDING, price=2200.00, discount=0.00, finalPrice=2200.00, paymentStatus=UNPAID, paidAmount=0, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
-2026-06-28 18:47:35.904 [http-nio-8080-exec-6] DEBUG crm.dao.EnrollmentDao - Entitate salvată în enrollments: ID=6
-2026-06-28 18:47:35.909 [http-nio-8080-exec-6] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
-2026-06-28 18:47:35.936 [http-nio-8080-exec-6] INFO  crm.service.notification.NotificationService - [EMAIL] Către: alex.stoica@example.com, Subiect: Confirmare înscriere curs
-2026-06-28 18:47:35.936 [http-nio-8080-exec-6] DEBUG crm.service.notification.NotificationService - Conținut:
-Salut Alexandru Stoica,
-
-Înscrierea ta a fost confirmată cu succes!
-Status: PENDING
-Preț: 2200.00 RON
-
-Vei primi în curând detalii despre programul cursului și materialele necesare.
-
-Mult succes!
-Echipa Training IT
-2026-06-28 18:47:35.936 [http-nio-8080-exec-6] INFO  crm.service.notification.NotificationService - [SMS] Către: 0722333444, Subiect: (fără subiect)
-2026-06-28 18:47:35.936 [http-nio-8080-exec-6] DEBUG crm.service.notification.NotificationService - Conținut:
-Inscrierea ta a fost confirmata. Multumim!
-2026-06-28 18:47:35.936 [http-nio-8080-exec-6] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 1
-2026-06-28 18:47:35.937 [http-nio-8080-exec-6] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=1, sesiune=3, preț=2200.00
-2026-06-28 18:47:35.937 [http-nio-8080-exec-6] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@6f1e29ed, sessionId=3, contactId=1, enrollmentDate=2026-06-28T18:47:35, status=CONFIRMED, price=2200.00, discount=0.00, finalPrice=2200.00, paymentStatus=PAID, paidAmount=2200.00, attendedSessions=0, attendanceRate=null, examPassed=false, finalGrade=null, certificateIssued=false, certificateNumber=null, rating=0, feedback=null, notes=null)
-2026-06-28 18:47:35.939 [http-nio-8080-exec-6] DEBUG crm.dao.EnrollmentDao - Entitate actualizată în enrollments: ID=6
-2026-06-28 18:47:35.940 [http-nio-8080-exec-6] INFO  crm.service.enrollment.EnrollmentService - Plată înregistrată: enrollment=6, amount=2200.00, total=2200.00
-2026-06-28 18:47:35.940 [http-nio-8080-exec-6] INFO  crm.service.review.ReviewService - Curs cumpărat: client=alex.stoica@example.com, curs=4, enrollment=6
-2026-06-28 18:47:36.291 [http-nio-8080-exec-10] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@6f1e29ed, sessionId=3, contactId=1, enrollmentDate=2026-06-28T18:47:35, status=CONFIRMED, price=2200.00, discount=0.00, finalPrice=2200.00, paymentStatus=PAID, paidAmount=2200.00, attendedSessions=0, attendanceRate=null, examPassed=false, finalGrade=null, certificateIssued=false, certificateNumber=null, rating=5, feedback=Logged-in review, no email typed, notes=null)
-2026-06-28 18:47:36.294 [http-nio-8080-exec-10] DEBUG crm.dao.EnrollmentDao - Entitate actualizată în enrollments: ID=6
-2026-06-28 18:47:36.294 [http-nio-8080-exec-10] INFO  crm.service.enrollment.EnrollmentService - Review salvat: enrollment=6, rating=5
-2026-06-28 18:48:48.631 [http-nio-8080-exec-3] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@6f1e29ed, sessionId=1, contactId=1, enrollmentDate=2026-06-28T18:48:48.631876800, status=PENDING, price=1500.00, discount=0.00, finalPrice=1500.00, paymentStatus=UNPAID, paidAmount=0, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
-2026-06-28 18:48:48.635 [http-nio-8080-exec-3] DEBUG crm.dao.EnrollmentDao - Entitate salvată în enrollments: ID=7
-2026-06-28 18:48:48.636 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
-2026-06-28 18:48:48.638 [http-nio-8080-exec-3] INFO  crm.service.notification.NotificationService - [EMAIL] Către: alex.stoica@example.com, Subiect: Confirmare înscriere curs
-2026-06-28 18:48:48.638 [http-nio-8080-exec-3] DEBUG crm.service.notification.NotificationService - Conținut:
-Salut Alexandru Stoica,
-
-Înscrierea ta a fost confirmată cu succes!
-Status: PENDING
-Preț: 1500.00 RON
-
-Vei primi în curând detalii despre programul cursului și materialele necesare.
-
-Mult succes!
-Echipa Training IT
-2026-06-28 18:48:48.638 [http-nio-8080-exec-3] INFO  crm.service.notification.NotificationService - [SMS] Către: 0722333444, Subiect: (fără subiect)
-2026-06-28 18:48:48.638 [http-nio-8080-exec-3] DEBUG crm.service.notification.NotificationService - Conținut:
-Inscrierea ta a fost confirmata. Multumim!
-2026-06-28 18:48:48.638 [http-nio-8080-exec-3] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 1
-2026-06-28 18:48:48.638 [http-nio-8080-exec-3] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=1, sesiune=1, preț=1500.00
-2026-06-28 18:48:48.639 [http-nio-8080-exec-3] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@6f1e29ed, sessionId=1, contactId=1, enrollmentDate=2026-06-28T18:48:48, status=CONFIRMED, price=1500.00, discount=0.00, finalPrice=1500.00, paymentStatus=PAID, paidAmount=1500.00, attendedSessions=0, attendanceRate=null, examPassed=false, finalGrade=null, certificateIssued=false, certificateNumber=null, rating=0, feedback=null, notes=null)
-2026-06-28 18:48:48.641 [http-nio-8080-exec-3] DEBUG crm.dao.EnrollmentDao - Entitate actualizată în enrollments: ID=7
-2026-06-28 18:48:48.641 [http-nio-8080-exec-3] INFO  crm.service.enrollment.EnrollmentService - Plată înregistrată: enrollment=7, amount=1500.00, total=1500.00
-2026-06-28 18:48:48.641 [http-nio-8080-exec-3] INFO  crm.service.review.ReviewService - Curs cumpărat: client=alex.stoica@example.com, curs=1, enrollment=7
-2026-06-28 18:52:46.796 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-06-28 18:52:46.843 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 27552 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
-2026-06-28 18:52:46.843 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-06-28 18:52:46.844 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-06-28 18:52:47.632 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-06-28 18:52:47.641 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-06-28 18:52:47.642 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-06-28 18:52:47.643 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-06-28 18:52:47.699 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-06-28 18:52:47.700 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 817 ms
-2026-06-28 18:52:47.878 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-06-28 18:52:47.881 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-06-28 18:52:47.891 [main] INFO  crm.config.AppConfig - Valori default încărcate
-2026-06-28 18:52:47.903 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-06-28 18:52:47.984 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@1642eeae
-2026-06-28 18:52:47.985 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-06-28 18:52:47.985 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
-2026-06-28 18:52:48.004 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins)
-2026-06-28 18:52:48.019 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
-2026-06-28 18:52:48.025 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
-2026-06-28 18:52:48.030 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-06-28 18:52:48.035 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-06-28 18:52:48.036 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-06-28 18:52:48.036 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-06-28 18:52:48.172 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
-2026-06-28 18:52:48.434 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-06-28 18:52:48.454 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-06-28 18:52:48.460 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.893 seconds (process running for 2.291)
-2026-06-28 18:53:06.201 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-06-28 18:53:06.201 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-06-28 18:53:06.202 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2026-06-28 18:54:12.248 [http-nio-8080-exec-2] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@2f42150a, sessionId=3, contactId=1, enrollmentDate=2026-06-28T18:54:12.248488600, status=PENDING, price=2200.00, discount=0.00, finalPrice=2200.00, paymentStatus=UNPAID, paidAmount=0, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
-2026-06-28 18:54:12.248 [http-nio-8080-exec-2] DEBUG crm.dao.EnrollmentDao - Entitate salvată în enrollments: ID=8
-2026-06-28 18:54:12.248 [http-nio-8080-exec-2] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
-2026-06-28 18:54:12.269 [http-nio-8080-exec-2] INFO  crm.service.notification.NotificationService - [EMAIL] Către: alex.stoica@example.com, Subiect: Confirmare înscriere curs
-2026-06-28 18:54:12.269 [http-nio-8080-exec-2] DEBUG crm.service.notification.NotificationService - Conținut:
-Salut Alexandru Stoica,
-
-Înscrierea ta a fost confirmată cu succes!
-Status: PENDING
-Preț: 2200.00 RON
-
-Vei primi în curând detalii despre programul cursului și materialele necesare.
-
-Mult succes!
-Echipa Training IT
-2026-06-28 18:54:12.269 [http-nio-8080-exec-2] INFO  crm.service.notification.NotificationService - [SMS] Către: 0722333444, Subiect: (fără subiect)
-2026-06-28 18:54:12.269 [http-nio-8080-exec-2] DEBUG crm.service.notification.NotificationService - Conținut:
-Inscrierea ta a fost confirmata. Multumim!
-2026-06-28 18:54:12.269 [http-nio-8080-exec-2] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 1
-2026-06-28 18:54:12.269 [http-nio-8080-exec-2] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=1, sesiune=3, preț=2200.00
-2026-06-28 18:54:12.269 [http-nio-8080-exec-2] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@2f42150a, sessionId=3, contactId=1, enrollmentDate=2026-06-28T18:54:12, status=CONFIRMED, price=2200.00, discount=0.00, finalPrice=2200.00, paymentStatus=PAID, paidAmount=2200.00, attendedSessions=0, attendanceRate=null, examPassed=false, finalGrade=null, certificateIssued=false, certificateNumber=null, rating=0, feedback=null, notes=null)
-2026-06-28 18:54:12.275 [http-nio-8080-exec-2] DEBUG crm.dao.EnrollmentDao - Entitate actualizată în enrollments: ID=8
-2026-06-28 18:54:12.275 [http-nio-8080-exec-2] INFO  crm.service.enrollment.EnrollmentService - Plată înregistrată: enrollment=8, amount=2200.00, total=2200.00
-2026-06-28 18:54:12.275 [http-nio-8080-exec-2] INFO  crm.service.review.ReviewService - Curs cumpărat: client=alex.stoica@example.com, curs=4, enrollment=8
-2026-06-28 19:09:54.601 [http-nio-8080-exec-5] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@2f42150a, sessionId=3, contactId=5, enrollmentDate=2026-06-28T19:09:54.601383700, status=PENDING, price=2200.00, discount=0.00, finalPrice=2200.00, paymentStatus=UNPAID, paidAmount=0, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
-2026-06-28 19:09:54.601 [http-nio-8080-exec-5] DEBUG crm.dao.EnrollmentDao - Entitate salvată în enrollments: ID=9
-2026-06-28 19:09:54.601 [http-nio-8080-exec-5] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@f7f6c9e, contactType=INDIVIDUAL, firstName=Alexandru, lastName=Balasa, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=alexandru.balasa@gmail.com, phone=+40 737 122 911, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=ENROLLED, leadScore=100, experienceLevel=BEGINNER, learningGoal=Reconversie profesională, firstContactDate=2026-06-06T13:34:24, lastContactDate=2026-06-28T19:09:54.601383700, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-06-06T13:34:24, marketingConsent=false)
-2026-06-28 19:09:54.608 [http-nio-8080-exec-5] DEBUG crm.dao.ContactDao - Entitate actualizată în contacts: ID=5
-2026-06-28 19:09:54.608 [http-nio-8080-exec-5] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 5: QUALIFIED -> ENROLLED
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] INFO  crm.service.notification.NotificationService - [EMAIL] Către: alexandru.balasa@gmail.com, Subiect: Confirmare înscriere curs
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] DEBUG crm.service.notification.NotificationService - Conținut:
-Salut Alexandru Balasa,
-
-Înscrierea ta a fost confirmată cu succes!
-Status: PENDING
-Preț: 2200.00 RON
-
-Vei primi în curând detalii despre programul cursului și materialele necesare.
-
-Mult succes!
-Echipa Training IT
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] INFO  crm.service.notification.NotificationService - [SMS] Către: +40 737 122 911, Subiect: (fără subiect)
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] DEBUG crm.service.notification.NotificationService - Conținut:
-Inscrierea ta a fost confirmata. Multumim!
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 5
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=5, sesiune=3, preț=2200.00
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@2f42150a, sessionId=3, contactId=5, enrollmentDate=2026-06-28T19:09:54, status=CONFIRMED, price=2200.00, discount=0.00, finalPrice=2200.00, paymentStatus=PAID, paidAmount=2200.00, attendedSessions=0, attendanceRate=null, examPassed=false, finalGrade=null, certificateIssued=false, certificateNumber=null, rating=0, feedback=null, notes=null)
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] DEBUG crm.dao.EnrollmentDao - Entitate actualizată în enrollments: ID=9
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] INFO  crm.service.enrollment.EnrollmentService - Plată înregistrată: enrollment=9, amount=2200.00, total=2200.00
-2026-06-28 19:09:54.615 [http-nio-8080-exec-5] INFO  crm.service.review.ReviewService - Curs cumpărat: client=alexandru.balasa@gmail.com, curs=4, enrollment=9
-2026-06-28 19:10:17.740 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-06-28 19:10:17.750 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-06-28 19:10:17.753 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
-2026-06-28 19:10:17.753 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-06-28 19:10:17.756 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-06-28 19:10:17.756 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-06-30 18:13:22.958 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-06-30 18:13:23.046 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 30320 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-06-30 18:13:23.047 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-06-30 18:13:23.048 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-30 18:13:24.021 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-30 18:13:24.034 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-30 18:13:24.038 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-30 18:13:24.039 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-06-30 18:13:24.112 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-30 18:13:24.113 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1007 ms
+2026-06-30 18:13:24.344 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-06-30 18:13:24.347 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-06-30 18:13:24.358 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-06-30 18:13:24.373 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-06-30 18:13:24.471 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@6bcb12e6
+2026-06-30 18:13:24.473 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-06-30 18:13:24.473 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-06-30 18:13:24.497 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, auctions, bids, admins, trainers, meditation_sessions)
+2026-06-30 18:13:24.512 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-06-30 18:13:24.517 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-06-30 18:13:24.521 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-06-30 18:13:24.525 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-06-30 18:13:24.525 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-06-30 18:13:24.525 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-06-30 18:13:24.672 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-06-30 18:13:24.971 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-30 18:13:24.991 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-06-30 18:13:24.997 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.302 seconds (process running for 2.774)
+2026-06-30 18:13:41.756 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-30 18:13:41.758 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-30 18:13:41.765 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-06-30 18:25:54.124 [http-nio-8080-exec-7] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 7 orders
+2026-06-30 18:25:54.124 [http-nio-8080-exec-3] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 7 orders
+2026-06-30 18:27:20.646 [http-nio-8080-exec-3] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:27:20.646 [http-nio-8080-exec-7] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:27:22.036 [http-nio-8080-exec-2] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 7 orders
+2026-06-30 18:27:22.036 [http-nio-8080-exec-6] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 7 orders
+2026-06-30 18:27:25.367 [http-nio-8080-exec-9] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:27:25.367 [http-nio-8080-exec-4] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:40:46.451 [http-nio-8080-exec-6] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:40:46.451 [http-nio-8080-exec-5] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:40:47.734 [http-nio-8080-exec-7] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 7 orders
+2026-06-30 18:40:47.734 [http-nio-8080-exec-1] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 7 orders
+2026-06-30 18:40:52.020 [http-nio-8080-exec-7] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:40:52.020 [http-nio-8080-exec-10] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:44:50.613 [http-nio-8080-exec-10] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:44:50.613 [http-nio-8080-exec-8] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:45:06.855 [http-nio-8080-exec-3] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:45:06.855 [http-nio-8080-exec-10] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:45:12.886 [http-nio-8080-exec-7] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:45:12.886 [http-nio-8080-exec-4] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:57:05.664 [http-nio-8080-exec-3] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:57:05.664 [http-nio-8080-exec-9] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:57:14.710 [http-nio-8080-exec-7] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:57:14.710 [http-nio-8080-exec-1] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-06-30 18:57:40.399 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-06-30 18:57:40.411 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-06-30 18:57:40.415 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-06-30 18:57:40.415 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-06-30 18:57:40.417 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-06-30 18:57:40.417 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis

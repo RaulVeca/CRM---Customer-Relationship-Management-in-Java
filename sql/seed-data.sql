@@ -33,6 +33,12 @@ INSERT INTO admins (first_name, last_name, email) VALUES
 ('Costache', 'Măzărescu', 'costachemazarescu@adminit.ro'),
 ('Oana', 'Badache', 'oanabadache@adminit.ro');
 
+-- Traineri (livrează cursurile) - adrese @trainerit.ro
+INSERT INTO trainers (first_name, last_name, email) VALUES
+('Andrei', 'Birceanu', 'andreibirceanu@trainerit.ro'),
+('Sorin', 'Dima', 'sorindima@trainerit.ro'),
+('Claudiu', 'Antonescu', 'claudiuantonescu@trainerit.ro');
+
 -- Contacte exemplu B2C
 INSERT INTO contacts (contact_type, first_name, last_name, email, phone, lead_source, 
                       lead_status, lead_score, experience_level, learning_goal, 

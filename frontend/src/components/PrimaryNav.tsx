@@ -49,6 +49,12 @@ export default function PrimaryNav() {
       >
         My courses
       </Link>
+      <Link
+        href="/schedule"
+        className="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+      >
+        Ședințe online
+      </Link>
     </>
   );
 }

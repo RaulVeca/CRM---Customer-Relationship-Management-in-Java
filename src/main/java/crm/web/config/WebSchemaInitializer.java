@@ -83,6 +83,28 @@ public final class WebSchemaInitializer {
             email VARCHAR(255) NOT NULL UNIQUE,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS trainers (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(100) NOT NULL,
+            last_name VARCHAR(100) NOT NULL,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS meditation_sessions (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            trainer_id BIGINT NOT NULL,
+            contact_id BIGINT NOT NULL,
+            contact_email VARCHAR(255),
+            session_date DATE NOT NULL,
+            start_hour INT NOT NULL,
+            end_hour INT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_med_sessions_trainer_date (trainer_id, session_date)
+        )
         """
     };
 
@@ -98,6 +120,17 @@ public final class WebSchemaInitializer {
         {"Oana",     "Badache",    "oanabadache@adminit.ro"},
     };
 
+    /**
+     * The trainers that deliver the courses. Seeded idempotently
+     * ({@code INSERT IGNORE} on the unique email) so a restart never duplicates
+     * them.
+     */
+    private static final String[][] TRAINER_SEED = {
+        {"Andrei",  "Birceanu",   "andreibirceanu@trainerit.ro"},
+        {"Sorin",   "Dima",       "sorindima@trainerit.ro"},
+        {"Claudiu", "Antonescu",  "claudiuantonescu@trainerit.ro"},
+    };
+
     private WebSchemaInitializer() {
     }
 
@@ -108,7 +141,8 @@ public final class WebSchemaInitializer {
                 st.execute(ddl);
             }
             seedAdmins(conn);
-            logger.info("Web feature tables ensured (employees, auctions, bids, admins)");
+            seedTrainers(conn);
+            logger.info("Web feature tables ensured (employees, auctions, bids, admins, trainers, meditation_sessions)");
         } catch (SQLException e) {
             logger.error("Failed to ensure web feature tables", e);
             throw new IllegalStateException("Could not initialize web feature schema", e);
@@ -122,6 +156,19 @@ public final class WebSchemaInitializer {
                 ps.setString(1, admin[0]);
                 ps.setString(2, admin[1]);
                 ps.setString(3, admin[2]);
+                ps.addBatch();
+            }
+            ps.executeBatch();
+        }
+    }
+
+    private static void seedTrainers(Connection conn) throws SQLException {
+        String sql = "INSERT IGNORE INTO trainers (first_name, last_name, email) VALUES (?, ?, ?)";
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            for (String[] trainer : TRAINER_SEED) {
+                ps.setString(1, trainer[0]);
+                ps.setString(2, trainer[1]);
+                ps.setString(3, trainer[2]);
                 ps.addBatch();
             }
             ps.executeBatch();
