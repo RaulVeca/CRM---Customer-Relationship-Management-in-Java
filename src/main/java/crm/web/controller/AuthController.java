@@ -12,6 +12,7 @@ import crm.web.dto.ApiError;
 import crm.web.dto.AuthResponse;
 import crm.web.dto.LoginRequest;
 import crm.web.dto.RegisterRequest;
+import crm.web.dto.ResetPasswordRequest;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Email + password authentication plus self-service registration for the landing
@@ -192,6 +194,73 @@ public class AuthController {
         // otherwise defaults to the shared '1234').
         contactDao.updatePassword(saved.getId(), password);
         return ResponseEntity.status(HttpStatus.CREATED).body(AuthResponse.user(saved));
+    }
+
+    /**
+     * Password recovery for a client who forgot their password. Because there is
+     * no real email delivery, the client does not receive a reset link — instead
+     * they prove ownership of the account with two facts already on their
+     * {@code contacts} row: the birth date and the phone number. The email must
+     * belong to the {@code contacts} table (admins and employees cannot reset a
+     * password here), and both the birth date and the phone must match what is
+     * stored. Only then is the chosen new password saved. To avoid leaking which
+     * accounts exist, an unknown email and a wrong birth date/phone return the
+     * same generic message.
+     */
+    @PostMapping("/reset-password")
+    public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request, HttpServletRequest http) {
+        if (request == null) {
+            return badRequest(http, "Datele pentru resetare sunt obligatorii.");
+        }
+
+        String email = trim(request.email()).toLowerCase();
+        String phone = trim(request.phone());
+        LocalDate birthDate = request.birthDate();
+        // Passwords are not trimmed — leading/trailing characters are significant.
+        String newPassword = request.newPassword() == null ? "" : request.newPassword();
+        String confirmPassword = request.confirmPassword() == null ? "" : request.confirmPassword();
+
+        List<String> errors = new ArrayList<>();
+        requireField(errors, email, "Adresa de email");
+        if (birthDate == null) {
+            errors.add("Data nașterii este obligatorie.");
+        }
+        requireField(errors, phone, "Numărul de telefon");
+        if (newPassword.isEmpty()) {
+            errors.add("Parola nouă este obligatorie.");
+        } else if (newPassword.length() < 4) {
+            errors.add("Parola trebuie să aibă cel puțin 4 caractere.");
+        } else if (!newPassword.equals(confirmPassword)) {
+            errors.add("Parolele nu coincid.");
+        }
+        if (!errors.isEmpty()) {
+            return validationError(http, errors);
+        }
+
+        // Recovery is only for clients: resolve the email against contacts alone.
+        // An admin or employee email simply won't be found here.
+        var contact = contactDao.findByEmail(email);
+        boolean identityMatches = contact.isPresent()
+                && birthDate.equals(contact.get().getBirthDate())
+                && digitsOnly(phone).equals(digitsOnly(contact.get().getPhone()));
+        if (!identityMatches) {
+            return unauthorized(http,
+                    "Datele introduse nu corespund unui cont de client. "
+                            + "Verifică emailul, data nașterii și numărul de telefon.");
+        }
+
+        contactDao.updatePassword(contact.get().getId(), newPassword);
+        return ResponseEntity.ok(Map.of(
+                "message", "Parola a fost schimbată. Te poți autentifica acum cu noua parolă."));
+    }
+
+    /**
+     * Keeps only the digits of a phone number so two numbers compare equal
+     * regardless of spaces, dashes or a leading {@code +} / {@code 0040} prefix
+     * difference in how they were typed.
+     */
+    private String digitsOnly(String phone) {
+        return phone == null ? "" : phone.replaceAll("\\D", "");
     }
 
     private String normalize(LoginRequest request) {

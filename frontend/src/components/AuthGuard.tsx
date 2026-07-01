@@ -19,19 +19,21 @@ import type { AuthSession } from "@/lib/types";
 function decideRedirect(session: AuthSession | null, pathname: string): string | null {
   const onLogin = pathname === "/login";
   const onRegister = pathname === "/register";
+  const onForgot = pathname === "/forgot-password";
   const onAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
 
   if (!session) {
-    // Signed out: the login screen and the registration screen are the only
-    // pages allowed; everything else bounces to login.
-    return onLogin || onRegister ? null : "/login";
+    // Signed out: the login, registration and password-recovery screens are the
+    // only pages allowed; everything else bounces to login.
+    return onLogin || onRegister || onForgot ? null : "/login";
   }
   if (session.role === "ADMIN") {
     return onAdmin ? null : "/admin/contacts";
   }
-  // USER (contact): public site only, never the admin area, login or register.
+  // USER (contact): public site only, never the admin area, login, register or
+  // password recovery.
   if (onAdmin) return "/";
-  if (onLogin || onRegister) return "/";
+  if (onLogin || onRegister || onForgot) return "/";
   return null;
 }
 
