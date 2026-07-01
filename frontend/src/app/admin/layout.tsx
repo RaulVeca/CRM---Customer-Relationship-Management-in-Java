@@ -31,7 +31,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (!allowed) {
     return (
       <p className="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
-        Se redirecționează către autentificare…
+        Redirecting to sign in…
       </p>
     );
   }

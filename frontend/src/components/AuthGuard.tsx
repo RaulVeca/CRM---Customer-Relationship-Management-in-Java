@@ -18,17 +18,20 @@ import type { AuthSession } from "@/lib/types";
  */
 function decideRedirect(session: AuthSession | null, pathname: string): string | null {
   const onLogin = pathname === "/login";
+  const onRegister = pathname === "/register";
   const onAdmin = pathname === "/admin" || pathname.startsWith("/admin/");
 
   if (!session) {
-    return onLogin ? null : "/login";
+    // Signed out: the login screen and the registration screen are the only
+    // pages allowed; everything else bounces to login.
+    return onLogin || onRegister ? null : "/login";
   }
   if (session.role === "ADMIN") {
     return onAdmin ? null : "/admin/contacts";
   }
-  // USER (contact): public site only, never the admin area or the login screen.
+  // USER (contact): public site only, never the admin area, login or register.
   if (onAdmin) return "/";
-  if (onLogin) return "/";
+  if (onLogin || onRegister) return "/";
   return null;
 }
 
@@ -57,7 +60,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
   if (session === undefined || redirect) {
     return (
       <p className="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
-        Se încarcă…
+        Loading…
       </p>
     );
   }

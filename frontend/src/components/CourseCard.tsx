@@ -68,7 +68,7 @@ export default function CourseCard({
   async function buy() {
     const session = getSession();
     if (!session) {
-      setBuyError("Trebuie să fii autentificat pentru a cumpăra.");
+      setBuyError("You must be signed in to buy.");
       return;
     }
     setBuyLoading(true);
@@ -96,7 +96,7 @@ export default function CourseCard({
     e.preventDefault();
     const session = getSession();
     if (!session) {
-      setRvError("Trebuie să fii autentificat pentru a lăsa o recenzie.");
+      setRvError("You must be signed in to leave a review.");
       return;
     }
     setRvLoading(true);

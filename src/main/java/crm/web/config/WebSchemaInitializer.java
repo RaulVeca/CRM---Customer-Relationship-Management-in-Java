@@ -112,6 +112,7 @@ public final class WebSchemaInitializer {
                 st.execute(ddl);
             }
             relaxEnrollmentPrice(conn);
+            ensurePasswordColumns(conn);
             seedAdmins(conn);
             seedTrainers(conn);
             logger.info("Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions)");
@@ -132,6 +133,34 @@ public final class WebSchemaInitializer {
             st.execute("ALTER TABLE enrollments MODIFY COLUMN price DECIMAL(10,2) NULL DEFAULT NULL");
         } catch (SQLException e) {
             logger.warn("Could not relax enrollments.price (already nullable or table absent): {}", e.getMessage());
+        }
+    }
+
+    /**
+     * Every account a visitor can sign in with now needs a password. The
+     * {@code contacts}, {@code admins} and {@code employees} tables each get a
+     * {@code password} column, {@code NOT NULL DEFAULT '1234'}, so every account
+     * that already exists is given the shared default password {@code 1234} and
+     * can keep signing in. Idempotent and best-effort: a duplicate-column error on
+     * a database that already has the column is expected and must not stop startup.
+     */
+    private static void ensurePasswordColumns(Connection conn) {
+        for (String table : new String[] {"contacts", "admins", "employees"}) {
+            try (Statement st = conn.createStatement()) {
+                st.execute("ALTER TABLE " + table
+                        + " ADD COLUMN password VARCHAR(255) NOT NULL DEFAULT '1234'");
+                logger.info("Added password column to {} (existing accounts default to '1234')", table);
+            } catch (SQLException e) {
+                logger.debug("Password column on {} already present or table absent: {}",
+                        table, e.getMessage());
+            }
+            // Backfill any pre-existing NULL/empty passwords with the default.
+            try (Statement st = conn.createStatement()) {
+                st.execute("UPDATE " + table + " SET password = '1234' "
+                        + "WHERE password IS NULL OR password = ''");
+            } catch (SQLException e) {
+                logger.debug("Could not backfill passwords on {}: {}", table, e.getMessage());
+            }
         }
     }
 

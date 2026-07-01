@@ -9,18 +9,19 @@ import { ArrowLeftIcon, ArrowRightIcon } from "@/components/icons";
 import type {
   BookingResponse,
   DayAvailability,
+  MyPurchase,
   Trainer,
 } from "@/lib/types";
 
 const WORK_START = 8; // 08:00 — earliest a session may start
 const WORK_END = 20; // 20:00 — latest a session may end
 
-const MONTHS_RO = [
-  "Ianuarie", "Februarie", "Martie", "Aprilie", "Mai", "Iunie",
-  "Iulie", "August", "Septembrie", "Octombrie", "Noiembrie", "Decembrie",
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
 ];
 // Monday-first weekday headers.
-const WEEKDAYS_RO = ["Lu", "Ma", "Mi", "Jo", "Vi", "Sâ", "Du"];
+const WEEKDAYS = ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 
 const pad = (n: number) => String(n).padStart(2, "0");
 const iso = (y: number, m: number, d: number) => `${y}-${pad(m + 1)}-${pad(d)}`;
@@ -61,8 +62,10 @@ function maxDurationFrom(start: number, day: DayAvailability | undefined): numbe
 export default function SchedulePage() {
   const [contact, setContact] = useState<{ id: number; email: string } | null>(null);
   // null = not yet read (avoids a flash before the effect runs); the window may
-  // only be reached after pressing "Programează o ședință" in My courses.
+  // only be reached after pressing "Schedule a session" in My courses.
   const [windowOpen, setWindowOpen] = useState<boolean | null>(null);
+  // null = ownership not yet known. Booking requires owning at least one course.
+  const [hasPurchases, setHasPurchases] = useState<boolean | null>(null);
   const [trainers, setTrainers] = useState<Trainer[] | null>(null);
   const [trainer, setTrainer] = useState<Trainer | null>(null);
 
@@ -97,6 +100,16 @@ export default function SchedulePage() {
       window.removeEventListener("storage", sync);
     };
     setContact({ id: session.id, email: session.email });
+    // A contact can only book a session for a course it actually owns. Verify
+    // ownership against the server and drop any stale window flag if it owns none.
+    api
+      .get<MyPurchase[]>(`/api/public/me/purchases?email=${encodeURIComponent(session.email)}`)
+      .then((list) => {
+        const owns = list.length > 0;
+        setHasPurchases(owns);
+        if (!owns) closeSchedule();
+      })
+      .catch(() => setHasPurchases(false));
     api
       .get<Trainer[]>("/api/trainers")
       .then(setTrainers)
@@ -205,15 +218,43 @@ export default function SchedulePage() {
     return (
       <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
         <p className="text-slate-600 dark:text-slate-300">
-          Trebuie să fii autentificat pentru a programa o ședință.
+          You must be signed in to schedule a session.
         </p>
         <Link
           href="/login"
           className="mt-3 inline-block rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
         >
-          Autentificare
+          Log in
         </Link>
       </div>
+    );
+  }
+
+  // Hard gate: without a purchased course there is nothing to schedule a session
+  // for, so booking is refused no matter what the local window flag says.
+  if (hasPurchases === false && !result) {
+    return (
+      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
+        <p className="text-slate-600 dark:text-slate-300">
+          You must buy a course before you can schedule an online session.
+        </p>
+        <Link
+          href="/"
+          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
+        >
+          Browse courses
+        </Link>
+      </div>
+    );
+  }
+
+  // Ownership still being verified — don't flash the booking form before we know
+  // whether the contact is even allowed to book.
+  if (hasPurchases === null && !result) {
+    return (
+      <p className="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+        Loading…
+      </p>
     );
   }
 
@@ -223,7 +264,7 @@ export default function SchedulePage() {
     return (
       <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
         <p className="text-slate-600 dark:text-slate-300">
-          Apasă „Programează o ședință” în dreptul unui curs cumpărat pentru a deschide programarea.
+          Press "Schedule a session" next to a purchased course to open scheduling.
         </p>
         <Link
           href="/my-courses"
@@ -239,11 +280,11 @@ export default function SchedulePage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
-          Programează o ședință online
+          Schedule an online session
         </h1>
         <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
-          Alege un trainer, apoi ziua, ora și câte ore vrei. Trainerii sunt disponibili de luni
-          până sâmbătă, între {fmtHour(WORK_START)} și {fmtHour(WORK_END)}.
+          Choose a trainer, then the day, the time and how many hours you want. Trainers are
+          available Monday to Saturday, between {fmtHour(WORK_START)} and {fmtHour(WORK_END)}.
         </p>
       </div>
 
@@ -262,10 +303,10 @@ export default function SchedulePage() {
       {/* Step 1 — choose a trainer */}
       <section>
         <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-          1. Alege trainerul
+          1. Choose the trainer
         </h2>
         {trainers === null && !error && (
-          <p className="text-slate-500 dark:text-slate-400">Se încarcă…</p>
+          <p className="text-slate-500 dark:text-slate-400">Loading…</p>
         )}
         <div className="grid gap-3 sm:grid-cols-3">
           {trainers?.map((t) => {
@@ -293,7 +334,7 @@ export default function SchedulePage() {
       {trainer && (
         <section>
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            2. Alege ziua
+            2. Choose the day
           </h2>
           <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
             <div className="mb-3 flex items-center justify-between">
@@ -302,25 +343,25 @@ export default function SchedulePage() {
                 onClick={() => changeMonth(-1)}
                 disabled={atCurrentMonth}
                 className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent dark:text-slate-400 dark:hover:bg-slate-800"
-                aria-label="Luna anterioară"
+                aria-label="Previous month"
               >
                 <ArrowLeftIcon />
               </button>
               <span className="font-semibold text-slate-900 dark:text-white">
-                {MONTHS_RO[cursor.month]} {cursor.year}
+                {MONTHS[cursor.month]} {cursor.year}
               </span>
               <button
                 type="button"
                 onClick={() => changeMonth(1)}
                 className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
-                aria-label="Luna următoare"
+                aria-label="Next month"
               >
                 <ArrowRightIcon />
               </button>
             </div>
 
             <div className="mb-1 grid grid-cols-7 gap-1 text-center text-xs font-medium text-slate-400 dark:text-slate-500">
-              {WEEKDAYS_RO.map((w) => (
+              {WEEKDAYS.map((w) => (
                 <div key={w} className="py-1">{w}</div>
               ))}
             </div>
@@ -348,11 +389,11 @@ export default function SchedulePage() {
                 }
 
                 const title = isPast
-                  ? "Zi trecută"
+                  ? "Past day"
                   : !day || !day.working
-                    ? "Indisponibil"
+                    ? "Unavailable"
                     : day.full
-                      ? "Zi ocupată complet"
+                      ? "Fully booked day"
                       : undefined;
 
                 return (
@@ -373,13 +414,13 @@ export default function SchedulePage() {
             <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 dark:text-slate-500">
               <span className="flex items-center gap-1.5">
                 <span className="inline-block h-3 w-3 rounded bg-slate-50 ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700" />
-                Disponibil
+                Available
               </span>
               <span className="flex items-center gap-1.5">
                 <span className="inline-block h-3 w-3 rounded bg-slate-200 dark:bg-slate-700" />
-                Ocupat / indisponibil
+                Booked / unavailable
               </span>
-              {loadingCal && <span>Se actualizează…</span>}
+              {loadingCal && <span>Updating…</span>}
             </div>
           </div>
         </section>
@@ -389,13 +430,13 @@ export default function SchedulePage() {
       {selectedDate && (
         <section>
           <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
-            3. Alege ora și durata
+            3. Choose the time and duration
           </h2>
           <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
             <div>
-              <p className="mb-2 text-sm text-slate-600 dark:text-slate-300">Ora de început</p>
+              <p className="mb-2 text-sm text-slate-600 dark:text-slate-300">Start time</p>
               {starts.length === 0 ? (
-                <p className="text-sm text-slate-400">Nu mai sunt ore libere în această zi.</p>
+                <p className="text-sm text-slate-400">No free hours left on this day.</p>
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {starts.map((h) => (
@@ -419,8 +460,8 @@ export default function SchedulePage() {
             {startHour != null && (
               <div>
                 <p className="mb-2 text-sm text-slate-600 dark:text-slate-300">
-                  Câte ore? (maxim {maxDuration} {maxDuration === 1 ? "oră" : "ore"} consecutive de
-                  la {fmtHour(startHour)})
+                  How many hours? (max {maxDuration} consecutive {maxDuration === 1 ? "hour" : "hours"}
+                  {" "}from {fmtHour(startHour)})
                 </p>
                 <div className="flex flex-wrap gap-2">
                   {Array.from({ length: maxDuration }, (_, i) => i + 1).map((d) => (
@@ -456,7 +497,7 @@ export default function SchedulePage() {
                   disabled={submitting}
                   className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700 disabled:opacity-60"
                 >
-                  {submitting ? "Se programează…" : "Confirmă programarea"}
+                  {submitting ? "Scheduling…" : "Confirm booking"}
                 </button>
               </div>
             )}

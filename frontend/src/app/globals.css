@@ -19,3 +19,12 @@ html.dark {
   color-scheme: dark;
   background: #020617; /* slate-950 */
 }
+
+/* Hide the browser's built-in password reveal/clear controls (Edge/Chrome on
+   Windows render `::-ms-reveal` for password inputs once they contain text). We
+   provide our own eye toggle in `PasswordInput`, so the native one would appear
+   as a duplicate second eye. */
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}

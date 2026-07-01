@@ -42,9 +42,19 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   // Course ids the logged-in contact has already bought (personal to them).
   const [purchasedIds, setPurchasedIds] = useState<Set<number>>(new Set());
+  // Greeting name for a signed-in contact (client portal only). Null when signed
+  // out or for any non-USER session, so the greeting stays exclusive to contacts.
+  const [greetingName, setGreetingName] = useState<string | null>(null);
 
   useEffect(() => {
     api.get<Category[]>("/api/public/categories").then(setCategories).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    const session = getSession();
+    if (session?.role !== "USER") return;
+    const name = [session.firstName, session.lastName].filter(Boolean).join(" ") || session.email;
+    setGreetingName(name);
   }, []);
 
   useEffect(() => {
@@ -82,6 +92,11 @@ export default function Home() {
 
   return (
     <div className="space-y-8">
+      {greetingName && (
+        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+          Hello, {greetingName}!
+        </h2>
+      )}
       <section className="rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-600 px-8 py-12 text-white">
         <h1 className="text-3xl font-bold">Level up your IT career</h1>
         <p className="mt-2 max-w-xl text-indigo-100">

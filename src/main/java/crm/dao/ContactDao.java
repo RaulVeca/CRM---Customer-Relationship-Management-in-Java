@@ -170,8 +170,15 @@ public class ContactDao extends AbstractDao<Contact> {
         }
     }
 
+    /**
+     * Caută un contact după email, indiferent de cum a fost scris (majuscule /
+     * minuscule). Comparația case-insensitive este esențială pentru unicitatea
+     * emailului: la înregistrare un email deja existent trebuie găsit chiar dacă
+     * a fost salvat cu altă capitalizare, iar la login utilizatorul se poate
+     * autentifica indiferent cum tastează adresa. Aliniat cu AdminDao/EmployeeDao.
+     */
     public Optional<Contact> findByEmail(String email) {
-        String sql = "SELECT * FROM contacts WHERE email = ?";
+        String sql = "SELECT * FROM contacts WHERE LOWER(email) = LOWER(?)";
         try (Connection conn = db.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
@@ -182,6 +189,42 @@ public class ContactDao extends AbstractDao<Contact> {
             }
         } catch (SQLException e) {
             throw new DataAccessException("Eroare findByEmail", e);
+        }
+    }
+
+    /**
+     * The password stored for the contact with this email, or {@code null} if no
+     * such contact exists. Used to verify the password at sign-in. Matched
+     * case-insensitively on the email, like {@link #findByEmail(String)}.
+     */
+    public String findPasswordByEmail(String email) {
+        String sql = "SELECT password FROM contacts WHERE LOWER(email) = LOWER(?)";
+        try (Connection conn = db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getString("password") : null;
+            }
+        } catch (SQLException e) {
+            throw new DataAccessException("Eroare findPasswordByEmail (contacts)", e);
+        }
+    }
+
+    /**
+     * Sets the password for a contact. Used at registration to store the password
+     * the visitor chose, right after the contact row itself is created.
+     */
+    public void updatePassword(Long contactId, String password) {
+        String sql = "UPDATE contacts SET password = ? WHERE id = ?";
+        try (Connection conn = db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, password);
+            ps.setLong(2, contactId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new DataAccessException("Eroare updatePassword (contacts)", e);
         }
     }
 

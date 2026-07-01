@@ -4,6 +4,7 @@
 // obtain an ADMIN session and vice-versa.
 
 import type { AuthSession } from "./types";
+import { closeSchedule } from "./schedule";
 
 const SESSION_KEY = "ctrAuth";
 
@@ -23,6 +24,10 @@ export function getSession(): AuthSession | null {
 export function setSession(session: AuthSession): void {
   try {
     localStorage.setItem(SESSION_KEY, JSON.stringify(session));
+    // A fresh sign-in must never inherit a booking window left open by a
+    // previous account — it only reopens by pressing "Schedule a session"
+    // next to a course this contact has actually bought.
+    closeSchedule();
     window.dispatchEvent(new Event(AUTH_EVENT));
   } catch {
     /* localStorage unavailable — session simply won't persist */
@@ -32,6 +37,8 @@ export function setSession(session: AuthSession): void {
 export function clearSession(): void {
   try {
     localStorage.removeItem(SESSION_KEY);
+    // Drop any open booking window so the next account starts clean.
+    closeSchedule();
     window.dispatchEvent(new Event(AUTH_EVENT));
   } catch {
     /* ignore storage errors */

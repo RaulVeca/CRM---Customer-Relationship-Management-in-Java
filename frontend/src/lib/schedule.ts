@@ -1,5 +1,5 @@
-// Visibility of the "Ședințe online" booking window. The window does not exist
-// until the contact presses "Programează o ședință" next to a purchased course;
+// Visibility of the "Online sessions" booking window. The window does not exist
+// until the contact presses "Schedule a session" next to a purchased course;
 // it stays available until a session is booked successfully, then disappears for
 // good until the button is pressed again. Kept in localStorage (mirroring the
 // auth session) with a custom event so PrimaryNav and the schedule page react
@@ -19,7 +19,7 @@ export function isScheduleOpen(): boolean {
   }
 }
 
-/** Reveal the window — called when "Programează o ședință" is pressed. */
+/** Reveal the window — called when "Schedule a session" is pressed. */
 export function openSchedule(): void {
   try {
     localStorage.setItem(KEY, "1");

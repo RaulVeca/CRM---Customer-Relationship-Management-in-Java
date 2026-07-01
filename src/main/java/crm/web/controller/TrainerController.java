@@ -16,7 +16,9 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * REST endpoints that let a contact book a one-on-one online meditation
@@ -140,6 +142,43 @@ public class TrainerController {
                 "Ședința a fost programată cu succes.");
     }
 
+    /**
+     * Every session the given contact has booked (across all trainers), ordered
+     * chronologically. The front-end only shows the "my sessions" window when
+     * this list is non-empty.
+     */
+    @GetMapping("/sessions")
+    public List<MySessionDto> mySessions(@RequestParam Long contactId) {
+        if (contactId == null) {
+            throw new ValidationException("Contul este obligatoriu.");
+        }
+        Map<Long, String> trainerNames = new HashMap<>();
+        return sessionDao.findByContactId(contactId).stream()
+                .map(s -> {
+                    String name = trainerNames.computeIfAbsent(s.getTrainerId(),
+                            tid -> trainerDao.findById(tid).map(Trainer::getFullName).orElse("Trainer"));
+                    return new MySessionDto(s.getId(), s.getTrainerId(), name,
+                            s.getSessionDate().toString(), s.getStartHour(), s.getEndHour());
+                })
+                .toList();
+    }
+
+    /**
+     * Cancels one of the contact's own sessions: the row is removed from the
+     * database, which in turn frees that hour range in the trainer's calendar. A
+     * contact may only cancel a session it actually booked.
+     */
+    @DeleteMapping("/sessions/{sessionId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void cancelSession(@PathVariable Long sessionId, @RequestParam Long contactId) {
+        MeditationSession session = sessionDao.findById(sessionId)
+                .orElseThrow(() -> new ResourceNotFoundException("Ședința nu a fost găsită."));
+        if (contactId == null || !contactId.equals(session.getContactId())) {
+            throw new ValidationException("Nu poți anula o ședință care nu îți aparține.");
+        }
+        sessionDao.deleteById(sessionId);
+    }
+
     // =====================================================
     // Helpers
     // =====================================================
@@ -203,4 +242,7 @@ public class TrainerController {
 
     public record BookingResponse(Long id, Long trainerId, String trainerName,
                                   String date, int startHour, int endHour, String message) {}
+
+    public record MySessionDto(Long id, Long trainerId, String trainerName,
+                               String date, int startHour, int endHour) {}
 }

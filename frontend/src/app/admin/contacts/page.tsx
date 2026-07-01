@@ -26,7 +26,7 @@ export default function ContactsPage() {
     api
       .get<Contact[]>(path)
       .then((d) => {
-        // Afișăm persoanele individuale înaintea companiilor (valorile rămân neschimbate).
+        // Show individuals before companies (values stay unchanged).
         const rank = (c: Contact) => (c.contactType === "INDIVIDUAL" ? 0 : 1);
         const ordered = [...d].sort((a, b) => rank(a) - rank(b));
         setContacts(ordered);

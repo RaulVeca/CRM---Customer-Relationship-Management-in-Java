@@ -40,6 +40,13 @@ public class MetaController {
                 .toList();
     }
 
+    @GetMapping("/lead-sources")
+    public List<Option> leadSources() {
+        return Arrays.stream(LeadSource.values())
+                .map(p -> new Option(p.name(), p.getLabel()))
+                .toList();
+    }
+
     @GetMapping("/opportunity-stages")
     public List<Option> opportunityStages() {
         return Arrays.stream(OpportunityStage.values())
@@ -53,6 +60,7 @@ public class MetaController {
                 "profileAreas", profileAreas(),
                 "experienceLevels", experienceLevels(),
                 "leadStatuses", leadStatuses(),
+                "leadSources", leadSources(),
                 "opportunityStages", opportunityStages()
         );
     }

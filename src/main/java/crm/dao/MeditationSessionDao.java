@@ -119,6 +119,23 @@ public class MeditationSessionDao extends AbstractDao<MeditationSession> {
     }
 
     /**
+     * Every session a given contact has ever booked, ordered chronologically, so
+     * the contact can review and cancel their own bookings.
+     */
+    public List<MeditationSession> findByContactId(Long contactId) {
+        String sql = "SELECT * FROM meditation_sessions "
+                + "WHERE contact_id = ? ORDER BY session_date, start_hour";
+        return executeQuery(sql, ps -> {
+            try {
+                ps.setLong(1, contactId);
+            } catch (SQLException e) {
+                throw new DataAccessException("Eroare findByContactId", e);
+            }
+            return ps;
+        });
+    }
+
+    /**
      * Whether the trainer already has a session overlapping the half-open hour
      * range {@code [startHour, endHour)} on the given day. Two sessions overlap
      * when {@code existingStart < newEnd && existingEnd > newStart}.

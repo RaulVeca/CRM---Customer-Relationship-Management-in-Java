@@ -101,4 +101,22 @@ public class AdminDao extends AbstractDao<Admin> {
             throw new DataAccessException("Eroare findByEmail (admins)", e);
         }
     }
+
+    /**
+     * The password stored for the admin with this email, or {@code null} if none.
+     * Used to verify the password at sign-in.
+     */
+    public String findPasswordByEmail(String email) {
+        String sql = "SELECT password FROM admins WHERE LOWER(email) = LOWER(?)";
+        try (Connection conn = db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getString("password") : null;
+            }
+        } catch (SQLException e) {
+            throw new DataAccessException("Eroare findPasswordByEmail (admins)", e);
+        }
+    }
 }

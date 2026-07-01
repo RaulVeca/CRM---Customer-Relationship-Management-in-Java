@@ -131,6 +131,23 @@ public class EmployeeDao extends AbstractDao<Employee> {
         }
     }
 
+    /**
+     * The password stored for the employee with this email, or {@code null} if
+     * none. Used to verify the password at sign-in.
+     */
+    public String findPasswordByEmail(String email) {
+        String sql = "SELECT password FROM employees WHERE LOWER(email) = LOWER(?)";
+        try (Connection conn = db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() ? rs.getString("password") : null;
+            }
+        } catch (SQLException ex) {
+            throw new DataAccessException("Eroare findPasswordByEmail (employees)", ex);
+        }
+    }
+
     public long countByCompanyId(Long companyId) {
         String sql = "SELECT COUNT(*) FROM employees WHERE company_id = ?";
         try (Connection conn = db.getConnection();

@@ -14,13 +14,13 @@ import java.util.function.Function;
 
 /**
  * TEMPLATE METHOD PATTERN - AbstractDao
- * 
- * Clasă abstractă care definește scheletul algoritmilor de acces la date.
- * Sub-clasele implementează doar pașii specifici (mapping, table name, queries).
- * 
- * Folosește JDBC pur, fără Hibernate sau JPA.
- * 
- * @param <T> tipul entității
+ *
+ * Abstract class that defines the skeleton of the data-access algorithms.
+ * Sub-classes implement only the specific steps (mapping, table name, queries).
+ *
+ * Uses plain JDBC, without Hibernate or JPA.
+ *
+ * @param <T> the entity type
  */
 public abstract class AbstractDao<T> implements GenericDao<T, Long> {
 
@@ -28,47 +28,47 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
     protected final DatabaseConnection db = DatabaseConnection.getInstance();
 
     /**
-     * Returnează numele tabelei. Implementat de subclase.
+     * Returns the table name. Implemented by subclasses.
      */
     protected abstract String getTableName();
 
     /**
-     * Mapează un ResultSet la o entitate. Implementat de subclase.
+     * Maps a ResultSet to an entity. Implemented by subclasses.
      */
     protected abstract T mapResultSetToEntity(ResultSet rs) throws SQLException;
 
     /**
-     * Returnează SQL pentru INSERT. Implementat de subclase.
+     * Returns the SQL for INSERT. Implemented by subclasses.
      */
     protected abstract String getInsertSql();
 
     /**
-     * Returnează SQL pentru UPDATE. Implementat de subclase.
+     * Returns the SQL for UPDATE. Implemented by subclasses.
      */
     protected abstract String getUpdateSql();
 
     /**
-     * Setează parametrii pentru INSERT. Implementat de subclase.
+     * Sets the parameters for INSERT. Implemented by subclasses.
      */
     protected abstract void setInsertParameters(PreparedStatement ps, T entity) throws SQLException;
 
     /**
-     * Setează parametrii pentru UPDATE. Implementat de subclase.
+     * Sets the parameters for UPDATE. Implemented by subclasses.
      */
     protected abstract void setUpdateParameters(PreparedStatement ps, T entity) throws SQLException;
 
     /**
-     * Setează ID-ul după INSERT. Implementat de subclase.
+     * Sets the ID after INSERT. Implemented by subclasses.
      */
     protected abstract void setEntityId(T entity, Long id);
 
     /**
-     * Returnează ID-ul entității. Implementat de subclase.
+     * Returns the entity's ID. Implemented by subclasses.
      */
     protected abstract Long getEntityId(T entity);
 
     // ====================================================
-    // TEMPLATE METHODS (algoritmul general)
+    // TEMPLATE METHODS (the general algorithm)
     // ====================================================
 
     @Override
@@ -81,7 +81,7 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
             int affected = ps.executeUpdate();
 
             if (affected == 0) {
-                throw new DataAccessException("Inserare eșuată, niciun rând afectat");
+                throw new DataAccessException("Insert failed, no rows affected");
             }
 
             try (ResultSet keys = ps.getGeneratedKeys()) {
@@ -89,11 +89,11 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
                     setEntityId(entity, keys.getLong(1));
                 }
             }
-            logger.debug("Entitate salvată în {}: ID={}", getTableName(), getEntityId(entity));
+            logger.debug("Entity saved in {}: ID={}", getTableName(), getEntityId(entity));
             return entity;
         } catch (SQLException e) {
-            logger.error("Eroare la salvare în {}", getTableName(), e);
-            throw new DataAccessException("Eroare la salvare în " + getTableName(), e);
+            logger.error("Error while saving in {}", getTableName(), e);
+            throw new DataAccessException("Error while saving in " + getTableName(), e);
         }
     }
 
@@ -107,13 +107,13 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
             int affected = ps.executeUpdate();
 
             if (affected == 0) {
-                throw new DataAccessException("Update eșuat, niciun rând afectat");
+                throw new DataAccessException("Update failed, no rows affected");
             }
-            logger.debug("Entitate actualizată în {}: ID={}", getTableName(), getEntityId(entity));
+            logger.debug("Entity updated in {}: ID={}", getTableName(), getEntityId(entity));
             return entity;
         } catch (SQLException e) {
-            logger.error("Eroare la update în {}", getTableName(), e);
-            throw new DataAccessException("Eroare la update în " + getTableName(), e);
+            logger.error("Error while updating in {}", getTableName(), e);
+            throw new DataAccessException("Error while updating in " + getTableName(), e);
         }
     }
 
@@ -131,8 +131,8 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            logger.error("Eroare la findById în {}", getTableName(), e);
-            throw new DataAccessException("Eroare la findById", e);
+            logger.error("Error in findById in {}", getTableName(), e);
+            throw new DataAccessException("Error in findById", e);
         }
     }
 
@@ -159,8 +159,8 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
                 return results;
             }
         } catch (SQLException e) {
-            logger.error("Eroare la findAll paginat în {}", getTableName(), e);
-            throw new DataAccessException("Eroare la findAll", e);
+            logger.error("Error in paginated findAll in {}", getTableName(), e);
+            throw new DataAccessException("Error in findAll", e);
         }
     }
 
@@ -174,8 +174,8 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
             if (rs.next()) return rs.getLong(1);
             return 0;
         } catch (SQLException e) {
-            logger.error("Eroare la count în {}", getTableName(), e);
-            throw new DataAccessException("Eroare la count", e);
+            logger.error("Error in count in {}", getTableName(), e);
+            throw new DataAccessException("Error in count", e);
         }
     }
 
@@ -187,11 +187,11 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
 
             ps.setLong(1, id);
             int affected = ps.executeUpdate();
-            logger.debug("Ștergere din {} ID={}: {} rânduri", getTableName(), id, affected);
+            logger.debug("Delete from {} ID={}: {} rows", getTableName(), id, affected);
             return affected > 0;
         } catch (SQLException e) {
-            logger.error("Eroare la deleteById în {}", getTableName(), e);
-            throw new DataAccessException("Eroare la ștergere", e);
+            logger.error("Error in deleteById in {}", getTableName(), e);
+            throw new DataAccessException("Error while deleting", e);
         }
     }
 
@@ -206,17 +206,17 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
                 return rs.next();
             }
         } catch (SQLException e) {
-            logger.error("Eroare la existsById în {}", getTableName(), e);
-            throw new DataAccessException("Eroare la existsById", e);
+            logger.error("Error in existsById in {}", getTableName(), e);
+            throw new DataAccessException("Error in existsById", e);
         }
     }
 
     // ====================================================
-    // Helper methods pentru subclase
+    // Helper methods for subclasses
     // ====================================================
 
     /**
-     * Execută o interogare simplă fără parametri și mapează rezultatele.
+     * Runs a simple query without parameters and maps the results.
      */
     protected List<T> executeQuery(String sql) {
         try (Connection conn = db.getConnection();
@@ -229,13 +229,13 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
             }
             return results;
         } catch (SQLException e) {
-            logger.error("Eroare la executeQuery: {}", sql, e);
-            throw new DataAccessException("Eroare la query", e);
+            logger.error("Error in executeQuery: {}", sql, e);
+            throw new DataAccessException("Error in query", e);
         }
     }
 
     /**
-     * Execută o interogare cu parametri și un parameter setter.
+     * Runs a query with parameters and a parameter setter.
      */
     protected List<T> executeQuery(String sql, Function<PreparedStatement, PreparedStatement> paramSetter) {
         try (Connection conn = db.getConnection();
@@ -251,8 +251,8 @@ public abstract class AbstractDao<T> implements GenericDao<T, Long> {
                 return results;
             }
         } catch (SQLException e) {
-            logger.error("Eroare la executeQuery: {}", sql, e);
-            throw new DataAccessException("Eroare la query", e);
+            logger.error("Error in executeQuery: {}", sql, e);
+            throw new DataAccessException("Error in query", e);
         }
     }
 }

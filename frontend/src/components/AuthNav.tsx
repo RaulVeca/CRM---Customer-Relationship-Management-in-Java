@@ -7,7 +7,7 @@ import { AUTH_EVENT, getSession, clearSession } from "@/lib/auth";
 import type { AuthSession } from "@/lib/types";
 
 /**
- * Header sign-in control. Reflects the browser session: a "Autentificare" link
+ * Header sign-in control. Reflects the browser session: a "Log in" link
  * when signed out, otherwise the account name plus a logout button. Admins land
  * directly in the admin area on login, so there is no separate "Admin" link.
  * Kept client-side so it can read localStorage and react to login / logout
@@ -46,7 +46,7 @@ export default function AuthNav() {
         href="/login"
         className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
       >
-        Autentificare
+        Log in
       </Link>
     );
   }
@@ -61,7 +61,7 @@ export default function AuthNav() {
         onClick={logout}
         className="rounded-md border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
       >
-        Deconectare
+        Log out
       </button>
     </div>
   );

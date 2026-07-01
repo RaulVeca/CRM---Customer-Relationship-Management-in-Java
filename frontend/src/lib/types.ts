@@ -61,6 +61,16 @@ export interface DayAvailability {
   booked: BookedInterval[];
 }
 
+/** One booked session the logged-in contact owns — for their "my sessions" window. */
+export interface MySession {
+  id: number;
+  trainerId: number;
+  trainerName: string;
+  date: string; // ISO yyyy-MM-dd
+  startHour: number;
+  endHour: number;
+}
+
 /** Result of booking a session. */
 export interface BookingResponse {
   id: number;
@@ -164,6 +174,29 @@ export interface Contact {
   leadStatus: string | null;
   leadScore: number | null;
   experienceLevel: string | null;
+}
+
+/**
+ * Self-service registration payload — the "cards" of an INDIVIDUAL contact.
+ * Sent to POST /api/auth/register, which returns an {@link AuthSession}.
+ */
+export interface RegisterRequest {
+  firstName: string;
+  lastName: string;
+  birthDate: string; // ISO yyyy-MM-dd
+  email: string;
+  phone: string;
+  addressStreet: string;
+  addressCity: string;
+  addressCounty: string;
+  addressPostalCode: string;
+  experienceLevel: string;
+  learningGoal: string;
+  leadSource: string;
+  password: string;
+  confirmPassword: string;
+  gdprConsent: boolean;
+  marketingConsent: boolean;
 }
 
 export interface Course {
