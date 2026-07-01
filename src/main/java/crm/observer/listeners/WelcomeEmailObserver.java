@@ -23,15 +23,15 @@ public class WelcomeEmailObserver implements Observer<CrmEvent> {
         Contact contact = e.getContact();
 
         if (contact == null || contact.getEmail() == null) {
-            logger.warn("Nu pot trimite welcome email: email lipsă");
+            logger.warn("Cannot send welcome email: email missing");
             return;
         }
 
         try {
             NotificationService.getInstance().sendWelcomeEmail(contact);
-            logger.info("Welcome email trimis către: {}", contact.getEmail());
+            logger.info("Welcome email sent to: {}", contact.getEmail());
         } catch (Exception ex) {
-            logger.error("Eroare trimitere welcome email", ex);
+            logger.error("Error sending welcome email", ex);
         }
     }
 }

@@ -135,7 +135,7 @@ public class ActivityDao extends AbstractDao<Activity> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findUpcoming", e);
+            throw new DataAccessException("Error in findUpcoming", e);
         }
     }
 
@@ -149,7 +149,7 @@ public class ActivityDao extends AbstractDao<Activity> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare query", e);
+            throw new DataAccessException("Error in query", e);
         }
     }
 

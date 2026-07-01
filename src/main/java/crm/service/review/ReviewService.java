@@ -45,7 +45,7 @@ public class ReviewService {
     private static volatile ReviewService instance;
 
     private static final String NOT_PURCHASED =
-            "Poți lăsa o recenzie doar după ce ai cumpărat acest curs.";
+            "You can only leave a review after you've purchased this course.";
 
     private final ContactService contactService;
     private final CourseService courseService;
@@ -86,14 +86,14 @@ public class ReviewService {
 
         Optional<Enrollment> existing = findEnrollmentForCourse(contact.getId(), courseId);
         if (existing.isPresent()) {
-            logger.info("Cumpărare ignorată - client {} deja înscris la cursul {}", email, courseId);
+            logger.info("Purchase ignored - client {} already enrolled in course {}", email, courseId);
             return existing.get();
         }
 
         CourseSession session = resolveSession(course);
         Enrollment enrollment = enrollmentService.enrollContact(contact.getId(), session.getId());
 
-        logger.info("Curs cumpărat: client={}, curs={}, enrollment={}", email, courseId, enrollment.getId());
+        logger.info("Course purchased: client={}, course={}, enrollment={}", email, courseId, enrollment.getId());
         return enrollment;
     }
 
@@ -107,7 +107,7 @@ public class ReviewService {
      */
     public Enrollment reviewCourse(String email, Long courseId, int rating, String comment) {
         if (rating < 1 || rating > 5) {
-            throw new IllegalArgumentException("Rating-ul trebuie să fie între 1 și 5 stele");
+            throw new IllegalArgumentException("The rating must be between 1 and 5 stars");
         }
         // confirmă existența cursului (404 dacă lipsește)
         courseService.getById(courseId);

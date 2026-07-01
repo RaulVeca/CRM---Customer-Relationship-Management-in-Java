@@ -68,7 +68,7 @@ public class ContactService {
 
         // Verificare duplicate
         if (contactRepository.existsByEmail(contact.getEmail())) {
-            throw new BusinessException("Email-ul " + contact.getEmail() + " este deja înregistrat");
+            throw new BusinessException("Email-ul " + contact.getEmail() + " is already registered");
         }
 
         // Inițializare valori implicite
@@ -90,7 +90,7 @@ public class ContactService {
         // OBSERVER PATTERN - notificare eveniment
         eventBus.publish(new ContactCreatedEvent(saved, "ContactService"));
 
-        logger.info("Contact creat cu ID: {} (scor: {})", saved.getId(), saved.getLeadScore());
+        logger.info("Contact created with ID: {} (score: {})", saved.getId(), saved.getLeadScore());
         return saved;
     }
 
@@ -99,7 +99,7 @@ public class ContactService {
      */
     public Contact updateContact(Contact contact) {
         if (contact.getId() == null) {
-            throw new BusinessException("Contact ID este obligatoriu pentru update");
+            throw new BusinessException("Contact ID is required for update");
         }
 
         Contact existing = contactRepository.getById(contact.getId());
@@ -108,7 +108,7 @@ public class ContactService {
         // Verifică schimbarea email-ului
         if (!existing.getEmail().equals(contact.getEmail())) {
             if (contactRepository.existsByEmail(contact.getEmail())) {
-                throw new BusinessException("Email-ul " + contact.getEmail() + " este deja folosit");
+                throw new BusinessException("Email-ul " + contact.getEmail() + " is already in use");
             }
         }
 
@@ -166,7 +166,7 @@ public class ContactService {
             ps.setInt(5, newScore);
             ps.executeUpdate();
         } catch (SQLException e) {
-            logger.error("Eroare la log scor", e);
+            logger.error("Error logging score", e);
         }
     }
 

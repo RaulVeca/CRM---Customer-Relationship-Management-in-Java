@@ -103,10 +103,10 @@ public class OpportunityBuilder {
 
     private void validate() {
         if (opp.getClientId() == null) {
-            throw new IllegalStateException("Client ID este obligatoriu");
+            throw new IllegalStateException("Client ID is required");
         }
         if (opp.getTitle() == null || opp.getTitle().isEmpty()) {
-            throw new IllegalStateException("Titlul oportunității este obligatoriu");
+            throw new IllegalStateException("The opportunity title is required");
         }
     }
 }

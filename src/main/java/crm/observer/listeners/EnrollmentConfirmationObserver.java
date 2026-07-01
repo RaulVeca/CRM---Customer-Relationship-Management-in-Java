@@ -27,9 +27,9 @@ public class EnrollmentConfirmationObserver implements Observer<CrmEvent> {
         try {
             Contact contact = ContactRepository.getInstance().getById(enrollment.getContactId());
             NotificationService.getInstance().sendEnrollmentConfirmation(contact, enrollment);
-            logger.info("Confirmare înscriere trimisă către contact {}", enrollment.getContactId());
+            logger.info("Enrollment confirmation sent to contact {}", enrollment.getContactId());
         } catch (Exception ex) {
-            logger.error("Eroare trimitere confirmare înscriere", ex);
+            logger.error("Error sending enrollment confirmation", ex);
         }
     }
 }

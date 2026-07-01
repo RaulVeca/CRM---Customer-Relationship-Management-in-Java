@@ -45,7 +45,7 @@ public class AuditLogObserver implements Observer<CrmEvent> {
                 ps.executeUpdate();
             }
         } catch (SQLException e) {
-            logger.error("Eroare la audit log", e);
+            logger.error("Error in audit log", e);
         }
     }
 }

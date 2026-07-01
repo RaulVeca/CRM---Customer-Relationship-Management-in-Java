@@ -41,10 +41,10 @@ public class OpportunityService {
 
     public Opportunity createOpportunity(Opportunity opp) {
         if (opp.getClientId() == null) {
-            throw new BusinessException("Client ID este obligatoriu");
+            throw new BusinessException("Client ID is required");
         }
         if (opp.getTitle() == null || opp.getTitle().isEmpty()) {
-            throw new BusinessException("Titlul este obligatoriu");
+            throw new BusinessException("The title is required");
         }
 
         if (opp.getStage() == null) {
@@ -55,7 +55,7 @@ public class OpportunityService {
         }
 
         Opportunity saved = opportunityRepository.save(opp);
-        logger.info("Oportunitate creată: {} (client={}, valoare={})", 
+        logger.info("Opportunity created: {} (client={}, value={})", 
                 saved.getTitle(), saved.getClientId(), saved.getEstimatedValue());
         return saved;
     }
@@ -79,7 +79,7 @@ public class OpportunityService {
         opportunityRepository.save(opp);
         eventBus.publish(new OpportunityStageChangedEvent(opp, oldStage, newStage, "OpportunityService"));
 
-        logger.info("Oportunitate {} mutată: {} -> {}", opportunityId, oldStage, newStage);
+        logger.info("Opportunity {} moved: {} -> {}", opportunityId, oldStage, newStage);
     }
 
     public void markAsLost(Long opportunityId, String reason) {

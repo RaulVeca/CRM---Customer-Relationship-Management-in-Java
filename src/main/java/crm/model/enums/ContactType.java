@@ -1,8 +1,8 @@
 package crm.model.enums;
 
 public enum ContactType {
-    INDIVIDUAL("Persoană fizică"),
-    CORPORATE("Companie");
+    INDIVIDUAL("Individual"),
+    CORPORATE("Company");
 
     private final String label;
 

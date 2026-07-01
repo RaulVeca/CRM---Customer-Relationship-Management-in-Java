@@ -62,12 +62,12 @@ public class InvoiceService {
      */
     public Invoice generateForSession(MeditationSession session) {
         if (session == null || session.getId() == null) {
-            throw new IllegalArgumentException("Nu se poate genera factură fără o ședință salvată");
+            throw new IllegalArgumentException("Cannot generate an invoice without a saved session");
         }
 
         List<Invoice> existing = invoiceRepository.findBySessionId(session.getId());
         if (!existing.isEmpty()) {
-            logger.info("Factură deja existentă pentru ședința {} - se refolosește", session.getId());
+            logger.info("Invoice already exists for session {} - reusing it", session.getId());
             return existing.get(0);
         }
 
@@ -99,7 +99,7 @@ public class InvoiceService {
                 .build();
 
         Invoice saved = invoiceRepository.save(invoice);
-        logger.info("Factură generată automat: {} pentru ședința {} ({}h × ${} − {}% = ${})",
+        logger.info("Invoice auto-generated: {} for session {} ({}h x ${} - {}% = ${})",
                 saved.getInvoiceNumber(), session.getId(), hours, HOURLY_RATE,
                 discountRate.multiply(BigDecimal.valueOf(100)).intValue(), total);
         return saved;

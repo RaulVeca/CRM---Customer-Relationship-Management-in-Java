@@ -46,7 +46,7 @@ public class EventBus implements Subject<CrmEvent> {
     @Override
     public void registerObserver(Observer<CrmEvent> observer) {
         globalObservers.add(observer);
-        logger.info("Observer global înregistrat: {}", observer.getObserverName());
+        logger.info("Global observer registered: {}", observer.getObserverName());
     }
 
     /**
@@ -55,7 +55,7 @@ public class EventBus implements Subject<CrmEvent> {
     public void registerObserver(String eventType, Observer<CrmEvent> observer) {
         observersByType.computeIfAbsent(eventType, k -> new CopyOnWriteArrayList<>())
                 .add(observer);
-        logger.info("Observer înregistrat pentru evenimentul '{}': {}",
+        logger.info("Observer registered for event '{}': {}",
                 eventType, observer.getObserverName());
     }
 
@@ -88,7 +88,7 @@ public class EventBus implements Subject<CrmEvent> {
         try {
             obs.update(event);
         } catch (Exception e) {
-            logger.error("Eroare la observer {}: {}", obs.getObserverName(), e.getMessage(), e);
+            logger.error("Error in observer {}: {}", obs.getObserverName(), e.getMessage(), e);
         }
     }
 

@@ -139,7 +139,7 @@ public class OpportunityDao extends AbstractDao<Opportunity> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByClientId", e);
+            throw new DataAccessException("Error in findByClientId", e);
         }
     }
 
@@ -154,7 +154,7 @@ public class OpportunityDao extends AbstractDao<Opportunity> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByStage", e);
+            throw new DataAccessException("Error in findByStage", e);
         }
     }
 

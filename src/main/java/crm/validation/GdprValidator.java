@@ -13,7 +13,7 @@ public class GdprValidator extends Validator<Contact> {
     protected void doValidate(Contact contact, List<String> errors) {
         if (Boolean.TRUE.equals(contact.getGdprConsent())) {
             if (contact.getGdprConsent()==Boolean.FALSE) {
-                errors.add("Data consimțământului GDPR lipsește");
+                errors.add("The GDPR consent date is missing");
             }
         }
     }

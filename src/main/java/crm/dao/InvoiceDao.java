@@ -136,7 +136,7 @@ public class InvoiceDao extends AbstractDao<Invoice> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare la interogarea facturilor după " + column, e);
+            throw new DataAccessException("Error querying invoices by " + column, e);
         }
     }
 }

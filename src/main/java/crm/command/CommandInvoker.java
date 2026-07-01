@@ -39,7 +39,7 @@ public class CommandInvoker {
      * Execută o comandă și o adaugă în istoric.
      */
     public <R> R invoke(Command<R> command) {
-        logger.debug("Invocare comandă: {}", command.getName());
+        logger.debug("Invoking command: {}", command.getName());
         R result = command.execute();
         addToHistory(command);
         return result;

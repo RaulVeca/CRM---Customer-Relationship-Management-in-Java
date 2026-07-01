@@ -24,8 +24,7 @@ import org.springframework.context.annotation.Configuration;
  *
  * <p>The services are Singletons accessed through {@code getInstance()}; here we
  * simply bootstrap them and expose the {@link CrmFacade} as a Spring bean so the
- * REST controllers can have it injected. This mirrors the startup sequence of
- * the original {@link crm.CrmApplication} desktop launcher.</p>
+ * REST controllers can have it injected.</p>
  */
 @Configuration
 public class CrmRuntimeConfig {

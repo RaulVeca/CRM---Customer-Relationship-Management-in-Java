@@ -107,7 +107,7 @@ public class CourseDao extends AbstractDao<Course> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByCode", e);
+            throw new DataAccessException("Error in findByCode", e);
         }
     }
 
@@ -127,7 +127,7 @@ public class CourseDao extends AbstractDao<Course> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByCategory", e);
+            throw new DataAccessException("Error in findByCategory", e);
         }
     }
 }

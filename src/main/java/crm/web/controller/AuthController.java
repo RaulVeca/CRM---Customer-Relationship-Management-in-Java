@@ -68,34 +68,34 @@ public class AuthController {
         String email = normalize(request);
         String password = request == null || request.password() == null ? "" : request.password();
         if (email.isEmpty()) {
-            return badRequest(http, "Adresa de email este obligatorie.");
+            return badRequest(http, "The email address is required.");
         }
         if (password.isEmpty()) {
-            return badRequest(http, "Parola este obligatorie.");
+            return badRequest(http, "The password is required.");
         }
 
         var admin = adminDao.findByEmail(email);
         if (admin.isPresent()) {
             if (!passwordMatches(adminDao.findPasswordByEmail(email), password)) {
-                return unauthorized(http, "Parolă incorectă.");
+                return unauthorized(http, "Incorrect password.");
             }
             return ResponseEntity.ok(AuthResponse.admin(admin.get()));
         }
         var contact = contactDao.findByEmail(email);
         if (contact.isPresent()) {
             if (!passwordMatches(contactDao.findPasswordByEmail(email), password)) {
-                return unauthorized(http, "Parolă incorectă.");
+                return unauthorized(http, "Incorrect password.");
             }
             return ResponseEntity.ok(AuthResponse.user(contact.get()));
         }
         var employee = employeeDao.findByEmail(email);
         if (employee.isPresent()) {
             if (!passwordMatches(employeeDao.findPasswordByEmail(email), password)) {
-                return unauthorized(http, "Parolă incorectă.");
+                return unauthorized(http, "Incorrect password.");
             }
             return ResponseEntity.ok(AuthResponse.employee(employee.get()));
         }
-        return unauthorized(http, "Acest email nu este înregistrat.");
+        return unauthorized(http, "This email is not registered.");
     }
 
     /**
@@ -108,7 +108,7 @@ public class AuthController {
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request, HttpServletRequest http) {
         if (request == null) {
-            return badRequest(http, "Datele de înregistrare sunt obligatorii.");
+            return badRequest(http, "Registration details are required.");
         }
 
         String firstName = trim(request.firstName());
@@ -127,50 +127,50 @@ public class AuthController {
         ExperienceLevel experienceLevel = parseEnum(request.experienceLevel(), ExperienceLevel.class);
         LeadSource leadSource = parseEnum(request.leadSource(), LeadSource.class);
 
-        // Toate cardurile sunt obligatorii pentru înregistrare.
+        // All cards are required for registration.
         List<String> errors = new ArrayList<>();
-        requireField(errors, firstName, "Prenumele");
-        requireField(errors, lastName, "Numele");
+        requireField(errors, firstName, "First name");
+        requireField(errors, lastName, "Last name");
         if (birthDate == null) {
-            errors.add("Data nașterii este obligatorie.");
+            errors.add("The date of birth is required.");
         } else if (birthDate.isAfter(LocalDate.now())) {
-            errors.add("Data nașterii nu poate fi în viitor.");
+            errors.add("The date of birth cannot be in the future.");
         }
-        requireField(errors, email, "Adresa de email");
-        requireField(errors, phone, "Numărul de telefon");
-        requireField(errors, street, "Strada");
-        requireField(errors, city, "Orașul");
-        requireField(errors, county, "Județul");
-        requireField(errors, postalCode, "Codul poștal");
-        requireField(errors, learningGoal, "Obiectivul de învățare");
+        requireField(errors, email, "Email address");
+        requireField(errors, phone, "Phone number");
+        requireField(errors, street, "Street");
+        requireField(errors, city, "City");
+        requireField(errors, county, "County");
+        requireField(errors, postalCode, "Postal code");
+        requireField(errors, learningGoal, "Learning goal");
         if (password.isEmpty()) {
-            errors.add("Parola este obligatorie.");
+            errors.add("The password is required.");
         } else if (password.length() < 4) {
-            errors.add("Parola trebuie să aibă cel puțin 4 caractere.");
+            errors.add("The password must be at least 4 characters.");
         } else if (!password.equals(confirmPassword)) {
-            errors.add("Parolele nu coincid.");
+            errors.add("The passwords don't match.");
         }
         if (experienceLevel == null) {
-            errors.add("Nivelul de experiență este obligatoriu.");
+            errors.add("The experience level is required.");
         }
         if (leadSource == null) {
-            errors.add("Sursa (cum ai aflat de noi) este obligatorie.");
+            errors.add("The source (how you heard about us) is required.");
         }
         if (!Boolean.TRUE.equals(request.gdprConsent())) {
-            errors.add("Consimțământul GDPR este obligatoriu pentru înregistrare.");
+            errors.add("GDPR consent is required for registration.");
         }
         if (!errors.isEmpty()) {
             return validationError(http, errors);
         }
 
-        // Un email deja salvat în baza de date (admin, angajat sau contact) nu
-        // se mai poate înregistra — se poate doar autentifica. Doar tabela
-        // contacts poate crește, și doar cu emailuri complet noi.
+        // An email already stored in the database (admin, employee or contact) can
+        // no longer register — it can only sign in. Only the contacts table may
+        // grow, and only with brand-new emails.
         if (adminDao.findByEmail(email).isPresent()
                 || employeeDao.findByEmail(email).isPresent()
                 || contactDao.findByEmail(email).isPresent()) {
             return conflict(http,
-                    "Acest email este deja înregistrat. Autentifică-te în loc să creezi un cont nou.");
+                    "This email is already registered. Log in instead of creating a new account.");
         }
 
         Contact contact = new ContactBuilder()
@@ -210,7 +210,7 @@ public class AuthController {
     @PostMapping("/reset-password")
     public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request, HttpServletRequest http) {
         if (request == null) {
-            return badRequest(http, "Datele pentru resetare sunt obligatorii.");
+            return badRequest(http, "Reset details are required.");
         }
 
         String email = trim(request.email()).toLowerCase();
@@ -221,17 +221,17 @@ public class AuthController {
         String confirmPassword = request.confirmPassword() == null ? "" : request.confirmPassword();
 
         List<String> errors = new ArrayList<>();
-        requireField(errors, email, "Adresa de email");
+        requireField(errors, email, "Email address");
         if (birthDate == null) {
-            errors.add("Data nașterii este obligatorie.");
+            errors.add("The date of birth is required.");
         }
-        requireField(errors, phone, "Numărul de telefon");
+        requireField(errors, phone, "Phone number");
         if (newPassword.isEmpty()) {
-            errors.add("Parola nouă este obligatorie.");
+            errors.add("The new password is required.");
         } else if (newPassword.length() < 4) {
-            errors.add("Parola trebuie să aibă cel puțin 4 caractere.");
+            errors.add("The password must be at least 4 characters.");
         } else if (!newPassword.equals(confirmPassword)) {
-            errors.add("Parolele nu coincid.");
+            errors.add("The passwords don't match.");
         }
         if (!errors.isEmpty()) {
             return validationError(http, errors);
@@ -245,13 +245,13 @@ public class AuthController {
                 && digitsOnly(phone).equals(digitsOnly(contact.get().getPhone()));
         if (!identityMatches) {
             return unauthorized(http,
-                    "Datele introduse nu corespund unui cont de client. "
-                            + "Verifică emailul, data nașterii și numărul de telefon.");
+                    "The details entered do not match a client account. "
+                            + "Check the email, date of birth and phone number.");
         }
 
         contactDao.updatePassword(contact.get().getId(), newPassword);
         return ResponseEntity.ok(Map.of(
-                "message", "Parola a fost schimbată. Te poți autentifica acum cu noua parolă."));
+                "message", "The password has been changed. You can now log in with the new password."));
     }
 
     /**
@@ -277,7 +277,7 @@ public class AuthController {
 
     private void requireField(List<String> errors, String value, String label) {
         if (value == null || value.isEmpty()) {
-            errors.add(label + " este obligatoriu.");
+            errors.add(label + " is required.");
         }
     }
 
@@ -301,7 +301,7 @@ public class AuthController {
     private ResponseEntity<Object> validationError(HttpServletRequest http, List<String> errors) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
                 ApiError.of(HttpStatus.BAD_REQUEST.value(), HttpStatus.BAD_REQUEST.getReasonPhrase(),
-                        "Completează toate câmpurile obligatorii.", http.getRequestURI(), errors));
+                        "Fill in all required fields.", http.getRequestURI(), errors));
     }
 
     private ResponseEntity<Object> conflict(HttpServletRequest http, String message) {

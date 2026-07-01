@@ -60,7 +60,7 @@ public class AppConfig {
         properties.setProperty("db.pool.idleTimeout", "600000");
         properties.setProperty("db.pool.maxLifetime", "1800000");
 
-        logger.info("Valori default încărcate");
+        logger.info("Default values loaded");
     }
     private void loadProperties() {
         // 1. Încarcă valori default
@@ -69,7 +69,7 @@ public class AppConfig {
         // 2. Încearcă să suprascrie cu fișierul (dacă există)
         try (InputStream input = getClass().getClassLoader().getResourceAsStream(CONFIG_FILE)) {
             if (input == null) {
-                logger.warn("Fișier nu găsit, folosesc valori default");
+                logger.warn("File not found, using default values");
                 return; // NU mai aruncă excepție!
             }
             properties.load(input);
@@ -81,7 +81,7 @@ public class AppConfig {
     public String getProperty(String key) {
         String value = properties.getProperty(key);
         if (value == null) {
-            logger.warn("Proprietate lipsă: {}", key);
+            logger.warn("Missing property: {}", key);
         }
         return value;
     }
@@ -96,7 +96,7 @@ public class AppConfig {
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {
-            logger.warn("Valoare invalidă pentru {}: {}", key, value);
+            logger.warn("Invalid value for {}: {}", key, value);
             return defaultValue;
         }
     }

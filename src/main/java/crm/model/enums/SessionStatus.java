@@ -1,12 +1,12 @@
 package crm.model.enums;
 
 public enum SessionStatus {
-    PLANNED("Planificat"),
-    OPEN_ENROLLMENT("Înscrieri deschise"),
-    FULL("Locuri ocupate"),
-    ACTIVE("În desfășurare"),
-    COMPLETED("Finalizat"),
-    CANCELLED("Anulat");
+    PLANNED("Planned"),
+    OPEN_ENROLLMENT("Open enrollment"),
+    FULL("Full"),
+    ACTIVE("In progress"),
+    COMPLETED("Completed"),
+    CANCELLED("Cancelled");
 
     private final String label;
 

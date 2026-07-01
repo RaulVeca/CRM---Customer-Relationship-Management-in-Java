@@ -57,7 +57,7 @@ public class MetricsService {
             }
             ps.executeBatch();
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare recordImpressions", e);
+            throw new DataAccessException("Error in recordImpressions", e);
         }
     }
 
@@ -71,7 +71,7 @@ public class MetricsService {
             ps.setLong(1, courseId);
             ps.executeUpdate();
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare recordClick", e);
+            throw new DataAccessException("Error in recordClick", e);
         }
     }
 
@@ -87,7 +87,7 @@ public class MetricsService {
                         new long[]{rs.getLong("impressions"), rs.getLong("clicks")});
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare getAllCounts", e);
+            throw new DataAccessException("Error in getAllCounts", e);
         }
         logger.debug("Loaded CTR counts for {} courses", counts.size());
         return counts;

@@ -111,7 +111,7 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByContactId", e);
+            throw new DataAccessException("Error in findByContactId", e);
         }
     }
 
@@ -126,7 +126,7 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findBySessionId", e);
+            throw new DataAccessException("Error in findBySessionId", e);
         }
     }
 

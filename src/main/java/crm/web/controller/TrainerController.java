@@ -75,10 +75,10 @@ public class TrainerController {
 
         Trainer trainer = requireTrainer(id);
         if (to.isBefore(from)) {
-            throw new ValidationException("Intervalul de date este invalid.");
+            throw new ValidationException("The date range is invalid.");
         }
         if (from.plusDays(MAX_RANGE_DAYS).isBefore(to)) {
-            throw new ValidationException("Intervalul cerut este prea mare.");
+            throw new ValidationException("The requested range is too large.");
         }
 
         List<MeditationSession> sessions = sessionDao.findByTrainerBetween(trainer.getId(), from, to);
@@ -104,10 +104,10 @@ public class TrainerController {
         Trainer trainer = requireTrainer(id);
 
         if (req == null || req.contactId() == null) {
-            throw new ValidationException("Contul care face rezervarea este obligatoriu.");
+            throw new ValidationException("The account making the booking is required.");
         }
         if (!contactDao.existsById(req.contactId())) {
-            throw new ValidationException("Contul nu există.");
+            throw new ValidationException("The account does not exist.");
         }
 
         LocalDate date = parseDate(req.date());
@@ -116,17 +116,17 @@ public class TrainerController {
         int end = start + duration;
 
         if (!isWorkingDay(date, LocalDate.now())) {
-            throw new BusinessException("Trainerul nu este disponibil în ziua aleasă.");
+            throw new BusinessException("The trainer is not available on the chosen day.");
         }
         if (duration < 1) {
-            throw new ValidationException("Durata trebuie să fie de cel puțin o oră.");
+            throw new ValidationException("The duration must be at least one hour.");
         }
         if (start < WORK_START || end > WORK_END) {
             throw new ValidationException(
-                    "Ședințele se pot programa doar între " + WORK_START + ":00 și " + WORK_END + ":00.");
+                    "Sessions can only be scheduled between " + WORK_START + ":00 and " + WORK_END + ":00.");
         }
         if (sessionDao.hasOverlap(trainer.getId(), date, start, end)) {
-            throw new BusinessException("Trainerul este deja ocupat în acest interval. Alege alt interval.");
+            throw new BusinessException("The trainer is already busy in this interval. Choose another interval.");
         }
 
         MeditationSession saved = sessionDao.save(MeditationSession.builder()
@@ -144,7 +144,7 @@ public class TrainerController {
         return new BookingResponse(
                 saved.getId(), trainer.getId(), trainer.getFullName(),
                 date.toString(), start, end,
-                "Ședința a fost programată cu succes.");
+                "The session has been scheduled successfully.");
     }
 
     /**
@@ -155,7 +155,7 @@ public class TrainerController {
     @GetMapping("/sessions")
     public List<MySessionDto> mySessions(@RequestParam Long contactId) {
         if (contactId == null) {
-            throw new ValidationException("Contul este obligatoriu.");
+            throw new ValidationException("The account is required.");
         }
         Map<Long, String> trainerNames = new HashMap<>();
         return sessionDao.findByContactId(contactId).stream()
@@ -177,9 +177,9 @@ public class TrainerController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void cancelSession(@PathVariable Long sessionId, @RequestParam Long contactId) {
         MeditationSession session = sessionDao.findById(sessionId)
-                .orElseThrow(() -> new ResourceNotFoundException("Ședința nu a fost găsită."));
+                .orElseThrow(() -> new ResourceNotFoundException("The session was not found."));
         if (contactId == null || !contactId.equals(session.getContactId())) {
-            throw new ValidationException("Nu poți anula o ședință care nu îți aparține.");
+            throw new ValidationException("You cannot cancel a session that isn't yours.");
         }
         sessionDao.deleteById(sessionId);
     }
@@ -190,14 +190,14 @@ public class TrainerController {
 
     private Trainer requireTrainer(Long id) {
         return trainerDao.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Trainerul nu a fost găsit."));
+                .orElseThrow(() -> new ResourceNotFoundException("The trainer was not found."));
     }
 
     private LocalDate parseDate(String raw) {
         try {
             return LocalDate.parse(raw);
         } catch (Exception e) {
-            throw new ValidationException("Data aleasă este invalidă.");
+            throw new ValidationException("The chosen date is invalid.");
         }
     }
 

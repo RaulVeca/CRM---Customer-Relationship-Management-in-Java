@@ -28,10 +28,10 @@ public class LeadScoreUpdateObserver implements Observer<CrmEvent> {
             String activityCode = mapActivityToCode(activity);
             ContactService.getInstance()
                     .updateLeadScoreFromActivity(activity.getContactId(), activityCode);
-            logger.debug("Scor lead actualizat pentru contact {} după activitate {}",
+            logger.debug("Lead score updated for contact {} after activity {}",
                     activity.getContactId(), activityCode);
         } catch (Exception ex) {
-            logger.error("Eroare actualizare scor lead", ex);
+            logger.error("Error updating lead score", ex);
         }
     }
 

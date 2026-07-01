@@ -64,7 +64,7 @@ public class ContactBuilder {
 
     public ContactBuilder email(String email) {
         if (email == null || !email.contains("@")) {
-            throw new IllegalArgumentException("Email invalid: " + email);
+            throw new IllegalArgumentException("Invalid email: " + email);
         }
         contact.setEmail(email.trim().toLowerCase());
         return this;
@@ -77,7 +77,7 @@ public class ContactBuilder {
 
     public ContactBuilder birthDate(LocalDate birthDate) {
         if (birthDate != null && birthDate.isAfter(LocalDate.now())) {
-            throw new IllegalArgumentException("Data nașterii nu poate fi în viitor");
+            throw new IllegalArgumentException("The date of birth cannot be in the future");
         }
         contact.setBirthDate(birthDate);
         return this;
@@ -151,19 +151,19 @@ public class ContactBuilder {
 
     private void validate() {
         if (contact.getContactType() == null) {
-            throw new IllegalStateException("ContactType este obligatoriu");
+            throw new IllegalStateException("ContactType is required");
         }
         if (contact.getEmail() == null || contact.getEmail().isEmpty()) {
-            throw new IllegalStateException("Email-ul este obligatoriu");
+            throw new IllegalStateException("The email is required");
         }
         if (contact.getContactType() == ContactType.INDIVIDUAL) {
             if (contact.getFirstName() == null && contact.getLastName() == null) {
                 throw new IllegalStateException(
-                    "Prenume sau nume obligatoriu pentru persoană fizică");
+                    "First or last name is required for an individual");
             }
         } else if (contact.getContactType() == ContactType.CORPORATE) {
             if (contact.getCompanyName() == null || contact.getCompanyName().isEmpty()) {
-                throw new IllegalStateException("Numele companiei este obligatoriu");
+                throw new IllegalStateException("The company name is required");
             }
         }
     }

@@ -114,7 +114,7 @@ public class CourseSessionDao extends AbstractDao<CourseSession> {
                 return list;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByCourseId", e);
+            throw new DataAccessException("Error in findByCourseId", e);
         }
     }
 

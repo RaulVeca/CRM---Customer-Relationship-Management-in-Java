@@ -52,13 +52,6 @@
             <version>2.34.0</version>
         </dependency>
 
-        <!-- ============ Existing desktop UI dependency ============ -->
-        <dependency>
-            <groupId>org.jdatepicker</groupId>
-            <artifactId>jdatepicker</artifactId>
-            <version>1.3.4</version>
-        </dependency>
-
         <!-- Lombok - reduces boilerplate code (pinned for JDK 25 compatibility) -->
         <dependency>
             <groupId>org.projectlombok</groupId>

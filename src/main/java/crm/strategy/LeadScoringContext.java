@@ -29,13 +29,13 @@ public class LeadScoringContext {
     }
 
     public void setStrategy(LeadScoringStrategy strategy) {
-        logger.debug("Strategie schimbată la: {}", strategy.getStrategyName());
+        logger.debug("Strategy changed to: {}", strategy.getStrategyName());
         this.strategy = strategy;
     }
 
     public int calculateInitialScore(Contact contact) {
         int score = strategy.calculateInitialScore(contact);
-        logger.debug("Scor inițial pentru contact {} (strategie: {}): {}",
+        logger.debug("Initial score for contact {} (strategy: {}): {}",
             contact.getEmail(), strategy.getStrategyName(), score);
         return score;
     }

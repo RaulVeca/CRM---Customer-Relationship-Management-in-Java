@@ -28,7 +28,7 @@ public class InvoiceGenerationObserver implements Observer<CrmEvent> {
         try {
             InvoiceService.getInstance().generateForSession(session);
         } catch (Exception ex) {
-            logger.error("Eroare la generarea automată a facturii pentru ședința {}",
+            logger.error("Error auto-generating the invoice for session {}",
                     session.getId(), ex);
         }
     }

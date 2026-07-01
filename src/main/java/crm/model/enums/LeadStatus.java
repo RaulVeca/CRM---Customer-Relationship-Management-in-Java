@@ -1,12 +1,12 @@
 package crm.model.enums;
 
 public enum LeadStatus {
-    NEW("Nou"),
-    CONTACTED("Contactat"),
-    INTERESTED("Interesat"),
-    QUALIFIED("Calificat"),
-    ENROLLED("Înscris"),
-    LOST("Pierdut");
+    NEW("New"),
+    CONTACTED("Contacted"),
+    INTERESTED("Interested"),
+    QUALIFIED("Qualified"),
+    ENROLLED("Enrolled"),
+    LOST("Lost");
 
     private final String label;
 

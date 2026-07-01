@@ -72,7 +72,7 @@ public class CrmFacade {
         this.analyticsService = AnalyticsService.getInstance();
         this.metricsService = MetricsService.getInstance();
         this.commandInvoker = CommandInvoker.getInstance();
-        logger.info("CrmFacade inițializat");
+        logger.info("CrmFacade initialized");
     }
 
     public static CrmFacade getInstance() {

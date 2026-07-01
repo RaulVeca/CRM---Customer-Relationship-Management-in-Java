@@ -97,7 +97,7 @@ public class TrainerDao extends AbstractDao<Trainer> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByEmail (trainers)", e);
+            throw new DataAccessException("Error in findByEmail (trainers)", e);
         }
     }
 }

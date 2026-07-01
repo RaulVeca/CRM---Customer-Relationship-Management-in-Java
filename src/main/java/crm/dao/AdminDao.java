@@ -98,7 +98,7 @@ public class AdminDao extends AbstractDao<Admin> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByEmail (admins)", e);
+            throw new DataAccessException("Error in findByEmail (admins)", e);
         }
     }
 
@@ -116,7 +116,7 @@ public class AdminDao extends AbstractDao<Admin> {
                 return rs.next() ? rs.getString("password") : null;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findPasswordByEmail (admins)", e);
+            throw new DataAccessException("Error in findPasswordByEmail (admins)", e);
         }
     }
 }

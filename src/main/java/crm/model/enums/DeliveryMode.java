@@ -2,9 +2,9 @@ package crm.model.enums;
 
 public enum DeliveryMode {
     ONLINE("Online"),
-    ON_SITE("La fața locului"),
-    HYBRID("Hibrid"),
-    AT_CLIENT("La client");
+    ON_SITE("On-site"),
+    HYBRID("Hybrid"),
+    AT_CLIENT("At client");
 
     private final String label;
 

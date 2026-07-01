@@ -166,7 +166,7 @@ public class ContactDao extends AbstractDao<Contact> {
             ps.setInt(2, offset);
             return mapResults(ps);
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findAll ordonat (contacts)", e);
+            throw new DataAccessException("Error in ordered findAll (contacts)", e);
         }
     }
 
@@ -188,7 +188,7 @@ public class ContactDao extends AbstractDao<Contact> {
                 return Optional.empty();
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByEmail", e);
+            throw new DataAccessException("Error in findByEmail", e);
         }
     }
 
@@ -207,7 +207,7 @@ public class ContactDao extends AbstractDao<Contact> {
                 return rs.next() ? rs.getString("password") : null;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findPasswordByEmail (contacts)", e);
+            throw new DataAccessException("Error in findPasswordByEmail (contacts)", e);
         }
     }
 
@@ -224,7 +224,7 @@ public class ContactDao extends AbstractDao<Contact> {
             ps.setLong(2, contactId);
             ps.executeUpdate();
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare updatePassword (contacts)", e);
+            throw new DataAccessException("Error in updatePassword (contacts)", e);
         }
     }
 
@@ -236,7 +236,7 @@ public class ContactDao extends AbstractDao<Contact> {
             ps.setString(1, status.name());
             return mapResults(ps);
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByLeadStatus", e);
+            throw new DataAccessException("Error in findByLeadStatus", e);
         }
     }
 
@@ -250,7 +250,7 @@ public class ContactDao extends AbstractDao<Contact> {
             ps.setInt(2, limit);
             return mapResults(ps);
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findHotLeads", e);
+            throw new DataAccessException("Error in findHotLeads", e);
         }
     }
 
@@ -262,7 +262,7 @@ public class ContactDao extends AbstractDao<Contact> {
             ps.setLong(1, userId);
             return mapResults(ps);
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findByAssignedTo", e);
+            throw new DataAccessException("Error in findByAssignedTo", e);
         }
     }
 
@@ -281,7 +281,7 @@ public class ContactDao extends AbstractDao<Contact> {
             ps.setInt(7, offset);
             return mapResults(ps);
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare search", e);
+            throw new DataAccessException("Error in search", e);
         }
     }
 
@@ -294,7 +294,7 @@ public class ContactDao extends AbstractDao<Contact> {
             ps.setTimestamp(1, Timestamp.valueOf(threshold));
             return mapResults(ps);
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare findStaleLeads", e);
+            throw new DataAccessException("Error in findStaleLeads", e);
         }
     }
 
@@ -309,7 +309,7 @@ public class ContactDao extends AbstractDao<Contact> {
                 return 0;
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare countByLeadStatus", e);
+            throw new DataAccessException("Error in countByLeadStatus", e);
         }
     }
 

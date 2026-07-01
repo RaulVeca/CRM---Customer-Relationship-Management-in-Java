@@ -108,7 +108,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
                 return list;
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("Eroare findByCompanyId", ex);
+            throw new DataAccessException("Error in findByCompanyId", ex);
         }
     }
 
@@ -127,7 +127,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
                 return java.util.Optional.empty();
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("Eroare findByEmail (employees)", ex);
+            throw new DataAccessException("Error in findByEmail (employees)", ex);
         }
     }
 
@@ -144,7 +144,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
                 return rs.next() ? rs.getString("password") : null;
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("Eroare findPasswordByEmail (employees)", ex);
+            throw new DataAccessException("Error in findPasswordByEmail (employees)", ex);
         }
     }
 
@@ -157,7 +157,7 @@ public class EmployeeDao extends AbstractDao<Employee> {
                 return rs.next() ? rs.getLong(1) : 0;
             }
         } catch (SQLException ex) {
-            throw new DataAccessException("Eroare countByCompanyId", ex);
+            throw new DataAccessException("Error in countByCompanyId", ex);
         }
     }
 

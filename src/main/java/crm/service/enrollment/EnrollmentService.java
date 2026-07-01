@@ -56,7 +56,7 @@ public class EnrollmentService {
         boolean alreadyEnrolled = enrollmentRepository.findByContactId(contactId).stream()
                 .anyMatch(e -> e.getSessionId().equals(sessionId));
         if (alreadyEnrolled) {
-            throw new BusinessException("Contactul este deja înscris la această sesiune");
+            throw new BusinessException("The contact is already enrolled in this session");
         }
 
         Enrollment enrollment = Enrollment.builder()
@@ -74,7 +74,7 @@ public class EnrollmentService {
         // OBSERVER - notifică crearea înscrierii
         eventBus.publish(new EnrollmentCreatedEvent(saved, "EnrollmentService"));
 
-        logger.info("Înscriere creată: contact={}, sesiune={}", contactId, sessionId);
+        logger.info("Enrollment created: contact={}, session={}", contactId, sessionId);
         return saved;
     }
 
@@ -94,7 +94,7 @@ public class EnrollmentService {
         }
 
         enrollmentRepository.save(enrollment);
-        logger.info("Înscriere finalizată: id={}, grade={}, passed={}", 
+        logger.info("Enrollment completed: id={}, grade={}, passed={}", 
                 enrollmentId, grade, enrollment.getExamPassed());
     }
 
@@ -104,7 +104,7 @@ public class EnrollmentService {
      */
     public Enrollment saveReview(Long enrollmentId, int rating, String feedback) {
         if (rating < 1 || rating > 5) {
-            throw new BusinessException("Rating-ul trebuie să fie între 1 și 5 stele");
+            throw new BusinessException("The rating must be between 1 and 5 stars");
         }
         Enrollment enrollment = enrollmentRepository.getById(enrollmentId);
         enrollment.setRating(rating);

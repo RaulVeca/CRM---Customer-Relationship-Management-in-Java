@@ -5,12 +5,12 @@ public enum LeadSource {
     FACEBOOK("Facebook"),
     GOOGLE_ADS("Google Ads"),
     LINKEDIN("LinkedIn"),
-    REFERRAL("Recomandare"),
+    REFERRAL("Referral"),
     COLD_CALL("Cold Call"),
-    EVENT("Eveniment"),
-    EMAIL_CAMPAIGN("Campanie Email"),
-    PARTNER("Partener"),
-    OTHER("Altul");
+    EVENT("Event"),
+    EMAIL_CAMPAIGN("Email Campaign"),
+    PARTNER("Partner"),
+    OTHER("Other");
 
     private final String label;
 

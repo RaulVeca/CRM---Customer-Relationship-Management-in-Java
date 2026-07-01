@@ -52,10 +52,10 @@ public class DatabaseConnection {
 
         try {
             this.dataSource = new HikariDataSource(hikariConfig);
-            logger.info("Connection pool inițializat cu succes (size: {})",
+            logger.info("Connection pool initialized successfully (size: {})",
                 hikariConfig.getMaximumPoolSize());
         } catch (Exception e) {
-            logger.error("Eroare la inițializarea connection pool", e);
+            logger.error("Error initializing the connection pool", e);
             throw new IllegalStateException("Nu pot conecta la baza de date", e);
         }
     }
@@ -92,7 +92,7 @@ public class DatabaseConnection {
     public void shutdown() {
         if (dataSource != null && !dataSource.isClosed()) {
             dataSource.close();
-            logger.info("Connection pool închis");
+            logger.info("Connection pool closed");
         }
     }
 }

@@ -18,7 +18,7 @@ public class PhoneValidator extends Validator<Contact> {
             return;  // Telefon este opțional
         }
         if (!PHONE_PATTERN.matcher(phone).matches()) {
-            errors.add("Format telefon invalid: " + phone);
+            errors.add("Invalid phone format: " + phone);
         }
     }
 }

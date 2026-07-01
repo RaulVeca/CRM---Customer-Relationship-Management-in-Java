@@ -39,7 +39,7 @@ public class ActivityService {
         if (activity.getPriority() == null) activity.setPriority("MEDIUM");
 
         Activity saved = activityRepository.save(activity);
-        logger.info("Activitate creată: {} (tip: {})", saved.getSubject(), saved.getActivityType());
+        logger.info("Activity created: {} (type: {})", saved.getSubject(), saved.getActivityType());
         return saved;
     }
 
@@ -53,7 +53,7 @@ public class ActivityService {
         activityRepository.save(activity);
         eventBus.publish(new ActivityCompletedEvent(activity, "ActivityService"));
 
-        logger.info("Activitate finalizată: {}", activityId);
+        logger.info("Activity completed: {}", activityId);
     }
 
     public List<Activity> getByContact(Long contactId) {

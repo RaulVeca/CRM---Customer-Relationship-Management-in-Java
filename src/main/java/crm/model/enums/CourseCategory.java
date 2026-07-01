@@ -1,14 +1,14 @@
 package crm.model.enums;
 
 public enum CourseCategory {
-    PROGRAMMING("Programare"),
-    AI("Inteligență Artificială"),
+    PROGRAMMING("Programming"),
+    AI("Artificial Intelligence"),
     DATA_SCIENCE("Data Science"),
-    WEB_DEVELOPMENT("Dezvoltare Web"),
+    WEB_DEVELOPMENT("Web Development"),
     MOBILE("Mobile"),
     DEVOPS("DevOps"),
-    CYBERSECURITY("Securitate Cibernetică"),
-    PROFESSIONAL_RECONVERSION("Reconversie Profesională"),
+    CYBERSECURITY("Cybersecurity"),
+    PROFESSIONAL_RECONVERSION("Career Change"),
     WORKSHOP("Workshop");
 
     private final String label;

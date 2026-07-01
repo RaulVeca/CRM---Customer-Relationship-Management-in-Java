@@ -18,15 +18,15 @@ public abstract class AbstractCommand<R> implements Command<R> {
 
     @Override
     public final R execute() {
-        logger.debug("Executare comandă: {}", getName());
+        logger.debug("Executing command: {}", getName());
         long start = System.currentTimeMillis();
         try {
             R result = doExecute();
             long duration = System.currentTimeMillis() - start;
-            logger.debug("Comandă finalizată: {} (durata: {}ms)", getName(), duration);
+            logger.debug("Command finished: {} (duration: {}ms)", getName(), duration);
             return result;
         } catch (RuntimeException e) {
-            logger.error("Eroare la execuția comenzii {}: {}", getName(), e.getMessage());
+            logger.error("Error executing command {}: {}", getName(), e.getMessage());
             throw e;
         }
     }

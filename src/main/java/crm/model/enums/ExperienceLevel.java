@@ -1,9 +1,9 @@
 package crm.model.enums;
 
 public enum ExperienceLevel {
-    BEGINNER("Începător"),
-    INTERMEDIATE("Intermediar"),
-    ADVANCED("Avansat");
+    BEGINNER("Beginner"),
+    INTERMEDIATE("Intermediate"),
+    ADVANCED("Advanced");
 
     private final String label;
 

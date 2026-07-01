@@ -1,11 +1,11 @@
 package crm.model.enums;
 
 public enum PaymentStatus {
-    UNPAID("Neplătit"),
-    PARTIAL("Plată parțială"),
-    PAID("Plătit"),
-    REFUNDED("Returnat"),
-    OVERDUE("Întârziat");
+    UNPAID("Unpaid"),
+    PARTIAL("Partial payment"),
+    PAID("Paid"),
+    REFUNDED("Refunded"),
+    OVERDUE("Overdue");
 
     private final String label;
 

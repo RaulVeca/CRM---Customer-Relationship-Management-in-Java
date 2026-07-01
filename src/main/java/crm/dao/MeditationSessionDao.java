@@ -107,7 +107,7 @@ public class MeditationSessionDao extends AbstractDao<MeditationSession> {
                 ps.setDate(2, Date.valueOf(from));
                 ps.setDate(3, Date.valueOf(to));
             } catch (SQLException e) {
-                throw new DataAccessException("Eroare findByTrainerBetween", e);
+                throw new DataAccessException("Error in findByTrainerBetween", e);
             }
             return ps;
         });
@@ -129,7 +129,7 @@ public class MeditationSessionDao extends AbstractDao<MeditationSession> {
             try {
                 ps.setLong(1, contactId);
             } catch (SQLException e) {
-                throw new DataAccessException("Eroare findByContactId", e);
+                throw new DataAccessException("Error in findByContactId", e);
             }
             return ps;
         });
@@ -155,7 +155,7 @@ public class MeditationSessionDao extends AbstractDao<MeditationSession> {
                 return rs.next();
             }
         } catch (SQLException e) {
-            throw new DataAccessException("Eroare hasOverlap (meditation_sessions)", e);
+            throw new DataAccessException("Error in hasOverlap (meditation_sessions)", e);
         }
     }
 }

@@ -37,16 +37,16 @@ public class CourseService {
 
     public Course createCourse(Course course) {
         if (course.getCode() == null || course.getCode().isEmpty()) {
-            throw new BusinessException("Codul cursului este obligatoriu");
+            throw new BusinessException("The course code is required");
         }
         if (courseRepository.findByCode(course.getCode()).isPresent()) {
             throw new BusinessException("Cod curs duplicat: " + course.getCode());
         }
         if (course.getName() == null || course.getName().isEmpty()) {
-            throw new BusinessException("Numele cursului este obligatoriu");
+            throw new BusinessException("The course name is required");
         }
         if (course.getDurationHours() == null || course.getDurationHours() <= 0) {
-            throw new BusinessException("Durata cursului trebuie să fie pozitivă");
+            throw new BusinessException("The course duration must be positive");
         }
 
         if (course.getActive() == null) course.setActive(true);
@@ -60,7 +60,7 @@ public class CourseService {
 
     public Course updateCourse(Course course) {
         if (course.getId() == null) {
-            throw new BusinessException("Course ID este obligatoriu");
+            throw new BusinessException("Course ID is required");
         }
         courseRepository.getById(course.getId()); // verifică existența
         return courseRepository.save(course);

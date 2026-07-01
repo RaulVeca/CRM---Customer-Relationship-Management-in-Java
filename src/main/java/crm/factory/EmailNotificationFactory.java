@@ -14,21 +14,21 @@ public class EmailNotificationFactory implements NotificationFactory {
     public Notification createWelcomeNotification(Contact contact) {
         String subject = "Bine ai venit la Training IT!";
         String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
-                "Îți mulțumim pentru interesul față de cursurile noastre!\n\n" +
-                "Suntem o companie specializată în training IT și oferim cursuri " +
-                "de Java, Python, AI și multe altele.\n\n" +
-                "Un consultant te va contacta în curând pentru a discuta opțiunile potrivite.\n\n" +
+                "Thank you for your interest in our courses!\n\n" +
+                "We are a company specialized in IT training and we offer courses " +
+                "on Java, Python, AI and much more.\n\n" +
+                "A consultant will contact you soon to discuss the right options.\n\n" +
                 "Cu drag,\nEchipa Training IT";
         return new Notification(contact.getEmail(), subject, body, CHANNEL);
     }
 
     @Override
     public Notification createEnrollmentConfirmation(Contact contact, Enrollment enrollment) {
-        String subject = "Confirmare înscriere curs";
+        String subject = "Course enrollment confirmation";
         String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
-                "Înscrierea ta a fost confirmată cu succes!\n" +
+                "Your enrollment has been confirmed successfully!\n" +
                 "Status: " + enrollment.getStatus() + "\n\n" +
-                "Vei primi în curând detalii despre programul cursului și materialele necesare.\n\n" +
+                "You will soon receive details about the course schedule and the required materials.\n\n" +
                 "Mult succes!\nEchipa Training IT";
         return new Notification(contact.getEmail(), subject, body, CHANNEL);
     }
@@ -37,7 +37,7 @@ public class EmailNotificationFactory implements NotificationFactory {
     public Notification createSessionReminder(Contact contact, String sessionDetails) {
         String subject = "Reminder sesiune curs";
         String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
-                "Acesta este un reminder pentru sesiunea de mâine:\n\n" +
+                "This is a reminder for tomorrow's session:\n\n" +
                 sessionDetails + "\n\n" +
                 "Ne vedem cu drag!\nEchipa Training IT";
         return new Notification(contact.getEmail(), subject, body, CHANNEL);
@@ -47,10 +47,10 @@ public class EmailNotificationFactory implements NotificationFactory {
     public Notification createFollowUp(Contact contact, String reason) {
         String subject = "Follow-up: " + reason;
         String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
-                "Ne pare bine să te recontactăm.\n" +
+                "We're glad to be in touch again.\n" +
                 reason + "\n\n" +
-                "Te rugăm să ne răspunzi când ai un moment.\n\n" +
-                "Mulțumim!\nEchipa Training IT";
+                "Please reply when you have a moment.\n\n" +
+                "Thank you!\nThe Training IT Team";
         return new Notification(contact.getEmail(), subject, body, CHANNEL);
     }
 }

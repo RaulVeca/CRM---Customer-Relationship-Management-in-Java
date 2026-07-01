@@ -2,10 +2,10 @@ package crm.model.enums;
 
 public enum ActivityType {
     EMAIL("Email"),
-    CALL("Apel"),
-    MEETING("Întâlnire"),
+    CALL("Call"),
+    MEETING("Meeting"),
     TASK("Task"),
-    NOTE("Notă"),
+    NOTE("Note"),
     SMS("SMS"),
     DEMO("Demo");
 

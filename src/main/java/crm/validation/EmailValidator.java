@@ -18,14 +18,14 @@ public class EmailValidator extends Validator<Contact> {
     protected void doValidate(Contact contact, List<String> errors) {
         String email = contact.getEmail();
         if (email == null || email.trim().isEmpty()) {
-            errors.add("Email-ul este obligatoriu");
+            errors.add("The email is required");
             return;
         }
         if (!EMAIL_PATTERN.matcher(email).matches()) {
-            errors.add("Format email invalid: " + email);
+            errors.add("Invalid email format: " + email);
         }
         if (email.length() > 100) {
-            errors.add("Email-ul depășește 100 caractere");
+            errors.add("The email exceeds 100 characters");
         }
     }
 }

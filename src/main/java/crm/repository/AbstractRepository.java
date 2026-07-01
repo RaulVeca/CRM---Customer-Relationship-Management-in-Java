@@ -36,7 +36,7 @@ public abstract class AbstractRepository<T extends BaseEntity> {
     protected abstract String getEntityName();
 
     public T save(T entity) {
-        logger.debug("Salvare {} : {}", getEntityName(), entity);
+        logger.debug("Saving {} : {}", getEntityName(), entity);
         if (entity.isNew()) {
             return getDao().save(entity);
         } else {
@@ -66,7 +66,7 @@ public abstract class AbstractRepository<T extends BaseEntity> {
     }
 
     public boolean deleteById(Long id) {
-        logger.debug("Ștergere {} ID: {}", getEntityName(), id);
+        logger.debug("Delete {} ID: {}", getEntityName(), id);
         return getDao().deleteById(id);
     }
 

@@ -1,12 +1,12 @@
 package crm.model.enums;
 
 public enum EnrollmentStatus {
-    PENDING("În așteptare"),
-    CONFIRMED("Confirmat"),
-    ATTENDING("În participare"),
-    COMPLETED("Finalizat"),
-    DROPPED("Abandonat"),
-    CANCELLED("Anulat");
+    PENDING("Pending"),
+    CONFIRMED("Confirmed"),
+    ATTENDING("Attending"),
+    COMPLETED("Completed"),
+    DROPPED("Dropped"),
+    CANCELLED("Cancelled");
 
     private final String label;
 

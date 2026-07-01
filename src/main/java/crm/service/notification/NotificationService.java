@@ -79,10 +79,10 @@ public class NotificationService {
      * Trimite efectiv notificarea. În implementarea reală ar folosi SMTP/Twilio.
      */
     private void send(Notification n) {
-        logger.info("[{}] Către: {}, Subiect: {}", 
+        logger.info("[{}] To: {}, Subject: {}", 
             n.channel, n.recipient, 
-            n.subject != null ? n.subject : "(fără subiect)");
-        logger.debug("Conținut:\n{}", n.body);
+            n.subject != null ? n.subject : "(no subject)");
+        logger.debug("Content:\n{}", n.body);
 
         // TODO: integrare reală cu SMTP/Twilio
     }

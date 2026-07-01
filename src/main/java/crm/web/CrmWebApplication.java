@@ -11,9 +11,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
  * patterns) as a REST API. The domain keeps managing its own database
  * connection pool through {@link crm.config.DatabaseConnection}, so Spring's
  * automatic {@code DataSource} configuration is explicitly disabled.</p>
- *
- * <p>The original desktop entry point {@link crm.CrmApplication} is left
- * untouched - both front-ends share the very same business layer.</p>
  */
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
 public class CrmWebApplication {
