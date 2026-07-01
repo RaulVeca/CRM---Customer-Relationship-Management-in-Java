@@ -112,6 +112,7 @@ public final class WebSchemaInitializer {
                 st.execute(ddl);
             }
             relaxEnrollmentPrice(conn);
+            ensureEmployeeColumns(conn);
             ensurePasswordColumns(conn);
             seedAdmins(conn);
             seedTrainers(conn);
@@ -133,6 +134,30 @@ public final class WebSchemaInitializer {
             st.execute("ALTER TABLE enrollments MODIFY COLUMN price DECIMAL(10,2) NULL DEFAULT NULL");
         } catch (SQLException e) {
             logger.warn("Could not relax enrollments.price (already nullable or table absent): {}", e.getMessage());
+        }
+    }
+
+    /**
+     * Brings the live {@code employees} table in line with the current model:
+     * an {@code email} column is added if it is missing (older databases were
+     * created before employees carried an email), and the obsolete
+     * {@code experience_level} column is dropped if it is still present. Both
+     * steps are idempotent and best-effort — an "already exists" / "does not
+     * exist" error on a database that is already in the target shape is expected
+     * and must not stop startup.
+     */
+    private static void ensureEmployeeColumns(Connection conn) {
+        try (Statement st = conn.createStatement()) {
+            st.execute("ALTER TABLE employees ADD COLUMN email VARCHAR(255)");
+            logger.info("Added email column to employees");
+        } catch (SQLException e) {
+            logger.debug("employees.email already present or table absent: {}", e.getMessage());
+        }
+        try (Statement st = conn.createStatement()) {
+            st.execute("ALTER TABLE employees DROP COLUMN experience_level");
+            logger.info("Dropped obsolete experience_level column from employees");
+        } catch (SQLException e) {
+            logger.debug("employees.experience_level already absent or table missing: {}", e.getMessage());
         }
     }
 

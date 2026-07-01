@@ -9,6 +9,12 @@ export interface AuthSession {
   firstName: string | null;
   lastName: string | null;
   email: string;
+  /**
+   * Automatic price reduction for this account (0 = none). Only employee
+   * accounts receive a discount; contacts and admins are always 0. Optional so
+   * sessions stored before this field existed still parse (treated as 0).
+   */
+  discountRate?: number;
 }
 
 export interface PublicCourse {
@@ -225,6 +231,13 @@ export interface Employee {
   workProfile: string | null;
   interestProfiles: string[];
   fullName?: string;
+}
+
+/** Summary returned by POST /api/employees/import. */
+export interface EmployeeImportResult {
+  imported: number;
+  skipped: number;
+  errors: { row: number; message: string }[];
 }
 
 export interface CourseRecommendation {

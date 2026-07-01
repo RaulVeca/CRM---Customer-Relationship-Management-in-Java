@@ -14,8 +14,14 @@ export class ApiError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
+  // For FormData (file uploads) the browser must set the multipart Content-Type
+  // with its boundary itself — forcing application/json would corrupt the body.
+  const isForm = typeof FormData !== "undefined" && init?.body instanceof FormData;
   const res = await fetch(`${BASE}${path}`, {
-    headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
+    headers: {
+      ...(isForm ? {} : { "Content-Type": "application/json" }),
+      ...(init?.headers ?? {}),
+    },
     cache: "no-store",
     ...init,
   });
@@ -39,6 +45,9 @@ export const api = {
   get: <T>(path: string) => request<T>(path),
   post: <T>(path: string, body: unknown) =>
     request<T>(path, { method: "POST", body: JSON.stringify(body) }),
+  /** POST a multipart form (file upload). Content-Type is set by the browser. */
+  upload: <T>(path: string, form: FormData) =>
+    request<T>(path, { method: "POST", body: form }),
   put: <T>(path: string, body: unknown) =>
     request<T>(path, { method: "PUT", body: JSON.stringify(body) }),
   patch: <T>(path: string, body?: unknown) =>

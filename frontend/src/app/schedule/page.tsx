@@ -15,6 +15,12 @@ import type {
 
 const WORK_START = 8; // 08:00 — earliest a session may start
 const WORK_END = 20; // 20:00 — latest a session may end
+const PRICE_PER_HOUR = 10; // USD charged per booked hour
+
+// Bank details the contact transfers the session fee to. Fixed, display-only text.
+const BANK_NAME = "Banca Transilvania";
+const BANK_IBAN = "RO49 BTRL 0000 1234 5678 9012";
+const COMPANY_NAME = "TrainingIT SRL";
 
 const MONTHS = [
   "January", "February", "March", "April", "May", "June",
@@ -61,6 +67,9 @@ function maxDurationFrom(start: number, day: DayAvailability | undefined): numbe
 
 export default function SchedulePage() {
   const [contact, setContact] = useState<{ id: number; email: string } | null>(null);
+  // Automatic price reduction for this account (0 = none). Only employee
+  // accounts carry one; contacts stay at full price.
+  const [discountRate, setDiscountRate] = useState(0);
   // null = not yet read (avoids a flash before the effect runs); the window may
   // only be reached after pressing "Schedule a session" in My courses.
   const [windowOpen, setWindowOpen] = useState<boolean | null>(null);
@@ -83,6 +92,9 @@ export default function SchedulePage() {
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<BookingResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
+  // The payment window shown after "Confirm booking". The session is only booked
+  // once the contact presses "Transfer" inside it.
+  const [showPayment, setShowPayment] = useState(false);
 
   const today = todayIso();
   const thisMonth = { year: now.getFullYear(), month: now.getMonth() };
@@ -100,6 +112,7 @@ export default function SchedulePage() {
       window.removeEventListener("storage", sync);
     };
     setContact({ id: session.id, email: session.email });
+    setDiscountRate(session.discountRate ?? 0);
     // A contact can only book a session for a course it actually owns. Verify
     // ownership against the server and drop any stale window flag if it owns none.
     api
@@ -185,7 +198,15 @@ export default function SchedulePage() {
     setDuration(1);
   }
 
-  async function confirm() {
+  // "Confirm booking" only opens the payment window; nothing is booked yet.
+  function confirm() {
+    if (!trainer || !contact || !selectedDate || startHour == null) return;
+    setError(null);
+    setShowPayment(true);
+  }
+
+  // "Transfer" inside the payment window is what actually books the session.
+  async function transfer() {
     if (!trainer || !contact || !selectedDate || startHour == null) return;
     setSubmitting(true);
     setError(null);
@@ -198,6 +219,7 @@ export default function SchedulePage() {
         durationHours: duration,
       });
       setResult(res);
+      setShowPayment(false);
       setSelectedDate(null);
       setStartHour(null);
       setDuration(1);
@@ -213,6 +235,14 @@ export default function SchedulePage() {
   const selectedDay = selectedDate ? days[selectedDate] : undefined;
   const starts = freeStartHours(selectedDay);
   const maxDuration = startHour == null ? 1 : maxDurationFrom(startHour, selectedDay);
+
+  // Session price: full price, and the discounted price for accounts that carry
+  // a discount (employees). Contacts have discountRate 0, so net === gross.
+  const grossPrice = duration * PRICE_PER_HOUR;
+  const netPrice = Math.round(grossPrice * (1 - discountRate) * 100) / 100;
+  const hasDiscount = discountRate > 0;
+  const discountPct = Math.round(discountRate * 100);
+  const fmtUSD = (n: number) => (Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`);
 
   if (!contact) {
     return (
@@ -490,6 +520,31 @@ export default function SchedulePage() {
                   {selectedDate}
                   {" · "}
                   {fmtHour(startHour)}–{fmtHour(startHour + duration)}
+                  {" · "}
+                  {hasDiscount ? (
+                    <>
+                      <span className="text-slate-400 line-through dark:text-slate-500">
+                        {fmtUSD(grossPrice)}
+                      </span>
+                      {" "}
+                      <span className="font-semibold text-emerald-600 dark:text-emerald-400">
+                        {fmtUSD(netPrice)}
+                      </span>
+                      {" "}
+                      <span className="rounded bg-emerald-100 px-1.5 py-0.5 text-xs font-semibold text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">
+                        −{discountPct}%
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <span className="font-semibold text-slate-900 dark:text-white">
+                        {fmtUSD(grossPrice)}
+                      </span>
+                      <span className="text-slate-500 dark:text-slate-400">
+                        {" "}(${PRICE_PER_HOUR}/hour × {duration}h)
+                      </span>
+                    </>
+                  )}
                 </p>
                 <button
                   type="button"
@@ -497,12 +552,95 @@ export default function SchedulePage() {
                   disabled={submitting}
                   className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700 disabled:opacity-60"
                 >
-                  {submitting ? "Scheduling…" : "Confirm booking"}
+                  Confirm booking — {fmtUSD(netPrice)}
                 </button>
               </div>
             )}
           </div>
         </section>
+      )}
+
+      {/* Payment window — shown after "Confirm booking". The session is booked
+          only when "Transfer" is pressed. */}
+      {showPayment && startHour != null && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
+          <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900">
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+              Complete your payment
+            </h3>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+              Transfer the session fee to the account below, then press Transfer to
+              confirm your booking.
+            </p>
+
+            <dl className="mt-4 space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm dark:border-slate-800 dark:bg-slate-800/40">
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-slate-500 dark:text-slate-400">Company</dt>
+                <dd className="font-semibold text-slate-900 dark:text-white">{COMPANY_NAME}</dd>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-slate-500 dark:text-slate-400">Bank</dt>
+                <dd className="font-semibold text-slate-900 dark:text-white">{BANK_NAME}</dd>
+              </div>
+              <div className="flex items-center justify-between gap-3">
+                <dt className="text-slate-500 dark:text-slate-400">IBAN</dt>
+                <dd className="font-mono font-semibold text-slate-900 dark:text-white">{BANK_IBAN}</dd>
+              </div>
+              {hasDiscount && (
+                <div className="flex items-center justify-between gap-3">
+                  <dt className="text-slate-500 dark:text-slate-400">
+                    Employee discount
+                  </dt>
+                  <dd className="font-semibold text-emerald-600 dark:text-emerald-400">
+                    −{discountPct}%
+                  </dd>
+                </div>
+              )}
+              <div className="flex items-center justify-between gap-3 border-t border-slate-200 pt-3 dark:border-slate-700">
+                <dt className="text-slate-500 dark:text-slate-400">Amount</dt>
+                <dd className="text-right font-semibold text-slate-900 dark:text-white">
+                  {hasDiscount ? (
+                    <>
+                      <span className="mr-2 font-normal text-slate-400 line-through dark:text-slate-500">
+                        {fmtUSD(grossPrice)}
+                      </span>
+                      <span className="text-emerald-600 dark:text-emerald-400">
+                        {fmtUSD(netPrice)}
+                      </span>
+                    </>
+                  ) : (
+                    fmtUSD(grossPrice)
+                  )}
+                </dd>
+              </div>
+            </dl>
+
+            {error && (
+              <div className="mt-4 rounded-lg border border-red-300 bg-red-50 p-3 text-sm text-red-700 dark:border-red-500/40 dark:bg-red-500/10 dark:text-red-300">
+                {error}
+              </div>
+            )}
+
+            <div className="mt-6 flex justify-end gap-3">
+              <button
+                type="button"
+                onClick={() => setShowPayment(false)}
+                disabled={submitting}
+                className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={transfer}
+                disabled={submitting}
+                className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700 disabled:opacity-60"
+              >
+                {submitting ? "Transferring…" : `Transfer ${fmtUSD(netPrice)}`}
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

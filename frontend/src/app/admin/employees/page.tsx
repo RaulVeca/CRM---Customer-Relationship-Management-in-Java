@@ -1,9 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { api } from "@/lib/api";
 import { SparkleIcon } from "@/components/icons";
-import type { CourseRecommendation, Employee, Option, PublicCompany } from "@/lib/types";
+import type {
+  CourseRecommendation,
+  Employee,
+  EmployeeImportResult,
+  Option,
+  PublicCompany,
+} from "@/lib/types";
 
 export default function EmployeesPage() {
   const [companies, setCompanies] = useState<PublicCompany[]>([]);
@@ -17,10 +23,16 @@ export default function EmployeesPage() {
   const [recs, setRecs] = useState<CourseRecommendation[] | null>(null);
   const [recsLoading, setRecsLoading] = useState(false);
 
+  // Excel import
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [importing, setImporting] = useState(false);
+  const [importResult, setImportResult] = useState<EmployeeImportResult | null>(null);
+
   // new employee form
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
+    email: "",
     jobTitle: "",
     workProfile: "",
     interestProfiles: [] as string[],
@@ -79,15 +91,40 @@ export default function EmployeesPage() {
         companyId,
         firstName: form.firstName || null,
         lastName: form.lastName || null,
+        email: form.email || null,
         jobTitle: form.jobTitle || null,
         workProfile: form.workProfile || null,
         interestProfiles: form.interestProfiles,
       });
-      setForm({ firstName: "", lastName: "", jobTitle: "", workProfile: "", interestProfiles: [] });
+      setForm({ firstName: "", lastName: "", email: "", jobTitle: "", workProfile: "", interestProfiles: [] });
       setError(null);
       loadEmployees(companyId);
     } catch (err) {
       setError((err as Error).message);
+    }
+  }
+
+  async function onImportFile(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    // Reset the input so selecting the same file again still fires onChange.
+    e.target.value = "";
+    if (!file || companyId == null) return;
+    setImporting(true);
+    setImportResult(null);
+    setError(null);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      const res = await api.upload<EmployeeImportResult>(
+        `/api/employees/import?companyId=${companyId}`,
+        fd,
+      );
+      setImportResult(res);
+      loadEmployees(companyId);
+    } catch (err) {
+      setError((err as Error).message);
+    } finally {
+      setImporting(false);
     }
   }
 
@@ -111,11 +148,27 @@ export default function EmployeesPage() {
             <option key={c.id} value={c.id}>{c.companyName}</option>
           ))}
         </select>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+          onChange={onImportFile}
+          className="hidden"
+        />
+        <button
+          onClick={() => fileInputRef.current?.click()}
+          disabled={importing || companyId == null}
+          className="ml-auto rounded-md border border-slate-300 bg-white px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-50 disabled:opacity-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:hover:bg-slate-700"
+        >
+          {importing ? "Importing…" : "Import from Excel"}
+        </button>
+
         {aiEnabled && (
           <button
             onClick={loadRecommendations}
             disabled={recsLoading}
-            className="ml-auto rounded-md bg-violet-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-violet-700 disabled:opacity-50"
+            className="rounded-md bg-violet-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-violet-700 disabled:opacity-50"
           >
             {recsLoading ? (
               "Thinking…"
@@ -130,6 +183,22 @@ export default function EmployeesPage() {
       </div>
 
       {error && <p className="text-red-600">{error}</p>}
+
+      {importResult && (
+        <div className="rounded-xl border border-slate-200 bg-white p-4 text-sm dark:border-slate-800 dark:bg-slate-900">
+          <p className="font-medium text-slate-800 dark:text-slate-100">
+            Import finished: {importResult.imported} added
+            {importResult.skipped > 0 && `, ${importResult.skipped} skipped`}.
+          </p>
+          {importResult.errors.length > 0 && (
+            <ul className="mt-2 list-disc space-y-0.5 pl-5 text-slate-500 dark:text-slate-400">
+              {importResult.errors.map((er, i) => (
+                <li key={i}>Row {er.row}: {er.message}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
 
       {recs && (
         <div className="rounded-xl border border-violet-200 bg-violet-50 p-5">
@@ -160,6 +229,7 @@ export default function EmployeesPage() {
             <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
               <tr>
                 <th className="px-4 py-3">Name</th>
+                <th className="px-4 py-3">Email</th>
                 <th className="px-4 py-3">Role</th>
                 <th className="px-4 py-3">Works in</th>
                 <th className="px-4 py-3">Interested in</th>
@@ -170,6 +240,7 @@ export default function EmployeesPage() {
               {employees.map((emp) => (
                 <tr key={emp.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
                   <td className="px-4 py-3 font-medium">{emp.fullName || `${emp.firstName ?? ""} ${emp.lastName ?? ""}`}</td>
+                  <td className="px-4 py-3 text-slate-500">{emp.email ?? "—"}</td>
                   <td className="px-4 py-3 text-slate-500">{emp.jobTitle ?? "—"}</td>
                   <td className="px-4 py-3">
                     <span className="rounded bg-slate-100 px-2 py-0.5 text-xs dark:bg-slate-700 dark:text-slate-200">{label(profileAreas, emp.workProfile)}</span>
@@ -201,6 +272,8 @@ export default function EmployeesPage() {
             <input className="rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="Last name"
               value={form.lastName} onChange={(e) => setForm({ ...form, lastName: e.target.value })} />
           </div>
+          <input type="email" className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="Email"
+            value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
           <input className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm" placeholder="Job title"
             value={form.jobTitle} onChange={(e) => setForm({ ...form, jobTitle: e.target.value })} />
           <select className="w-full rounded-md border border-slate-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 px-2 py-1.5 text-sm"
