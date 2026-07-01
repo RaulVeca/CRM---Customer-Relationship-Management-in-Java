@@ -98,6 +98,18 @@ public class CrmFacade {
         return contactService.findByEmail(email);
     }
 
+    /**
+     * Resolves the client-portal contact for a sign-in email, creating a minimal
+     * INDIVIDUAL contact on first use. Employees (whose accounts live in the
+     * separate {@code employees} table, with their own id space) get a real
+     * {@code contacts} identity this way, so booking, "my sessions" and cancel —
+     * which all key off the session id as a contact id — work correctly.
+     * Idempotent per email; reuses the exact create path a public purchase uses.
+     */
+    public Contact findOrCreateContactByEmail(String email, String firstName, String lastName) {
+        return reviewService.findOrCreateContact(email, firstName, lastName);
+    }
+
     public Contact getContact(Long id) {
         return contactService.getById(id);
     }

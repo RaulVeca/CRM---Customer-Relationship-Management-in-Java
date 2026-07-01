@@ -86,14 +86,29 @@ public class AuthController {
             if (!passwordMatches(contactDao.findPasswordByEmail(email), password)) {
                 return unauthorized(http, "Incorrect password.");
             }
-            return ResponseEntity.ok(AuthResponse.user(contact.get()));
+            // The employee discount follows the email, not the table that resolved
+            // the login: a client whose email is also in `employees` (e.g. an
+            // employee who already has a contact row) still gets the discount,
+            // matching how the session invoice is billed.
+            double discountRate = employeeDao.findByEmail(email).isPresent()
+                    ? AuthResponse.EMPLOYEE_DISCOUNT_RATE : 0.0;
+            return ResponseEntity.ok(AuthResponse.user(contact.get(), discountRate));
         }
         var employee = employeeDao.findByEmail(email);
         if (employee.isPresent()) {
             if (!passwordMatches(employeeDao.findPasswordByEmail(email), password)) {
                 return unauthorized(http, "Incorrect password.");
             }
-            return ResponseEntity.ok(AuthResponse.employee(employee.get()));
+            // An employee account lives in the separate `employees` table, which
+            // has its own id space. Booking, "my sessions" and cancel all treat the
+            // session id as a `contacts` id, so resolve (creating on first sign-in)
+            // the employee's client-portal contact and return THAT id. The -60%
+            // discount is carried here and re-derived on the invoice from the same
+            // email, so it applies for every employee.
+            var emp = employee.get();
+            Contact portalContact = facade.findOrCreateContactByEmail(
+                    emp.getEmail(), emp.getFirstName(), emp.getLastName());
+            return ResponseEntity.ok(AuthResponse.user(portalContact, AuthResponse.EMPLOYEE_DISCOUNT_RATE));
         }
         return unauthorized(http, "This email is not registered.");
     }

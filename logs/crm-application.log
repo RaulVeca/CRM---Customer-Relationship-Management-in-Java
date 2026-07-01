@@ -120,3 +120,247 @@ Echipa Training IT
 2026-07-01 21:17:02.024 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
 2026-07-01 21:17:02.025 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
 2026-07-01 21:17:02.025 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed
+2026-07-01 23:02:06.404 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 23:02:06.469 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 6108 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 23:02:06.470 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 23:02:06.470 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 23:02:07.495 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 23:02:07.508 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 23:02:07.511 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 23:02:07.512 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 23:02:07.583 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 23:02:07.583 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1071 ms
+2026-07-01 23:02:07.824 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-01 23:02:07.826 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 23:02:07.837 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-01 23:02:07.851 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 23:02:07.954 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@65cf4d6d
+2026-07-01 23:02:07.956 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 23:02:07.956 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-01 23:02:07.967 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 23:02:07.972 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2955) Duplicate column name 'email'
+2026-07-01 23:02:07.972 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 23:02:07.973 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2955) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 23:02:07.973 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 23:02:07.973 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=2955) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 23:02:07.975 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 23:02:07.975 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2955) Duplicate column name 'password'
+2026-07-01 23:02:07.976 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 23:02:07.976 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2955) Duplicate column name 'password'
+2026-07-01 23:02:07.977 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 23:02:07.977 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2955) Duplicate column name 'password'
+2026-07-01 23:02:07.994 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 23:02:08.003 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-01 23:02:08.006 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 23:02:08.010 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 23:02:08.014 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 23:02:08.017 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 23:02:08.018 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 23:02:08.018 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 23:02:08.163 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-01 23:02:08.469 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 23:02:08.492 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 23:02:08.498 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.386 seconds (process running for 2.864)
+2026-07-01 23:02:24.177 [http-nio-8080-exec-6] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 23:02:24.177 [http-nio-8080-exec-6] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 23:02:24.177 [http-nio-8080-exec-6] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 23:03:12.998 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Andrei, lastName=Marin, email=andreimarin@dedeman.ro, jobTitle=IT Support Specialist, workProfile=IT_GENERAL, interestProfiles=[SOFTWARE_DEVELOPMENT, CYBERSECURITY])
+2026-07-01 23:03:13.002 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=28
+2026-07-01 23:03:13.002 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Andrei Marin (company=28)
+2026-07-01 23:03:13.002 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Ioana, lastName=Radu, email=ioanaradu@dedeman.ro, jobTitle=Analist Comercial, workProfile=IT_GENERAL, interestProfiles=[DATA_SCIENCE, SOFTWARE_DEVELOPMENT])
+2026-07-01 23:03:13.004 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=29
+2026-07-01 23:03:13.004 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Ioana Radu (company=28)
+2026-07-01 23:03:13.004 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Mihai, lastName=Constantin, email=mihaiconstantin@dedeman.ro, jobTitle=Responsabil eCommerce, workProfile=WEB_DEVELOPMENT, interestProfiles=[SOFTWARE_DEVELOPMENT, MOBILE])
+2026-07-01 23:03:13.006 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=30
+2026-07-01 23:03:13.006 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Mihai Constantin (company=28)
+2026-07-01 23:03:13.008 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Elena, lastName=Dinu, email=elenadinu@dedeman.ro, jobTitle=Coordonator Logistica, workProfile=IT_GENERAL, interestProfiles=[DATA_SCIENCE])
+2026-07-01 23:03:13.009 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=31
+2026-07-01 23:03:13.010 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Elena Dinu (company=28)
+2026-07-01 23:03:13.010 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Gabriel, lastName=Toma, email=gabrieltoma@dedeman.ro, jobTitle=Administrator Retea, workProfile=DEVOPS, interestProfiles=[CYBERSECURITY, SOFTWARE_DEVELOPMENT])
+2026-07-01 23:03:13.012 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=32
+2026-07-01 23:03:13.012 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Gabriel Toma (company=28)
+2026-07-01 23:03:13.012 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Andreea, lastName=Vasile, email=andreeavasile@dedeman.ro, jobTitle=Specialist Marketing, workProfile=IT_GENERAL, interestProfiles=[WEB_DEVELOPMENT, DATA_SCIENCE])
+2026-07-01 23:03:13.014 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=33
+2026-07-01 23:03:13.014 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Andreea Vasile (company=28)
+2026-07-01 23:03:13.014 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Cristian, lastName=Barbu, email=cristianbarbu@dedeman.ro, jobTitle=Analist Date Vanzari, workProfile=DATA_SCIENCE, interestProfiles=[MACHINE_LEARNING, ARTIFICIAL_INTELLIGENCE])
+2026-07-01 23:03:13.015 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=34
+2026-07-01 23:03:13.015 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Cristian Barbu (company=28)
+2026-07-01 23:03:13.017 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Raluca, lastName=Ene, email=ralucaene@dedeman.ro, jobTitle=Responsabil Aprovizionare, workProfile=IT_GENERAL, interestProfiles=[SOFTWARE_DEVELOPMENT])
+2026-07-01 23:03:13.018 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=35
+2026-07-01 23:03:13.018 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Raluca Ene (company=28)
+2026-07-01 23:03:13.019 [http-nio-8080-exec-2] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=28, firstName=Bogdan, lastName=Ilie, email=bogdanilie@dedeman.ro, jobTitle=Dezvoltator Junior, workProfile=SOFTWARE_DEVELOPMENT, interestProfiles=[WEB_DEVELOPMENT, DEVOPS])
+2026-07-01 23:03:13.020 [http-nio-8080-exec-2] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=36
+2026-07-01 23:03:13.020 [http-nio-8080-exec-2] INFO  crm.service.employee.EmployeeService - Employee added: Bogdan Ilie (company=28)
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Alexandru, lastName=Popa, email=alexandrupopa@farmec.ro, jobTitle=Inginer Productie, workProfile=IT_GENERAL, interestProfiles=[SOFTWARE_DEVELOPMENT, DATA_SCIENCE])
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=37
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Alexandru Popa (company=29)
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Diana, lastName=Munteanu, email=dianamunteanu@farmec.ro, jobTitle=Chimist Laborator, workProfile=DATA_SCIENCE, interestProfiles=[MACHINE_LEARNING])
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=38
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Diana Munteanu (company=29)
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Sorin, lastName=Ganea, email=soringanea@farmec.ro, jobTitle=Tehnician Automatizari, workProfile=DEVOPS, interestProfiles=[SOFTWARE_DEVELOPMENT, CYBERSECURITY])
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=39
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Sorin Ganea (company=29)
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Camelia, lastName=Voicu, email=cameliavoicu@farmec.ro, jobTitle=Analist Calitate, workProfile=DATA_SCIENCE, interestProfiles=[ARTIFICIAL_INTELLIGENCE])
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=40
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Camelia Voicu (company=29)
+2026-07-01 23:03:27.303 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Florin, lastName=Sandu, email=florinsandu@farmec.ro, jobTitle=Specialist IT, workProfile=IT_GENERAL, interestProfiles=[CYBERSECURITY, SOFTWARE_DEVELOPMENT])
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=41
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Florin Sandu (company=29)
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Monica, lastName=Preda, email=monicapreda@farmec.ro, jobTitle=Responsabil Vanzari Online, workProfile=WEB_DEVELOPMENT, interestProfiles=[MOBILE, SOFTWARE_DEVELOPMENT])
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=42
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Monica Preda (company=29)
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Adrian, lastName=Nita, email=adriannita@farmec.ro, jobTitle=Coordonator Productie, workProfile=IT_GENERAL, interestProfiles=[DATA_SCIENCE])
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=43
+2026-07-01 23:03:27.319 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Adrian Nita (company=29)
+2026-07-01 23:03:27.326 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Larisa, lastName=Serban, email=larisaserban@farmec.ro, jobTitle=Marketing Digital, workProfile=WEB_DEVELOPMENT, interestProfiles=[DATA_SCIENCE])
+2026-07-01 23:03:27.329 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=44
+2026-07-01 23:03:27.329 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Larisa Serban (company=29)
+2026-07-01 23:03:27.329 [http-nio-8080-exec-5] DEBUG crm.repository.EmployeeRepository - Saving Employee : Employee(super=crm.model.entity.Employee@36a8541c, companyId=29, firstName=Vlad, lastName=Dumitrescu, email=vladdumitrescu@farmec.ro, jobTitle=Dezvoltator Aplicatii, workProfile=SOFTWARE_DEVELOPMENT, interestProfiles=[DEVOPS, MOBILE])
+2026-07-01 23:03:27.329 [http-nio-8080-exec-5] DEBUG crm.dao.EmployeeDao - Entity saved in employees: ID=45
+2026-07-01 23:03:27.329 [http-nio-8080-exec-5] INFO  crm.service.employee.EmployeeService - Employee added: Vlad Dumitrescu (company=29)
+2026-07-01 23:09:23.985 [http-nio-8080-exec-2] INFO  crm.service.contact.ContactService - Creare contact: gabrieltoma@dedeman.ro
+2026-07-01 23:09:24.000 [http-nio-8080-exec-2] DEBUG crm.strategy.LeadScoringContext - Initial score for contact gabrieltoma@dedeman.ro (strategy: SimpleLeadScoring): 50
+2026-07-01 23:09:24.000 [http-nio-8080-exec-2] DEBUG crm.repository.ContactRepository - Saving Contact : Contact(super=crm.model.entity.Contact@24dea2ee, contactType=INDIVIDUAL, firstName=Gabriel, lastName=Toma, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=gabrieltoma@dedeman.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T23:09:23.985582800, lastContactDate=2026-07-01T23:09:23.985582800, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T23:09:23.985582800, marketingConsent=null)
+2026-07-01 23:09:24.006 [http-nio-8080-exec-2] DEBUG crm.dao.ContactDao - Entity saved in contacts: ID=32
+2026-07-01 23:09:24.006 [http-nio-8080-exec-2] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-07-01 23:09:24.027 [http-nio-8080-exec-2] INFO  crm.service.notification.NotificationService - [EMAIL] To: gabrieltoma@dedeman.ro, Subject: Bine ai venit la Training IT!
+2026-07-01 23:09:24.027 [http-nio-8080-exec-2] DEBUG crm.service.notification.NotificationService - Content:
+Salut Gabriel Toma,
+
+Thank you for your interest in our courses!
+
+We are a company specialized in IT training and we offer courses on Java, Python, AI and much more.
+
+A consultant will contact you soon to discuss the right options.
+
+Cu drag,
+Echipa Training IT
+2026-07-01 23:09:24.027 [http-nio-8080-exec-2] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email sent to: gabrieltoma@dedeman.ro
+2026-07-01 23:09:24.027 [http-nio-8080-exec-2] INFO  crm.service.contact.ContactService - Contact created with ID: 32 (score: 50)
+2026-07-01 23:09:24.034 [http-nio-8080-exec-2] DEBUG crm.repository.EnrollmentRepository - Saving Enrollment : Enrollment(super=crm.model.entity.Enrollment@152b9666, sessionId=4, contactId=32, enrollmentDate=2026-07-01T23:09:24.034628, status=PENDING, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
+2026-07-01 23:09:24.041 [http-nio-8080-exec-2] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=25
+2026-07-01 23:09:24.041 [http-nio-8080-exec-2] DEBUG crm.repository.ContactRepository - Saving Contact : Contact(super=crm.model.entity.Contact@24dea2ee, contactType=INDIVIDUAL, firstName=Gabriel, lastName=Toma, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=gabrieltoma@dedeman.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=ENROLLED, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T23:09:23, lastContactDate=2026-07-01T23:09:24.041128600, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T23:09:23, marketingConsent=false)
+2026-07-01 23:09:24.041 [http-nio-8080-exec-2] DEBUG crm.dao.ContactDao - Entity updated in contacts: ID=32
+2026-07-01 23:09:24.041 [http-nio-8080-exec-2] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-07-01 23:09:24.041 [http-nio-8080-exec-2] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 32: NEW -> ENROLLED
+2026-07-01 23:09:24.041 [http-nio-8080-exec-2] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
+2026-07-01 23:09:24.048 [http-nio-8080-exec-2] INFO  crm.service.notification.NotificationService - [EMAIL] To: gabrieltoma@dedeman.ro, Subject: Course enrollment confirmation
+2026-07-01 23:09:24.048 [http-nio-8080-exec-2] DEBUG crm.service.notification.NotificationService - Content:
+Salut Gabriel Toma,
+
+Your enrollment has been confirmed successfully!
+Status: PENDING
+
+You will soon receive details about the course schedule and the required materials.
+
+Mult succes!
+Echipa Training IT
+2026-07-01 23:09:24.048 [http-nio-8080-exec-2] INFO  c.o.listeners.EnrollmentConfirmationObserver - Enrollment confirmation sent to contact 32
+2026-07-01 23:09:24.048 [http-nio-8080-exec-2] INFO  crm.service.enrollment.EnrollmentService - Enrollment created: contact=32, session=4
+2026-07-01 23:09:24.048 [http-nio-8080-exec-2] INFO  crm.service.review.ReviewService - Course purchased: client=gabrieltoma@dedeman.ro, course=2, enrollment=25
+2026-07-01 23:09:29.290 [http-nio-8080-exec-7] DEBUG crm.repository.EnrollmentRepository - Saving Enrollment : Enrollment(super=crm.model.entity.Enrollment@152b9666, sessionId=4, contactId=32, enrollmentDate=2026-07-01T23:09:24, status=PENDING, attendedSessions=0, attendanceRate=null, examPassed=false, finalGrade=null, certificateIssued=false, certificateNumber=null, rating=5, feedback=null, notes=null)
+2026-07-01 23:09:29.290 [http-nio-8080-exec-7] DEBUG crm.dao.EnrollmentDao - Entity updated in enrollments: ID=25
+2026-07-01 23:09:29.290 [http-nio-8080-exec-7] INFO  crm.service.enrollment.EnrollmentService - Review salvat: enrollment=25, rating=5
+2026-07-01 23:09:53.601 [http-nio-8080-exec-4] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=25
+2026-07-01 23:09:53.601 [http-nio-8080-exec-4] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 23:09:53.601 [http-nio-8080-exec-4] DEBUG crm.repository.InvoiceRepository - Saving Invoice : Invoice(super=crm.model.entity.Invoice@77faeb8, invoiceNumber=INV-2026-00025, sessionId=25, clientId=32, clientEmail=gabrieltoma@dedeman.ro, issueDate=2026-07-01, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=8.00, status=PAID, paymentDate=2026-07-01, description=Sedinta online cu trainer (2026-07-08, 15:00-17:00, 2h) - discount angajat 60%)
+2026-07-01 23:09:53.619 [http-nio-8080-exec-4] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=11
+2026-07-01 23:09:53.619 [http-nio-8080-exec-4] INFO  crm.service.invoice.InvoiceService - Invoice auto-generated: INV-2026-00025 for session 25 (2h x $10 - 60% = $8.00)
+2026-07-01 23:10:40.494 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-01 23:10:40.505 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-01 23:10:40.508 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-01 23:10:40.508 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-01 23:10:40.511 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-01 23:10:40.511 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed
+2026-07-01 23:28:03.953 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 23:28:03.992 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 37100 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 23:28:03.993 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 23:28:03.993 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 23:28:04.923 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 23:28:04.932 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 23:28:04.933 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 23:28:04.934 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 23:28:04.992 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 23:28:04.993 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 968 ms
+2026-07-01 23:28:05.047 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 23:28:05.048 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 23:28:05.050 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-01 23:28:05.058 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 23:28:05.144 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@17ba57f0
+2026-07-01 23:28:05.145 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 23:28:05.145 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-01 23:28:05.158 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 23:28:05.162 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=3014) Duplicate column name 'email'
+2026-07-01 23:28:05.163 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 23:28:05.163 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=3014) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 23:28:05.164 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 23:28:05.164 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=3014) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 23:28:05.164 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 23:28:05.165 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=3014) Duplicate column name 'password'
+2026-07-01 23:28:05.165 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 23:28:05.165 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=3014) Duplicate column name 'password'
+2026-07-01 23:28:05.166 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 23:28:05.166 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=3014) Duplicate column name 'password'
+2026-07-01 23:28:05.178 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 23:28:05.180 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-01 23:28:05.180 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 23:28:05.181 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 23:28:05.184 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 23:28:05.184 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 23:28:05.184 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 23:28:05.184 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 23:28:05.237 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-01 23:28:05.499 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 23:28:05.514 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 23:28:05.519 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.825 seconds (process running for 2.276)
+2026-07-01 23:28:15.739 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 23:28:15.740 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 23:28:15.740 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 23:29:11.642 [http-nio-8080-exec-4] INFO  crm.service.contact.ContactService - Creare contact: alexandraradu@sensidev.ro
+2026-07-01 23:29:11.644 [http-nio-8080-exec-4] DEBUG crm.strategy.LeadScoringContext - Initial score for contact alexandraradu@sensidev.ro (strategy: SimpleLeadScoring): 50
+2026-07-01 23:29:11.644 [http-nio-8080-exec-4] DEBUG crm.repository.ContactRepository - Saving Contact : Contact(super=crm.model.entity.Contact@1441b09b, contactType=INDIVIDUAL, firstName=Alexandra, lastName=Radu, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=alexandraradu@sensidev.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T23:29:11.642986100, lastContactDate=2026-07-01T23:29:11.642986100, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T23:29:11.642986100, marketingConsent=null)
+2026-07-01 23:29:11.648 [http-nio-8080-exec-4] DEBUG crm.dao.ContactDao - Entity saved in contacts: ID=33
+2026-07-01 23:29:11.648 [http-nio-8080-exec-4] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-07-01 23:29:11.653 [http-nio-8080-exec-4] INFO  crm.service.notification.NotificationService - [EMAIL] To: alexandraradu@sensidev.ro, Subject: Bine ai venit la Training IT!
+2026-07-01 23:29:11.653 [http-nio-8080-exec-4] DEBUG crm.service.notification.NotificationService - Content:
+Salut Alexandra Radu,
+
+Thank you for your interest in our courses!
+
+We are a company specialized in IT training and we offer courses on Java, Python, AI and much more.
+
+A consultant will contact you soon to discuss the right options.
+
+Cu drag,
+Echipa Training IT
+2026-07-01 23:29:11.653 [http-nio-8080-exec-4] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email sent to: alexandraradu@sensidev.ro
+2026-07-01 23:29:11.653 [http-nio-8080-exec-4] INFO  crm.service.contact.ContactService - Contact created with ID: 33 (score: 50)
+2026-07-01 23:29:11.683 [http-nio-8080-exec-5] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=26
+2026-07-01 23:29:11.684 [http-nio-8080-exec-5] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 23:29:11.690 [http-nio-8080-exec-5] DEBUG crm.repository.InvoiceRepository - Saving Invoice : Invoice(super=crm.model.entity.Invoice@1136efd6, invoiceNumber=INV-2026-00026, sessionId=26, clientId=33, clientEmail=alexandraradu@sensidev.ro, issueDate=2026-07-01, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=8.00, status=PAID, paymentDate=2026-07-01, description=Sedinta online cu trainer (2026-07-31, 8:00-10:00, 2h) - discount angajat 60%)
+2026-07-01 23:29:11.693 [http-nio-8080-exec-5] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=12
+2026-07-01 23:29:11.693 [http-nio-8080-exec-5] INFO  crm.service.invoice.InvoiceService - Invoice auto-generated: INV-2026-00026 for session 26 (2h x $10 - 60% = $8.00)
+2026-07-01 23:29:11.745 [http-nio-8080-exec-7] INFO  crm.service.contact.ContactService - Creare contact: mariaionescu@sensidev.ro
+2026-07-01 23:29:11.745 [http-nio-8080-exec-7] DEBUG crm.strategy.LeadScoringContext - Initial score for contact mariaionescu@sensidev.ro (strategy: SimpleLeadScoring): 50
+2026-07-01 23:29:11.745 [http-nio-8080-exec-7] DEBUG crm.repository.ContactRepository - Saving Contact : Contact(super=crm.model.entity.Contact@1441b09b, contactType=INDIVIDUAL, firstName=Maria, lastName=Ionescu, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=mariaionescu@sensidev.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T23:29:11.745359400, lastContactDate=2026-07-01T23:29:11.745359400, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T23:29:11.745359400, marketingConsent=null)
+2026-07-01 23:29:11.747 [http-nio-8080-exec-7] DEBUG crm.dao.ContactDao - Entity saved in contacts: ID=34
+2026-07-01 23:29:11.747 [http-nio-8080-exec-7] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-07-01 23:29:11.750 [http-nio-8080-exec-7] INFO  crm.service.notification.NotificationService - [EMAIL] To: mariaionescu@sensidev.ro, Subject: Bine ai venit la Training IT!
+2026-07-01 23:29:11.750 [http-nio-8080-exec-7] DEBUG crm.service.notification.NotificationService - Content:
+Salut Maria Ionescu,
+
+Thank you for your interest in our courses!
+
+We are a company specialized in IT training and we offer courses on Java, Python, AI and much more.
+
+A consultant will contact you soon to discuss the right options.
+
+Cu drag,
+Echipa Training IT
+2026-07-01 23:29:11.750 [http-nio-8080-exec-7] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email sent to: mariaionescu@sensidev.ro
+2026-07-01 23:29:11.750 [http-nio-8080-exec-7] INFO  crm.service.contact.ContactService - Contact created with ID: 34 (score: 50)
+2026-07-01 23:29:11.782 [http-nio-8080-exec-10] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=27
+2026-07-01 23:29:11.782 [http-nio-8080-exec-10] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 23:29:11.783 [http-nio-8080-exec-10] DEBUG crm.repository.InvoiceRepository - Saving Invoice : Invoice(super=crm.model.entity.Invoice@1136efd6, invoiceNumber=INV-2026-00027, sessionId=27, clientId=34, clientEmail=mariaionescu@sensidev.ro, issueDate=2026-07-01, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=8.00, status=PAID, paymentDate=2026-07-01, description=Sedinta online cu trainer (2026-07-31, 10:00-12:00, 2h) - discount angajat 60%)
+2026-07-01 23:29:11.788 [http-nio-8080-exec-10] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=13
+2026-07-01 23:29:11.788 [http-nio-8080-exec-10] INFO  crm.service.invoice.InvoiceService - Invoice auto-generated: INV-2026-00027 for session 27 (2h x $10 - 60% = $8.00)

@@ -193,7 +193,13 @@ public class ReviewService {
     // HELPERS
     // =====================================================
 
-    private Contact findOrCreateContact(String email, String firstName, String lastName) {
+    /**
+     * Resolves the contact for a client email, creating a minimal INDIVIDUAL
+     * contact the first time. Shared by the public purchase flow and employee
+     * sign-in, so an employee gets exactly the same client-portal contact
+     * whether they buy a course or simply log in.
+     */
+    public Contact findOrCreateContact(String email, String firstName, String lastName) {
         return contactService.findByEmail(email).orElseGet(() -> {
             String first = blankToNull(firstName);
             String last = blankToNull(lastName);
