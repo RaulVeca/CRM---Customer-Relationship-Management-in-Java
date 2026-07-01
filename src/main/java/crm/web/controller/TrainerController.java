@@ -8,6 +8,8 @@ import crm.exception.ResourceNotFoundException;
 import crm.exception.ValidationException;
 import crm.model.entity.MeditationSession;
 import crm.model.entity.Trainer;
+import crm.observer.EventBus;
+import crm.observer.events.SessionBookedEvent;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -135,6 +137,9 @@ public class TrainerController {
                 .startHour(start)
                 .endHour(end)
                 .build());
+
+        // OBSERVER - notifică rezervarea; generează automat factura.
+        EventBus.getInstance().publish(new SessionBookedEvent(saved, "TrainerController"));
 
         return new BookingResponse(
                 saved.getId(), trainer.getId(), trainer.getFullName(),

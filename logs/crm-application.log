@@ -1244,3 +1244,764 @@ Echipa Training IT
 2026-07-01 18:19:49.964 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
 2026-07-01 18:19:49.967 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
 2026-07-01 18:19:49.967 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-07-01 18:45:15.787 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 18:45:15.829 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 35756 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 18:45:15.830 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 18:45:15.830 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 18:45:16.668 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 18:45:16.678 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 18:45:16.680 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 18:45:16.680 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 18:45:16.742 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 18:45:16.742 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 883 ms
+2026-07-01 18:45:16.804 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 18:45:16.807 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 18:45:16.809 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 18:45:16.821 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 18:45:16.918 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@2ddb3ae8
+2026-07-01 18:45:16.920 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 18:45:16.920 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 18:45:16.929 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 18:45:16.934 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2407) Duplicate column name 'email'
+2026-07-01 18:45:16.934 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 18:45:16.934 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2407) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 18:45:16.935 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 18:45:16.935 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2407) Duplicate column name 'password'
+2026-07-01 18:45:16.936 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 18:45:16.936 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2407) Duplicate column name 'password'
+2026-07-01 18:45:16.936 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 18:45:16.937 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2407) Duplicate column name 'password'
+2026-07-01 18:45:16.948 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, invoices)
+2026-07-01 18:45:16.950 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 18:45:16.951 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 18:45:16.952 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 18:45:16.957 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': InvoiceGenerationObserver
+2026-07-01 18:45:16.958 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 18:45:16.958 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 18:45:16.958 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 18:45:17.044 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 18:45:17.361 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 18:45:17.378 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 18:45:17.383 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.856 seconds (process running for 2.279)
+2026-07-01 18:45:32.858 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 18:45:32.858 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 18:45:32.858 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 18:45:47.442 [http-nio-8080-exec-3] INFO  crm.service.contact.ContactService - Creare contact: test.factura.1782920747@example.com
+2026-07-01 18:45:47.445 [http-nio-8080-exec-3] DEBUG crm.strategy.LeadScoringContext - Scor inițial pentru contact test.factura.1782920747@example.com (strategie: SimpleLeadScoring): 50
+2026-07-01 18:45:47.445 [http-nio-8080-exec-3] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@4883e314, contactType=INDIVIDUAL, firstName=Ion, lastName=Testescu, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=test.factura.1782920747@example.com, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T18:45:47.443893300, lastContactDate=2026-07-01T18:45:47.443893300, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T18:45:47.441894400, marketingConsent=null)
+2026-07-01 18:45:47.451 [http-nio-8080-exec-3] DEBUG crm.dao.ContactDao - Entity saved in contacts: ID=25
+2026-07-01 18:45:47.451 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-07-01 18:45:47.455 [http-nio-8080-exec-3] INFO  crm.service.notification.NotificationService - [EMAIL] Către: test.factura.1782920747@example.com, Subiect: Bine ai venit la Training IT!
+2026-07-01 18:45:47.456 [http-nio-8080-exec-3] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Ion Testescu,
+
+Îți mulțumim pentru interesul față de cursurile noastre!
+
+Suntem o companie specializată în training IT și oferim cursuri de Java, Python, AI și multe altele.
+
+Un consultant te va contacta în curând pentru a discuta opțiunile potrivite.
+
+Cu drag,
+Echipa Training IT
+2026-07-01 18:45:47.456 [http-nio-8080-exec-3] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email trimis către: test.factura.1782920747@example.com
+2026-07-01 18:45:47.456 [http-nio-8080-exec-3] INFO  crm.service.contact.ContactService - Contact creat cu ID: 25 (scor: 50)
+2026-07-01 18:45:47.461 [http-nio-8080-exec-3] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@341fbd64, sessionId=3, contactId=25, enrollmentDate=2026-07-01T18:45:47.461555600, status=PENDING, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
+2026-07-01 18:45:47.463 [http-nio-8080-exec-3] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=20
+2026-07-01 18:45:47.464 [http-nio-8080-exec-3] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@4883e314, contactType=INDIVIDUAL, firstName=Ion, lastName=Testescu, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=test.factura.1782920747@example.com, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=ENROLLED, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T18:45:47, lastContactDate=2026-07-01T18:45:47.464792400, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T18:45:47, marketingConsent=false)
+2026-07-01 18:45:47.466 [http-nio-8080-exec-3] DEBUG crm.dao.ContactDao - Entity updated in contacts: ID=25
+2026-07-01 18:45:47.466 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-07-01 18:45:47.467 [http-nio-8080-exec-3] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 25: NEW -> ENROLLED
+2026-07-01 18:45:47.467 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
+2026-07-01 18:45:47.469 [http-nio-8080-exec-3] INFO  crm.service.notification.NotificationService - [EMAIL] Către: test.factura.1782920747@example.com, Subiect: Confirmare înscriere curs
+2026-07-01 18:45:47.469 [http-nio-8080-exec-3] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Ion Testescu,
+
+Înscrierea ta a fost confirmată cu succes!
+Status: PENDING
+
+Vei primi în curând detalii despre programul cursului și materialele necesare.
+
+Mult succes!
+Echipa Training IT
+2026-07-01 18:45:47.469 [http-nio-8080-exec-3] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 25
+2026-07-01 18:45:47.472 [http-nio-8080-exec-3] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@342091ee, invoiceNumber=INV-2026-00020, contractId=null, enrollmentId=20, clientId=25, issueDate=2026-07-01, dueDate=2026-07-16, subtotal=1500.00, tax=285.00, total=1785.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Factură înscriere curs (sesiune 3))
+2026-07-01 18:45:47.475 [http-nio-8080-exec-3] DEBUG crm.dao.InvoiceDao - Entity saved in invoices: ID=1
+2026-07-01 18:45:47.475 [http-nio-8080-exec-3] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00020 pentru înscrierea 20 (total 1785.00 RON)
+2026-07-01 18:45:47.475 [http-nio-8080-exec-3] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=25, sesiune=3
+2026-07-01 18:45:47.475 [http-nio-8080-exec-3] INFO  crm.service.review.ReviewService - Curs cumpărat: client=test.factura.1782920747@example.com, curs=4, enrollment=20
+2026-07-01 18:46:06.237 [http-nio-8080-exec-7] INFO  crm.service.review.ReviewService - Cumpărare ignorată - client test.factura.1782920747@example.com deja înscris la cursul 4
+2026-07-01 18:46:06.499 [http-nio-8080-exec-1] INFO  crm.service.contact.ContactService - Creare contact: maria.pop.9931@example.com
+2026-07-01 18:46:06.500 [http-nio-8080-exec-1] DEBUG crm.strategy.LeadScoringContext - Scor inițial pentru contact maria.pop.9931@example.com (strategie: SimpleLeadScoring): 50
+2026-07-01 18:46:06.500 [http-nio-8080-exec-1] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@4883e314, contactType=INDIVIDUAL, firstName=Maria, lastName=Pop, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=maria.pop.9931@example.com, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T18:46:06.500314, lastContactDate=2026-07-01T18:46:06.500314, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T18:46:06.499228700, marketingConsent=null)
+2026-07-01 18:46:06.503 [http-nio-8080-exec-1] DEBUG crm.dao.ContactDao - Entity saved in contacts: ID=26
+2026-07-01 18:46:06.503 [http-nio-8080-exec-1] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-07-01 18:46:06.506 [http-nio-8080-exec-1] INFO  crm.service.notification.NotificationService - [EMAIL] Către: maria.pop.9931@example.com, Subiect: Bine ai venit la Training IT!
+2026-07-01 18:46:06.506 [http-nio-8080-exec-1] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Maria Pop,
+
+Îți mulțumim pentru interesul față de cursurile noastre!
+
+Suntem o companie specializată în training IT și oferim cursuri de Java, Python, AI și multe altele.
+
+Un consultant te va contacta în curând pentru a discuta opțiunile potrivite.
+
+Cu drag,
+Echipa Training IT
+2026-07-01 18:46:06.506 [http-nio-8080-exec-1] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email trimis către: maria.pop.9931@example.com
+2026-07-01 18:46:06.506 [http-nio-8080-exec-1] INFO  crm.service.contact.ContactService - Contact creat cu ID: 26 (scor: 50)
+2026-07-01 18:46:06.508 [http-nio-8080-exec-1] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@341fbd64, sessionId=1, contactId=26, enrollmentDate=2026-07-01T18:46:06.508021, status=PENDING, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
+2026-07-01 18:46:06.509 [http-nio-8080-exec-1] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=21
+2026-07-01 18:46:06.509 [http-nio-8080-exec-1] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@4883e314, contactType=INDIVIDUAL, firstName=Maria, lastName=Pop, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=maria.pop.9931@example.com, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=ENROLLED, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T18:46:06, lastContactDate=2026-07-01T18:46:06.509021400, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T18:46:06, marketingConsent=false)
+2026-07-01 18:46:06.511 [http-nio-8080-exec-1] DEBUG crm.dao.ContactDao - Entity updated in contacts: ID=26
+2026-07-01 18:46:06.511 [http-nio-8080-exec-1] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-07-01 18:46:06.512 [http-nio-8080-exec-1] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 26: NEW -> ENROLLED
+2026-07-01 18:46:06.512 [http-nio-8080-exec-1] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
+2026-07-01 18:46:06.515 [http-nio-8080-exec-1] INFO  crm.service.notification.NotificationService - [EMAIL] Către: maria.pop.9931@example.com, Subiect: Confirmare înscriere curs
+2026-07-01 18:46:06.515 [http-nio-8080-exec-1] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Maria Pop,
+
+Înscrierea ta a fost confirmată cu succes!
+Status: PENDING
+
+Vei primi în curând detalii despre programul cursului și materialele necesare.
+
+Mult succes!
+Echipa Training IT
+2026-07-01 18:46:06.515 [http-nio-8080-exec-1] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 26
+2026-07-01 18:46:06.516 [http-nio-8080-exec-1] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@342091ee, invoiceNumber=INV-2026-00021, contractId=null, enrollmentId=21, clientId=26, issueDate=2026-07-01, dueDate=2026-07-16, subtotal=1500.00, tax=285.00, total=1785.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Factură înscriere curs (sesiune 1))
+2026-07-01 18:46:06.517 [http-nio-8080-exec-1] DEBUG crm.dao.InvoiceDao - Entity saved in invoices: ID=2
+2026-07-01 18:46:06.517 [http-nio-8080-exec-1] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00021 pentru înscrierea 21 (total 1785.00 RON)
+2026-07-01 18:46:06.517 [http-nio-8080-exec-1] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=26, sesiune=1
+2026-07-01 18:46:06.517 [http-nio-8080-exec-1] INFO  crm.service.review.ReviewService - Curs cumpărat: client=maria.pop.9931@example.com, curs=1, enrollment=21
+2026-07-01 18:47:16.077 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 18:47:16.124 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 25684 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 18:47:16.125 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 18:47:16.125 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 18:47:16.927 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 18:47:16.937 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 18:47:16.940 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 18:47:16.940 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 18:47:17.002 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 18:47:17.002 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 841 ms
+2026-07-01 18:47:17.199 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-01 18:47:17.201 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 18:47:17.203 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 18:47:17.216 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 18:47:17.297 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@6a5e167a
+2026-07-01 18:47:17.299 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 18:47:17.299 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 18:47:17.310 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 18:47:17.315 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2412) Duplicate column name 'email'
+2026-07-01 18:47:17.316 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 18:47:17.317 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2412) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 18:47:17.318 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 18:47:17.318 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2412) Duplicate column name 'password'
+2026-07-01 18:47:17.319 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 18:47:17.319 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2412) Duplicate column name 'password'
+2026-07-01 18:47:17.320 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 18:47:17.321 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2412) Duplicate column name 'password'
+2026-07-01 18:47:17.334 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, invoices)
+2026-07-01 18:47:17.337 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 18:47:17.338 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 18:47:17.339 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 18:47:17.343 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': InvoiceGenerationObserver
+2026-07-01 18:47:17.344 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 18:47:17.344 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 18:47:17.344 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 18:47:17.409 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 18:47:17.669 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 18:47:17.683 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 18:47:17.689 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.837 seconds (process running for 2.25)
+2026-07-01 18:47:30.384 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 18:47:30.386 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 18:47:30.386 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 18:47:50.911 [http-nio-8080-exec-8] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@615cd4ab, sessionId=2, contactId=21, enrollmentDate=2026-07-01T18:47:50.911704, status=PENDING, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
+2026-07-01 18:47:50.912 [http-nio-8080-exec-8] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=22
+2026-07-01 18:47:50.912 [http-nio-8080-exec-8] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
+2026-07-01 18:47:50.932 [http-nio-8080-exec-8] INFO  crm.service.notification.NotificationService - [EMAIL] Către: raul.veca04@e-uvt.ro, Subiect: Confirmare înscriere curs
+2026-07-01 18:47:50.932 [http-nio-8080-exec-8] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Raul Veca,
+
+Înscrierea ta a fost confirmată cu succes!
+Status: PENDING
+
+Vei primi în curând detalii despre programul cursului și materialele necesare.
+
+Mult succes!
+Echipa Training IT
+2026-07-01 18:47:50.932 [http-nio-8080-exec-8] INFO  crm.service.notification.NotificationService - [SMS] Către: 0757 684 617, Subiect: (fără subiect)
+2026-07-01 18:47:50.932 [http-nio-8080-exec-8] DEBUG crm.service.notification.NotificationService - Conținut:
+Inscrierea ta a fost confirmata. Multumim!
+2026-07-01 18:47:50.932 [http-nio-8080-exec-8] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 21
+2026-07-01 18:47:50.939 [http-nio-8080-exec-8] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@1ca502e3, invoiceNumber=INV-2026-00022, contractId=null, enrollmentId=22, clientId=21, issueDate=2026-07-01, dueDate=2026-07-16, subtotal=1500.00, tax=285.00, total=1785.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Factură înscriere curs (sesiune 2))
+2026-07-01 18:47:50.946 [http-nio-8080-exec-8] DEBUG crm.dao.InvoiceDao - Entity saved in invoices: ID=3
+2026-07-01 18:47:50.946 [http-nio-8080-exec-8] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00022 pentru înscrierea 22 (total 1785.00 RON)
+2026-07-01 18:47:50.946 [http-nio-8080-exec-8] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=21, sesiune=2
+2026-07-01 18:47:50.946 [http-nio-8080-exec-8] INFO  crm.service.review.ReviewService - Curs cumpărat: client=raul.veca04@e-uvt.ro, curs=3, enrollment=22
+2026-07-01 18:48:07.785 [http-nio-8080-exec-9] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=14
+2026-07-01 18:48:29.689 [http-nio-8080-exec-4] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 19 orders
+2026-07-01 18:48:29.689 [http-nio-8080-exec-1] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 19 orders
+2026-07-01 18:48:34.585 [http-nio-8080-exec-1] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 18:48:34.585 [http-nio-8080-exec-8] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 18:48:42.060 [http-nio-8080-exec-7] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 19 orders
+2026-07-01 18:48:42.060 [http-nio-8080-exec-3] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 19 orders
+2026-07-01 18:54:22.843 [http-nio-8080-exec-10] INFO  crm.service.contact.ContactService - Creare contact: cristianstoica@sensidev.ro
+2026-07-01 18:54:22.843 [http-nio-8080-exec-10] DEBUG crm.strategy.LeadScoringContext - Scor inițial pentru contact cristianstoica@sensidev.ro (strategie: SimpleLeadScoring): 50
+2026-07-01 18:54:22.843 [http-nio-8080-exec-10] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@192656ec, contactType=INDIVIDUAL, firstName=Cristian, lastName=Stoica, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=cristianstoica@sensidev.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T18:54:22.843013700, lastContactDate=2026-07-01T18:54:22.843013700, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T18:54:22.843013700, marketingConsent=null)
+2026-07-01 18:54:22.856 [http-nio-8080-exec-10] DEBUG crm.dao.ContactDao - Entity saved in contacts: ID=27
+2026-07-01 18:54:22.856 [http-nio-8080-exec-10] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-07-01 18:54:22.856 [http-nio-8080-exec-10] INFO  crm.service.notification.NotificationService - [EMAIL] Către: cristianstoica@sensidev.ro, Subiect: Bine ai venit la Training IT!
+2026-07-01 18:54:22.856 [http-nio-8080-exec-10] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Cristian Stoica,
+
+Îți mulțumim pentru interesul față de cursurile noastre!
+
+Suntem o companie specializată în training IT și oferim cursuri de Java, Python, AI și multe altele.
+
+Un consultant te va contacta în curând pentru a discuta opțiunile potrivite.
+
+Cu drag,
+Echipa Training IT
+2026-07-01 18:54:22.856 [http-nio-8080-exec-10] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email trimis către: cristianstoica@sensidev.ro
+2026-07-01 18:54:22.856 [http-nio-8080-exec-10] INFO  crm.service.contact.ContactService - Contact creat cu ID: 27 (scor: 50)
+2026-07-01 18:54:22.856 [http-nio-8080-exec-10] DEBUG crm.repository.EnrollmentRepository - Salvare Enrollment : Enrollment(super=crm.model.entity.Enrollment@615cd4ab, sessionId=1, contactId=27, enrollmentDate=2026-07-01T18:54:22.856553400, status=PENDING, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
+2026-07-01 18:54:22.863 [http-nio-8080-exec-10] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=23
+2026-07-01 18:54:22.863 [http-nio-8080-exec-10] DEBUG crm.repository.ContactRepository - Salvare Contact : Contact(super=crm.model.entity.Contact@192656ec, contactType=INDIVIDUAL, firstName=Cristian, lastName=Stoica, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=cristianstoica@sensidev.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=ENROLLED, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-01T18:54:22, lastContactDate=2026-07-01T18:54:22.863942300, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-01T18:54:22, marketingConsent=false)
+2026-07-01 18:54:22.863 [http-nio-8080-exec-10] DEBUG crm.dao.ContactDao - Entity updated in contacts: ID=27
+2026-07-01 18:54:22.863 [http-nio-8080-exec-10] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-07-01 18:54:22.869 [http-nio-8080-exec-10] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 27: NEW -> ENROLLED
+2026-07-01 18:54:22.869 [http-nio-8080-exec-10] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] INFO  crm.service.notification.NotificationService - [EMAIL] Către: cristianstoica@sensidev.ro, Subiect: Confirmare înscriere curs
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] DEBUG crm.service.notification.NotificationService - Conținut:
+Salut Cristian Stoica,
+
+Înscrierea ta a fost confirmată cu succes!
+Status: PENDING
+
+Vei primi în curând detalii despre programul cursului și materialele necesare.
+
+Mult succes!
+Echipa Training IT
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] INFO  c.o.listeners.EnrollmentConfirmationObserver - Confirmare înscriere trimisă către contact 27
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@1ca502e3, invoiceNumber=INV-2026-00023, contractId=null, enrollmentId=23, clientId=27, issueDate=2026-07-01, dueDate=2026-07-16, subtotal=1500.00, tax=285.00, total=1785.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Factură înscriere curs (sesiune 1))
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] DEBUG crm.dao.InvoiceDao - Entity saved in invoices: ID=4
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00023 pentru înscrierea 23 (total 1785.00 RON)
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] INFO  crm.service.enrollment.EnrollmentService - Înscriere creată: contact=27, sesiune=1
+2026-07-01 18:54:22.870 [http-nio-8080-exec-10] INFO  crm.service.review.ReviewService - Curs cumpărat: client=cristianstoica@sensidev.ro, curs=1, enrollment=23
+2026-07-01 18:55:15.480 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-01 18:55:15.491 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-01 18:55:15.494 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-01 18:55:15.495 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-01 18:55:15.497 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-01 18:55:15.497 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-07-01 19:06:30.137 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:06:30.179 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 23792 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:06:30.179 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:06:30.180 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:06:31.036 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:06:31.046 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:06:31.049 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:06:31.049 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:06:31.124 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:06:31.124 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 914 ms
+2026-07-01 19:06:31.179 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 19:06:31.182 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:06:31.184 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:06:31.195 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:06:31.290 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@67507df
+2026-07-01 19:06:31.291 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:06:31.291 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:06:31.305 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1451-23000: Cannot delete or update a parent row: a foreign key constraint fails
+2026-07-01 19:06:31.310 [main] WARN  crm.web.config.WebSchemaInitializer - Could not check/drop legacy invoices table: (conn=2447) Cannot delete or update a parent row: a foreign key constraint fails
+2026-07-01 19:06:31.315 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:06:31.315 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2447) Duplicate column name 'email'
+2026-07-01 19:06:31.316 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:06:31.316 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2447) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:06:31.316 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:06:31.316 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2447) Duplicate column name 'password'
+2026-07-01 19:06:31.317 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:06:31.317 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2447) Duplicate column name 'password'
+2026-07-01 19:06:31.317 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:06:31.317 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2447) Duplicate column name 'password'
+2026-07-01 19:06:31.328 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, invoices)
+2026-07-01 19:06:31.330 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:06:31.331 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:06:31.331 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:06:31.336 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:06:31.336 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:06:31.337 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:06:31.337 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:06:31.411 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:06:31.701 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:06:31.719 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:06:31.724 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.831 seconds (process running for 2.284)
+2026-07-01 19:11:04.944 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:11:04.986 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 12000 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:11:04.986 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:11:04.986 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:11:05.748 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:11:05.757 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:11:05.759 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:11:05.759 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:11:05.824 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:11:05.824 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 807 ms
+2026-07-01 19:11:05.869 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 19:11:05.871 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:11:05.872 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:11:05.881 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:11:05.965 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@73809e7
+2026-07-01 19:11:05.967 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:11:05.967 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:11:05.987 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:11:05.991 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2464) Duplicate column name 'email'
+2026-07-01 19:11:05.992 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:11:05.992 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2464) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:11:05.992 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:11:05.992 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2464) Duplicate column name 'password'
+2026-07-01 19:11:05.993 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:11:05.993 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2464) Duplicate column name 'password'
+2026-07-01 19:11:05.993 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:11:05.993 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2464) Duplicate column name 'password'
+2026-07-01 19:11:06.003 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:11:06.005 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:11:06.006 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:11:06.007 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:11:06.011 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:11:06.012 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:11:06.012 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:11:06.012 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:11:06.086 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:11:06.362 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:11:06.377 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:11:06.382 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.664 seconds (process running for 2.082)
+2026-07-01 19:11:37.750 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:11:37.751 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:11:37.751 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 19:11:37.838 [http-nio-8080-exec-1] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=15
+2026-07-01 19:11:37.839 [http-nio-8080-exec-1] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:11:37.845 [http-nio-8080-exec-1] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@995e692, invoiceNumber=INV-2026-00015, sessionId=15, clientId=1, clientEmail=alex.stoica@example.com, issueDate=2026-07-01, dueDate=2026-07-16, hours=3, hourlyRate=10.00, subtotal=30.00, discountRate=0.00, discountAmount=0.00, total=30.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Ședință online cu trainer (2026-07-08, 10:00-13:00, 3h))
+2026-07-01 19:11:37.848 [http-nio-8080-exec-1] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=1
+2026-07-01 19:11:37.848 [http-nio-8080-exec-1] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00015 pentru ședința 15 (3h × $10 − 0% = $30.00)
+2026-07-01 19:11:38.054 [http-nio-8080-exec-2] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=16
+2026-07-01 19:11:38.054 [http-nio-8080-exec-2] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:11:38.056 [http-nio-8080-exec-2] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@995e692, invoiceNumber=INV-2026-00016, sessionId=16, clientId=1, clientEmail=andrei@banktech.ro, issueDate=2026-07-01, dueDate=2026-07-16, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Ședință online cu trainer (2026-07-08, 14:00-16:00, 2h) - discount angajat 60%)
+2026-07-01 19:11:38.058 [http-nio-8080-exec-2] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=2
+2026-07-01 19:11:38.058 [http-nio-8080-exec-2] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00016 pentru ședința 16 (2h × $10 − 60% = $8.00)
+2026-07-01 19:12:53.600 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:12:53.641 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 26412 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:12:53.642 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:12:53.642 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:12:54.410 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:12:54.419 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:12:54.420 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:12:54.420 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:12:54.478 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:12:54.478 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 806 ms
+2026-07-01 19:12:54.522 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 19:12:54.525 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:12:54.526 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:12:54.535 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:12:54.618 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@290e8cab
+2026-07-01 19:12:54.619 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:12:54.620 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:12:54.629 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:12:54.633 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2472) Duplicate column name 'email'
+2026-07-01 19:12:54.633 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:12:54.633 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2472) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:12:54.634 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:12:54.634 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2472) Duplicate column name 'password'
+2026-07-01 19:12:54.634 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:12:54.634 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2472) Duplicate column name 'password'
+2026-07-01 19:12:54.635 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:12:54.635 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2472) Duplicate column name 'password'
+2026-07-01 19:12:54.645 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:12:54.647 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:12:54.648 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:12:54.649 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:12:54.653 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:12:54.653 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:12:54.654 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:12:54.654 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:12:54.722 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:12:55.013 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:12:55.029 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:12:55.034 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.658 seconds (process running for 2.068)
+2026-07-01 19:13:05.878 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:13:05.878 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:13:05.878 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 19:13:05.968 [http-nio-8080-exec-1] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=17
+2026-07-01 19:13:05.968 [http-nio-8080-exec-1] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:13:05.974 [http-nio-8080-exec-1] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@362f0d2c, invoiceNumber=INV-2026-00017, sessionId=17, clientId=1, clientEmail=alex.stoica@example.com, issueDate=2026-07-01, dueDate=2026-07-16, hours=3, hourlyRate=10.00, subtotal=30.00, discountRate=0.00, discountAmount=0.00, total=30.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Sedinta online cu trainer (2026-07-09, 9:00-12:00, 3h))
+2026-07-01 19:13:05.977 [http-nio-8080-exec-1] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=3
+2026-07-01 19:13:05.978 [http-nio-8080-exec-1] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00017 pentru ședința 17 (3h × $10 − 0% = $30.00)
+2026-07-01 19:13:06.179 [http-nio-8080-exec-3] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=18
+2026-07-01 19:13:06.179 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:13:06.183 [http-nio-8080-exec-3] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@362f0d2c, invoiceNumber=INV-2026-00018, sessionId=18, clientId=1, clientEmail=andrei@banktech.ro, issueDate=2026-07-01, dueDate=2026-07-16, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Sedinta online cu trainer (2026-07-09, 14:00-16:00, 2h) - discount angajat 60%)
+2026-07-01 19:13:06.184 [http-nio-8080-exec-3] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=4
+2026-07-01 19:13:06.184 [http-nio-8080-exec-3] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00018 pentru ședința 18 (2h × $10 − 60% = $8.00)
+2026-07-01 19:15:29.144 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:15:29.186 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 36308 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:15:29.187 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:15:29.187 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:15:29.943 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:15:29.953 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:15:29.955 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:15:29.955 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:15:30.008 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:15:30.009 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 788 ms
+2026-07-01 19:15:30.207 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-01 19:15:30.209 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:15:30.215 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:15:30.227 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:15:30.305 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@26ca61bf
+2026-07-01 19:15:30.306 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:15:30.306 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:15:30.318 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:15:30.323 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2500) Duplicate column name 'email'
+2026-07-01 19:15:30.324 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:15:30.324 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2500) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:15:30.325 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:15:30.325 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2500) Duplicate column name 'password'
+2026-07-01 19:15:30.326 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:15:30.326 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2500) Duplicate column name 'password'
+2026-07-01 19:15:30.326 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:15:30.327 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2500) Duplicate column name 'password'
+2026-07-01 19:15:30.340 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:15:30.342 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:15:30.343 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:15:30.344 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:15:30.349 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:15:30.350 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:15:30.350 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:15:30.350 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:15:30.423 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:15:30.691 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:15:30.710 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:15:30.717 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.805 seconds (process running for 2.223)
+2026-07-01 19:15:43.623 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:15:43.623 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:15:43.623 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 19:16:06.921 [http-nio-8080-exec-3] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=19
+2026-07-01 19:16:06.921 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:16:06.921 [http-nio-8080-exec-3] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@5d277129, invoiceNumber=INV-2026-00019, sessionId=19, clientId=21, clientEmail=raul.veca04@e-uvt.ro, issueDate=2026-07-01, dueDate=2026-07-16, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.00, discountAmount=0.00, total=20.00, paidAmount=0, status=UNPAID, paymentDate=null, description=Sedinta online cu trainer (2026-07-14, 9:00-11:00, 2h))
+2026-07-01 19:16:06.938 [http-nio-8080-exec-3] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=5
+2026-07-01 19:16:06.938 [http-nio-8080-exec-3] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00019 pentru ședința 19 (2h × $10 − 0% = $20.00)
+2026-07-01 19:31:33.572 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:31:33.613 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 32580 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:31:33.614 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:31:33.614 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:31:34.432 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:31:34.442 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:31:34.444 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:31:34.444 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:31:34.511 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:31:34.511 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 867 ms
+2026-07-01 19:31:34.560 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 19:31:34.561 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:31:34.563 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:31:34.581 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:31:34.666 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@341b13a8
+2026-07-01 19:31:34.667 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:31:34.667 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:31:34.674 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:31:34.678 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2526) Duplicate column name 'email'
+2026-07-01 19:31:34.679 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:31:34.679 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2526) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:31:34.687 [main] INFO  crm.web.config.WebSchemaInitializer - Dropped obsolete due_date column from session_invoices
+2026-07-01 19:31:34.689 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:31:34.689 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2526) Duplicate column name 'password'
+2026-07-01 19:31:34.689 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:31:34.690 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2526) Duplicate column name 'password'
+2026-07-01 19:31:34.690 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:31:34.690 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2526) Duplicate column name 'password'
+2026-07-01 19:31:34.702 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:31:34.703 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:31:34.704 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:31:34.705 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:31:34.709 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:31:34.713 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:31:34.713 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:31:34.713 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:31:34.789 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:31:35.064 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:31:35.082 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:31:35.087 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.751 seconds (process running for 2.19)
+2026-07-01 19:31:42.738 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:31:42.739 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:31:42.739 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 19:31:43.098 [http-nio-8080-exec-3] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=20
+2026-07-01 19:31:43.099 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:31:43.107 [http-nio-8080-exec-3] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@55457d4d, invoiceNumber=INV-2026-00020, sessionId=20, clientId=1, clientEmail=andrei@banktech.ro, issueDate=2026-07-01, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=8.00, status=PAID, paymentDate=2026-07-01, description=Sedinta online cu trainer (2026-07-10, 11:00-13:00, 2h) - discount angajat 60%)
+2026-07-01 19:31:43.111 [http-nio-8080-exec-3] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=6
+2026-07-01 19:31:43.111 [http-nio-8080-exec-3] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00020 pentru ședința 20 (2h × $10 − 60% = $8.00)
+2026-07-01 19:33:00.114 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:33:00.162 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 17380 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:33:00.163 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:33:00.164 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:33:00.857 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:33:00.866 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:33:00.868 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:33:00.868 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:33:00.919 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:33:00.920 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 720 ms
+2026-07-01 19:33:01.103 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-01 19:33:01.107 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:33:01.109 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:33:01.121 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:33:01.202 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@1faf386c
+2026-07-01 19:33:01.203 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:33:01.203 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:33:01.211 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:33:01.215 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2534) Duplicate column name 'email'
+2026-07-01 19:33:01.216 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:33:01.216 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2534) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:33:01.217 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:33:01.217 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=2534) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:33:01.218 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:33:01.218 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2534) Duplicate column name 'password'
+2026-07-01 19:33:01.219 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:33:01.219 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2534) Duplicate column name 'password'
+2026-07-01 19:33:01.220 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:33:01.220 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2534) Duplicate column name 'password'
+2026-07-01 19:33:01.232 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:33:01.234 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:33:01.235 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:33:01.236 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:33:01.237 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:33:01.238 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:33:01.238 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:33:01.238 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:33:01.271 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:33:01.514 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:33:01.529 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:33:01.534 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.646 seconds (process running for 2.043)
+2026-07-01 19:33:17.101 [http-nio-8080-exec-4] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:33:17.101 [http-nio-8080-exec-4] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:33:17.101 [http-nio-8080-exec-4] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 19:33:30.811 [http-nio-8080-exec-3] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 20 orders
+2026-07-01 19:33:30.811 [http-nio-8080-exec-4] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 20 orders
+2026-07-01 19:34:07.309 [http-nio-8080-exec-9] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 19:34:07.309 [http-nio-8080-exec-6] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 19:35:00.489 [http-nio-8080-exec-1] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 20 orders
+2026-07-01 19:35:00.489 [http-nio-8080-exec-2] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 20 orders
+2026-07-01 19:35:04.854 [http-nio-8080-exec-9] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 19:35:04.854 [http-nio-8080-exec-6] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 19:35:17.349 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-01 19:35:17.358 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-01 19:35:17.361 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-01 19:35:17.361 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-01 19:35:17.364 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-01 19:35:17.364 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-07-01 19:38:00.519 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:38:00.563 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 2836 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:38:00.563 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:38:00.563 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:38:01.511 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:38:01.521 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:38:01.523 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:38:01.523 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:38:01.594 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:38:01.594 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 997 ms
+2026-07-01 19:38:01.648 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 19:38:01.657 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:38:01.659 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:38:01.669 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:38:01.763 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@290e8cab
+2026-07-01 19:38:01.764 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:38:01.764 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:38:01.773 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:38:01.778 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2540) Duplicate column name 'email'
+2026-07-01 19:38:01.778 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:38:01.779 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2540) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:38:01.779 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:38:01.779 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=2540) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:38:01.780 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:38:01.780 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2540) Duplicate column name 'password'
+2026-07-01 19:38:01.780 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:38:01.780 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2540) Duplicate column name 'password'
+2026-07-01 19:38:01.781 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:38:01.781 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2540) Duplicate column name 'password'
+2026-07-01 19:38:01.791 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:38:01.793 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:38:01.794 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:38:01.795 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:38:01.799 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:38:01.800 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:38:01.800 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:38:01.800 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:38:01.853 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:38:02.155 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:38:02.170 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:38:02.175 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.921 seconds (process running for 2.451)
+2026-07-01 19:38:04.515 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:38:04.516 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:38:04.517 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-07-01 19:38:20.064 [http-nio-8080-exec-5] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=21
+2026-07-01 19:38:20.064 [http-nio-8080-exec-5] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:38:20.071 [http-nio-8080-exec-5] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@68aad0b5, invoiceNumber=INV-2026-00021, sessionId=21, clientId=1, clientEmail=andrei@banktech.ro, issueDate=2026-07-01, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=8.00, status=PAID, paymentDate=2026-07-01, description=Sedinta online cu trainer (2026-07-13, 9:00-11:00, 2h) - discount angajat 60%)
+2026-07-01 19:38:20.074 [http-nio-8080-exec-5] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=7
+2026-07-01 19:38:20.074 [http-nio-8080-exec-5] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00021 pentru ședința 21 (2h × $10 − 60% = $8.00)
+2026-07-01 19:43:35.239 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:43:35.283 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 33492 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:43:35.283 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:43:35.283 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:43:36.081 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:43:36.089 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:43:36.091 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:43:36.091 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:43:36.151 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:43:36.151 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 838 ms
+2026-07-01 19:43:36.195 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-01 19:43:36.197 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:43:36.199 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:43:36.207 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:43:36.293 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@3481ff98
+2026-07-01 19:43:36.294 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:43:36.294 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:43:36.302 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:43:36.307 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2547) Duplicate column name 'email'
+2026-07-01 19:43:36.307 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:43:36.307 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2547) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:43:36.308 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:43:36.308 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=2547) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:43:36.308 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:43:36.309 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2547) Duplicate column name 'password'
+2026-07-01 19:43:36.309 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:43:36.309 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2547) Duplicate column name 'password'
+2026-07-01 19:43:36.310 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:43:36.310 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2547) Duplicate column name 'password'
+2026-07-01 19:43:36.322 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:43:36.323 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:43:36.324 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:43:36.325 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:43:36.329 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:43:36.330 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:43:36.330 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:43:36.330 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:43:36.400 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:43:36.679 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:43:36.694 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:43:36.699 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.736 seconds (process running for 2.172)
+2026-07-01 19:43:50.489 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:43:50.489 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:43:50.489 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-01 19:44:33.321 [http-nio-8080-exec-4] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=22
+2026-07-01 19:44:33.322 [http-nio-8080-exec-4] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-01 19:44:33.327 [http-nio-8080-exec-4] DEBUG crm.repository.InvoiceRepository - Salvare Invoice : Invoice(super=crm.model.entity.Invoice@70463222, invoiceNumber=INV-2026-00022, sessionId=22, clientId=1, clientEmail=andrei@banktech.ro, issueDate=2026-07-01, hours=2, hourlyRate=10.00, subtotal=20.00, discountRate=0.6, discountAmount=12.00, total=8.00, paidAmount=8.00, status=PAID, paymentDate=2026-07-01, description=Sedinta online cu trainer (2026-07-15, 10:00-12:00, 2h) - discount angajat 60%)
+2026-07-01 19:44:33.330 [http-nio-8080-exec-4] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=8
+2026-07-01 19:44:33.330 [http-nio-8080-exec-4] INFO  crm.service.invoice.InvoiceService - Factură generată automat: INV-2026-00022 pentru ședința 22 (2h × $10 − 60% = $8.00)
+2026-07-01 19:52:28.772 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:52:28.816 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 22264 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:52:28.816 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:52:28.817 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:52:29.637 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:52:29.649 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:52:29.652 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:52:29.652 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:52:29.717 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:52:29.718 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 867 ms
+2026-07-01 19:52:29.957 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-01 19:52:29.960 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:52:29.967 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:52:29.979 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:52:30.059 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@6a5e167a
+2026-07-01 19:52:30.061 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:52:30.061 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:52:30.070 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:52:30.075 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2556) Duplicate column name 'email'
+2026-07-01 19:52:30.076 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:52:30.076 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2556) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:52:30.076 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:52:30.077 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=2556) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:52:30.077 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:52:30.078 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2556) Duplicate column name 'password'
+2026-07-01 19:52:30.078 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:52:30.078 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2556) Duplicate column name 'password'
+2026-07-01 19:52:30.079 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:52:30.079 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2556) Duplicate column name 'password'
+2026-07-01 19:52:30.096 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:52:30.106 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:52:30.112 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:52:30.117 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:52:30.123 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:52:30.129 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:52:30.129 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:52:30.130 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:52:30.284 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:52:30.566 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:52:30.571 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-07-01 19:52:30.572 [main] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-01 19:52:30.572 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-01 19:52:30.576 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-01 19:52:30.576 [main] INFO  crm.config.DatabaseConnection - Connection pool închis
+2026-07-01 19:52:30.586 [main] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-07-01 19:52:30.606 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2026-07-01 19:53:52.157 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-01 19:53:52.201 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 35908 (D:\CRM Licenta\target\classes started by raulv in D:\CRM Licenta)
+2026-07-01 19:53:52.201 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-01 19:53:52.202 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-01 19:53:52.874 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-01 19:53:52.884 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:53:52.886 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-01 19:53:52.886 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-01 19:53:52.944 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-01 19:53:52.945 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 712 ms
+2026-07-01 19:53:53.108 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-01 19:53:53.110 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-01 19:53:53.112 [main] INFO  crm.config.AppConfig - Valori default încărcate
+2026-07-01 19:53:53.123 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-01 19:53:53.199 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@1faf386c
+2026-07-01 19:53:53.200 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-01 19:53:53.201 [main] INFO  crm.config.DatabaseConnection - Connection pool inițializat cu succes (size: 20)
+2026-07-01 19:53:53.210 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-01 19:53:53.214 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=2561) Duplicate column name 'email'
+2026-07-01 19:53:53.215 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:53:53.216 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=2561) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-01 19:53:53.216 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:53:53.216 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=2561) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-01 19:53:53.217 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:53:53.217 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=2561) Duplicate column name 'password'
+2026-07-01 19:53:53.218 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:53:53.218 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=2561) Duplicate column name 'password'
+2026-07-01 19:53:53.219 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-01 19:53:53.219 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=2561) Duplicate column name 'password'
+2026-07-01 19:53:53.230 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)
+2026-07-01 19:53:53.232 [main] INFO  crm.observer.EventBus - Observer global înregistrat: AuditLogObserver
+2026-07-01 19:53:53.233 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-01 19:53:53.234 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-01 19:53:53.235 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-01 19:53:53.236 [main] INFO  crm.observer.EventBus - Observer înregistrat pentru evenimentul 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-01 19:53:53.236 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-01 19:53:53.236 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-01 19:53:53.267 [main] INFO  crm.facade.CrmFacade - CrmFacade inițializat
+2026-07-01 19:53:53.517 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-01 19:53:53.536 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-01 19:53:53.542 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.616 seconds (process running for 2.017)
+2026-07-01 19:54:07.664 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-01 19:54:07.664 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-01 19:54:07.670 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 6 ms
+2026-07-01 19:54:48.292 [http-nio-8080-exec-9] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 20 orders
+2026-07-01 19:54:48.292 [http-nio-8080-exec-10] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 20 orders
+2026-07-01 19:54:56.610 [http-nio-8080-exec-7] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 19:54:56.610 [http-nio-8080-exec-8] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-01 19:55:50.097 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-01 19:55:50.107 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-01 19:55:50.110 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-01 19:55:50.110 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-01 19:55:50.113 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-01 19:55:50.113 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool închis

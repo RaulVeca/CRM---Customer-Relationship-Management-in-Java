@@ -154,6 +154,26 @@ export interface Purchase {
   rating: number | null;
 }
 
+// A session-booking invoice generated automatically at each trainer booking.
+export interface Invoice {
+  id: number;
+  invoiceNumber: string;
+  sessionId: number | null;
+  clientId: number | null;
+  clientEmail: string | null;
+  issueDate: string | null;
+  hours: number;
+  hourlyRate: number;
+  subtotal: number;
+  discountRate: number; // 0 or 0.6
+  discountAmount: number;
+  total: number;
+  paidAmount: number;
+  status: string;
+  paymentDate: string | null;
+  description: string | null;
+}
+
 export interface PublicCompany {
   id: number;
   companyName: string;

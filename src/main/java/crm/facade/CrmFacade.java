@@ -15,6 +15,7 @@ import crm.service.contact.ContactService;
 import crm.service.course.CourseService;
 import crm.service.employee.EmployeeService;
 import crm.service.enrollment.EnrollmentService;
+import crm.service.invoice.InvoiceService;
 import crm.service.analytics.AnalyticsService;
 import crm.service.analytics.MetricsService;
 import crm.service.enrollment.PurchaseHistoryService;
@@ -48,6 +49,7 @@ public class CrmFacade {
     private final ContactService contactService;
     private final CourseService courseService;
     private final EnrollmentService enrollmentService;
+    private final InvoiceService invoiceService;
     private final OpportunityService opportunityService;
     private final ActivityService activityService;
     private final EmployeeService employeeService;
@@ -61,6 +63,7 @@ public class CrmFacade {
         this.contactService = ContactService.getInstance();
         this.courseService = CourseService.getInstance();
         this.enrollmentService = EnrollmentService.getInstance();
+        this.invoiceService = InvoiceService.getInstance();
         this.opportunityService = OpportunityService.getInstance();
         this.activityService = ActivityService.getInstance();
         this.employeeService = EmployeeService.getInstance();
@@ -177,6 +180,30 @@ public class CrmFacade {
 
     public List<Enrollment> getEnrollmentsForContact(Long contactId) {
         return enrollmentService.getByContactId(contactId);
+    }
+
+    // =====================================================
+    // INVOICES - generate automat la fiecare rezervare de ședință (booking)
+    // =====================================================
+
+    /** O factură după id. */
+    public Invoice getInvoice(Long id) {
+        return invoiceService.getById(id);
+    }
+
+    /** Toate facturile emise unui client. */
+    public List<Invoice> getInvoicesForClient(Long clientId) {
+        return invoiceService.getByClientId(clientId);
+    }
+
+    /** Factura/facturile generate pentru o rezervare de ședință. */
+    public List<Invoice> getInvoicesForSession(Long sessionId) {
+        return invoiceService.getBySessionId(sessionId);
+    }
+
+    /** Toate facturile (vedere admin). */
+    public List<Invoice> getAllInvoices() {
+        return invoiceService.getAll();
     }
 
     // =====================================================

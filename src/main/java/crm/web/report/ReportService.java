@@ -12,6 +12,7 @@ import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import crm.facade.CrmFacade;
 import crm.model.entity.Contact;
+import crm.model.entity.Invoice;
 import crm.model.entity.Opportunity;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -184,6 +185,155 @@ public class ReportService {
         doc.add(table);
         doc.close();
         return out.toByteArray();
+    }
+
+    // =====================================================
+    // Single invoice (receipt) PDF
+    // =====================================================
+
+    /** Fixed seller / bank details, mirroring the payment window on the booking page. */
+    private static final String COMPANY_NAME = "TrainingIT SRL";
+    private static final String BANK_NAME = "Banca Transilvania";
+    private static final String BANK_IBAN = "RO49 BTRL 0000 1234 5678 9012";
+
+    /**
+     * Renders a single session-booking invoice as a proper one-page PDF receipt:
+     * seller block, bill-to, the session line item priced at the hourly rate, the
+     * employee discount (when any) and the paid total.
+     */
+    public byte[] invoicePdf(Invoice inv) {
+        Document doc = new Document(PageSize.A4, 40, 40, 40, 40);
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        PdfWriter.getInstance(doc, out);
+        doc.open();
+
+        Font h1 = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 22, new Color(79, 70, 229));
+        Font label = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, new Color(100, 116, 139));
+        Font body = FontFactory.getFont(FontFactory.HELVETICA, 10);
+        Font bodyBold = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 10);
+
+        // Header: title + invoice number / dates
+        PdfPTable head = new PdfPTable(2);
+        head.setWidthPercentage(100);
+        head.setWidths(new int[] {1, 1});
+        head.addCell(borderless(new Phrase("INVOICE", h1), Element.ALIGN_LEFT));
+        PdfPCell meta = new PdfPCell();
+        meta.setBorder(0);
+        meta.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        meta.addElement(right(new Phrase(str(inv.getInvoiceNumber()), bodyBold)));
+        meta.addElement(right(new Phrase("Issue date: " + str(inv.getIssueDate()), body)));
+        meta.addElement(right(new Phrase("Status: " + str(inv.getStatus()), body)));
+        if (inv.getPaymentDate() != null) {
+            meta.addElement(right(new Phrase("Paid on: " + str(inv.getPaymentDate()), body)));
+        }
+        head.addCell(meta);
+        doc.add(head);
+
+        doc.add(spacer(16f));
+
+        // Seller + Bill-to
+        PdfPTable parties = new PdfPTable(2);
+        parties.setWidthPercentage(100);
+        parties.setWidths(new int[] {1, 1});
+        parties.addCell(partyCell("FROM", List.of(COMPANY_NAME, BANK_NAME, "IBAN: " + BANK_IBAN), label, body));
+        parties.addCell(partyCell("BILL TO", List.of(str(inv.getClientEmail())), label, body));
+        doc.add(parties);
+
+        doc.add(spacer(18f));
+
+        // Line items
+        PdfPTable items = new PdfPTable(4);
+        items.setWidthPercentage(100);
+        items.setWidths(new int[] {6, 2, 2, 2});
+        Font thFont = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 9, Color.WHITE);
+        for (String h : List.of("Description", "Hours", "Unit price", "Amount")) {
+            PdfPCell c = new PdfPCell(new Phrase(h, thFont));
+            c.setBackgroundColor(new Color(79, 70, 229));
+            c.setPadding(6f);
+            c.setHorizontalAlignment(h.equals("Description") ? Element.ALIGN_LEFT : Element.ALIGN_RIGHT);
+            items.addCell(c);
+        }
+        items.addCell(bodyCell(str(inv.getDescription()), body, Element.ALIGN_LEFT));
+        items.addCell(bodyCell(String.valueOf(inv.getHours()), body, Element.ALIGN_RIGHT));
+        items.addCell(bodyCell(money(inv.getHourlyRate()), body, Element.ALIGN_RIGHT));
+        items.addCell(bodyCell(money(inv.getSubtotal()), body, Element.ALIGN_RIGHT));
+        doc.add(items);
+
+        // Totals
+        PdfPTable totals = new PdfPTable(2);
+        totals.setWidthPercentage(45);
+        totals.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        totals.setWidths(new int[] {3, 2});
+        totals.setSpacingBefore(10f);
+        totalRow(totals, "Subtotal", money(inv.getSubtotal()), body, body);
+        if (inv.getDiscountRate() != null && inv.getDiscountRate().signum() > 0) {
+            String pct = inv.getDiscountRate().multiply(java.math.BigDecimal.valueOf(100)).intValue() + "%";
+            totalRow(totals, "Employee discount (" + pct + ")", "-" + money(inv.getDiscountAmount()), body, body);
+        }
+        totalRow(totals, "Total", money(inv.getTotal()), bodyBold, bodyBold);
+        doc.add(totals);
+
+        Paragraph note = new Paragraph("Thank you. This invoice was paid in full.",
+                FontFactory.getFont(FontFactory.HELVETICA_OBLIQUE, 9, new Color(100, 116, 139)));
+        note.setSpacingBefore(24f);
+        doc.add(note);
+
+        doc.close();
+        return out.toByteArray();
+    }
+
+    private PdfPCell partyCell(String heading, List<String> lines, Font label, Font body) {
+        PdfPCell cell = new PdfPCell();
+        cell.setBorder(0);
+        cell.addElement(new Phrase(heading, label));
+        for (String line : lines) {
+            cell.addElement(new Phrase(str(line), body));
+        }
+        return cell;
+    }
+
+    private void totalRow(PdfPTable t, String label, String value, Font lf, Font vf) {
+        PdfPCell l = new PdfPCell(new Phrase(label, lf));
+        l.setBorder(0);
+        l.setPadding(4f);
+        PdfPCell v = new PdfPCell(new Phrase(value, vf));
+        v.setBorder(0);
+        v.setPadding(4f);
+        v.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        t.addCell(l);
+        t.addCell(v);
+    }
+
+    private PdfPCell borderless(Phrase p, int align) {
+        PdfPCell c = new PdfPCell(p);
+        c.setBorder(0);
+        c.setHorizontalAlignment(align);
+        return c;
+    }
+
+    private Paragraph right(Phrase p) {
+        Paragraph par = new Paragraph(p);
+        par.setAlignment(Element.ALIGN_RIGHT);
+        return par;
+    }
+
+    private PdfPCell bodyCell(String value, Font font, int align) {
+        PdfPCell c = new PdfPCell(new Phrase(value, font));
+        c.setPadding(6f);
+        c.setHorizontalAlignment(align);
+        return c;
+    }
+
+    private Paragraph spacer(float height) {
+        Paragraph p = new Paragraph(" ");
+        p.setSpacingAfter(height);
+        return p;
+    }
+
+    /** Formats a money amount as {@code $12.00} (USD, two decimals). */
+    private static String money(java.math.BigDecimal amount) {
+        java.math.BigDecimal v = amount == null ? java.math.BigDecimal.ZERO : amount;
+        return "$" + v.setScale(2, java.math.RoundingMode.HALF_UP).toPlainString();
     }
 
     // =====================================================

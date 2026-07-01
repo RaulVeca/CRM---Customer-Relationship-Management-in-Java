@@ -6,8 +6,10 @@ import crm.observer.EventBus;
 import crm.observer.events.ActivityCompletedEvent;
 import crm.observer.events.ContactCreatedEvent;
 import crm.observer.events.EnrollmentCreatedEvent;
+import crm.observer.events.SessionBookedEvent;
 import crm.observer.listeners.AuditLogObserver;
 import crm.observer.listeners.EnrollmentConfirmationObserver;
+import crm.observer.listeners.InvoiceGenerationObserver;
 import crm.observer.listeners.LeadScoreUpdateObserver;
 import crm.observer.listeners.WelcomeEmailObserver;
 import jakarta.annotation.PostConstruct;
@@ -44,6 +46,7 @@ public class CrmRuntimeConfig {
         eventBus.registerObserver(new AuditLogObserver());
         eventBus.registerObserver(ContactCreatedEvent.EVENT_TYPE, new WelcomeEmailObserver());
         eventBus.registerObserver(EnrollmentCreatedEvent.EVENT_TYPE, new EnrollmentConfirmationObserver());
+        eventBus.registerObserver(SessionBookedEvent.EVENT_TYPE, new InvoiceGenerationObserver());
         eventBus.registerObserver(ActivityCompletedEvent.EVENT_TYPE, new LeadScoreUpdateObserver());
         logger.info("Domain observers registered");
     }

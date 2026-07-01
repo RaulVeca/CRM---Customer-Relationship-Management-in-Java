@@ -76,6 +76,29 @@ public final class WebSchemaInitializer {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             INDEX idx_med_sessions_trainer_date (trainer_id, session_date)
         )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS session_invoices (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            invoice_number VARCHAR(50) NOT NULL UNIQUE,
+            session_id BIGINT NULL,
+            client_id BIGINT NULL,
+            client_email VARCHAR(255),
+            issue_date DATE,
+            hours INT NOT NULL DEFAULT 0,
+            hourly_rate DECIMAL(10,2),
+            subtotal DECIMAL(10,2),
+            discount_rate DECIMAL(5,2) NOT NULL DEFAULT 0,
+            discount_amount DECIMAL(10,2) NOT NULL DEFAULT 0,
+            total DECIMAL(10,2),
+            paid_amount DECIMAL(10,2) DEFAULT 0,
+            status VARCHAR(20),
+            payment_date DATE NULL,
+            description VARCHAR(500),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_session_invoices_session (session_id),
+            INDEX idx_session_invoices_client (client_id)
+        )
         """
     };
 
@@ -113,13 +136,38 @@ public final class WebSchemaInitializer {
             }
             relaxEnrollmentPrice(conn);
             ensureEmployeeColumns(conn);
+            ensureSessionInvoiceShape(conn);
             ensurePasswordColumns(conn);
             seedAdmins(conn);
             seedTrainers(conn);
-            logger.info("Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions)");
+            logger.info("Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)");
         } catch (SQLException e) {
             logger.error("Failed to ensure web feature tables", e);
             throw new IllegalStateException("Could not initialize web feature schema", e);
+        }
+    }
+
+    /**
+     * A session booking only happens after the client has transferred the fee, so
+     * an invoice is a paid receipt with no payment deadline. Earlier the table
+     * carried a {@code due_date} column; drop it if a previous version created it,
+     * and mark any pre-existing invoice row as paid. Idempotent and best-effort — a
+     * "column doesn't exist" error on a database already in the target shape is
+     * expected and must not stop startup.
+     */
+    private static void ensureSessionInvoiceShape(Connection conn) {
+        try (Statement st = conn.createStatement()) {
+            st.execute("ALTER TABLE session_invoices DROP COLUMN due_date");
+            logger.info("Dropped obsolete due_date column from session_invoices");
+        } catch (SQLException e) {
+            logger.debug("session_invoices.due_date already absent or table missing: {}", e.getMessage());
+        }
+        // Every session invoice is paid on creation; backfill any legacy UNPAID rows.
+        try (Statement st = conn.createStatement()) {
+            st.execute("UPDATE session_invoices SET status = 'PAID', paid_amount = total, "
+                    + "payment_date = issue_date WHERE status <> 'PAID' OR payment_date IS NULL");
+        } catch (SQLException e) {
+            logger.debug("Could not backfill paid status on session_invoices: {}", e.getMessage());
         }
     }
 
