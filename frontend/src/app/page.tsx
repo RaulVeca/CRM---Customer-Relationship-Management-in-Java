@@ -18,6 +18,7 @@ import {
   QuoteIcon,
   StarBurstIcon,
   ArrowRightIcon,
+  UserIcon,
 } from "@/components/icons";
 import type { Category, MyPurchase, PublicCourse } from "@/lib/types";
 
@@ -132,6 +133,27 @@ const STATS = [
   { value: "12k+", label: "Learners" },
   { value: "4.8/5", label: "Average rating" },
   { value: "1:1", label: "Mentoring" },
+];
+
+const TRAINERS = [
+  {
+    name: "Alexandru Ionescu",
+    role: "Lead Software Engineering Trainer",
+    tags: ["Java", "Spring", "Microservices"],
+    body: "Over 14 years building backend systems, most recently as a principal engineer designing high-throughput payment platforms for a fintech scale-up. He has led teams of up to 20 developers, owns several open-source Spring libraries and has mentored more than 300 junior engineers into their first professional roles. His courses focus on clean architecture, testing discipline and shipping production-grade code from day one.",
+  },
+  {
+    name: "Maria Popescu",
+    role: "Cloud & DevOps Trainer",
+    tags: ["AWS", "Kubernetes", "CI/CD"],
+    body: "A certified AWS Solutions Architect and CNCF Kubernetes administrator with 11 years spanning infrastructure engineering and platform teams at two unicorn startups. She has migrated dozens of monoliths to containerised, auto-scaling deployments and built the internal training track that upskilled her company's entire engineering org. In class she pairs real cloud environments with hands-on labs so learners deploy, break and fix live systems.",
+  },
+  {
+    name: "David Georgescu",
+    role: "AI & Data Science Trainer",
+    tags: ["Python", "ML", "LLMs"],
+    body: "Holds a PhD in machine learning and spent 9 years as a data scientist and ML lead, taking recommendation and NLP models from notebook to production for e-commerce and healthcare clients. He has published peer-reviewed research, speaks regularly at data conferences and now designs TrainingIT's applied AI curriculum — from the fundamentals of Python and statistics through to fine-tuning and deploying large language models.",
+  },
 ];
 
 export default function Home() {
@@ -398,6 +420,52 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* ============================ TRAINERS ========================== */}
+      <section className="mx-auto max-w-6xl px-0 py-20">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-widest text-brand-600">
+            Meet your trainers
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl dark:text-white">
+            Learn from working engineers
+          </h2>
+          <p className="mt-3 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
+            Every course is taught by practitioners with years of hands-on
+            industry experience — here is the team behind the curriculum.
+          </p>
+        </div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {TRAINERS.map((t) => (
+            <div
+              key={t.name}
+              className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 transition hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5 dark:border-white/10 dark:bg-zinc-900"
+            >
+              {/* Anonymous profile picture — SVG silhouette, no photo */}
+              <span className="flex h-24 w-24 items-center justify-center self-center rounded-full bg-brand-50 text-brand-500 dark:bg-brand-500/10">
+                <UserIcon className="h-12 w-12" />
+              </span>
+              <h3 className="mt-5 text-center text-lg font-semibold text-ink dark:text-white">
+                {t.name}
+              </h3>
+              <p className="mt-1 text-center text-sm font-medium text-brand-600">{t.role}</p>
+              <div className="mt-3 flex flex-wrap justify-center gap-2">
+                {t.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-brand-50 px-3 py-1 text-xs font-medium text-brand-600 dark:bg-brand-500/10"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <p className="mt-5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                {t.body}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 

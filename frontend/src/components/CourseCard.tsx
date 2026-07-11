@@ -3,17 +3,18 @@
 import { useState } from "react";
 import { api } from "@/lib/api";
 import { getSession } from "@/lib/auth";
-import { StarRating, StarInput } from "@/components/Stars";
+import { StarRating } from "@/components/Stars";
 import type { CourseReviews, PublicCourse } from "@/lib/types";
 
 /**
  * A single course in the public catalog. The visitor is a logged-in contact, so
- * buying and reviewing use their session identity — no email/name to type.
+ * buying uses their session identity — no email/name to type. Reviews are shown
+ * read-only here; writing a review lives on the My Courses page, scoped to the
+ * courses the contact has actually enrolled in.
  *
  * - {@code purchased === false}: a "Buy this course" button that registers the
  *   purchase for the logged-in contact.
- * - {@code purchased === true}: a disabled, greyed-out "Already bought" button,
- *   and the review form unlocks (a course can only be reviewed once bought).
+ * - {@code purchased === true}: a disabled, greyed-out "Already bought" button.
  */
 export default function CourseCard({
   course,
@@ -34,14 +35,6 @@ export default function CourseCard({
   // Buy
   const [buyLoading, setBuyLoading] = useState(false);
   const [buyError, setBuyError] = useState<string | null>(null);
-
-  // Review form (no email — taken from the session)
-  const [showReview, setShowReview] = useState(false);
-  const [rvStars, setRvStars] = useState(0);
-  const [rvComment, setRvComment] = useState("");
-  const [rvLoading, setRvLoading] = useState(false);
-  const [rvError, setRvError] = useState<string | null>(null);
-  const [rvDone, setRvDone] = useState(false);
 
   function toggleExpanded() {
     const next = !expanded;
@@ -83,44 +76,12 @@ export default function CourseCard({
         lastName: session.lastName,
       });
       onPurchased(course.id);
-      // Surface the review form straight away.
-      setShowReview(true);
     } catch (err) {
       setBuyError((err as Error).message);
     } finally {
       setBuyLoading(false);
     }
   }
-
-  async function submitReview(e: React.FormEvent) {
-    e.preventDefault();
-    const session = getSession();
-    if (!session) {
-      setRvError("You must be signed in to leave a review.");
-      return;
-    }
-    setRvLoading(true);
-    setRvError(null);
-    try {
-      await api.post(`/api/public/courses/${course.id}/reviews`, {
-        email: session.email,
-        rating: rvStars,
-        comment: rvComment.trim() || null,
-      });
-      setRvDone(true);
-      setShowReview(false);
-      setRvComment("");
-      setRvStars(0);
-      await loadReviews();
-    } catch (err) {
-      setRvError((err as Error).message);
-    } finally {
-      setRvLoading(false);
-    }
-  }
-
-  const inputCls =
-    "w-full rounded-lg border border-zinc-300 px-3 py-1.5 text-sm outline-none transition focus:border-brand-500 focus:ring-1 focus:ring-brand-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder:text-zinc-500";
 
   return (
     <article className="flex flex-col rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition hover:shadow-lg hover:shadow-brand-500/5 dark:border-white/10 dark:bg-zinc-900">
@@ -193,58 +154,9 @@ export default function CourseCard({
             )}
             {buyError && <p className="text-sm text-red-600 dark:text-red-400">{buyError}</p>}
 
-            {/* ---- Reviews ---- */}
+            {/* ---- Reviews (read-only; writing lives on My Courses) ---- */}
             <div className="border-t border-black/5 pt-3 dark:border-white/10">
-              <div className="mb-2 flex items-center justify-between">
-                <p className="text-sm font-semibold text-ink dark:text-white">Reviews</p>
-                {purchased && !showReview && !rvDone && (
-                  <button
-                    type="button"
-                    onClick={() => setShowReview(true)}
-                    className="text-sm font-medium text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
-                  >
-                    Write a review
-                  </button>
-                )}
-              </div>
-
-              {!purchased && (
-                <p className="mb-2 text-xs text-zinc-400 dark:text-zinc-500">
-                  Buy this course to leave a review.
-                </p>
-              )}
-
-              {rvDone && (
-                <p className="mb-2 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
-                  Thanks for your review!
-                </p>
-              )}
-
-              {showReview && (
-                <form onSubmit={submitReview} className="mb-3 space-y-2 rounded-xl bg-canvas p-3 dark:bg-zinc-800/50">
-                  <StarInput value={rvStars} onChange={setRvStars} />
-                  <textarea
-                    className={inputCls}
-                    rows={3}
-                    placeholder="Share your experience (optional)"
-                    value={rvComment}
-                    onChange={(e) => setRvComment(e.target.value)}
-                  />
-                  {rvError && <p className="text-sm text-red-600 dark:text-red-400">{rvError}</p>}
-                  <div className="flex gap-2">
-                    <button
-                      type="submit"
-                      disabled={rvLoading || rvStars < 1}
-                      className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                      {rvLoading ? "Submitting…" : "Submit review"}
-                    </button>
-                    <button type="button" onClick={() => setShowReview(false)} className="rounded-full px-3 py-2 text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">
-                      Cancel
-                    </button>
-                  </div>
-                </form>
-              )}
+              <p className="mb-2 text-sm font-semibold text-ink dark:text-white">Reviews</p>
 
               {reviewsError && <p className="text-sm text-red-600 dark:text-red-400">Could not load reviews: {reviewsError}</p>}
 

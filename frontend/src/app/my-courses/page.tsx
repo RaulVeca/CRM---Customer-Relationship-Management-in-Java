@@ -6,6 +6,7 @@ import { api } from "@/lib/api";
 import { getSession } from "@/lib/auth";
 import { openSchedule } from "@/lib/schedule";
 import { StarRating } from "@/components/Stars";
+import CourseReviewButton from "@/components/CourseReviewButton";
 import type { MyPurchase } from "@/lib/types";
 
 /**
@@ -27,6 +28,15 @@ export default function MyCoursesPage() {
       .then(setPurchases)
       .catch((e) => setError((e as Error).message));
   }, []);
+
+  /** Reflect a just-submitted review on the matching course in the list. */
+  function markReviewed(courseId: number, rating: number) {
+    setPurchases((prev) =>
+      prev
+        ? prev.map((p) => (p.courseId === courseId ? { ...p, rating } : p))
+        : prev,
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -81,7 +91,7 @@ export default function MyCoursesPage() {
                   <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-500 dark:text-zinc-400">
                     {p.durationHours != null && <span>{p.durationHours} h</span>}
                     {p.purchaseDate && <span>Purchased: {p.purchaseDate}</span>}
-                    {p.rating != null ? (
+                    {p.rating != null && p.rating >= 1 ? (
                       <span className="flex items-center gap-1">
                         Your review: <StarRating value={p.rating} size={13} />
                       </span>
@@ -91,7 +101,12 @@ export default function MyCoursesPage() {
                   </div>
                 </div>
               </div>
-              <div className="mt-4 flex justify-end border-t border-zinc-100 pt-4 dark:border-zinc-800">
+              <div className="mt-4 flex flex-wrap items-start justify-end gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">
+                <CourseReviewButton
+                  courseId={p.courseId}
+                  currentRating={p.rating}
+                  onSaved={(rating) => markReviewed(p.courseId, rating)}
+                />
                 <Link
                   href="/schedule"
                   onClick={() => openSchedule()}
