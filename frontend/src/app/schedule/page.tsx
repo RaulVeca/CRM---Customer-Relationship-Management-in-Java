@@ -246,13 +246,13 @@ export default function SchedulePage() {
 
   if (!contact) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
-        <p className="text-slate-600 dark:text-slate-300">
+      <div className="rounded-xl border border-dashed border-zinc-300 bg-white p-8 text-center dark:border-zinc-700 dark:bg-zinc-900">
+        <p className="text-zinc-600 dark:text-zinc-300">
           You must be signed in to schedule a session.
         </p>
         <Link
           href="/login"
-          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
+          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-brand-600 to-brand-600 px-4 py-2 text-sm font-semibold text-white hover:from-brand-700 hover:to-brand-700"
         >
           Log in
         </Link>
@@ -264,13 +264,13 @@ export default function SchedulePage() {
   // for, so booking is refused no matter what the local window flag says.
   if (hasPurchases === false && !result) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
-        <p className="text-slate-600 dark:text-slate-300">
+      <div className="rounded-xl border border-dashed border-zinc-300 bg-white p-8 text-center dark:border-zinc-700 dark:bg-zinc-900">
+        <p className="text-zinc-600 dark:text-zinc-300">
           You must buy a course before you can schedule an online session.
         </p>
         <Link
           href="/"
-          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
+          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-brand-600 to-brand-600 px-4 py-2 text-sm font-semibold text-white hover:from-brand-700 hover:to-brand-700"
         >
           Browse courses
         </Link>
@@ -282,7 +282,7 @@ export default function SchedulePage() {
   // whether the contact is even allowed to book.
   if (hasPurchases === null && !result) {
     return (
-      <p className="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p className="py-10 text-center text-sm text-zinc-500 dark:text-zinc-400">
         Loading…
       </p>
     );
@@ -292,13 +292,13 @@ export default function SchedulePage() {
   // booking. Still show the success message (result) before it disappears.
   if (windowOpen === false && !result) {
     return (
-      <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
-        <p className="text-slate-600 dark:text-slate-300">
+      <div className="rounded-xl border border-dashed border-zinc-300 bg-white p-8 text-center dark:border-zinc-700 dark:bg-zinc-900">
+        <p className="text-zinc-600 dark:text-zinc-300">
           Press "Schedule a session" next to a purchased course to open scheduling.
         </p>
         <Link
           href="/my-courses"
-          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700"
+          className="mt-3 inline-block rounded-lg bg-gradient-to-r from-brand-600 to-brand-600 px-4 py-2 text-sm font-semibold text-white hover:from-brand-700 hover:to-brand-700"
         >
           My courses
         </Link>
@@ -309,10 +309,10 @@ export default function SchedulePage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold text-slate-900 dark:text-white">
+        <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">
           Schedule an online session
         </h1>
-        <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
           Choose a trainer, then the day, the time and how many hours you want. Trainers are
           available Monday to Saturday, between {fmtHour(WORK_START)} and {fmtHour(WORK_END)}.
         </p>
@@ -332,11 +332,11 @@ export default function SchedulePage() {
 
       {/* Step 1 — choose a trainer */}
       <section>
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
           1. Choose the trainer
         </h2>
         {trainers === null && !error && (
-          <p className="text-slate-500 dark:text-slate-400">Loading…</p>
+          <p className="text-zinc-500 dark:text-zinc-400">Loading…</p>
         )}
         <div className="grid gap-3 sm:grid-cols-3">
           {trainers?.map((t) => {
@@ -348,12 +348,12 @@ export default function SchedulePage() {
                 onClick={() => pickTrainer(t)}
                 className={`rounded-xl border p-4 text-left transition-colors ${
                   active
-                    ? "border-indigo-500 bg-indigo-50 ring-1 ring-indigo-500 dark:border-indigo-400 dark:bg-indigo-500/10"
-                    : "border-slate-200 bg-white hover:border-indigo-300 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-indigo-500/50"
+                    ? "border-brand-500 bg-brand-50 ring-1 ring-brand-500 dark:border-brand-400 dark:bg-brand-500/10"
+                    : "border-zinc-200 bg-white hover:border-brand-300 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:border-brand-500/50"
                 }`}
               >
-                <p className="font-semibold text-slate-900 dark:text-white">{t.fullName}</p>
-                <p className="mt-0.5 truncate text-xs text-slate-500 dark:text-slate-400">{t.email}</p>
+                <p className="font-semibold text-zinc-900 dark:text-white">{t.fullName}</p>
+                <p className="mt-0.5 truncate text-xs text-zinc-500 dark:text-zinc-400">{t.email}</p>
               </button>
             );
           })}
@@ -363,34 +363,34 @@ export default function SchedulePage() {
       {/* Step 2 — calendar */}
       {trainer && (
         <section>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
             2. Choose the day
           </h2>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <div className="mb-3 flex items-center justify-between">
               <button
                 type="button"
                 onClick={() => changeMonth(-1)}
                 disabled={atCurrentMonth}
-                className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 disabled:opacity-30 disabled:hover:bg-transparent dark:text-slate-400 dark:hover:bg-slate-800"
+                className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 disabled:opacity-30 disabled:hover:bg-transparent dark:text-zinc-400 dark:hover:bg-zinc-800"
                 aria-label="Previous month"
               >
                 <ArrowLeftIcon />
               </button>
-              <span className="font-semibold text-slate-900 dark:text-white">
+              <span className="font-semibold text-zinc-900 dark:text-white">
                 {MONTHS[cursor.month]} {cursor.year}
               </span>
               <button
                 type="button"
                 onClick={() => changeMonth(1)}
-                className="rounded-lg p-1.5 text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+                className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
                 aria-label="Next month"
               >
                 <ArrowRightIcon />
               </button>
             </div>
 
-            <div className="mb-1 grid grid-cols-7 gap-1 text-center text-xs font-medium text-slate-400 dark:text-slate-500">
+            <div className="mb-1 grid grid-cols-7 gap-1 text-center text-xs font-medium text-zinc-400 dark:text-zinc-500">
               {WEEKDAYS.map((w) => (
                 <div key={w} className="py-1">{w}</div>
               ))}
@@ -408,14 +408,14 @@ export default function SchedulePage() {
                 let cls =
                   "flex h-10 items-center justify-center rounded-lg text-sm transition-colors ";
                 if (isSelected) {
-                  cls += "bg-indigo-600 font-semibold text-white";
+                  cls += "bg-brand-600 font-semibold text-white";
                 } else if (selectable) {
                   cls +=
-                    "cursor-pointer bg-slate-50 text-slate-700 hover:bg-indigo-100 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-indigo-500/20";
+                    "cursor-pointer bg-zinc-50 text-zinc-700 hover:bg-brand-100 dark:bg-zinc-800 dark:text-zinc-200 dark:hover:bg-brand-500/20";
                 } else {
                   // Sunday, past, or fully-booked → greyed out, not selectable.
                   cls +=
-                    "cursor-not-allowed bg-slate-100 text-slate-300 dark:bg-slate-800/40 dark:text-slate-600";
+                    "cursor-not-allowed bg-zinc-100 text-zinc-300 dark:bg-zinc-800/40 dark:text-zinc-600";
                 }
 
                 const title = isPast
@@ -441,13 +441,13 @@ export default function SchedulePage() {
               })}
             </div>
 
-            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-400 dark:text-slate-500">
+            <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-zinc-400 dark:text-zinc-500">
               <span className="flex items-center gap-1.5">
-                <span className="inline-block h-3 w-3 rounded bg-slate-50 ring-1 ring-slate-200 dark:bg-slate-800 dark:ring-slate-700" />
+                <span className="inline-block h-3 w-3 rounded bg-zinc-50 ring-1 ring-zinc-200 dark:bg-zinc-800 dark:ring-zinc-700" />
                 Available
               </span>
               <span className="flex items-center gap-1.5">
-                <span className="inline-block h-3 w-3 rounded bg-slate-200 dark:bg-slate-700" />
+                <span className="inline-block h-3 w-3 rounded bg-zinc-200 dark:bg-zinc-700" />
                 Booked / unavailable
               </span>
               {loadingCal && <span>Updating…</span>}
@@ -459,14 +459,14 @@ export default function SchedulePage() {
       {/* Step 3 — hour + duration */}
       {selectedDate && (
         <section>
-          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+          <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
             3. Choose the time and duration
           </h2>
-          <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900">
+          <div className="space-y-4 rounded-xl border border-zinc-200 bg-white p-4 dark:border-zinc-800 dark:bg-zinc-900">
             <div>
-              <p className="mb-2 text-sm text-slate-600 dark:text-slate-300">Start time</p>
+              <p className="mb-2 text-sm text-zinc-600 dark:text-zinc-300">Start time</p>
               {starts.length === 0 ? (
-                <p className="text-sm text-slate-400">No free hours left on this day.</p>
+                <p className="text-sm text-zinc-400">No free hours left on this day.</p>
               ) : (
                 <div className="flex flex-wrap gap-2">
                   {starts.map((h) => (
@@ -476,8 +476,8 @@ export default function SchedulePage() {
                       onClick={() => pickStart(h)}
                       className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
                         startHour === h
-                          ? "border-indigo-500 bg-indigo-600 text-white"
-                          : "border-slate-200 bg-white text-slate-700 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                          ? "border-brand-500 bg-brand-600 text-white"
+                          : "border-zinc-200 bg-white text-zinc-700 hover:border-brand-300 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
                       }`}
                     >
                       {fmtHour(h)}
@@ -489,7 +489,7 @@ export default function SchedulePage() {
 
             {startHour != null && (
               <div>
-                <p className="mb-2 text-sm text-slate-600 dark:text-slate-300">
+                <p className="mb-2 text-sm text-zinc-600 dark:text-zinc-300">
                   How many hours? (max {maxDuration} consecutive {maxDuration === 1 ? "hour" : "hours"}
                   {" "}from {fmtHour(startHour)})
                 </p>
@@ -501,8 +501,8 @@ export default function SchedulePage() {
                       onClick={() => setDuration(d)}
                       className={`rounded-lg border px-3 py-1.5 text-sm transition-colors ${
                         duration === d
-                          ? "border-indigo-500 bg-indigo-600 text-white"
-                          : "border-slate-200 bg-white text-slate-700 hover:border-indigo-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                          ? "border-brand-500 bg-brand-600 text-white"
+                          : "border-zinc-200 bg-white text-zinc-700 hover:border-brand-300 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-200"
                       }`}
                     >
                       {d}h
@@ -513,9 +513,9 @@ export default function SchedulePage() {
             )}
 
             {startHour != null && (
-              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4 dark:border-slate-800">
-                <p className="text-sm text-slate-600 dark:text-slate-300">
-                  <span className="font-semibold text-slate-900 dark:text-white">{trainer?.fullName}</span>
+              <div className="flex flex-wrap items-center justify-between gap-3 border-t border-zinc-100 pt-4 dark:border-zinc-800">
+                <p className="text-sm text-zinc-600 dark:text-zinc-300">
+                  <span className="font-semibold text-zinc-900 dark:text-white">{trainer?.fullName}</span>
                   {" · "}
                   {selectedDate}
                   {" · "}
@@ -523,7 +523,7 @@ export default function SchedulePage() {
                   {" · "}
                   {hasDiscount ? (
                     <>
-                      <span className="text-slate-400 line-through dark:text-slate-500">
+                      <span className="text-zinc-400 line-through dark:text-zinc-500">
                         {fmtUSD(grossPrice)}
                       </span>
                       {" "}
@@ -537,10 +537,10 @@ export default function SchedulePage() {
                     </>
                   ) : (
                     <>
-                      <span className="font-semibold text-slate-900 dark:text-white">
+                      <span className="font-semibold text-zinc-900 dark:text-white">
                         {fmtUSD(grossPrice)}
                       </span>
-                      <span className="text-slate-500 dark:text-slate-400">
+                      <span className="text-zinc-500 dark:text-zinc-400">
                         {" "}(${PRICE_PER_HOUR}/hour × {duration}h)
                       </span>
                     </>
@@ -550,7 +550,7 @@ export default function SchedulePage() {
                   type="button"
                   onClick={confirm}
                   disabled={submitting}
-                  className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700 disabled:opacity-60"
+                  className="rounded-lg bg-gradient-to-r from-brand-600 to-brand-600 px-4 py-2 text-sm font-semibold text-white hover:from-brand-700 hover:to-brand-700 disabled:opacity-60"
                 >
                   Confirm booking — {fmtUSD(netPrice)}
                 </button>
@@ -563,32 +563,32 @@ export default function SchedulePage() {
       {/* Payment window — shown after "Confirm booking". The session is booked
           only when "Transfer" is pressed. */}
       {showPayment && startHour != null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4">
-          <div className="w-full max-w-md rounded-2xl border border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900">
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-zinc-900/50 p-4">
+          <div className="w-full max-w-md rounded-2xl border border-zinc-200 bg-white p-6 shadow-xl dark:border-zinc-800 dark:bg-zinc-900">
+            <h3 className="text-lg font-bold text-zinc-900 dark:text-white">
               Complete your payment
             </h3>
-            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
               Transfer the session fee to the account below, then press Transfer to
               confirm your booking.
             </p>
 
-            <dl className="mt-4 space-y-3 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm dark:border-slate-800 dark:bg-slate-800/40">
+            <dl className="mt-4 space-y-3 rounded-xl border border-zinc-200 bg-zinc-50 p-4 text-sm dark:border-zinc-800 dark:bg-zinc-800/40">
               <div className="flex items-center justify-between gap-3">
-                <dt className="text-slate-500 dark:text-slate-400">Company</dt>
-                <dd className="font-semibold text-slate-900 dark:text-white">{COMPANY_NAME}</dd>
+                <dt className="text-zinc-500 dark:text-zinc-400">Company</dt>
+                <dd className="font-semibold text-zinc-900 dark:text-white">{COMPANY_NAME}</dd>
               </div>
               <div className="flex items-center justify-between gap-3">
-                <dt className="text-slate-500 dark:text-slate-400">Bank</dt>
-                <dd className="font-semibold text-slate-900 dark:text-white">{BANK_NAME}</dd>
+                <dt className="text-zinc-500 dark:text-zinc-400">Bank</dt>
+                <dd className="font-semibold text-zinc-900 dark:text-white">{BANK_NAME}</dd>
               </div>
               <div className="flex items-center justify-between gap-3">
-                <dt className="text-slate-500 dark:text-slate-400">IBAN</dt>
-                <dd className="font-mono font-semibold text-slate-900 dark:text-white">{BANK_IBAN}</dd>
+                <dt className="text-zinc-500 dark:text-zinc-400">IBAN</dt>
+                <dd className="font-mono font-semibold text-zinc-900 dark:text-white">{BANK_IBAN}</dd>
               </div>
               {hasDiscount && (
                 <div className="flex items-center justify-between gap-3">
-                  <dt className="text-slate-500 dark:text-slate-400">
+                  <dt className="text-zinc-500 dark:text-zinc-400">
                     Employee discount
                   </dt>
                   <dd className="font-semibold text-emerald-600 dark:text-emerald-400">
@@ -596,12 +596,12 @@ export default function SchedulePage() {
                   </dd>
                 </div>
               )}
-              <div className="flex items-center justify-between gap-3 border-t border-slate-200 pt-3 dark:border-slate-700">
-                <dt className="text-slate-500 dark:text-slate-400">Amount</dt>
-                <dd className="text-right font-semibold text-slate-900 dark:text-white">
+              <div className="flex items-center justify-between gap-3 border-t border-zinc-200 pt-3 dark:border-zinc-700">
+                <dt className="text-zinc-500 dark:text-zinc-400">Amount</dt>
+                <dd className="text-right font-semibold text-zinc-900 dark:text-white">
                   {hasDiscount ? (
                     <>
-                      <span className="mr-2 font-normal text-slate-400 line-through dark:text-slate-500">
+                      <span className="mr-2 font-normal text-zinc-400 line-through dark:text-zinc-500">
                         {fmtUSD(grossPrice)}
                       </span>
                       <span className="text-emerald-600 dark:text-emerald-400">
@@ -626,7 +626,7 @@ export default function SchedulePage() {
                 type="button"
                 onClick={() => setShowPayment(false)}
                 disabled={submitting}
-                className="rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 hover:bg-slate-50 disabled:opacity-60 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:bg-slate-800"
+                className="rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-50 disabled:opacity-60 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
               >
                 Cancel
               </button>
@@ -634,7 +634,7 @@ export default function SchedulePage() {
                 type="button"
                 onClick={transfer}
                 disabled={submitting}
-                className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white hover:from-indigo-700 hover:to-violet-700 disabled:opacity-60"
+                className="rounded-lg bg-gradient-to-r from-brand-600 to-brand-600 px-4 py-2 text-sm font-semibold text-white hover:from-brand-700 hover:to-brand-700 disabled:opacity-60"
               >
                 {submitting ? "Transferring…" : `Transfer ${fmtUSD(netPrice)}`}
               </button>

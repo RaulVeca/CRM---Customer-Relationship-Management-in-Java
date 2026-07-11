@@ -16,7 +16,7 @@ const FORMATS = [
 export default function ExportMenu({ resource }: { resource: "contacts" }) {
   return (
     <details className="relative">
-      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-md border border-slate-300 px-3 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">
+      <summary className="flex cursor-pointer list-none items-center gap-1 rounded-md border border-zinc-300 px-3 py-1.5 text-sm font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800">
         Export
         <svg viewBox="0 0 20 20" fill="currentColor" className="h-4 w-4">
           <path
@@ -26,13 +26,13 @@ export default function ExportMenu({ resource }: { resource: "contacts" }) {
           />
         </svg>
       </summary>
-      <div className="absolute right-0 z-20 mt-1 w-40 overflow-hidden rounded-md border border-slate-200 bg-white py-1 shadow-lg dark:border-slate-700 dark:bg-slate-800">
+      <div className="absolute right-0 z-20 mt-1 w-40 overflow-hidden rounded-md border border-zinc-200 bg-white py-1 shadow-lg dark:border-zinc-700 dark:bg-zinc-800">
         {FORMATS.map((f) => (
           <a
             key={f.format}
             href={`${API_BASE}/api/reports/${resource}?format=${f.format}`}
             onClick={(e) => e.currentTarget.closest("details")?.removeAttribute("open")}
-            className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-700"
+            className="block px-4 py-2 text-sm text-zinc-700 hover:bg-zinc-100 dark:text-zinc-200 dark:hover:bg-zinc-700"
           >
             {f.label}
           </a>

@@ -120,39 +120,39 @@ export default function CourseCard({
   }
 
   const inputCls =
-    "w-full rounded-md border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500";
+    "w-full rounded-lg border border-zinc-300 px-3 py-1.5 text-sm outline-none transition focus:border-brand-500 focus:ring-1 focus:ring-brand-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder:text-zinc-500";
 
   return (
-    <article className="flex flex-col rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
+    <article className="flex flex-col rounded-2xl border border-black/5 bg-white p-5 shadow-sm transition hover:shadow-lg hover:shadow-brand-500/5 dark:border-white/10 dark:bg-zinc-900">
       <div className="mb-2 flex items-center justify-between">
-        <span className="rounded bg-indigo-50 px-2 py-0.5 text-xs font-medium text-indigo-700 dark:bg-indigo-500/15 dark:text-indigo-300">
+        <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-xs font-medium text-brand-700 dark:bg-brand-500/15 dark:text-brand-300">
           {course.categoryLabel ?? course.category}
         </span>
-        <span className="text-xs text-slate-400 dark:text-slate-500">{course.level}</span>
+        <span className="text-xs text-zinc-400 dark:text-zinc-500">{course.level}</span>
       </div>
-      <h3 className="font-semibold">{course.name}</h3>
+      <h3 className="font-semibold text-ink dark:text-white">{course.name}</h3>
 
       {/* Average rating */}
       <div className="mt-2 flex items-center gap-2">
         <StarRating value={average} size={16} />
         {count > 0 ? (
-          <span className="text-xs text-slate-500 dark:text-slate-400">
+          <span className="text-xs text-zinc-500 dark:text-zinc-400">
             {average.toFixed(1)} · {count} {count === 1 ? "review" : "reviews"}
           </span>
         ) : (
-          <span className="text-xs text-slate-400 dark:text-slate-500">No reviews yet</span>
+          <span className="text-xs text-zinc-400 dark:text-zinc-500">No reviews yet</span>
         )}
       </div>
 
       <div className="mt-4 flex items-center text-sm">
-        <span className="text-slate-500 dark:text-slate-400">{course.durationHours ?? "—"} h</span>
+        <span className="text-zinc-500 dark:text-zinc-400">{course.durationHours ?? "—"} h</span>
       </div>
 
       <button
         type="button"
         onClick={toggleExpanded}
         aria-expanded={expanded}
-        className="mt-4 flex items-center justify-center gap-1 rounded-md border border-slate-200 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+        className="mt-4 flex items-center justify-center gap-1 rounded-full border border-black/10 py-1.5 text-sm font-medium text-zinc-600 transition hover:border-black/20 hover:bg-canvas dark:border-white/10 dark:text-zinc-300 dark:hover:bg-zinc-800"
       >
         More
         <svg viewBox="0 0 20 20" fill="currentColor" className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`}>
@@ -166,8 +166,8 @@ export default function CourseCard({
 
       <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
         <div className="overflow-hidden">
-          <div className="mt-3 space-y-4 border-t border-slate-100 pt-3 dark:border-slate-800">
-            <p className="text-sm text-slate-600 dark:text-slate-300">
+          <div className="mt-3 space-y-4 border-t border-black/5 pt-3 dark:border-white/10">
+            <p className="text-sm text-zinc-600 dark:text-zinc-300">
               {course.description ?? "No description available for this course."}
             </p>
 
@@ -177,7 +177,7 @@ export default function CourseCard({
                 type="button"
                 disabled
                 aria-disabled="true"
-                className="w-full cursor-not-allowed rounded-lg bg-slate-200 px-4 py-2.5 text-sm font-semibold text-slate-500 dark:bg-slate-700 dark:text-slate-400"
+                className="w-full cursor-not-allowed rounded-full bg-zinc-200 px-4 py-2.5 text-sm font-semibold text-zinc-500 dark:bg-zinc-700 dark:text-zinc-400"
               >
                 Already bought
               </button>
@@ -186,7 +186,7 @@ export default function CourseCard({
                 type="button"
                 onClick={buy}
                 disabled={buyLoading}
-                className="w-full rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:from-indigo-700 hover:to-violet-700 hover:shadow active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+                className="w-full rounded-full bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-600 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {buyLoading ? "Processing…" : "Buy this course"}
               </button>
@@ -194,14 +194,14 @@ export default function CourseCard({
             {buyError && <p className="text-sm text-red-600 dark:text-red-400">{buyError}</p>}
 
             {/* ---- Reviews ---- */}
-            <div className="border-t border-slate-100 pt-3 dark:border-slate-800">
+            <div className="border-t border-black/5 pt-3 dark:border-white/10">
               <div className="mb-2 flex items-center justify-between">
-                <p className="text-sm font-semibold">Reviews</p>
+                <p className="text-sm font-semibold text-ink dark:text-white">Reviews</p>
                 {purchased && !showReview && !rvDone && (
                   <button
                     type="button"
                     onClick={() => setShowReview(true)}
-                    className="text-sm font-medium text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
+                    className="text-sm font-medium text-brand-600 hover:text-brand-700 dark:text-brand-400 dark:hover:text-brand-300"
                   >
                     Write a review
                   </button>
@@ -209,7 +209,7 @@ export default function CourseCard({
               </div>
 
               {!purchased && (
-                <p className="mb-2 text-xs text-slate-400 dark:text-slate-500">
+                <p className="mb-2 text-xs text-zinc-400 dark:text-zinc-500">
                   Buy this course to leave a review.
                 </p>
               )}
@@ -221,7 +221,7 @@ export default function CourseCard({
               )}
 
               {showReview && (
-                <form onSubmit={submitReview} className="mb-3 space-y-2 rounded-lg bg-slate-50 p-3 dark:bg-slate-800/50">
+                <form onSubmit={submitReview} className="mb-3 space-y-2 rounded-xl bg-canvas p-3 dark:bg-zinc-800/50">
                   <StarInput value={rvStars} onChange={setRvStars} />
                   <textarea
                     className={inputCls}
@@ -235,11 +235,11 @@ export default function CourseCard({
                     <button
                       type="submit"
                       disabled={rvLoading || rvStars < 1}
-                      className="rounded-lg bg-gradient-to-r from-indigo-600 to-violet-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:from-indigo-700 hover:to-violet-700 disabled:cursor-not-allowed disabled:opacity-50"
+                      className="rounded-full bg-brand-500 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-600 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                       {rvLoading ? "Submitting…" : "Submit review"}
                     </button>
-                    <button type="button" onClick={() => setShowReview(false)} className="rounded-lg px-3 py-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200">
+                    <button type="button" onClick={() => setShowReview(false)} className="rounded-full px-3 py-2 text-sm text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">
                       Cancel
                     </button>
                   </div>
@@ -251,19 +251,19 @@ export default function CourseCard({
               {reviews && reviews.length > 0 ? (
                 <ul className="space-y-2">
                   {reviews.map((r, i) => (
-                    <li key={i} className="rounded-lg border border-slate-200 bg-white p-3 dark:border-slate-800 dark:bg-slate-900">
+                    <li key={i} className="rounded-xl border border-black/5 bg-white p-3 dark:border-white/10 dark:bg-zinc-900">
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium">{r.author}</span>
+                        <span className="text-sm font-medium text-ink dark:text-white">{r.author}</span>
                         <StarRating value={r.rating} size={14} />
                       </div>
-                      {r.comment && <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{r.comment}</p>}
-                      {r.date && <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">{r.date}</p>}
+                      {r.comment && <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">{r.comment}</p>}
+                      {r.date && <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">{r.date}</p>}
                     </li>
                   ))}
                 </ul>
               ) : (
                 reviews && !reviewsError && (
-                  <p className="text-sm text-slate-500 dark:text-slate-400">Be the first to review this course.</p>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">Be the first to review this course.</p>
                 )
               )}
             </div>

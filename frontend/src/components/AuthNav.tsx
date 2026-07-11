@@ -44,7 +44,7 @@ export default function AuthNav() {
     return (
       <Link
         href="/login"
-        className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-indigo-700"
+        className="rounded-full bg-brand-500 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-brand-600"
       >
         Log in
       </Link>
@@ -55,11 +55,11 @@ export default function AuthNav() {
 
   return (
     <div className="flex items-center gap-3">
-      <span className="hidden text-sm text-slate-600 dark:text-slate-300 sm:inline">{name}</span>
+      <span className="hidden text-sm text-zinc-600 dark:text-zinc-300 sm:inline">{name}</span>
       <button
         type="button"
         onClick={logout}
-        className="rounded-md border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+        className="rounded-full border border-black/10 px-4 py-1.5 text-sm font-medium text-zinc-600 transition hover:bg-black/5 dark:border-white/15 dark:text-zinc-300 dark:hover:bg-white/10"
       >
         Log out
       </button>

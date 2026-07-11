@@ -17,9 +17,9 @@ import PasswordInput from "@/components/PasswordInput";
  */
 
 const INPUT_CLASS =
-  "mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none ring-indigo-500 transition focus:border-indigo-500 focus:ring-1 dark:border-slate-700 dark:bg-slate-800 dark:text-white";
+  "mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-zinc-900 outline-none ring-brand-500 transition focus:border-brand-500 focus:ring-1 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white";
 
-const LABEL_CLASS = "block text-sm font-medium text-slate-700 dark:text-slate-300";
+const LABEL_CLASS = "block text-sm font-medium text-zinc-700 dark:text-zinc-300";
 
 type FormState = Omit<RegisterRequest, "gdprConsent" | "marketingConsent">;
 
@@ -43,10 +43,10 @@ const EMPTY: FormState = {
 /** A titled card grouping related fields, matching the login page look. */
 function Card({ title, subtitle, children }: { title: string; subtitle?: string; children: React.ReactNode }) {
   return (
-    <div className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white px-6 py-6 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div className="flex flex-col gap-4 rounded-2xl border border-zinc-200 bg-white px-6 py-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
       <div>
-        <p className="font-semibold text-slate-900 dark:text-white">{title}</p>
-        {subtitle && <p className="text-sm text-slate-500 dark:text-slate-400">{subtitle}</p>}
+        <p className="font-semibold text-zinc-900 dark:text-white">{title}</p>
+        {subtitle && <p className="text-sm text-zinc-500 dark:text-zinc-400">{subtitle}</p>}
       </div>
       {children}
     </div>
@@ -120,10 +120,10 @@ export default function RegisterPage() {
   return (
     <div className="mx-auto flex max-w-xl flex-col gap-6 py-6">
       <div>
-        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-4xl font-extrabold tracking-tight text-zinc-900 dark:text-white">
           Register
         </h1>
-        <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
           Create an account by filling in all the cards below. Registration is
           available for individuals.
         </p>
@@ -288,23 +288,23 @@ export default function RegisterPage() {
         </Card>
 
         <Card title="Consent" subtitle="Data processing under GDPR">
-          <label className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+          <label className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
             <input
               type="checkbox"
               checked={gdprConsent}
               onChange={(e) => setGdprConsent(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              className="mt-0.5 h-4 w-4 rounded border-zinc-300 text-brand-600 focus:ring-brand-500"
             />
             <span>
               I agree to the processing of my personal data (required).
             </span>
           </label>
-          <label className="flex items-start gap-3 text-sm text-slate-700 dark:text-slate-300">
+          <label className="flex items-start gap-3 text-sm text-zinc-700 dark:text-zinc-300">
             <input
               type="checkbox"
               checked={marketingConsent}
               onChange={(e) => setMarketingConsent(e.target.checked)}
-              className="mt-0.5 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500"
+              className="mt-0.5 h-4 w-4 rounded border-zinc-300 text-brand-600 focus:ring-brand-500"
             />
             <span>I want to receive marketing communications (optional).</span>
           </label>
@@ -319,15 +319,15 @@ export default function RegisterPage() {
         <button
           type="submit"
           disabled={loading}
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 font-medium text-white transition-colors hover:bg-indigo-700 disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-2 rounded-lg bg-brand-600 px-4 py-2.5 font-medium text-white transition-colors hover:bg-brand-700 disabled:opacity-60"
         >
           {loading ? "Creating account…" : "Create account"}
           {!loading && <ArrowRightIcon />}
         </button>
 
-        <p className="text-center text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
           Already have an account?{" "}
-          <Link href="/login" className="font-medium text-indigo-600 hover:underline dark:text-indigo-400">
+          <Link href="/login" className="font-medium text-brand-600 hover:underline dark:text-brand-400">
             Log in
           </Link>
         </p>

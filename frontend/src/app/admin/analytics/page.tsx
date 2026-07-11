@@ -10,7 +10,7 @@ const TONE_TEXT: Record<Tone, string> = {
   good: "text-emerald-600 dark:text-emerald-400",
   warn: "text-amber-600 dark:text-amber-400",
   bad: "text-red-600 dark:text-red-400",
-  neutral: "text-slate-500 dark:text-slate-400",
+  neutral: "text-zinc-500 dark:text-zinc-400",
 };
 
 function pct(n: number) {
@@ -31,10 +31,10 @@ function MetricCard({
   tone: Tone;
 }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-      <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">{label}</p>
-      <p className="mt-1 text-3xl font-bold text-slate-900 dark:text-slate-100">{value}</p>
-      <p className="mt-1 text-xs text-slate-400 dark:text-slate-500">{detail}</p>
+    <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+      <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">{label}</p>
+      <p className="mt-1 text-3xl font-bold text-zinc-900 dark:text-zinc-100">{value}</p>
+      <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">{detail}</p>
       <p className={`mt-3 text-sm font-medium ${TONE_TEXT[tone]}`}>{insight}</p>
     </div>
   );
@@ -42,15 +42,15 @@ function MetricCard({
 
 function Bars({ data }: { data: Record<string, number> }) {
   const entries = Object.entries(data);
-  if (entries.length === 0) return <p className="text-sm text-slate-400 dark:text-slate-500">No data.</p>;
+  if (entries.length === 0) return <p className="text-sm text-zinc-400 dark:text-zinc-500">No data.</p>;
   const max = Math.max(1, ...Object.values(data));
   return (
     <div className="space-y-2">
       {entries.map(([k, v]) => (
         <div key={k} className="flex items-center gap-3">
-          <span className="w-40 shrink-0 truncate text-xs text-slate-500 dark:text-slate-400" title={k}>{k}</span>
-          <div className="h-4 flex-1 rounded bg-slate-100 dark:bg-slate-800">
-            <div className="h-4 rounded bg-indigo-500" style={{ width: `${(v / max) * 100}%` }} />
+          <span className="w-40 shrink-0 truncate text-xs text-zinc-500 dark:text-zinc-400" title={k}>{k}</span>
+          <div className="h-4 flex-1 rounded bg-zinc-100 dark:bg-zinc-800">
+            <div className="h-4 rounded bg-brand-500" style={{ width: `${(v / max) * 100}%` }} />
           </div>
           <span className="w-8 text-right text-xs font-medium">{v}</span>
         </div>
@@ -61,7 +61,7 @@ function Bars({ data }: { data: Record<string, number> }) {
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+    <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
       <h3 className="mb-4 font-semibold">{title}</h3>
       {children}
     </div>
@@ -77,7 +77,7 @@ export default function AdminAnalyticsPage() {
   }, []);
 
   if (error) return <p className="text-red-600">{error}</p>;
-  if (!data) return <p className="text-slate-500">Loading analytics…</p>;
+  if (!data) return <p className="text-zinc-500">Loading analytics…</p>;
 
   const { demographics, churn, ctr } = data;
 
@@ -149,7 +149,7 @@ export default function AdminAnalyticsPage() {
       {/* Click-through rate per course */}
       <Panel title="Click-through rate by course">
         {ctr.courses.length === 0 ? (
-          <p className="text-sm text-slate-400 dark:text-slate-500">
+          <p className="text-sm text-zinc-400 dark:text-zinc-500">
             No catalog activity tracked yet. Visit the public site and open a few courses to populate this.
           </p>
         ) : (
@@ -162,7 +162,7 @@ export default function AdminAnalyticsPage() {
             )}
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
-                <thead className="text-left text-xs uppercase text-slate-500 dark:text-slate-400">
+                <thead className="text-left text-xs uppercase text-zinc-500 dark:text-zinc-400">
                   <tr>
                     <th className="py-2">Course</th>
                     <th className="py-2 text-right">Views</th>
@@ -170,7 +170,7 @@ export default function AdminAnalyticsPage() {
                     <th className="py-2 text-right">CTR</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
                   {ctr.courses.map((c) => (
                     <tr key={c.courseId}>
                       <td className="py-2 font-medium">{c.courseName}</td>
@@ -188,7 +188,7 @@ export default function AdminAnalyticsPage() {
 
       {/* Demographic data */}
       <div>
-        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400">
+        <h3 className="mb-3 text-sm font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
           Demographic data · {demographics.totalContacts} contacts
         </h3>
         <div className="grid gap-6 lg:grid-cols-2">

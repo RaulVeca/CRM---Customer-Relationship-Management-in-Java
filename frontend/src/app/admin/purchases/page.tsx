@@ -23,20 +23,20 @@ export default function AdminPurchasesPage() {
       <h2 className="text-lg font-semibold">Purchase history</h2>
 
       {error && <p className="text-red-600">{error}</p>}
-      {loading && <p className="text-slate-500">Loading…</p>}
+      {loading && <p className="text-zinc-500">Loading…</p>}
 
       {!loading && !error && (
         <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Total orders</p>
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">Total orders</p>
             <p className="mt-1 text-2xl font-bold">{purchases.length}</p>
           </div>
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
+          <thead className="bg-zinc-50 text-left text-xs uppercase text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-400">
             <tr>
               <th className="px-4 py-3">Student</th>
               <th className="px-4 py-3">Course</th>
@@ -45,21 +45,21 @@ export default function AdminPurchasesPage() {
               <th className="px-4 py-3">Rating</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+          <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
             {purchases.map((p) => (
-              <tr key={p.enrollmentId} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <tr key={p.enrollmentId} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
                 <td className="px-4 py-3">
                   <div className="font-medium">{p.studentName}</div>
-                  {p.studentEmail && <div className="text-xs text-slate-400 dark:text-slate-500">{p.studentEmail}</div>}
+                  {p.studentEmail && <div className="text-xs text-zinc-400 dark:text-zinc-500">{p.studentEmail}</div>}
                 </td>
                 <td className="px-4 py-3">
                   <div className="font-medium">{p.courseName}</div>
-                  {p.courseCode && <div className="font-mono text-xs text-slate-400 dark:text-slate-500">{p.courseCode}</div>}
+                  {p.courseCode && <div className="font-mono text-xs text-zinc-400 dark:text-zinc-500">{p.courseCode}</div>}
                 </td>
-                <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{p.status ?? "—"}</td>
-                <td className="px-4 py-3 whitespace-nowrap text-slate-500 dark:text-slate-400">{p.date ?? "—"}</td>
+                <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">{p.status ?? "—"}</td>
+                <td className="px-4 py-3 whitespace-nowrap text-zinc-500 dark:text-zinc-400">{p.date ?? "—"}</td>
                 <td className="px-4 py-3">
-                  {p.rating ? <StarRating value={p.rating} size={14} /> : <span className="text-slate-400 dark:text-slate-500">—</span>}
+                  {p.rating ? <StarRating value={p.rating} size={14} /> : <span className="text-zinc-400 dark:text-zinc-500">—</span>}
                 </td>
               </tr>
             ))}
@@ -68,7 +68,7 @@ export default function AdminPurchasesPage() {
       </div>
 
       {!loading && !error && purchases.length === 0 && (
-        <p className="text-slate-500 dark:text-slate-400">No purchases yet.</p>
+        <p className="text-zinc-500 dark:text-zinc-400">No purchases yet.</p>
       )}
     </div>
   );

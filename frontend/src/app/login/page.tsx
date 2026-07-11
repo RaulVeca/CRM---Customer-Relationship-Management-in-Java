@@ -6,10 +6,11 @@ import { api, ApiError } from "@/lib/api";
 import { setSession } from "@/lib/auth";
 import type { AuthSession } from "@/lib/types";
 import { ArrowRightIcon } from "@/components/icons";
+import Logo from "@/components/Logo";
 import PasswordInput from "@/components/PasswordInput";
 
 const INPUT_CLASS =
-  "mt-1 w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-slate-900 outline-none ring-indigo-500 transition focus:border-indigo-500 focus:ring-1 dark:border-slate-700 dark:bg-slate-800 dark:text-white";
+  "mt-1 w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-ink outline-none transition focus:border-brand-500 focus:ring-1 focus:ring-brand-500 dark:border-zinc-700 dark:bg-zinc-800 dark:text-white";
 
 /**
  * Email + password sign-in. There is one "Login" card: the entered email is
@@ -53,36 +54,23 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="mx-auto flex max-w-xl flex-col gap-6 py-6">
-      <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-        Login
-      </h1>
-
-      {/* Brand card */}
-      <div className="flex items-center gap-4">
-        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-sm font-bold text-indigo-600 dark:border-slate-700 dark:bg-slate-800 dark:text-indigo-400">
-          IT
-        </div>
-        <div>
-          <p className="font-semibold text-slate-900 dark:text-white">TrainingIT</p>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            Courses and scheduling platform
-          </p>
-        </div>
+    <div className="mx-auto flex max-w-md flex-col gap-6 py-6">
+      <div>
+        <Logo size={34} tone="dark" className="mb-6 dark:hidden" />
+        <Logo size={34} tone="light" className="mb-6 hidden dark:inline-flex" />
+        <h1 className="text-4xl font-semibold tracking-tight text-ink dark:text-white">
+          Welcome back
+        </h1>
+        <p className="mt-2 text-zinc-500 dark:text-zinc-400">
+          Sign in to continue to your learning space.
+        </p>
       </div>
 
       <form
         onSubmit={submit}
-        className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-white px-6 py-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        className="flex flex-col gap-4 rounded-2xl border border-black/5 bg-white px-6 py-6 shadow-sm dark:border-white/10 dark:bg-zinc-900"
       >
-        <div>
-          <p className="font-semibold text-slate-900 dark:text-white">Login</p>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
-            Sign in with email and password
-          </p>
-        </div>
-
-        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
           Email address
           <input
             type="email"
@@ -94,7 +82,7 @@ export default function LoginPage() {
           />
         </label>
 
-        <label className="block text-sm font-medium text-slate-700 dark:text-slate-300">
+        <label className="block text-sm font-medium text-zinc-700 dark:text-zinc-300">
           Password
           <PasswordInput
             value={password}
@@ -107,7 +95,7 @@ export default function LoginPage() {
         <div className="-mt-2 text-right">
           <Link
             href="/forgot-password"
-            className="text-sm font-medium text-indigo-600 hover:underline dark:text-indigo-400"
+            className="text-sm font-medium text-brand-600 hover:underline dark:text-brand-400"
           >
             Forgot password?
           </Link>
@@ -122,15 +110,15 @@ export default function LoginPage() {
         <button
           type="submit"
           disabled={loading}
-          className="inline-flex items-center justify-center gap-2 rounded-lg bg-indigo-600 px-4 py-2.5 font-medium text-white transition-colors hover:bg-indigo-700 disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-4 py-2.5 font-semibold text-white transition hover:bg-brand-600 disabled:opacity-60"
         >
           {loading ? "Checking…" : "Continue"}
           {!loading && <ArrowRightIcon />}
         </button>
 
-        <p className="text-center text-sm text-slate-500 dark:text-slate-400">
+        <p className="text-center text-sm text-zinc-500 dark:text-zinc-400">
           Don&apos;t have an account?{" "}
-          <Link href="/register" className="font-medium text-indigo-600 hover:underline dark:text-indigo-400">
+          <Link href="/register" className="font-medium text-brand-600 hover:underline dark:text-brand-400">
             Sign up
           </Link>
         </p>

@@ -61,7 +61,7 @@ export default function AuthGuard({ children }: { children: React.ReactNode }) {
 
   if (session === undefined || redirect) {
     return (
-      <p className="py-10 text-center text-sm text-slate-500 dark:text-slate-400">
+      <p className="py-10 text-center text-sm text-zinc-500 dark:text-zinc-400">
         Loading…
       </p>
     );

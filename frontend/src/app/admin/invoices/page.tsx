@@ -26,35 +26,35 @@ export default function AdminInvoicesPage() {
   return (
     <div className="space-y-4">
       <h2 className="text-lg font-semibold">Invoices</h2>
-      <p className="text-sm text-slate-500 dark:text-slate-400">
+      <p className="text-sm text-zinc-500 dark:text-zinc-400">
         Generated automatically for every online trainer session booked. Priced at the
         hourly rate, with the −60% employee discount applied where it applies. Paid on
         booking.
       </p>
 
       {error && <p className="text-red-600">{error}</p>}
-      {loading && <p className="text-slate-500">Loading…</p>}
+      {loading && <p className="text-zinc-500">Loading…</p>}
 
       {!loading && !error && (
         <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Invoices</p>
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">Invoices</p>
             <p className="mt-1 text-2xl font-bold">{invoices.length}</p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">Total collected</p>
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">Total collected</p>
             <p className="mt-1 text-2xl font-bold">{fmtUSD(totalRevenue)}</p>
           </div>
-          <div className="rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
-            <p className="text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">With employee discount</p>
+          <div className="rounded-xl border border-zinc-200 bg-white p-4 shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <p className="text-xs uppercase tracking-wide text-zinc-500 dark:text-zinc-400">With employee discount</p>
             <p className="mt-1 text-2xl font-bold">{discounted}</p>
           </div>
         </div>
       )}
 
-      <div className="overflow-x-auto rounded-xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+      <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
+          <thead className="bg-zinc-50 text-left text-xs uppercase text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-400">
             <tr>
               <th className="px-4 py-3">Invoice</th>
               <th className="px-4 py-3">Client</th>
@@ -68,14 +68,14 @@ export default function AdminInvoicesPage() {
               <th className="px-4 py-3 text-right">PDF</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+          <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
             {invoices.map((inv) => (
-              <tr key={inv.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <tr key={inv.id} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
                 <td className="px-4 py-3 font-mono text-xs">{inv.invoiceNumber}</td>
-                <td className="px-4 py-3 text-slate-500 dark:text-slate-400">
+                <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">
                   {inv.clientEmail ?? "—"}
                 </td>
-                <td className="px-4 py-3 text-slate-500 dark:text-slate-400">
+                <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">
                   #{inv.sessionId ?? "—"}
                 </td>
                 <td className="px-4 py-3 text-right">{inv.hours}h</td>
@@ -86,7 +86,7 @@ export default function AdminInvoicesPage() {
                       −{Math.round(inv.discountRate * 100)}% (−{fmtUSD(inv.discountAmount)})
                     </span>
                   ) : (
-                    <span className="text-slate-400 dark:text-slate-500">—</span>
+                    <span className="text-zinc-400 dark:text-zinc-500">—</span>
                   )}
                 </td>
                 <td className="px-4 py-3 whitespace-nowrap text-right font-semibold">{fmtUSD(inv.total)}</td>
@@ -95,13 +95,13 @@ export default function AdminInvoicesPage() {
                     {inv.status}
                   </span>
                 </td>
-                <td className="px-4 py-3 whitespace-nowrap text-slate-500 dark:text-slate-400">
+                <td className="px-4 py-3 whitespace-nowrap text-zinc-500 dark:text-zinc-400">
                   {inv.issueDate ?? "—"}
                 </td>
                 <td className="px-4 py-3 text-right">
                   <a
                     href={`${API_BASE}/api/invoices/${inv.id}/pdf`}
-                    className="inline-flex items-center gap-1 rounded-md border border-slate-300 px-2.5 py-1 text-xs font-medium text-slate-600 transition-colors hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
+                    className="inline-flex items-center gap-1 rounded-md border border-zinc-300 px-2.5 py-1 text-xs font-medium text-zinc-600 transition-colors hover:bg-zinc-50 dark:border-zinc-700 dark:text-zinc-300 dark:hover:bg-zinc-800"
                   >
                     <svg viewBox="0 0 20 20" fill="currentColor" className="h-3.5 w-3.5">
                       <path
@@ -120,7 +120,7 @@ export default function AdminInvoicesPage() {
       </div>
 
       {!loading && !error && invoices.length === 0 && (
-        <p className="text-slate-500 dark:text-slate-400">No invoices yet.</p>
+        <p className="text-zinc-500 dark:text-zinc-400">No invoices yet.</p>
       )}
     </div>
   );

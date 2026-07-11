@@ -46,7 +46,7 @@ export function StarRating({
     >
       <span className="absolute inset-0 flex">
         {[0, 1, 2, 3, 4].map((i) => (
-          <StarShape key={i} style={dims} className="text-slate-300 dark:text-slate-600" />
+          <StarShape key={i} style={dims} className="text-zinc-300 dark:text-zinc-600" />
         ))}
       </span>
       <span className="absolute inset-0 flex overflow-hidden" style={{ width: `${pct}%` }}>
@@ -89,7 +89,7 @@ export function StarInput({
         >
           <StarShape
             style={{ width: px, height: px }}
-            className={n <= active ? "text-amber-400" : "text-slate-300 dark:text-slate-600"}
+            className={n <= active ? "text-amber-400" : "text-zinc-300 dark:text-zinc-600"}
           />
         </button>
       ))}

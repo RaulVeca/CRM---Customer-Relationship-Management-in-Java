@@ -170,6 +170,84 @@ export function EyeOffIcon({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function CodeIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="m8 6-6 6 6 6M16 6l6 6-6 6M14 4l-4 16" />
+    </svg>
+  );
+}
+
+export function LaptopIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="3" y="4" width="18" height="12" rx="2" />
+      <path d="M2 20h20" />
+    </svg>
+  );
+}
+
+export function BriefcaseIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <rect x="2" y="7" width="20" height="14" rx="2" />
+      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+    </svg>
+  );
+}
+
+export function CertificateIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <circle cx="12" cy="9" r="6" />
+      <path d="M8.5 13.5 7 22l5-3 5 3-1.5-8.5" />
+    </svg>
+  );
+}
+
+export function HeadsetIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M3 14v-2a9 9 0 0 1 18 0v2" />
+      <path d="M21 16a2 2 0 0 1-2 2h-1v-6h1a2 2 0 0 1 2 2zM3 16a2 2 0 0 0 2 2h1v-6H5a2 2 0 0 0-2 2zM12 21a3 3 0 0 0 3-3" />
+    </svg>
+  );
+}
+
+export function RocketIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+      <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+      <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+    </svg>
+  );
+}
+
+export function CheckIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden="true">
+      <path d="M20 6 9 17l-5-5" />
+    </svg>
+  );
+}
+
+export function QuoteIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="M7.17 6A5.17 5.17 0 0 0 2 11.17V18h6.83v-6.83H5.5A1.67 1.67 0 0 1 7.17 9.5zM18.5 6a5.17 5.17 0 0 0-5.17 5.17V18H20v-6.83h-3.33A1.67 1.67 0 0 1 18.5 9.5z" />
+    </svg>
+  );
+}
+
+export function StarBurstIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
+      <path d="m12 2 2.4 5.2L20 8.2l-4 4 1 5.8-5-2.9-5 2.9 1-5.8-4-4 5.6-1z" />
+    </svg>
+  );
+}
+
 export function TrophyIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg

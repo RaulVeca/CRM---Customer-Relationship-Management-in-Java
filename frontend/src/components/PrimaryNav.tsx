@@ -96,27 +96,27 @@ export default function PrimaryNav() {
     <>
       <Link
         href="/"
-        className="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+        className="text-sm font-medium text-zinc-600 transition hover:text-brand-600 dark:text-zinc-300 dark:hover:text-brand-400"
       >
         Courses
       </Link>
       <Link
         href="/my-courses"
-        className="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+        className="text-sm font-medium text-zinc-600 transition hover:text-brand-600 dark:text-zinc-300 dark:hover:text-brand-400"
       >
         My courses
       </Link>
       {scheduleOpen && hasPurchases && (
         <Link
           href="/schedule"
-          className="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+          className="text-sm font-medium text-zinc-600 transition hover:text-brand-600 dark:text-zinc-300 dark:hover:text-brand-400"
         >
           Online sessions
         </Link>
       )}
       <Link
         href="/my-sessions"
-        className="text-sm text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
+        className="text-sm font-medium text-zinc-600 transition hover:text-brand-600 dark:text-zinc-300 dark:hover:text-brand-400"
       >
         My sessions
       </Link>

@@ -6,11 +6,11 @@ import ExportMenu from "@/components/ExportMenu";
 import type { Contact } from "@/lib/types";
 
 const STATUS_COLORS: Record<string, string> = {
-  NEW: "bg-slate-100 text-slate-700",
+  NEW: "bg-zinc-100 text-zinc-700",
   CONTACTED: "bg-blue-100 text-blue-700",
   INTERESTED: "bg-amber-100 text-amber-700",
   QUALIFIED: "bg-emerald-100 text-emerald-700",
-  ENROLLED: "bg-indigo-100 text-indigo-700",
+  ENROLLED: "bg-brand-100 text-brand-700",
   LOST: "bg-red-100 text-red-700",
 };
 
@@ -54,19 +54,19 @@ export default function ContactsPage() {
             value={q}
             onChange={(e) => setQ(e.target.value)}
             placeholder="Search by name or email…"
-            className="w-72 rounded-md border border-slate-300 px-3 py-1.5 text-sm dark:border-slate-700 dark:bg-slate-800 dark:text-slate-100 dark:placeholder:text-slate-500"
+            className="w-72 rounded-md border border-zinc-300 px-3 py-1.5 text-sm dark:border-zinc-700 dark:bg-zinc-800 dark:text-zinc-100 dark:placeholder:text-zinc-500"
           />
-          <button className="rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-medium text-white">Search</button>
+          <button className="rounded-md bg-brand-600 px-3 py-1.5 text-sm font-medium text-white">Search</button>
         </form>
         <ExportMenu resource="contacts" />
       </div>
 
       {error && <p className="text-red-600 dark:text-red-400">{error}</p>}
-      {loading && <p className="text-slate-500 dark:text-slate-400">Loading…</p>}
+      {loading && <p className="text-zinc-500 dark:text-zinc-400">Loading…</p>}
 
-      <div className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-800 dark:bg-slate-900">
+      <div className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm transition-colors dark:border-zinc-800 dark:bg-zinc-900">
         <table className="w-full text-sm">
-          <thead className="bg-slate-50 text-left text-xs uppercase text-slate-500 dark:bg-slate-800/50 dark:text-slate-400">
+          <thead className="bg-zinc-50 text-left text-xs uppercase text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-400">
             <tr>
               <th className="px-4 py-3">Name</th>
               <th className="px-4 py-3">Type</th>
@@ -75,14 +75,14 @@ export default function ContactsPage() {
               <th className="px-4 py-3 text-right">Score</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+          <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
             {contacts.map((c) => (
-              <tr key={c.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+              <tr key={c.id} className="hover:bg-zinc-50 dark:hover:bg-zinc-800/50">
                 <td className="px-4 py-3 font-medium">{name(c)}</td>
-                <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{c.contactType}</td>
-                <td className="px-4 py-3 text-slate-500 dark:text-slate-400">{c.email}</td>
+                <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">{c.contactType}</td>
+                <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">{c.email}</td>
                 <td className="px-4 py-3">
-                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_COLORS[c.leadStatus ?? ""] ?? "bg-slate-100"}`}>
+                  <span className={`rounded-full px-2 py-0.5 text-xs font-medium ${STATUS_COLORS[c.leadStatus ?? ""] ?? "bg-zinc-100"}`}>
                     {c.leadStatus}
                   </span>
                 </td>
@@ -91,7 +91,7 @@ export default function ContactsPage() {
             ))}
           </tbody>
         </table>
-        {!loading && contacts.length === 0 && <p className="p-4 text-slate-500 dark:text-slate-400">No contacts found.</p>}
+        {!loading && contacts.length === 0 && <p className="p-4 text-zinc-500 dark:text-zinc-400">No contacts found.</p>}
       </div>
     </div>
   );
