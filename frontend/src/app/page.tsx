@@ -5,6 +5,7 @@ import { api } from "@/lib/api";
 import { getSession } from "@/lib/auth";
 import CourseQuiz from "@/components/CourseQuiz";
 import CourseCard from "@/components/CourseCard";
+import ReviewsTicker from "@/components/ReviewsTicker";
 import Logo from "@/components/Logo";
 import {
   CodeIcon,
@@ -280,6 +281,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ===================== REVIEWS TICKER (marquee) ================= */}
+      <ReviewsTicker />
 
       {/* ============================ SERVICES ========================== */}
       <section className="full-bleed bg-white py-20 dark:bg-zinc-900/40">

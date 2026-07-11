@@ -101,6 +101,17 @@ export interface CourseReviews {
   reviews: CourseReview[];
 }
 
+/** A single review across the whole catalog, tagged with its course. */
+export interface PublicReview {
+  courseId: number;
+  courseCode: string;
+  courseName: string;
+  author: string;
+  rating: number;
+  comment: string | null;
+  date: string | null;
+}
+
 export interface Demographics {
   totalContacts: number;
   byType: Record<string, number>;

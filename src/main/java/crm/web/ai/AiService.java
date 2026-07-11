@@ -188,6 +188,64 @@ public class AiService {
     }
 
     // =====================================================
+    // Translation - live UI translation into any language
+    // =====================================================
+
+    /**
+     * Translates a batch of UI strings into {@code targetLanguage} (an English
+     * language name such as "French", "Japanese", "Arabic"). Returns a list the
+     * same size and order as the input; on any parsing problem the original
+     * strings are returned so the UI never breaks.
+     */
+    public List<String> translate(List<String> texts, String targetLanguage) {
+        if (texts == null || texts.isEmpty()) return List.of();
+        if (targetLanguage == null || targetLanguage.isBlank()) return texts;
+
+        String system = """
+                You are a professional translator localizing a web application's user interface.
+                You are given a JSON array of UI strings. Translate every element into %s.
+
+                Rules:
+                - Return ONLY a JSON array of strings — no prose, no markdown fences, no keys.
+                - The output array MUST have exactly the same length and order as the input.
+                - Translate naturally and idiomatically, as a native speaker would phrase UI text.
+                - Do NOT translate: proper nouns, brand/product names (e.g. "TrainingIT"),
+                  people's names, company names, email addresses, URLs, code, or file names.
+                - Keep numbers, dates, currency symbols, punctuation and emoji unchanged.
+                - Preserve any placeholder tokens (e.g. {name}, %%s, :id) exactly.
+                - If a string has no meaningful translation, return it unchanged.
+                - Match the capitalization style and trailing punctuation of the source.
+                """.formatted(targetLanguage);
+
+        String user;
+        try {
+            user = objectMapper.writeValueAsString(texts);
+        } catch (Exception e) {
+            logger.warn("Could not serialize texts for translation", e);
+            return texts;
+        }
+
+        String response = claude.complete(system, user);
+        String json = extractJsonArray(response);
+        try {
+            String[] items = objectMapper.readValue(json, String[].class);
+            if (items.length != texts.size()) {
+                logger.warn("Translation length mismatch ({} in, {} out) — returning originals",
+                        texts.size(), items.length);
+                return texts;
+            }
+            List<String> out = new ArrayList<>(items.length);
+            for (int i = 0; i < items.length; i++) {
+                out.add(items[i] == null ? texts.get(i) : items[i]);
+            }
+            return out;
+        } catch (Exception e) {
+            logger.warn("Could not parse translation response as JSON array — returning originals. Raw: {}", response, e);
+            return texts;
+        }
+    }
+
+    // =====================================================
     // Helpers
     // =====================================================
 

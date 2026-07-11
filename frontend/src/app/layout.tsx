@@ -7,6 +7,8 @@ import AuthNav from "@/components/AuthNav";
 import AuthGuard from "@/components/AuthGuard";
 import PrimaryNav from "@/components/PrimaryNav";
 import Logo from "@/components/Logo";
+import TranslationProvider from "@/components/TranslationProvider";
+import LanguageSelector from "@/components/LanguageSelector";
 import "./globals.css";
 
 // Runs before paint to apply the saved/system theme and avoid a flash of the
@@ -37,6 +39,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-canvas text-ink transition-colors dark:bg-zinc-950 dark:text-zinc-100">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <TranslationProvider>
         <header className="sticky top-0 z-40 border-b border-black/5 bg-canvas/80 backdrop-blur-md transition-colors dark:border-white/10 dark:bg-zinc-950/80">
           <nav className="mx-auto flex max-w-6xl items-center gap-6 px-6 py-3.5">
             <Link href="/" className="flex items-center dark:hidden" aria-label="TrainingIT home">
@@ -47,6 +50,7 @@ export default function RootLayout({
             </Link>
             <PrimaryNav />
             <div className="ml-auto flex items-center gap-3">
+              <LanguageSelector />
               <ThemeToggle />
               <AuthNav />
             </div>
@@ -89,6 +93,7 @@ export default function RootLayout({
           </div>
         </footer>
         <Chatbot />
+        </TranslationProvider>
       </body>
     </html>
   );

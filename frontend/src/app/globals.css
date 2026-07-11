@@ -97,3 +97,24 @@ input::-ms-clear {
     animation: none;
   }
 }
+
+/* Infinite horizontal reviews ticker. The track holds the reviews twice, so
+   translating it by exactly -50% loops seamlessly. Duration is set inline
+   (scaled to the number of reviews) to keep a constant scroll speed. */
+@keyframes ti-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ti-marquee-track {
+  display: flex;
+  width: max-content;
+  animation: ti-marquee 40s linear infinite;
+  will-change: transform;
+}
+.ti-marquee-wrap:hover .ti-marquee-track {
+  animation-play-state: paused;
+}

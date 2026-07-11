@@ -49,5 +49,18 @@ public class AiController {
         return Map.of("reply", reply);
     }
 
+    /**
+     * Live UI translation: translates a batch of strings into any target
+     * language. Used by the frontend language switcher to translate whole pages
+     * on demand.
+     */
+    @PostMapping("/translate")
+    public Map<String, Object> translate(@RequestBody TranslateRequest request) {
+        List<String> translations = ai.translate(request.texts(), request.targetLanguage());
+        return Map.of("translations", translations);
+    }
+
     public record ChatRequest(List<ChatMessage> messages) {}
+
+    public record TranslateRequest(List<String> texts, String targetLanguage) {}
 }

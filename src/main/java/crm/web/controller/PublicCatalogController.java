@@ -9,6 +9,7 @@ import crm.web.dto.CourseReviewsResponse;
 import crm.web.dto.MyPurchaseDto;
 import crm.web.dto.PublicCompanyDto;
 import crm.web.dto.PublicCourseDto;
+import crm.web.dto.PublicReviewDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -90,6 +92,27 @@ public class PublicCatalogController {
                 .map(CourseReviewDto::from)
                 .toList();
         return new CourseReviewsResponse(summary.average(), summary.count(), reviews);
+    }
+
+    /**
+     * Published reviews across every active course, newest first, each tagged
+     * with the course it belongs to. Feeds the marketing site's continuously
+     * scrolling reviews ticker. Only reviews that carry BOTH a real rating
+     * (at least 1 star) AND written feedback (at least 2 characters) are shown,
+     * so empty/placeholder entries never reach the bar.
+     */
+    @GetMapping("/reviews")
+    public List<PublicReviewDto> allReviews() {
+        return facade.getActiveCourses().stream()
+                .flatMap(course -> facade.getCourseReviews(course.getId()).stream()
+                        .filter(view -> view.rating() >= 1
+                                && view.comment() != null
+                                && view.comment().trim().length() >= 2)
+                        .map(view -> PublicReviewDto.from(course, view)))
+                .sorted(Comparator.comparing(
+                        PublicReviewDto::date,
+                        Comparator.nullsLast(Comparator.reverseOrder())))
+                .toList();
     }
 
     /**
