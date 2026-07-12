@@ -6,7 +6,11 @@ import { usePathname } from "next/navigation";
 import { api } from "@/lib/api";
 import { AUTH_EVENT, getSession } from "@/lib/auth";
 import { SCHEDULE_EVENT, closeSchedule, isScheduleOpen } from "@/lib/schedule";
+import { closeReviews } from "@/lib/reviewsAccess";
 import type { AuthSession, MyPurchase } from "@/lib/types";
+
+/** True for the ephemeral per-course reviews route, /courses/{id}/reviews. */
+const isReviewsPath = (path: string) => /^\/courses\/\d+\/reviews$/.test(path);
 
 /**
  * Public navigation (Courses / My courses). Only contacts ("Cont utilizator")
@@ -86,6 +90,12 @@ export default function PrimaryNav() {
   useEffect(() => {
     if (prevPath.current === "/schedule" && pathname !== "/schedule") {
       closeSchedule();
+    }
+    // Leaving a course's reviews page revokes its one-time access, so the route
+    // can't be returned to by URL or refresh — same rationale as the schedule
+    // window above.
+    if (isReviewsPath(prevPath.current) && !isReviewsPath(pathname)) {
+      closeReviews();
     }
     prevPath.current = pathname;
   }, [pathname]);

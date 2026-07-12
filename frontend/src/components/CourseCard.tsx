@@ -1,16 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { api } from "@/lib/api";
 import { getSession } from "@/lib/auth";
 import { StarRating } from "@/components/Stars";
-import type { CourseReviews, PublicCourse } from "@/lib/types";
+import { CheckIcon } from "@/components/icons";
+import { buildCourseDetails } from "@/lib/courseDetails";
+import { openReviews } from "@/lib/reviewsAccess";
+import type { PublicCourse } from "@/lib/types";
 
 /**
  * A single course in the public catalog. The visitor is a logged-in contact, so
- * buying uses their session identity — no email/name to type. Reviews are shown
- * read-only here; writing a review lives on the My Courses page, scoped to the
- * courses the contact has actually enrolled in.
+ * buying uses their session identity — no email/name to type. Expanding the card
+ * ("More") reveals a detailed description and a "See Reviews" button that opens
+ * the course's dedicated, review-only page; reviews are no longer listed inline.
+ * Writing a review lives on the My Courses page, scoped to enrolled courses.
  *
  * - {@code purchased === false}: a "Buy this course" button that registers the
  *   purchase for the logged-in contact.
@@ -25,37 +30,37 @@ export default function CourseCard({
   purchased: boolean;
   onPurchased: (courseId: number) => void;
 }) {
+  const router = useRouter();
   const [expanded, setExpanded] = useState(false);
+  // Whether this card's click-through has already been counted this mount.
+  const [clicked, setClicked] = useState(false);
 
-  const [average, setAverage] = useState(course.averageRating);
-  const [count, setCount] = useState(course.reviewCount);
-  const [reviews, setReviews] = useState<CourseReviews["reviews"] | null>(null);
-  const [reviewsError, setReviewsError] = useState<string | null>(null);
+  const average = course.averageRating;
+  const count = course.reviewCount;
 
   // Buy
   const [buyLoading, setBuyLoading] = useState(false);
   const [buyError, setBuyError] = useState<string | null>(null);
 
+  const details = buildCourseDetails(course);
+
   function toggleExpanded() {
     const next = !expanded;
     setExpanded(next);
-    if (next && reviews === null) {
-      // First open = a click-through; track it for the admin CTR metric.
+    if (next && !clicked) {
+      // First open = a click-through; track it once for the admin CTR metric.
       api.post(`/api/public/courses/${course.id}/click`, null).catch(() => {});
-      void loadReviews();
+      setClicked(true);
     }
   }
 
-  async function loadReviews() {
-    try {
-      const data = await api.get<CourseReviews>(`/api/public/courses/${course.id}/reviews`);
-      setReviews(data.reviews);
-      setAverage(data.average);
-      setCount(data.count);
-      setReviewsError(null);
-    } catch (err) {
-      setReviewsError((err as Error).message);
-    }
+  /**
+   * Grant one-time access to this course's reviews page and go there. The grant
+   * is revoked when the visitor leaves, so the page can't be reached any other way.
+   */
+  function seeReviews() {
+    openReviews({ id: course.id, name: course.name });
+    router.push(`/courses/${course.id}/reviews`);
   }
 
   async function buy() {
@@ -128,9 +133,40 @@ export default function CourseCard({
       <div className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${expanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
         <div className="overflow-hidden">
           <div className="mt-3 space-y-4 border-t border-black/5 pt-3 dark:border-white/10">
-            <p className="text-sm text-zinc-600 dark:text-zinc-300">
-              {course.description ?? "No description available for this course."}
-            </p>
+            {/* ---- Detailed description ---- */}
+            <div className="space-y-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              {details.overview.map((para, i) => (
+                <p key={i}>{para}</p>
+              ))}
+              <div>
+                <p className="mb-1.5 font-semibold text-ink dark:text-white">What you'll learn</p>
+                <ul className="space-y-1.5">
+                  {details.learn.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-brand-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <p className="mb-1 font-semibold text-ink dark:text-white">Who it's for</p>
+                <p>{details.audience}</p>
+              </div>
+              <div>
+                <p className="mb-1 font-semibold text-ink dark:text-white">Format &amp; commitment</p>
+                <p>{details.format}</p>
+              </div>
+            </div>
+
+            {/* ---- See Reviews (opens the dedicated, review-only page) ---- */}
+            <button
+              type="button"
+              onClick={seeReviews}
+              className="w-full rounded-full border border-brand-200 px-4 py-2.5 text-sm font-semibold text-brand-700 transition hover:border-brand-300 hover:bg-brand-50 dark:border-brand-500/30 dark:text-brand-300 dark:hover:bg-brand-500/10"
+            >
+              See Reviews
+            </button>
 
             {/* ---- Buy ---- */}
             {purchased ? (
@@ -153,32 +189,6 @@ export default function CourseCard({
               </button>
             )}
             {buyError && <p className="text-sm text-red-600 dark:text-red-400">{buyError}</p>}
-
-            {/* ---- Reviews (read-only; writing lives on My Courses) ---- */}
-            <div className="border-t border-black/5 pt-3 dark:border-white/10">
-              <p className="mb-2 text-sm font-semibold text-ink dark:text-white">Reviews</p>
-
-              {reviewsError && <p className="text-sm text-red-600 dark:text-red-400">Could not load reviews: {reviewsError}</p>}
-
-              {reviews && reviews.length > 0 ? (
-                <ul className="space-y-2">
-                  {reviews.map((r, i) => (
-                    <li key={i} className="rounded-xl border border-black/5 bg-white p-3 dark:border-white/10 dark:bg-zinc-900">
-                      <div className="flex items-center justify-between">
-                        <span className="text-sm font-medium text-ink dark:text-white">{r.author}</span>
-                        <StarRating value={r.rating} size={14} />
-                      </div>
-                      {r.comment && <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">{r.comment}</p>}
-                      {r.date && <p className="mt-1 text-xs text-zinc-400 dark:text-zinc-500">{r.date}</p>}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                reviews && !reviewsError && (
-                  <p className="text-sm text-zinc-500 dark:text-zinc-400">Be the first to review this course.</p>
-                )
-              )}
-            </div>
           </div>
         </div>
       </div>
