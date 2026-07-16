@@ -59,11 +59,13 @@ public class EnrollmentService {
             throw new BusinessException("The contact is already enrolled in this session");
         }
 
+        // Cumpărarea unui curs este instantanee (nu există pas de plată în așteptare),
+        // deci tranzacția se naște direct CONFIRMED - singurul status folosit.
         Enrollment enrollment = Enrollment.builder()
                 .sessionId(sessionId)
                 .contactId(contactId)
                 .enrollmentDate(LocalDateTime.now())
-                .status(EnrollmentStatus.PENDING)
+                .status(EnrollmentStatus.CONFIRMED)
                 .build();
 
         Enrollment saved = enrollmentRepository.save(enrollment);

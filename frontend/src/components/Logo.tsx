@@ -6,8 +6,12 @@
 type LogoProps = {
   /** Badge + text height in pixels. */
   size?: number;
-  /** "dark" → near-black wordmark (for light backgrounds); "light" → white. */
-  tone?: "dark" | "light";
+  /**
+   * Wordmark colour. "auto" (the default) inherits the parent's text colour, so
+   * a single Logo follows the theme via `text-ink dark:text-white`. "dark" and
+   * "light" pin it to near-black / white for a fixed-tone background.
+   */
+  tone?: "auto" | "dark" | "light";
   /** Hide the wordmark and render only the cog badge. */
   iconOnly?: boolean;
   className?: string;
@@ -15,11 +19,12 @@ type LogoProps = {
 
 export default function Logo({
   size = 32,
-  tone = "dark",
+  tone = "auto",
   iconOnly = false,
   className = "",
 }: LogoProps) {
-  const wordColor = tone === "light" ? "#ffffff" : "#0a0a0a";
+  const wordColor =
+    tone === "light" ? "#ffffff" : tone === "dark" ? "#0a0a0a" : "currentColor";
   return (
     <span
       className={`inline-flex items-center ${className}`}

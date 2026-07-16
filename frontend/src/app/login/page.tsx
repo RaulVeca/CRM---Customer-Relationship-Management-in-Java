@@ -56,8 +56,7 @@ export default function LoginPage() {
   return (
     <div className="mx-auto flex max-w-md flex-col gap-6 py-6">
       <div>
-        <Logo size={34} tone="dark" className="mb-6 dark:hidden" />
-        <Logo size={34} tone="light" className="mb-6 hidden dark:inline-flex" />
+        <Logo size={34} className="mb-6 text-ink dark:text-white" />
         <h1 className="text-4xl font-semibold tracking-tight text-ink dark:text-white">
           Welcome back
         </h1>

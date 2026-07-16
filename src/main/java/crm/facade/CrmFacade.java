@@ -267,6 +267,21 @@ public class CrmFacade {
         return issueReportService.getAll();
     }
 
+    /** Marks a reported issue OPEN or SOLVED (the admin view toggles both ways). */
+    public IssueReport changeIssueReportStatus(Long id, String status) {
+        return issueReportService.changeStatus(id, status);
+    }
+
+    /** Removes a single reported issue; false when no report has that id. */
+    public boolean deleteIssueReport(Long id) {
+        return issueReportService.delete(id);
+    }
+
+    /** Clears the whole Issues list, returning how many reports were removed. */
+    public int deleteAllIssueReports() {
+        return issueReportService.deleteAll();
+    }
+
     // =====================================================
     // ANALYTICS
     // =====================================================

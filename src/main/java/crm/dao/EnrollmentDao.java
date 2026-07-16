@@ -47,7 +47,7 @@ public class EnrollmentDao extends AbstractDao<Enrollment> {
         int i = 1;
         ps.setLong(i++, e.getSessionId());
         ps.setLong(i++, e.getContactId());
-        ps.setString(i++, e.getStatus() != null ? e.getStatus().name() : EnrollmentStatus.PENDING.name());
+        ps.setString(i++, e.getStatus() != null ? e.getStatus().name() : EnrollmentStatus.CONFIRMED.name());
         ps.setString(i, e.getNotes());
     }
 

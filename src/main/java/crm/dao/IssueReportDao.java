@@ -1,7 +1,9 @@
 package crm.dao;
 
+import crm.exception.DataAccessException;
 import crm.model.entity.IssueReport;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -68,6 +70,26 @@ public class IssueReportDao extends AbstractDao<IssueReport> {
     @Override
     protected Long getEntityId(IssueReport entity) {
         return entity.getId();
+    }
+
+    /**
+     * Removes every reported issue in one statement — backs the admin Issues
+     * view's "Delete all" action.
+     *
+     * @return how many reports were removed
+     */
+    public int deleteAll() {
+        String sql = "DELETE FROM " + getTableName();
+        try (Connection conn = db.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            int affected = ps.executeUpdate();
+            logger.debug("Deleted every row from {}: {} rows", getTableName(), affected);
+            return affected;
+        } catch (SQLException e) {
+            logger.error("Error in deleteAll in {}", getTableName(), e);
+            throw new DataAccessException("Error while deleting all reports", e);
+        }
     }
 
     @Override

@@ -56,7 +56,15 @@ export default function AdminPurchasesPage() {
                   <div className="font-medium">{p.courseName}</div>
                   {p.courseCode && <div className="font-mono text-xs text-zinc-400 dark:text-zinc-500">{p.courseCode}</div>}
                 </td>
-                <td className="px-4 py-3 text-zinc-500 dark:text-zinc-400">{p.status ?? "—"}</td>
+                <td className="px-4 py-3">
+                  {p.status ? (
+                    <span className="rounded-full bg-emerald-50 px-2.5 py-1 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-300">
+                      {p.status}
+                    </span>
+                  ) : (
+                    <span className="text-zinc-400 dark:text-zinc-500">—</span>
+                  )}
+                </td>
                 <td className="px-4 py-3 whitespace-nowrap text-zinc-500 dark:text-zinc-400">{p.date ?? "—"}</td>
                 <td className="px-4 py-3">
                   {p.rating ? <StarRating value={p.rating} size={14} /> : <span className="text-zinc-400 dark:text-zinc-500">—</span>}

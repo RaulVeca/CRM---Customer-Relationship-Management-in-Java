@@ -164,7 +164,7 @@ CREATE TABLE enrollments (
     session_id BIGINT NOT NULL,
     contact_id BIGINT NOT NULL,
     enrollment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    status VARCHAR(20) DEFAULT 'PENDING',
+    status VARCHAR(20) DEFAULT 'CONFIRMED',
     attended_sessions INT DEFAULT 0,
     attendance_rate DECIMAL(5,2),
     exam_passed BOOLEAN,

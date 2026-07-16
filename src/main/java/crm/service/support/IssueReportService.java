@@ -1,11 +1,13 @@
 package crm.service.support;
 
 import crm.dao.IssueReportDao;
+import crm.exception.ResourceNotFoundException;
 import crm.model.entity.IssueReport;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.List;
+import java.util.Locale;
 
 /**
  * SINGLETON - IssueReportService.
@@ -20,7 +22,9 @@ public class IssueReportService {
     private static final Logger logger = LoggerFactory.getLogger(IssueReportService.class);
     private static volatile IssueReportService instance;
 
-    private static final String STATUS_OPEN = "OPEN";
+    /** A report is OPEN until an admin marks it SOLVED; both ways are allowed. */
+    public static final String STATUS_OPEN = "OPEN";
+    public static final String STATUS_SOLVED = "SOLVED";
 
     private final IssueReportDao issueReportDao;
 
@@ -61,6 +65,52 @@ public class IssueReportService {
     /** All reported issues, newest first (the DAO orders by id descending). */
     public List<IssueReport> getAll() {
         return issueReportDao.findAll();
+    }
+
+    /**
+     * Moves a report between {@link #STATUS_OPEN} and {@link #STATUS_SOLVED} —
+     * the admin Issues view toggles it both ways, so a report marked solved by
+     * mistake can be reopened.
+     *
+     * @param status the target status, case-insensitive
+     * @throws IllegalArgumentException if the status is neither OPEN nor SOLVED
+     * @throws ResourceNotFoundException if no report has that id
+     */
+    public IssueReport changeStatus(Long id, String status) {
+        String target = status == null ? "" : status.trim().toUpperCase(Locale.ROOT);
+        if (!STATUS_OPEN.equals(target) && !STATUS_SOLVED.equals(target)) {
+            throw new IllegalArgumentException(
+                    "Unknown issue status: " + status + " (expected " + STATUS_OPEN + " or " + STATUS_SOLVED + ").");
+        }
+        IssueReport report = issueReportDao.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Issue report", id));
+        report.setStatus(target);
+        IssueReport saved = issueReportDao.update(report);
+        logger.info("Issue report status changed: id={}, status={}", id, target);
+        return saved;
+    }
+
+    /**
+     * Permanently removes a single report once an admin has dealt with it.
+     *
+     * @return {@code true} if a report with that id existed and was removed
+     */
+    public boolean delete(Long id) {
+        boolean removed = issueReportDao.deleteById(id);
+        logger.info("Issue report deleted: id={}, existed={}", id, removed);
+        return removed;
+    }
+
+    /**
+     * Permanently removes every report — the admin Issues view's "Delete all"
+     * action. There is no undo, so the portal confirms before calling this.
+     *
+     * @return how many reports were removed
+     */
+    public int deleteAll() {
+        int removed = issueReportDao.deleteAll();
+        logger.info("All issue reports deleted: {} rows", removed);
+        return removed;
     }
 
     private static String blankToNull(String value) {

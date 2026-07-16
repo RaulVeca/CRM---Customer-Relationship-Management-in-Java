@@ -215,34 +215,34 @@ export default function Home() {
   return (
     <div className="-mt-10 -mb-10">
       {/* ============================= HERO ============================= */}
-      <section className="full-bleed relative overflow-hidden bg-zinc-950 text-white">
+      <section className="full-bleed relative overflow-hidden bg-white text-ink transition-colors dark:bg-zinc-950 dark:text-white">
         {/* Brand glow */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -right-40 -top-40 h-[38rem] w-[38rem] rounded-full opacity-30 blur-3xl"
+          className="pointer-events-none absolute -right-40 -top-40 h-[38rem] w-[38rem] rounded-full opacity-20 blur-3xl dark:opacity-30"
           style={{ background: "radial-gradient(circle, var(--color-brand-500), transparent 60%)" }}
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-48 -left-40 h-[34rem] w-[34rem] rounded-full opacity-20 blur-3xl"
+          className="pointer-events-none absolute -bottom-48 -left-40 h-[34rem] w-[34rem] rounded-full opacity-15 blur-3xl dark:opacity-20"
           style={{ background: "radial-gradient(circle, var(--color-brand-600), transparent 60%)" }}
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-28">
           <div className="ti-rise max-w-3xl">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-brand-200">
-              <StarBurstIcon className="h-3.5 w-3.5 text-brand-400" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-brand-200">
+              <StarBurstIcon className="h-3.5 w-3.5 text-brand-500 dark:text-brand-400" />
               Professional IT training
             </span>
             {greetingName ? (
               <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                Welcome back, <span className="text-brand-400">{greetingName}</span>.
+                Welcome back, <span className="text-brand-600 dark:text-brand-400">{greetingName}</span>.
               </h1>
             ) : (
               <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                Level up your <span className="text-brand-400">IT career</span>.
+                Level up your <span className="text-brand-600 dark:text-brand-400">IT career</span>.
               </h1>
             )}
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-300">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
               Instructor-led courses, hands-on labs and 1:1 mentoring in
               programming, AI, data science and cloud — for individuals and
               corporate teams.
@@ -257,7 +257,7 @@ export default function Home() {
               </a>
               <a
                 href="#how"
-                className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-full border border-black/15 px-6 py-3 text-sm font-semibold text-ink transition hover:bg-black/5 dark:border-white/20 dark:text-white dark:hover:bg-white/10"
               >
                 How it works
               </a>
@@ -265,11 +265,11 @@ export default function Home() {
           </div>
 
           {/* Stats strip */}
-          <dl className="ti-rise mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:grid-cols-4">
+          <dl className="ti-rise mt-16 grid grid-cols-2 gap-6 border-t border-black/10 pt-8 sm:grid-cols-4 dark:border-white/10">
             {STATS.map((s) => (
               <div key={s.label}>
-                <dt className="text-3xl font-semibold text-white">{s.value}</dt>
-                <dd className="mt-1 text-sm text-zinc-400">{s.label}</dd>
+                <dt className="text-3xl font-semibold text-ink dark:text-white">{s.value}</dt>
+                <dd className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{s.label}</dd>
               </div>
             ))}
           </dl>
@@ -499,18 +499,18 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="relative flex flex-col justify-center bg-zinc-950 p-10 text-white sm:p-12">
+            <div className="relative flex flex-col justify-center bg-brand-50 p-10 text-ink transition-colors sm:p-12 dark:bg-zinc-950 dark:text-white">
               <div
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 opacity-25 blur-3xl"
+                className="pointer-events-none absolute inset-0 opacity-20 blur-3xl dark:opacity-25"
                 style={{ background: "radial-gradient(circle at 70% 30%, var(--color-brand-500), transparent 55%)" }}
               />
               <div className="relative">
-                <p className="text-sm text-zinc-400">Individual courses from</p>
+                <p className="text-sm text-zinc-500 dark:text-zinc-400">Individual courses from</p>
                 <p className="mt-1 text-5xl font-semibold">
-                  4$<span className="ml-1 align-top text-base font-normal text-zinc-400"></span>
+                  4$<span className="ml-1 align-top text-base font-normal text-zinc-500 dark:text-zinc-400"></span>
                 </p>
-                <p className="mt-2 text-sm text-zinc-400">
+                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                   Prices are set per course. Browse the catalog to see the current
                   offering, or contact us for corporate rates.
                 </p>
@@ -564,20 +564,20 @@ export default function Home() {
       </section>
 
       {/* ========================= FINAL CTA BAND ======================= */}
-      <section className="full-bleed relative overflow-hidden bg-zinc-950 text-white">
+      <section className="full-bleed relative overflow-hidden bg-brand-50 text-ink transition-colors dark:bg-zinc-950 dark:text-white">
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 opacity-30 blur-3xl"
+          className="pointer-events-none absolute inset-0 opacity-20 blur-3xl dark:opacity-30"
           style={{ background: "radial-gradient(circle at 50% 120%, var(--color-brand-500), transparent 55%)" }}
         />
         <div className="relative mx-auto max-w-3xl px-6 py-20 text-center">
           <div className="flex justify-center">
-            <Logo size={40} tone="light" iconOnly />
+            <Logo size={40} iconOnly />
           </div>
           <h2 className="mt-6 text-3xl font-semibold tracking-tight sm:text-4xl">
             Ready to level up your IT career?
           </h2>
-          <p className="mt-4 text-zinc-300">
+          <p className="mt-4 text-zinc-600 dark:text-zinc-300">
             Browse the catalog, pick a course and start learning today.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
