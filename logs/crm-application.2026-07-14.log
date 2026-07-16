@@ -1,0 +1,102 @@
+2026-07-14 20:20:05.282 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-14 20:20:05.346 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 20948 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-14 20:20:05.347 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-14 20:20:05.347 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-14 20:20:06.402 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-14 20:20:06.424 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-14 20:20:06.428 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-14 20:20:06.429 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-14 20:20:06.517 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-14 20:20:06.518 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1129 ms
+2026-07-14 20:20:06.811 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-14 20:20:06.815 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-14 20:20:06.822 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-14 20:20:06.837 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-14 20:20:06.975 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@36d33f4
+2026-07-14 20:20:06.976 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-14 20:20:06.976 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-14 20:20:06.992 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-14 20:20:06.998 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=323) Duplicate column name 'email'
+2026-07-14 20:20:06.999 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-14 20:20:06.999 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=323) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-14 20:20:07.000 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-14 20:20:07.001 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=323) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-14 20:20:07.002 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-14 20:20:07.002 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=323) Duplicate column name 'password'
+2026-07-14 20:20:07.004 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-14 20:20:07.004 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=323) Duplicate column name 'password'
+2026-07-14 20:20:07.005 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-14 20:20:07.005 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=323) Duplicate column name 'password'
+2026-07-14 20:20:07.024 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-14 20:20:07.030 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-14 20:20:07.032 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-14 20:20:07.033 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-14 20:20:07.038 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-14 20:20:07.040 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-14 20:20:07.040 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-14 20:20:07.040 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-14 20:20:07.147 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-14 20:20:07.518 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-14 20:20:07.542 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-14 20:20:07.549 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.544 seconds (process running for 3.046)
+2026-07-14 20:20:20.518 [http-nio-8080-exec-4] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-14 20:20:20.518 [http-nio-8080-exec-4] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-14 20:20:20.520 [http-nio-8080-exec-4] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-14 20:23:59.689 [http-nio-8080-exec-9] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 27 orders
+2026-07-14 20:23:59.689 [http-nio-8080-exec-6] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 27 orders
+2026-07-14 20:24:05.777 [http-nio-8080-exec-10] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-14 20:24:05.777 [http-nio-8080-exec-2] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 7 courses
+2026-07-14 20:24:57.162 [http-nio-8080-exec-1] INFO  crm.service.contact.ContactService - Creare contact: elenadumitru@sensidev.ro
+2026-07-14 20:24:57.172 [http-nio-8080-exec-1] DEBUG crm.strategy.LeadScoringContext - Initial score for contact elenadumitru@sensidev.ro (strategy: SimpleLeadScoring): 50
+2026-07-14 20:24:57.173 [http-nio-8080-exec-1] DEBUG crm.repository.ContactRepository - Saving Contact : Contact(super=crm.model.entity.Contact@4e84cb5b, contactType=INDIVIDUAL, firstName=Elena, lastName=Dumitru, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=elenadumitru@sensidev.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=NEW, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-14T20:24:57.163816300, lastContactDate=2026-07-14T20:24:57.163816300, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-14T20:24:57.162812600, marketingConsent=null)
+2026-07-14 20:24:57.180 [http-nio-8080-exec-1] DEBUG crm.dao.ContactDao - Entity saved in contacts: ID=37
+2026-07-14 20:24:57.180 [http-nio-8080-exec-1] DEBUG crm.observer.EventBus - Notificare eveniment: CONTACT_CREATED de la ContactService
+2026-07-14 20:24:57.199 [http-nio-8080-exec-1] INFO  crm.service.notification.NotificationService - [EMAIL] To: elenadumitru@sensidev.ro, Subject: Bine ai venit la Training IT!
+2026-07-14 20:24:57.199 [http-nio-8080-exec-1] DEBUG crm.service.notification.NotificationService - Content:
+Salut Elena Dumitru,
+
+Thank you for your interest in our courses!
+
+We are a company specialized in IT training and we offer courses on Java, Python, AI and much more.
+
+A consultant will contact you soon to discuss the right options.
+
+Cu drag,
+Echipa Training IT
+2026-07-14 20:24:57.199 [http-nio-8080-exec-1] INFO  crm.observer.listeners.WelcomeEmailObserver - Welcome email sent to: elenadumitru@sensidev.ro
+2026-07-14 20:24:57.199 [http-nio-8080-exec-1] INFO  crm.service.contact.ContactService - Contact created with ID: 37 (score: 50)
+2026-07-14 20:25:44.393 [http-nio-8080-exec-6] DEBUG crm.repository.EnrollmentRepository - Saving Enrollment : Enrollment(super=crm.model.entity.Enrollment@55f115f0, sessionId=4, contactId=37, enrollmentDate=2026-07-14T20:25:44.393886400, status=PENDING, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
+2026-07-14 20:25:44.397 [http-nio-8080-exec-6] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=34
+2026-07-14 20:25:44.398 [http-nio-8080-exec-6] DEBUG crm.repository.ContactRepository - Saving Contact : Contact(super=crm.model.entity.Contact@4e84cb5b, contactType=INDIVIDUAL, firstName=Elena, lastName=Dumitru, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=elenadumitru@sensidev.ro, phone=null, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=WEBSITE, leadStatus=ENROLLED, leadScore=50, experienceLevel=null, learningGoal=null, firstContactDate=2026-07-14T20:24:57, lastContactDate=2026-07-14T20:25:44.398896600, assignedTo=null, gdprConsent=true, gdprConsentDate=2026-07-14T20:24:57, marketingConsent=false)
+2026-07-14 20:25:44.400 [http-nio-8080-exec-6] DEBUG crm.dao.ContactDao - Entity updated in contacts: ID=37
+2026-07-14 20:25:44.400 [http-nio-8080-exec-6] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
+2026-07-14 20:25:44.401 [http-nio-8080-exec-6] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 37: NEW -> ENROLLED
+2026-07-14 20:25:44.402 [http-nio-8080-exec-6] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
+2026-07-14 20:25:44.404 [http-nio-8080-exec-6] INFO  crm.service.notification.NotificationService - [EMAIL] To: elenadumitru@sensidev.ro, Subject: Course enrollment confirmation
+2026-07-14 20:25:44.404 [http-nio-8080-exec-6] DEBUG crm.service.notification.NotificationService - Content:
+Salut Elena Dumitru,
+
+Your enrollment has been confirmed successfully!
+Status: PENDING
+
+You will soon receive details about the course schedule and the required materials.
+
+Mult succes!
+Echipa Training IT
+2026-07-14 20:25:44.404 [http-nio-8080-exec-6] INFO  c.o.listeners.EnrollmentConfirmationObserver - Enrollment confirmation sent to contact 37
+2026-07-14 20:25:44.404 [http-nio-8080-exec-6] INFO  crm.service.enrollment.EnrollmentService - Enrollment created: contact=37, session=4
+2026-07-14 20:25:44.404 [http-nio-8080-exec-6] INFO  crm.service.review.ReviewService - Course purchased: client=elenadumitru@sensidev.ro, course=2, enrollment=34
+2026-07-14 20:26:29.940 [http-nio-8080-exec-3] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=33
+2026-07-14 20:26:29.941 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-14 20:26:29.947 [http-nio-8080-exec-3] DEBUG crm.repository.InvoiceRepository - Saving Invoice : Invoice(super=crm.model.entity.Invoice@2091909c, invoiceNumber=INV-2026-00033, sessionId=33, clientId=37, clientEmail=elenadumitru@sensidev.ro, issueDate=2026-07-14, hours=4, hourlyRate=10.00, subtotal=40.00, discountRate=0.6, discountAmount=24.00, total=16.00, paidAmount=16.00, status=PAID, paymentDate=2026-07-14, description=Sedinta online cu trainer (2026-07-16, 8:00-12:00, 4h) - discount angajat 60%)
+2026-07-14 20:26:29.950 [http-nio-8080-exec-3] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=19
+2026-07-14 20:26:29.951 [http-nio-8080-exec-3] INFO  crm.service.invoice.InvoiceService - Invoice auto-generated: INV-2026-00033 for session 33 (4h x $10 - 60% = $16.00)
+2026-07-14 20:26:34.324 [http-nio-8080-exec-10] DEBUG crm.dao.MeditationSessionDao - Delete from meditation_sessions ID=33: 1 rows
+2026-07-14 20:26:49.839 [http-nio-8080-exec-5] DEBUG crm.dao.IssueReportDao - Entity saved in issue_reports: ID=18
+2026-07-14 20:26:49.839 [http-nio-8080-exec-5] INFO  crm.service.support.IssueReportService - Issue reported: id=18, reporter=elenadumitru@sensidev.ro
+2026-07-14 20:36:27.575 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-14 20:36:27.621 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-14 20:36:27.634 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-14 20:36:27.635 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-14 20:36:27.642 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-14 20:36:27.644 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed

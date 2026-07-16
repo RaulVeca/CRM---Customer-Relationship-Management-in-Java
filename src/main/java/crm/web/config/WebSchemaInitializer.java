@@ -99,6 +99,17 @@ public final class WebSchemaInitializer {
             INDEX idx_session_invoices_session (session_id),
             INDEX idx_session_invoices_client (client_id)
         )
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS issue_reports (
+            id BIGINT AUTO_INCREMENT PRIMARY KEY,
+            reporter_email VARCHAR(255),
+            reporter_name VARCHAR(255),
+            message TEXT NOT NULL,
+            status VARCHAR(20) NOT NULL DEFAULT 'OPEN',
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            INDEX idx_issue_reports_created (created_at)
+        )
         """
     };
 
@@ -140,7 +151,7 @@ public final class WebSchemaInitializer {
             ensurePasswordColumns(conn);
             seedAdmins(conn);
             seedTrainers(conn);
-            logger.info("Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices)");
+            logger.info("Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)");
         } catch (SQLException e) {
             logger.error("Failed to ensure web feature tables", e);
             throw new IllegalStateException("Could not initialize web feature schema", e);

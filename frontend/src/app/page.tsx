@@ -482,8 +482,8 @@ export default function Home() {
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-400">
                 Enrol your whole team, import employees in bulk and match each
-                person to the right learning path. Pricing is tailored to the
-                programme and team size — get in touch for an exact quote.
+                person to the right learning path. Any employee has a 60%
+                discount for any course they choose to invest in.
               </p>
               <ul className="mt-6 space-y-3">
                 {[
@@ -508,7 +508,7 @@ export default function Home() {
               <div className="relative">
                 <p className="text-sm text-zinc-400">Individual courses from</p>
                 <p className="mt-1 text-5xl font-semibold">
-                  €—<span className="ml-1 align-top text-base font-normal text-zinc-400"></span>
+                  4$<span className="ml-1 align-top text-base font-normal text-zinc-400"></span>
                 </p>
                 <p className="mt-2 text-sm text-zinc-400">
                   Prices are set per course. Browse the catalog to see the current

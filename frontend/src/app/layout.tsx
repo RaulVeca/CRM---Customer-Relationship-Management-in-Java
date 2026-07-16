@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import Link from "next/link";
 import Chatbot from "@/components/Chatbot";
+import ReportIssue from "@/components/ReportIssue";
 import ThemeToggle from "@/components/ThemeToggle";
 import AuthNav from "@/components/AuthNav";
 import AuthGuard from "@/components/AuthGuard";
@@ -35,9 +36,9 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${jakarta.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${jakarta.variable} ${geistMono.variable} h-full overflow-x-clip antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-canvas text-ink transition-colors dark:bg-zinc-950 dark:text-zinc-100">
+      <body className="min-h-full flex flex-col overflow-x-clip bg-canvas text-ink transition-colors dark:bg-zinc-950 dark:text-zinc-100">
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <TranslationProvider>
         <header className="sticky top-0 z-40 border-b border-black/5 bg-canvas/80 backdrop-blur-md transition-colors dark:border-white/10 dark:bg-zinc-950/80">
@@ -56,7 +57,7 @@ export default function RootLayout({
             </div>
           </nav>
         </header>
-        <main className="mx-auto w-full max-w-6xl flex-1 overflow-x-clip px-6 py-10">
+        <main className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
           <AuthGuard>{children}</AuthGuard>
         </main>
         <footer className="border-t border-white/10 bg-zinc-950 text-zinc-400">
@@ -93,6 +94,7 @@ export default function RootLayout({
           </div>
         </footer>
         <Chatbot />
+        <ReportIssue />
         </TranslationProvider>
       </body>
     </html>

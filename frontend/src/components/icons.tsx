@@ -248,6 +248,24 @@ export function StarBurstIcon({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
+export function FlagIcon({ className = "h-6 w-6" }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V4s-1 1-4 1-5-2-8-2-4 1-4 1z" />
+      <path d="M4 22v-7" />
+    </svg>
+  );
+}
+
 export function TrophyIcon({ className = "h-4 w-4" }: IconProps) {
   return (
     <svg

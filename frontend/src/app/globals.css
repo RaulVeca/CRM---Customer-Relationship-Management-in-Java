@@ -115,6 +115,3 @@ input::-ms-clear {
   animation: ti-marquee 40s linear infinite;
   will-change: transform;
 }
-.ti-marquee-wrap:hover .ti-marquee-track {
-  animation-play-state: paused;
-}

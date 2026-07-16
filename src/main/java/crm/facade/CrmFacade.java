@@ -21,6 +21,7 @@ import crm.service.analytics.MetricsService;
 import crm.service.enrollment.PurchaseHistoryService;
 import crm.service.opportunity.OpportunityService;
 import crm.service.review.ReviewService;
+import crm.service.support.IssueReportService;
 
 import java.util.List;
 import java.util.Optional;
@@ -57,6 +58,7 @@ public class CrmFacade {
     private final PurchaseHistoryService purchaseHistoryService;
     private final AnalyticsService analyticsService;
     private final MetricsService metricsService;
+    private final IssueReportService issueReportService;
     private final CommandInvoker commandInvoker;
 
     private CrmFacade() {
@@ -71,6 +73,7 @@ public class CrmFacade {
         this.purchaseHistoryService = PurchaseHistoryService.getInstance();
         this.analyticsService = AnalyticsService.getInstance();
         this.metricsService = MetricsService.getInstance();
+        this.issueReportService = IssueReportService.getInstance();
         this.commandInvoker = CommandInvoker.getInstance();
         logger.info("CrmFacade initialized");
     }
@@ -248,6 +251,20 @@ public class CrmFacade {
     /** Full purchase (enrollment) history for the admin view. */
     public List<PurchaseHistoryService.PurchaseRecord> getPurchaseHistory() {
         return purchaseHistoryService.getHistory();
+    }
+
+    // =====================================================
+    // ISSUE REPORTS (client portal -> admin portal)
+    // =====================================================
+
+    /** Records a problem a client reported from the portal's "Report an issue" window. */
+    public IssueReport reportIssue(String email, String name, String message) {
+        return issueReportService.report(email, name, message);
+    }
+
+    /** Every reported issue, newest first - feeds the admin Issues view. */
+    public List<IssueReport> getIssueReports() {
+        return issueReportService.getAll();
     }
 
     // =====================================================

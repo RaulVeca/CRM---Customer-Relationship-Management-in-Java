@@ -112,6 +112,16 @@ export interface PublicReview {
   date: string | null;
 }
 
+/** A problem a client reported from the portal — shown to admins. */
+export interface IssueReport {
+  id: number;
+  reporterName: string | null;
+  reporterEmail: string;
+  message: string;
+  status: string;
+  date: string | null;
+}
+
 export interface Demographics {
   totalContacts: number;
   byType: Record<string, number>;
