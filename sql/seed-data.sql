@@ -20,6 +20,42 @@ INSERT INTO courses (code, name, description, category, level, duration_hours,
 ('RECONV-IT', 'Reconversie Profesională IT', 'Program complet de reconversie 6 luni', 'PROFESSIONAL_RECONVERSION', 'BEGINNER', 480, 10, 20, TRUE),
 ('WS-DOCKER', 'Workshop Docker & Kubernetes', 'Workshop intensiv 2 zile', 'WORKSHOP', 'INTERMEDIATE', 16, 5, 15, TRUE);
 
+-- Catalog complet: un curs pentru fiecare ramură din CourseCategory, astfel încât
+-- niciun filtru de categorie de pe site să nu rămână gol. Descrierile sunt scrise
+-- ca O SINGURĂ frază, în engleză: frontend-ul (src/lib/courseDetails.ts) le
+-- injectează într-un șablon - `{description} Across the programme, "{name}"
+-- focuses on ...` - deci un text mai lung ar rupe paragraful.
+INSERT INTO courses (code, name, description, category, level, duration_hours,
+                     price_individual, price_group, price_corporate_per_day,
+                     min_participants, max_participants, active) VALUES
+('PROG-CLEAN', 'Clean Code & Design Patterns',
+ 'Code is read far more often than it is written, and this course is about writing the kind that survives contact with a real team.',
+ 'PROGRAMMING', 'INTERMEDIATE', 45, 1700.00, 1400.00, 2700.00, 5, 14, TRUE),
+('AI-LLM', 'Generative AI & LLM Engineering',
+ 'Anyone can call a model API; the hard part is making the answer trustworthy, and that is exactly where this course starts.',
+ 'AI', 'ADVANCED', 60, 2600.00, 2100.00, 3600.00, 4, 10, TRUE),
+('DS-101', 'Data Analysis with Python & SQL',
+ 'Spreadsheets stop scaling long before your questions do, and this course picks up exactly where they give out.',
+ 'DATA_SCIENCE', 'BEGINNER', 55, 1500.00, 1200.00, 2400.00, 5, 15, TRUE),
+('WEB-FS', 'Full-Stack Web Development',
+ 'There is a wide gap between a tutorial project and something real users trust, and this course exists to close it.',
+ 'WEB_DEVELOPMENT', 'INTERMEDIATE', 90, 2700.00, 2200.00, 3400.00, 5, 14, TRUE),
+('MOB-101', 'Mobile App Development',
+ 'A phone is an unforgiving place to ship software: screens vary, networks drop and users judge in seconds.',
+ 'MOBILE', 'INTERMEDIATE', 65, 2100.00, 1700.00, 2900.00, 5, 12, TRUE),
+('DEVOPS-CI', 'DevOps: CI/CD & Cloud Infrastructure',
+ 'Deploying should be boring, and making it boring is a genuine engineering skill worth learning properly.',
+ 'DEVOPS', 'INTERMEDIATE', 70, 2400.00, 1900.00, 3200.00, 5, 12, TRUE),
+('SEC-101', 'Practical Cybersecurity',
+ 'You cannot defend a system you do not understand, so this course starts by taking things apart before it teaches you to secure them.',
+ 'CYBERSECURITY', 'INTERMEDIATE', 60, 2300.00, 1900.00, 3100.00, 5, 12, TRUE),
+('RECONV-QA', 'Career Change: QA & Test Automation',
+ 'Testing is one of the widest open doors into the industry, and this course takes you from zero to a portfolio worth showing.',
+ 'PROFESSIONAL_RECONVERSION', 'BEGINNER', 240, 3600.00, 3000.00, NULL, 10, 20, TRUE),
+('WS-TDD', 'Workshop: Test-Driven Development',
+ 'Two days that quietly rearrange how you write software: let the test come first, and watch the design follow it.',
+ 'WORKSHOP', 'INTERMEDIATE', 16, 800.00, 700.00, 1500.00, 5, 15, TRUE);
+
 -- Admini (login "Cont admin") - traineri cu adrese @adminit.ro
 INSERT INTO admins (first_name, last_name, email) VALUES
 ('Andrei', 'Birceanu', 'andreibirceanu@adminit.ro'),

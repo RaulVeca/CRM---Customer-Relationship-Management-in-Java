@@ -243,6 +243,11 @@ public class CrmFacade {
         return reviewService.getRatingSummary(courseId);
     }
 
+    /** Cifrele reale afișate în antetul site-ului public. */
+    public ReviewService.SiteStats getSiteStats() {
+        return reviewService.getSiteStats();
+    }
+
     /** Cursurile cumpărate de un client (după email) - pagina personală "cursurile mele". */
     public List<ReviewService.PurchasedCourse> getPurchasedCourses(String email) {
         return reviewService.getPurchasedCourses(email);

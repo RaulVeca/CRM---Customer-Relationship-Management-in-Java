@@ -20,6 +20,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -174,19 +175,53 @@ public class ReviewService {
         return reviews;
     }
 
-    /** Rezumatul ratingului (media + numărul de recenzii) pentru un curs. */
+    /**
+     * Rezumatul ratingului (media + numărul de recenzii) pentru un curs. Un
+     * {@code rating} de 0 înseamnă "cumpărat, dar nerecenzat încă", deci nu
+     * intră nici în medie, nici în numărătoare.
+     */
     public RatingSummary getRatingSummary(Long courseId) {
         int count = 0;
         int sum = 0;
         for (Long sessionId : sessionIdsForCourse(courseId)) {
             for (Enrollment e : enrollmentService.getBySessionId(sessionId)) {
-                if (e.getRating() == null) continue;
+                if (e.getRating() == null || e.getRating() < 1) continue;
                 count++;
                 sum += e.getRating();
             }
         }
         double average = count == 0 ? 0.0 : Math.round((double) sum / count * 10.0) / 10.0;
         return new RatingSummary(average, count);
+    }
+
+    /**
+     * Cifrele reale afișate în antetul site-ului: câte cursuri active există,
+     * câți cursanți distincți s-au înscris pe ele și media tuturor recenziilor.
+     * Ca și la {@link #getRatingSummary}, un rating de 0 înseamnă "nerecenzat"
+     * și este ignorat.
+     */
+    public SiteStats getSiteStats() {
+        List<Course> courses = courseService.getAllActiveCourses();
+
+        // Doar înscrierile pe sesiunile cursurilor active contează, ca numărul
+        // de cursanți să corespundă catalogului pe care îl vede vizitatorul.
+        Set<Long> activeSessionIds = courses.stream()
+                .flatMap(c -> sessionIdsForCourse(c.getId()).stream())
+                .collect(Collectors.toSet());
+
+        Set<Long> learners = new HashSet<>();
+        int count = 0;
+        int sum = 0;
+        for (Enrollment e : enrollmentService.getAll()) {
+            if (!activeSessionIds.contains(e.getSessionId())) continue;
+            learners.add(e.getContactId());
+            if (e.getRating() == null || e.getRating() < 1) continue;
+            count++;
+            sum += e.getRating();
+        }
+
+        double average = count == 0 ? 0.0 : Math.round((double) sum / count * 10.0) / 10.0;
+        return new SiteStats(courses.size(), learners.size(), average, count);
     }
 
     // =====================================================
@@ -280,4 +315,7 @@ public class ReviewService {
 
     /** Un curs cumpărat de un client, cu detaliile cumpărării. */
     public record PurchasedCourse(Course course, LocalDateTime date, Integer rating) {}
+
+    /** Cifrele reale ale site-ului, pentru secțiunea de statistici din antet. */
+    public record SiteStats(int courseCount, int learnerCount, double averageRating, int reviewCount) {}
 }

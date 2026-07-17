@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { api } from "@/lib/api";
+import Image from "next/image";
+import { api, API_BASE } from "@/lib/api";
 import { getSession } from "@/lib/auth";
 import CourseQuiz from "@/components/CourseQuiz";
 import CourseCard from "@/components/CourseCard";
@@ -18,9 +19,8 @@ import {
   QuoteIcon,
   StarBurstIcon,
   ArrowRightIcon,
-  UserIcon,
 } from "@/components/icons";
-import type { Category, MyPurchase, PublicCourse } from "@/lib/types";
+import type { Category, MyPurchase, PublicCourse, PublicStats } from "@/lib/types";
 
 const SEEN_KEY = "ctrSeenCourses";
 
@@ -128,31 +128,55 @@ const TESTIMONIALS = [
   },
 ];
 
-const STATS = [
-  { value: "40+", label: "Courses" },
-  { value: "12k+", label: "Learners" },
-  { value: "4.8/5", label: "Average rating" },
-  { value: "1:1", label: "Mentoring" },
-];
+/**
+ * The headline figures under the hero. Courses, learners and rating are read
+ * from the live catalog so they can never drift from what the site actually
+ * offers; "1:1 Mentoring" names a service rather than counting anything. Falls
+ * back to a dash until the figures arrive, so the page never states a number it
+ * hasn't confirmed.
+ */
+function buildStats(stats: PublicStats | null) {
+  const PENDING = "—";
+  return [
+    {
+      value: stats ? String(stats.courseCount) : PENDING,
+      label: stats?.courseCount === 1 ? "Course" : "Courses",
+    },
+    {
+      value: stats ? String(stats.learnerCount) : PENDING,
+      label: stats?.learnerCount === 1 ? "Learner" : "Learners",
+    },
+    {
+      // A mean over zero reviews would render as "0.0/5" and read as terrible
+      // rather than absent, so an unreviewed catalog stays blank.
+      value: stats && stats.reviewCount > 0 ? `${stats.averageRating.toFixed(1)}/5` : PENDING,
+      label: "Average rating",
+    },
+    { value: "1:1", label: "Mentoring" },
+  ];
+}
 
 const TRAINERS = [
   {
-    name: "Alexandru Ionescu",
+    name: "Andrei Birceanu",
+    photo: "/trainers/andrei-birceanu.png",
     role: "Lead Software Engineering Trainer",
     tags: ["Java", "Spring", "Microservices"],
-    body: "Over 14 years building backend systems, most recently as a principal engineer designing high-throughput payment platforms for a fintech scale-up. He has led teams of up to 20 developers, owns several open-source Spring libraries and has mentored more than 300 junior engineers into their first professional roles. His courses focus on clean architecture, testing discipline and shipping production-grade code from day one.",
+    body: "Over 14 years building backend systems, most recently as a principal engineer designing high-throughput payment platforms for a fintech scale-up. They have led teams of up to 20 developers, own several open-source Spring libraries and have mentored more than 300 junior engineers into their first professional roles. Their courses focus on clean architecture, testing discipline and shipping production-grade code from day one.",
   },
   {
-    name: "Maria Popescu",
+    name: "Sorin Dima",
+    photo: "/trainers/sorin-dima.png",
     role: "Cloud & DevOps Trainer",
     tags: ["AWS", "Kubernetes", "CI/CD"],
-    body: "A certified AWS Solutions Architect and CNCF Kubernetes administrator with 11 years spanning infrastructure engineering and platform teams at two unicorn startups. She has migrated dozens of monoliths to containerised, auto-scaling deployments and built the internal training track that upskilled her company's entire engineering org. In class she pairs real cloud environments with hands-on labs so learners deploy, break and fix live systems.",
+    body: "A certified AWS Solutions Architect and CNCF Kubernetes administrator with 11 years spanning infrastructure engineering and platform teams at two unicorn startups. They have migrated dozens of monoliths to containerised, auto-scaling deployments and built the internal training track that upskilled their company's entire engineering org. In class they pair real cloud environments with hands-on labs so learners deploy, break and fix live systems.",
   },
   {
-    name: "David Georgescu",
+    name: "Claudiu Antonescu",
+    photo: "/trainers/claudiu-antonescu.png",
     role: "AI & Data Science Trainer",
     tags: ["Python", "ML", "LLMs"],
-    body: "Holds a PhD in machine learning and spent 9 years as a data scientist and ML lead, taking recommendation and NLP models from notebook to production for e-commerce and healthcare clients. He has published peer-reviewed research, speaks regularly at data conferences and now designs TrainingIT's applied AI curriculum — from the fundamentals of Python and statistics through to fine-tuning and deploying large language models.",
+    body: "Holds a PhD in machine learning and spent 9 years as a data scientist and ML lead, taking recommendation and NLP models from notebook to production for e-commerce and healthcare clients. They have published peer-reviewed research, speak regularly at data conferences and now design TrainingIT's applied AI curriculum — from the fundamentals of Python and statistics through to fine-tuning and deploying large language models.",
   },
 ];
 
@@ -167,9 +191,27 @@ export default function Home() {
   // Greeting name for a signed-in contact (client portal only). Null when signed
   // out or for any non-USER session, so the greeting stays exclusive to contacts.
   const [greetingName, setGreetingName] = useState<string | null>(null);
+  // Live headline figures; null until they load (or if the backend is down).
+  const [stats, setStats] = useState<PublicStats | null>(null);
 
   useEffect(() => {
     api.get<Category[]>("/api/public/categories").then(setCategories).catch(() => {});
+  }, []);
+
+  // Live headline figures. The stream sends the current values on connect and
+  // pushes again whenever they change, so no separate initial fetch is needed.
+  // EventSource reconnects on its own, which also covers the backend being down
+  // at first paint — the figures simply appear once it answers.
+  useEffect(() => {
+    const stream = new EventSource(`${API_BASE}/api/public/stats/stream`);
+    stream.addEventListener("stats", (e) => {
+      try {
+        setStats(JSON.parse((e as MessageEvent).data) as PublicStats);
+      } catch {
+        /* ignore a malformed frame — the next push corrects it */
+      }
+    });
+    return () => stream.close();
   }, []);
 
   useEffect(() => {
@@ -243,9 +285,9 @@ export default function Home() {
               </h1>
             )}
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
-              Instructor-led courses, hands-on labs and 1:1 mentoring in
-              programming, AI, data science and cloud — for individuals and
-              corporate teams.
+              Instructor-led courses and 1:1 mentoring in programming, AI,
+              Machine Learning and data science — for individuals and corporate
+              teams.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-3">
               <a
@@ -266,7 +308,7 @@ export default function Home() {
 
           {/* Stats strip */}
           <dl className="ti-rise mt-16 grid grid-cols-2 gap-6 border-t border-black/10 pt-8 sm:grid-cols-4 dark:border-white/10">
-            {STATS.map((s) => (
+            {buildStats(stats).map((s) => (
               <div key={s.label}>
                 <dt className="text-3xl font-semibold text-ink dark:text-white">{s.value}</dt>
                 <dd className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{s.label}</dd>
@@ -290,9 +332,9 @@ export default function Home() {
           <div className="space-y-4 text-[15px] leading-relaxed text-zinc-600 dark:text-zinc-300">
             <p>
               TrainingIT is a training company focused on the technologies that
-              power modern software — programming, artificial intelligence, data
-              science and cloud. Every course is built around real, hands-on work
-              rather than passive lectures.
+              power modern software — programming, artificial intelligence,
+              machine learning and data science. Every course is built around
+              real, hands-on work rather than passive lectures.
             </p>
             <p>
               We work with individuals looking to break into tech or advance to
@@ -443,9 +485,16 @@ export default function Home() {
               key={t.name}
               className="flex flex-col rounded-2xl border border-black/5 bg-white p-7 transition hover:border-brand-200 hover:shadow-lg hover:shadow-brand-500/5 dark:border-white/10 dark:bg-zinc-900"
             >
-              {/* Anonymous profile picture — SVG silhouette, no photo */}
-              <span className="flex h-24 w-24 items-center justify-center self-center rounded-full bg-brand-50 text-brand-500 dark:bg-brand-500/10">
-                <UserIcon className="h-12 w-12" />
+              {/* The photos are not all the same aspect ratio, so object-cover
+                  crops them to the circle rather than squashing the faces. */}
+              <span className="relative h-24 w-24 self-center overflow-hidden rounded-full bg-brand-50 dark:bg-brand-500/10">
+                <Image
+                  src={t.photo}
+                  alt={t.name}
+                  width={96}
+                  height={96}
+                  className="h-full w-full object-cover"
+                />
               </span>
               <h3 className="mt-5 text-center text-lg font-semibold text-ink dark:text-white">
                 {t.name}

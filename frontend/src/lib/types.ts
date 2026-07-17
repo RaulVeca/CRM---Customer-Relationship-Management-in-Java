@@ -30,6 +30,19 @@ export interface PublicCourse {
   reviewCount: number;
 }
 
+/**
+ * Live headline figures for the landing page. Available as a one-shot
+ * GET /api/public/stats, or pushed on every change over
+ * /api/public/stats/stream (SSE), which is what the landing page uses.
+ * `averageRating` is 0 when nothing has been reviewed yet.
+ */
+export interface PublicStats {
+  courseCount: number;
+  learnerCount: number;
+  averageRating: number;
+  reviewCount: number;
+}
+
 /** A course the logged-in contact has bought — for their "my courses" page. */
 export interface MyPurchase {
   courseId: number;

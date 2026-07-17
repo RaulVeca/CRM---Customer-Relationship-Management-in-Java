@@ -17,9 +17,9 @@ import type { PublicCourse } from "@/lib/types";
  * the course's dedicated, review-only page; reviews are no longer listed inline.
  * Writing a review lives on the My Courses page, scoped to enrolled courses.
  *
- * - {@code purchased === false}: a "Buy this course" button that registers the
- *   purchase for the logged-in contact.
- * - {@code purchased === true}: a disabled, greyed-out "Already bought" button.
+ * - {@code purchased === false}: an "Enroll to This Course" button that registers
+ *   the purchase for the logged-in contact.
+ * - {@code purchased === true}: a disabled, greyed-out "Enrolled" button.
  */
 export default function CourseCard({
   course,
@@ -176,7 +176,7 @@ export default function CourseCard({
                 aria-disabled="true"
                 className="w-full cursor-not-allowed rounded-full bg-zinc-200 px-4 py-2.5 text-sm font-semibold text-zinc-500 dark:bg-zinc-700 dark:text-zinc-400"
               >
-                Already bought
+                Enrolled
               </button>
             ) : (
               <button
@@ -185,7 +185,7 @@ export default function CourseCard({
                 disabled={buyLoading}
                 className="w-full rounded-full bg-brand-500 px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-600 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {buyLoading ? "Processing…" : "Buy this course"}
+                {buyLoading ? "Processing…" : "Enroll to This Course"}
               </button>
             )}
             {buyError && <p className="text-sm text-red-600 dark:text-red-400">{buyError}</p>}

@@ -10,7 +10,10 @@ import crm.web.dto.MyPurchaseDto;
 import crm.web.dto.PublicCompanyDto;
 import crm.web.dto.PublicCourseDto;
 import crm.web.dto.PublicReviewDto;
+import crm.web.dto.PublicStatsDto;
+import crm.web.stats.PublicStatsBroadcaster;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -38,9 +42,11 @@ public class PublicCatalogController {
     private static final int MAX_PUBLIC_CONTACTS = 500;
 
     private final CrmFacade facade;
+    private final PublicStatsBroadcaster statsBroadcaster;
 
-    public PublicCatalogController(CrmFacade facade) {
+    public PublicCatalogController(CrmFacade facade, PublicStatsBroadcaster statsBroadcaster) {
         this.facade = facade;
+        this.statsBroadcaster = statsBroadcaster;
     }
 
     @GetMapping("/courses")
@@ -156,6 +162,26 @@ public class PublicCatalogController {
     public record ReviewRequest(String email, Integer rating, String comment) {}
 
     public record ImpressionsRequest(List<Long> courseIds) {}
+
+    /**
+     * The real headline figures for the marketing site: active courses,
+     * distinct learners enrolled on them, and the average review score. Served
+     * live so the numbers on the landing page can never drift from the data.
+     */
+    @GetMapping("/stats")
+    public PublicStatsDto stats() {
+        return PublicStatsDto.from(facade.getSiteStats());
+    }
+
+    /**
+     * The same figures as {@link #stats()}, but streamed: the current values
+     * arrive on connect and a fresh "stats" event is pushed whenever they
+     * change, so an open landing page stays live without polling.
+     */
+    @GetMapping(path = "/stats/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter statsStream() {
+        return statsBroadcaster.subscribe();
+    }
 
     @GetMapping("/categories")
     public List<CategoryDto> categories() {
