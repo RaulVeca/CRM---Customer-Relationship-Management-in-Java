@@ -1,0 +1,14 @@
+%%{init: {"theme":"base","themeVariables":{"background":"transparent","primaryColor":"#EEF2FF","primaryTextColor":"#111827","primaryBorderColor":"#6366F1","lineColor":"#64748B","secondaryColor":"#ECFDF5","tertiaryColor":"#F8FAFC","fontFamily":"Arial","fontSize":"16px"},"flowchart":{"curve":"basis","htmlLabels":true,"nodeSpacing":44,"rankSpacing":58}}}%%
+flowchart LR
+    Learner["Learner or<br/>company employee"]
+    Admin["TrainingIT<br/>administrator"]
+    Trainer["Trainer"]
+    App["TrainingIT platform"]
+    AI["Anthropic<br/>Claude API"]
+    DB[("MariaDB")]
+
+    Learner -->|"Browse and purchase courses<br/>Review and book tutoring"| App
+    Admin -->|"Manage CRM, catalog,<br/>billing and analytics"| App
+    Trainer -->|"Provide tutoring<br/>availability"| App
+    App -->|"Store operational<br/>and CRM data"| DB
+    App -->|"Chat, recommendations,<br/>sales support and translation"| AI

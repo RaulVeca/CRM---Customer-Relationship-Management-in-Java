@@ -1,0 +1,36 @@
+%%{init: {"theme":"base","themeVariables":{"background":"transparent","primaryColor":"#EEF2FF","primaryTextColor":"#111827","primaryBorderColor":"#6366F1","lineColor":"#64748B","secondaryColor":"#ECFDF5","tertiaryColor":"#F8FAFC","clusterBkg":"transparent","clusterBorder":"#CBD5E1","fontFamily":"Arial","fontSize":"15px"},"flowchart":{"curve":"basis","htmlLabels":true,"nodeSpacing":34,"rankSpacing":48}}}%%
+flowchart TB
+    subgraph Browser["Web browser"]
+        direction LR
+        Session["Local session<br/>USER or ADMIN"] --> Guard["Route guards"]
+        Guard --> Pages["Next.js pages"]
+        Pages --> Components["React components"]
+        Components --> ApiClient["Typed REST client"]
+        Components --> SseClient["Statistics SSE client"]
+    end
+
+    subgraph Backend["Spring Boot backend"]
+        direction LR
+        Controllers["REST controllers"] --> Facade["CrmFacade"]
+        Controllers --> WebServices["Auth, AI, trainer<br/>and report services"]
+        Stats["Public statistics<br/>broadcaster"] --> Facade
+    end
+
+    subgraph Domain["Java domain layer"]
+        direction LR
+        Commands["Commands"] --> Services["Domain services"]
+        Services --> Events["EventBus"]
+        Events --> Observers["Observers"]
+        Services --> Persistence["Repositories<br/>and DAOs"]
+        Observers --> Services
+    end
+
+    ApiClient -->|"JSON, uploads<br/>and downloads"| Controllers
+    SseClient -->|"Server-Sent Events"| Stats
+    Facade --> Commands
+    Facade --> Services
+    WebServices --> Services
+    WebServices --> Persistence
+
+    Persistence -->|"JDBC and HikariCP"| DB[("MariaDB")]
+    WebServices -->|"Anthropic Java SDK"| Claude["Anthropic Claude API"]

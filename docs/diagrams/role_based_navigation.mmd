@@ -1,0 +1,23 @@
+%%{init: {"theme":"base","themeVariables":{"background":"transparent","primaryColor":"#EEF2FF","primaryTextColor":"#111827","primaryBorderColor":"#6366F1","lineColor":"#64748B","secondaryColor":"#ECFDF5","tertiaryColor":"#F8FAFC","fontFamily":"Arial","fontSize":"15px"},"flowchart":{"curve":"basis","htmlLabels":true,"nodeSpacing":34,"rankSpacing":46}}}%%
+flowchart TD
+    Start["Open application"] --> Session{"Session exists?"}
+    Session -->|"No"| Auth["Login, registration or<br/>password recovery"]
+    Auth --> Login["POST /api/auth/login"]
+    Login --> Account{"Matching account table"}
+
+    Account -->|"admins"| AdminSession["ADMIN session"]
+    Account -->|"contacts"| UserSession["USER session"]
+    Account -->|"employees"| PortalContact["Resolve or create portal contact<br/>Apply employee discount"]
+    PortalContact --> UserSession
+    Account -->|"No match or wrong password"| Reject["Reject sign-in"]
+
+    Session -->|"ADMIN"| AdminPortal["Admin portal"]
+    Session -->|"USER"| ClientPortal["Client portal"]
+    AdminSession --> AdminPortal
+    UserSession --> ClientPortal
+
+    AdminPortal --> AdminFeatures["Contacts · Courses · Purchases · Invoices<br/>Analytics · Employees · Issues"]
+    ClientPortal --> ClientFeatures["Catalog · My courses · Reviews<br/>Schedule · My sessions · Issue reporting"]
+
+    AdminPortal -.->|"Client route"| AdminRedirect["Redirect to /admin/contacts"]
+    ClientPortal -.->|"Admin route"| ClientRedirect["Redirect to /"]
