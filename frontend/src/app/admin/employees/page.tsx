@@ -138,7 +138,7 @@ export default function EmployeesPage() {
   return (
     <div className="space-y-6">
       <div className="flex items-center gap-3">
-        <h2 className="text-lg font-semibold">Employees</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Employees</h2>
         <select
           value={companyId ?? ""}
           onChange={(e) => setCompanyId(Number(e.target.value))}
@@ -226,7 +226,7 @@ export default function EmployeesPage() {
       <div className="grid gap-6 lg:grid-cols-3">
         <div className="lg:col-span-2 overflow-hidden rounded-xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 shadow-sm">
           <table className="w-full text-sm">
-            <thead className="bg-zinc-50 text-left text-xs uppercase text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-400">
+            <thead className="bg-[#2c3763] text-left text-xs font-semibold uppercase tracking-wide text-slate-100">
               <tr>
                 <th className="px-4 py-3">Name</th>
                 <th className="px-4 py-3">Email</th>

@@ -1,35 +1,35 @@
-# TrainingIT — ghid complet de instalare și pornire
+# TrainingIT — complete installation and startup guide
 
-TrainingIT este o aplicație web full-stack pentru administrarea cursurilor și a
-relației cu clienții. Aplicația include un catalog public, autentificare pentru
-clienți și administratori, achiziții și recenzii, programarea ședințelor,
-facturare, administrarea contactelor și funcții AI opționale.
+TrainingIT is a full-stack web application for managing courses and customer
+relationships. It includes a public catalog, authentication for customers and
+administrators, purchases and reviews, session scheduling, invoicing, contact
+management and optional AI features.
 
-## Cuprins
+## Table of contents
 
-1. [Tehnologii și arhitectură](#tehnologii-și-arhitectură)
-2. [Cerințe](#cerințe)
-3. [Pornire rapidă pe Windows](#pornire-rapidă-pe-windows)
-4. [Pornire pe macOS sau Linux](#pornire-pe-macos-sau-linux)
-5. [Conturi demonstrative](#conturi-demonstrative)
-6. [Configurare](#configurare)
-7. [Verificarea aplicației](#verificarea-aplicației)
-8. [Build și teste](#build-și-teste)
-9. [Oprirea aplicației](#oprirea-aplicației)
-10. [Depanare](#depanare)
-11. [Structura proiectului](#structura-proiectului)
+1. [Technology and architecture](#technology-and-architecture)
+2. [Requirements](#requirements)
+3. [Quick start on Windows](#quick-start-on-windows)
+4. [Startup on macOS or Linux](#startup-on-macos-or-linux)
+5. [Demo accounts](#demo-accounts)
+6. [Configuration](#configuration)
+7. [Verifying the application](#verifying-the-application)
+8. [Build and tests](#build-and-tests)
+9. [Stopping the application](#stopping-the-application)
+10. [Troubleshooting](#troubleshooting)
+11. [Project structure](#project-structure)
 
-## Tehnologii și arhitectură
+## Technology and architecture
 
-- **Frontend:** Next.js 16, React 19, TypeScript și Tailwind CSS 4
-- **Backend:** Java 17+, Spring Boot 3.5 și Maven
-- **Bază de date:** MariaDB/MySQL, accesată prin JDBC și HikariCP
-- **AI opțional:** Anthropic Claude
-- **Port frontend:** `3000`
-- **Port backend:** `8080`
-- **Port implicit MariaDB/MySQL:** `3306`
+- **Frontend:** Next.js 16, React 19, TypeScript and Tailwind CSS 4
+- **Backend:** Java 17+, Spring Boot 3.5 and Maven
+- **Database:** MariaDB/MySQL, accessed through JDBC and HikariCP
+- **Optional AI:** Anthropic Claude
+- **Frontend port:** `3000`
+- **Backend port:** `8080`
+- **Default MariaDB/MySQL port:** `3306`
 
-Fluxul aplicației este:
+The application flow is:
 
 ```text
 Browser
@@ -38,70 +38,67 @@ Browser
               └── MariaDB: localhost:3306/crm_training
 ```
 
-## Cerințe
+## Requirements
 
-Instalează următoarele programe înainte de prima pornire:
+Install the following software before the first startup:
 
-- **JDK 17 sau mai nou** — verificare: `java -version`
-- **Node.js 20.9 sau mai nou** — verificare: `node --version`
-- **npm** — verificare: `npm --version`
-- **MariaDB sau MySQL** — poate fi folosit și serverul MySQL inclus în XAMPP
-- **Git**, dacă proiectul este descărcat dintr-un repository
+- **JDK 17 or newer** — check: `java -version`
+- **Node.js 20.9 or newer** — check: `node --version`
+- **npm** — check: `npm --version`
+- **MariaDB or MySQL** — the MySQL server bundled with XAMPP works as well
+- **Git**, if the project is cloned from a repository
 
-Nu este obligatorie instalarea globală a Maven. Proiectul include Maven Wrapper
-prin `mvnw.cmd` și `mvnw`.
+A global Maven installation is not required. The project includes the Maven
+Wrapper through `mvnw.cmd` and `mvnw`.
 
-La prima utilizare, Maven și npm au nevoie de acces la internet pentru
-descărcarea dependențelor.
+On first use, Maven and npm need internet access to download dependencies.
 
-## Pornire rapidă pe Windows
+## Quick start on Windows
 
-Toate comenzile de mai jos se execută din rădăcina proiectului:
+All of the commands below are run from the project root:
 
 ```powershell
 cd D:\TrainingIT_site
 ```
 
-### 1. Pornește MariaDB/MySQL
+### 1. Start MariaDB/MySQL
 
-Dacă folosești XAMPP, deschide **XAMPP Control Panel** și pornește modulul
-**MySQL**.
+If you use XAMPP, open the **XAMPP Control Panel** and start the **MySQL**
+module.
 
-Dacă folosești MariaDB/MySQL instalat ca serviciu Windows, pornește serviciul
-corespunzător și verifică faptul că ascultă pe portul `3306`.
+If you use MariaDB/MySQL installed as a Windows service, start the corresponding
+service and confirm that it is listening on port `3306`.
 
-### 2. Inițializează baza de date
+### 2. Initialize the database
 
-Aceste două scripturi se rulează în ordine și numai la configurarea unei baze
-de date noi:
+These two scripts are run in order and only when setting up a new database:
 
 ```powershell
 mysql --default-character-set=utf8mb4 -u root -p -e "source sql/schema.sql"
 mysql --default-character-set=utf8mb4 -u root -p -e "source sql/seed-data.sql"
 ```
 
-Introdu parola utilizatorului `root` când este solicitată. Pentru configurația
-implicită XAMPP, unde utilizatorul `root` nu are parolă, elimină parametrul
-`-p`:
+Enter the `root` user's password when prompted. For the default XAMPP setup,
+where the `root` user has no password, drop the `-p` flag:
 
 ```powershell
 mysql --default-character-set=utf8mb4 -u root -e "source sql/schema.sql"
 mysql --default-character-set=utf8mb4 -u root -e "source sql/seed-data.sql"
 ```
 
-Dacă executabilul `mysql` nu este în `PATH`, folosește calea completă:
+If the `mysql` executable is not on your `PATH`, use the full path:
 
 ```powershell
 & "C:\xampp\mysql\bin\mysql.exe" --default-character-set=utf8mb4 -u root -e "source sql/schema.sql"
 & "C:\xampp\mysql\bin\mysql.exe" --default-character-set=utf8mb4 -u root -e "source sql/seed-data.sql"
 ```
 
-> Scriptul `seed-data.sql` adaugă date demonstrative și nu trebuie rulat la
-> fiecare pornire. Rularea repetată poate produce erori de chei duplicate.
+> The `seed-data.sql` script adds demo data and should not be run on every
+> startup. Running it repeatedly can produce duplicate-key errors.
 
-### 3. Configurează accesul la baza de date
+### 3. Configure database access
 
-Configurația implicită a backendului este:
+The backend's default configuration is:
 
 ```properties
 db.url=jdbc:mariadb://localhost:3306/crm_training?createDatabaseIfNotExist=true
@@ -109,62 +106,60 @@ db.username=root
 db.password=
 ```
 
-Dacă serverul tău folosește alt utilizator, altă parolă sau alt port, adaugă
-valorile corespunzătoare în
-`src/main/resources/application.properties`. Nu publica parola bazei de date și
-nu o include într-un commit.
+If your server uses a different user, password or port, set the matching values
+in `src/main/resources/application.properties`. Do not publish the database
+password and do not include it in a commit.
 
-### 4. Configurează funcțiile AI — opțional
+### 4. Configure the AI features — optional
 
-În rădăcina proiectului, fișierul `.env` poate conține:
+In the project root, the `.env` file may contain:
 
 ```dotenv
-ANTHROPIC_API_KEY=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
+ANTHROPIC_API_KEY=your_key
 ```
 
-Fișierul `.env` este ignorat de Git. Dacă lipsește sau cheia este goală,
-aplicația pornește normal, însă chatbotul, traducerea și recomandările AI nu vor
-fi disponibile.
+The `.env` file is ignored by Git. If it is missing or the key is empty, the
+application still starts normally, but the chatbot, translation and AI
+recommendations will not be available.
 
-### 5. Pornește backendul
+### 5. Start the backend
 
-Deschide primul terminal PowerShell în rădăcina proiectului:
+Open the first PowerShell terminal in the project root:
 
 ```powershell
 .\run-backend.ps1
 ```
 
-Scriptul încarcă automat variabilele din `.env`, apoi pornește Spring Boot.
-Backendul este pregătit când terminalul afișează un mesaj similar cu:
+The script automatically loads the variables from `.env`, then starts Spring
+Boot. The backend is ready when the terminal shows a message similar to:
 
 ```text
 Tomcat started on port 8080
 Started CrmWebApplication
 ```
 
-Dacă politica PowerShell blochează scriptul, rulează:
+If the PowerShell policy blocks the script, run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\run-backend.ps1
 ```
 
-Alternativ, fără scriptul PowerShell:
+Alternatively, without the PowerShell script:
 
 ```powershell
 .\mvnw.cmd spring-boot:run
 ```
 
-Pentru această variantă, cheia AI trebuie definită în terminal înainte de
-pornire:
+With this variant, the AI key must be defined in the terminal before startup:
 
 ```powershell
-$env:ANTHROPIC_API_KEY="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"
+$env:ANTHROPIC_API_KEY="your_key"
 .\mvnw.cmd spring-boot:run
 ```
 
-### 6. Pornește frontendul
+### 6. Start the frontend
 
-Lasă backendul pornit și deschide un al doilea terminal:
+Leave the backend running and open a second terminal:
 
 ```powershell
 cd D:\TrainingIT_site\frontend
@@ -172,36 +167,36 @@ npm.cmd install
 npm.cmd run dev
 ```
 
-Pe sistemele unde scripturile PowerShell pentru npm sunt permise, comenzile pot
-fi scrise și ca `npm install` și `npm run dev`.
+On systems where PowerShell scripts for npm are allowed, the commands can also
+be written as `npm install` and `npm run dev`.
 
-### 7. Deschide aplicația
+### 7. Open the application
 
-- Interfața web: [http://localhost:3000](http://localhost:3000)
-- API backend: [http://localhost:8080/api](http://localhost:8080/api)
-- Catalog public API:
+- Web interface: [http://localhost:3000](http://localhost:3000)
+- Backend API: [http://localhost:8080/api](http://localhost:8080/api)
+- Public catalog API:
   [http://localhost:8080/api/public/courses](http://localhost:8080/api/public/courses)
-- Starea funcțiilor AI:
+- AI feature status:
   [http://localhost:8080/api/ai/status](http://localhost:8080/api/ai/status)
 
-## Pornire pe macOS sau Linux
+## Startup on macOS or Linux
 
-Din rădăcina proiectului:
+From the project root:
 
 ```bash
-# Inițializare unică a bazei de date
+# One-time database initialization
 mysql --default-character-set=utf8mb4 -u root -p < sql/schema.sql
 mysql --default-character-set=utf8mb4 -u root -p < sql/seed-data.sql
 
-# Cheia AI este opțională
-export ANTHROPIC_API_KEY="cheia_ta_anthropic"
+# The AI key is optional
+export ANTHROPIC_API_KEY="your_anthropic_key"
 
-# Pornire backend
+# Start the backend
 chmod +x mvnw
 ./mvnw spring-boot:run
 ```
 
-Într-un al doilea terminal:
+In a second terminal:
 
 ```bash
 cd frontend
@@ -209,79 +204,79 @@ npm install
 npm run dev
 ```
 
-Accesează apoi [http://localhost:3000](http://localhost:3000).
+Then open [http://localhost:3000](http://localhost:3000).
 
-## Conturi demonstrative
+## Demo accounts
 
-La prima pornire a backendului, conturile existente din tabelele `admins`,
-`contacts` și `employees` primesc parola demonstrativă implicită `1234`.
+On the backend's first startup, the existing accounts in the `admins`,
+`contacts` and `employees` tables are assigned the default demo password `1234`.
 
-Exemple de conturi admin create de datele inițiale:
+Example admin accounts created by the seed data:
 
 - `andreibirceanu@adminit.ro`
 - `costachemazarescu@adminit.ro`
 - `pablovarga@adminit.ro`
 
-Autentificarea unui administrator se poate face, de exemplu, cu:
+An administrator can sign in, for example, with:
 
 ```text
 Email: andreibirceanu@adminit.ro
-Parolă: 1234
+Password: 1234
 ```
 
-Exemple de conturi din tabela `contacts`:
+Example accounts from the `contacts` table:
 
-| Nume / companie | Tip contact | Email | Parolă |
+| Name / company | Contact type | Email | Password |
 | --- | --- | --- | --- |
-| Alexandru Stoica | Persoană fizică | `alex.stoica@example.com` | `1234` |
-| Cristina Marin | Persoană fizică | `cristina.marin@example.com` | `1234` |
-| Bogdan Tudor | Persoană fizică | `bogdan.tudor@example.com` | `1234` |
-| BankTech Solutions SRL | Companie | `hr@banktech.ro` | `1234` |
+| Alexandru Stoica | Individual | `alex.stoica@example.com` | `1234` |
+| Cristina Marin | Individual | `cristina.marin@example.com` | `1234` |
+| Bogdan Tudor | Individual | `bogdan.tudor@example.com` | `1234` |
+| BankTech Solutions SRL | Company | `hr@banktech.ro` | `1234` |
 
-Aceste contacte sunt adăugate de `sql/seed-data.sql`. Parola `1234` este
-atribuită automat la prima pornire a backendului.
+These contacts are added by `sql/seed-data.sql`. The password `1234` is assigned
+automatically on the backend's first startup.
 
-Exemple de conturi din tabela `employees`:
+Example accounts from the `employees` table:
 
-| Nume | Companie | Email | Parolă |
+| Name | Company | Email | Password |
 | --- | --- | --- | --- |
 | Andrei Popescu | SensiDEV | `andreipopescu@sensidev.ro` | `1234` |
 | Maria Ionescu | SensiDEV | `mariaionescu@sensidev.ro` | `1234` |
 | Gabriel Toma | Dedeman | `gabrieltoma@dedeman.ro` | `1234` |
 | Ștefan Cojocaru | Antibiotice | `stefancojocaru@antibiotice.ro` | `1234` |
 
-Conturile de angajați primesc automat reducerea de angajat de **60%**.
-Exemplele de mai sus există în baza demonstrativă locală. La inițializarea unei
-baze complet noi, angajații trebuie adăugați sau importați din zona
-**Admin → Employees** înainte ca aceste adrese să poată fi folosite pentru
-autentificare. Orice angajat nou primește implicit parola `1234`.
+Employee accounts automatically receive the **60%** employee discount. The
+examples above exist in the local demo database. When initializing a brand-new
+database, employees must be added or imported from the
+**Admin → Employees** area before these addresses can be used for sign-in. Every
+new employee is assigned the default password `1234`.
 
-Aceste credențiale sunt exclusiv pentru dezvoltare și demonstrații. Nu folosi
-parola `1234` într-un mediu public sau de producție.
+These credentials are for development and demo purposes only. Do not use the
+password `1234` in a public or production environment.
 
-Un vizitator își poate crea propriul cont din pagina **Înregistrare**. Conturile
-create astfel primesc rolul de utilizator, nu rolul de administrator.
+A visitor can create their own account from the **Register** page. Accounts
+created this way receive the user role, not the administrator role.
 
-## Configurare
+## Configuration
 
 ### Backend
 
-Fișier principal:
+Main file:
 `src/main/resources/application.properties`
 
-Setările importante sunt:
+The important settings are:
 
-| Setare | Valoare implicită | Rol |
+| Setting | Default value | Role |
 | --- | --- | --- |
-| `db.url` | `jdbc:mariadb://localhost:3306/crm_training?...` | Conexiunea la baza de date |
-| `db.username` | `root` | Utilizatorul bazei de date |
-| `db.password` | gol | Parola bazei de date |
-| `crm.cors.allowed-origins` | `http://localhost:3000` | Originea frontendului permisă de CORS |
-| `crm.ai.api-key` | variabila `ANTHROPIC_API_KEY` | Activează integrarea AI |
-| `crm.ai.model` | `claude-opus-4-8` | Modelul Anthropic folosit |
-| `crm.ai.max-tokens` | `2048` | Limita răspunsului AI |
+| `db.url` | `jdbc:mariadb://localhost:3306/crm_training?...` | The database connection |
+| `db.username` | `root` | The database user |
+| `db.password` | empty | The database password |
+| `crm.cors.allowed-origins` | `http://localhost:3000` | The frontend origin allowed by CORS |
+| `crm.ai.api-key` | the `ANTHROPIC_API_KEY` variable | Enables the AI integration |
+| `crm.ai.model` | `claude-opus-4-8` | The Anthropic model used |
+| `crm.ai.max-tokens` | `2048` | The AI response limit |
 
-Portul Spring Boot este implicit `8080`. Pentru a-l schimba, adaugă:
+The Spring Boot port defaults to `8080`. To change it, add:
 
 ```properties
 server.port=8081
@@ -289,46 +284,46 @@ server.port=8081
 
 ### Frontend
 
-Frontendul folosește implicit API-ul de la `http://localhost:8080`. Pentru altă
-adresă, creează `frontend/.env.local`:
+By default the frontend uses the API at `http://localhost:8080`. For a different
+address, create `frontend/.env.local`:
 
 ```dotenv
 NEXT_PUBLIC_API_URL=http://localhost:8081
 ```
 
-După modificarea variabilelor frontendului, repornește serverul Next.js.
+After changing the frontend variables, restart the Next.js server.
 
-Dacă schimbi portul frontendului sau rulezi aplicația pe alt domeniu,
-actualizează și `crm.cors.allowed-origins` în backend.
+If you change the frontend port or run the application on a different domain,
+also update `crm.cors.allowed-origins` in the backend.
 
-## Verificarea aplicației
+## Verifying the application
 
-Cu baza de date și backendul pornite, verifică din PowerShell:
+With the database and backend running, verify from PowerShell:
 
 ```powershell
 Invoke-RestMethod http://localhost:8080/api/public/courses
 Invoke-RestMethod http://localhost:8080/api/ai/status
 ```
 
-Sau cu `curl`:
+Or with `curl`:
 
 ```bash
 curl http://localhost:8080/api/public/courses
 curl http://localhost:8080/api/ai/status
 ```
 
-Checklist pentru pornirea completă:
+Checklist for a complete startup:
 
-- MariaDB/MySQL rulează pe portul `3306`.
-- Baza `crm_training` conține schema și datele demonstrative.
-- Backendul răspunde pe `http://localhost:8080`.
-- Frontendul răspunde pe `http://localhost:3000`.
-- Catalogul afișează cursurile.
-- Autentificarea cu un cont demonstrativ funcționează.
-- Endpointul AI raportează funcțiile active numai dacă cheia Anthropic este
-  configurată.
+- MariaDB/MySQL is running on port `3306`.
+- The `crm_training` database contains the schema and the demo data.
+- The backend responds on `http://localhost:8080`.
+- The frontend responds on `http://localhost:3000`.
+- The catalog displays the courses.
+- Signing in with a demo account works.
+- The AI endpoint reports the features as active only if the Anthropic key is
+  configured.
 
-## Build și teste
+## Build and tests
 
 ### Backend
 
@@ -355,45 +350,45 @@ npm run build
 npm run start
 ```
 
-`npm run start` pornește versiunea de producție locală și trebuie executat numai
-după un `npm run build`.
+`npm run start` launches the local production build and must be run only after
+an `npm run build`.
 
-## Oprirea aplicației
+## Stopping the application
 
-În fiecare dintre cele două terminale, apasă `Ctrl+C`:
+In each of the two terminals, press `Ctrl+C`:
 
-1. oprește serverul Next.js;
-2. oprește backendul Spring Boot;
-3. oprește MariaDB/MySQL din XAMPP sau din managerul de servicii, dacă nu mai
-   este folosit de altă aplicație.
+1. stops the Next.js server;
+2. stops the Spring Boot backend;
+3. stop MariaDB/MySQL from XAMPP or from the service manager, if it is no longer
+   used by another application.
 
-Datele din baza de date rămân salvate și nu trebuie reimportate la următoarea
-pornire.
+The database data stays saved and does not need to be re-imported on the next
+startup.
 
-La pornirile următoare sunt necesari doar pașii:
+On subsequent startups only these steps are needed:
 
-1. pornește MariaDB/MySQL;
-2. rulează `.\run-backend.ps1`;
-3. rulează `npm.cmd run dev` din directorul `frontend`;
-4. deschide `http://localhost:3000`.
+1. start MariaDB/MySQL;
+2. run `.\run-backend.ps1`;
+3. run `npm.cmd run dev` from the `frontend` directory;
+4. open `http://localhost:3000`.
 
-## Depanare
+## Troubleshooting
 
-### Backendul nu se conectează la baza de date
+### The backend does not connect to the database
 
-Mesaje frecvente:
+Common messages:
 
-- `Connection refused` — serverul MariaDB/MySQL nu este pornit sau portul este
-  greșit.
-- `Access denied for user` — utilizatorul ori parola din
-  `application.properties` nu corespund serverului.
-- `Unknown database 'crm_training'` — scriptul `sql/schema.sql` nu a fost rulat.
-- `Table ... doesn't exist` — schema nu a fost importată complet sau scripturile
-  au fost executate în ordinea greșită.
+- `Connection refused` — the MariaDB/MySQL server is not running or the port is
+  wrong.
+- `Access denied for user` — the user or password in `application.properties`
+  does not match the server.
+- `Unknown database 'crm_training'` — the `sql/schema.sql` script was not run.
+- `Table ... doesn't exist` — the schema was not imported completely or the
+  scripts were run in the wrong order.
 
-### Portul 3000 sau 8080 este deja ocupat
+### Port 3000 or 8080 is already in use
 
-În PowerShell:
+In PowerShell:
 
 ```powershell
 Get-NetTCPConnection -State Listen |
@@ -401,84 +396,85 @@ Get-NetTCPConnection -State Listen |
   Select-Object LocalAddress,LocalPort,OwningProcess
 ```
 
-Oprește procesul vechi sau schimbă portul serviciului. Dacă schimbi portul
-backendului, actualizează și `NEXT_PUBLIC_API_URL`.
+Stop the old process or change the service's port. If you change the backend
+port, also update `NEXT_PUBLIC_API_URL`.
 
 ### `npm.ps1 cannot be loaded because running scripts is disabled`
 
-Folosește executabilul Windows:
+Use the Windows executable:
 
 ```powershell
 npm.cmd install
 npm.cmd run dev
 ```
 
-### Maven Wrapper nu pornește
+### The Maven Wrapper does not start
 
-Verifică mai întâi:
+Check first:
 
 ```powershell
 java -version
 .\mvnw.cmd -version
 ```
 
-Dacă wrapperul nu poate descărca Maven, verifică accesul la internet, proxy-ul
-și firewall-ul. Ca alternativă, instalează Maven 3.9+ și rulează:
+If the wrapper cannot download Maven, check internet access, the proxy and the
+firewall. As an alternative, install Maven 3.9+ and run:
 
 ```powershell
 mvn spring-boot:run
 ```
 
-### Frontendul afișează erori de rețea sau CORS
+### The frontend shows network or CORS errors
 
-Verifică simultan:
+Check at the same time:
 
-- backendul rulează pe adresa definită în `NEXT_PUBLIC_API_URL`;
-- `crm.cors.allowed-origins` conține adresa exactă a frontendului;
-- ambele servere folosesc același protocol, de regulă `http` în dezvoltare.
+- the backend is running at the address defined in `NEXT_PUBLIC_API_URL`;
+- `crm.cors.allowed-origins` contains the frontend's exact address;
+- both servers use the same protocol, usually `http` in development.
 
-### Funcțiile AI sunt indisponibile
+### The AI features are unavailable
 
-Verifică:
+Check:
 
 ```powershell
 Invoke-RestMethod http://localhost:8080/api/ai/status
 ```
 
-Apoi confirmă că `.env` se află în rădăcina proiectului, conține
-`ANTHROPIC_API_KEY`, iar backendul a fost pornit prin `run-backend.ps1`.
-Repornește backendul după orice modificare a cheii.
+Then confirm that `.env` is in the project root, contains `ANTHROPIC_API_KEY`,
+and that the backend was started through `run-backend.ps1`. Restart the backend
+after any change to the key.
 
-### Unde sunt logurile
+### Where the logs are
 
-Backendul scrie logurile aplicației în directorul `logs/`, în special în:
+The backend writes the application logs to the `logs/` directory, in particular
+to:
 
 - `logs/crm-application.log`
-- `logs/backend-run.log`, când pornirea este redirecționată către acest fișier
+- `logs/backend-run.log`, when startup is redirected to this file
 
-## Structura proiectului
+## Project structure
 
 ```text
 TrainingIT_site/
-├── frontend/                       # Aplicația Next.js
-│   ├── public/                     # Imagini și resurse statice
-│   ├── src/app/                    # Pagini și rute
-│   ├── src/components/             # Componente React
-│   └── src/lib/                    # Client API și utilitare
-├── src/main/java/crm/              # Backend Java și API REST
+├── frontend/                       # The Next.js application
+│   ├── public/                     # Images and static assets
+│   ├── src/app/                    # Pages and routes
+│   ├── src/components/             # React components
+│   └── src/lib/                    # API client and utilities
+├── src/main/java/crm/              # Java backend and REST API
 ├── src/main/resources/
-│   ├── application.properties      # Configurația backendului
-│   └── logback.xml                 # Configurația logurilor
+│   ├── application.properties      # Backend configuration
+│   └── logback.xml                 # Logging configuration
 ├── sql/
-│   ├── schema.sql                  # Schema inițială a bazei de date
-│   └── seed-data.sql               # Date demonstrative
-├── docs/                           # Diagrame și documentație tehnică
-├── logs/                           # Loguri locale
-├── .env                            # Cheia AI locală; ignorată de Git
-├── pom.xml                         # Configurația Maven
+│   ├── schema.sql                  # Initial database schema
+│   └── seed-data.sql               # Demo data
+├── docs/                           # Diagrams and technical documentation
+├── logs/                           # Local logs
+├── .env                            # Local AI key; ignored by Git
+├── pom.xml                         # Maven configuration
 ├── mvnw / mvnw.cmd                 # Maven Wrapper
-└── run-backend.ps1                 # Pornirea backendului pe Windows
+└── run-backend.ps1                 # Backend startup on Windows
 ```
 
-Diagramele de arhitectură și ale fluxurilor aplicației sunt descrise și în
+The architecture and application-flow diagrams are also described in
 `docs/application-diagrams.md`.

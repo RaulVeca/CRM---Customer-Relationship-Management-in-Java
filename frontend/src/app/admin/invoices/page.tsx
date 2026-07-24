@@ -25,7 +25,7 @@ export default function AdminInvoicesPage() {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-lg font-semibold">Invoices</h2>
+      <h2 className="text-2xl font-bold tracking-tight">Invoices</h2>
       <p className="text-sm text-zinc-500 dark:text-zinc-400">
         Generated automatically for every online trainer session booked. Priced at the
         hourly rate, with the −60% employee discount applied where it applies. Paid on
@@ -54,7 +54,7 @@ export default function AdminInvoicesPage() {
 
       <div className="overflow-x-auto rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
         <table className="w-full text-sm">
-          <thead className="bg-zinc-50 text-left text-xs uppercase text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-400">
+          <thead className="bg-[#2c3763] text-left text-xs font-semibold uppercase tracking-wide text-slate-100">
             <tr>
               <th className="px-4 py-3">Invoice</th>
               <th className="px-4 py-3">Client</th>

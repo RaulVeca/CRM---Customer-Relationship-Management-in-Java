@@ -94,7 +94,7 @@ export default function AdminAnalyticsPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-lg font-semibold">Analytics</h2>
+      <h2 className="text-2xl font-bold tracking-tight">Analytics</h2>
 
       {/* Headline metrics */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
