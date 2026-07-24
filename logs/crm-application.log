@@ -1535,3 +1535,13 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
 2026-07-24 19:13:56.388 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
+2026-07-24 19:27:08.135 [http-nio-8080-exec-10] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 16 courses
+2026-07-24 19:27:08.135 [http-nio-8080-exec-9] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 16 courses
+2026-07-24 19:28:04.056 [http-nio-8080-exec-8] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 33 orders
+2026-07-24 19:28:04.056 [http-nio-8080-exec-5] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 33 orders
+2026-07-24 19:34:39.324 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-24 19:34:39.337 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-24 19:34:39.343 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-24 19:34:39.343 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-24 19:34:39.346 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-24 19:34:39.347 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed
