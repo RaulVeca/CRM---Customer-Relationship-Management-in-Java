@@ -115,7 +115,7 @@ password and do not include it in a commit.
 In the project root, the `.env` file may contain:
 
 ```dotenv
-ANTHROPIC_API_KEY=your_key
+ANTHROPIC_API_KEY=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
 ```
 
 The `.env` file is ignored by Git. If it is missing or the key is empty, the
@@ -153,7 +153,7 @@ Alternatively, without the PowerShell script:
 With this variant, the AI key must be defined in the terminal before startup:
 
 ```powershell
-$env:ANTHROPIC_API_KEY="your_key"
+$env:ANTHROPIC_API_KEY="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"
 .\mvnw.cmd spring-boot:run
 ```
 
@@ -189,7 +189,7 @@ mysql --default-character-set=utf8mb4 -u root -p < sql/schema.sql
 mysql --default-character-set=utf8mb4 -u root -p < sql/seed-data.sql
 
 # The AI key is optional
-export ANTHROPIC_API_KEY="your_anthropic_key"
+export ANTHROPIC_API_KEY="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"
 
 # Start the backend
 chmod +x mvnw
