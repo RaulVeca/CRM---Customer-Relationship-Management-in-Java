@@ -1,55 +1,154 @@
-2026-07-24 01:23:45.670 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-07-24 01:23:45.687 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
-2026-07-24 01:23:45.692 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
-2026-07-24 01:23:45.692 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
-2026-07-24 01:23:45.694 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
-2026-07-24 01:23:45.695 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed
-2026-07-24 14:02:52.791 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-07-24 14:02:52.882 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 2952 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
-2026-07-24 14:02:52.883 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-07-24 14:02:52.884 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-07-24 14:02:54.393 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-07-24 14:02:54.407 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-07-24 14:02:54.410 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-07-24 14:02:54.411 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-07-24 14:02:54.491 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-07-24 14:02:54.491 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1532 ms
-2026-07-24 14:02:54.780 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-07-24 14:02:54.783 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-07-24 14:02:54.793 [main] INFO  crm.config.AppConfig - Default values loaded
-2026-07-24 14:02:54.808 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-07-24 14:02:54.940 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@73a0f2b
-2026-07-24 14:02:54.942 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-07-24 14:02:54.942 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
-2026-07-24 14:02:54.960 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
-2026-07-24 14:02:54.967 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=136) Duplicate column name 'email'
-2026-07-24 14:02:54.968 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
-2026-07-24 14:02:54.969 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=136) Can't DROP COLUMN `experience_level`; check that it exists
-2026-07-24 14:02:54.970 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
-2026-07-24 14:02:54.970 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=136) Can't DROP COLUMN `due_date`; check that it exists
-2026-07-24 14:02:54.971 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
-2026-07-24 14:02:54.972 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=136) Duplicate column name 'password'
-2026-07-24 14:02:54.973 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
-2026-07-24 14:02:54.973 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=136) Duplicate column name 'password'
-2026-07-24 14:02:54.973 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
-2026-07-24 14:02:54.973 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=136) Duplicate column name 'password'
-2026-07-24 14:02:54.995 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
-2026-07-24 14:02:55.008 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
-2026-07-24 14:02:55.012 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
-2026-07-24 14:02:55.017 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-07-24 14:02:55.021 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
-2026-07-24 14:02:55.027 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-07-24 14:02:55.027 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-07-24 14:02:55.027 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-07-24 14:02:55.262 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
-2026-07-24 14:02:55.697 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-07-24 14:02:55.717 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-07-24 14:02:55.722 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 3.383 seconds (process running for 4.213)
-2026-07-24 14:03:28.239 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-07-24 14:03:28.239 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-07-24 14:03:28.240 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2026-07-24 14:03:35.918 [http-nio-8080-exec-8] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
-2026-07-24 14:04:10.186 [http-nio-8080-exec-8] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+2026-07-21 15:44:22.796 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-21 15:44:22.871 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 17052 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-21 15:44:22.871 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-21 15:44:22.872 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-21 15:44:25.162 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-21 15:44:25.177 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-21 15:44:25.180 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-21 15:44:25.181 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-21 15:44:25.299 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-21 15:44:25.300 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2377 ms
+2026-07-21 15:44:25.802 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-21 15:44:25.805 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-21 15:44:25.878 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-21 15:44:25.903 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-21 15:44:26.133 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@68dd39d2
+2026-07-21 15:44:26.135 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-21 15:44:26.135 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-21 15:44:26.179 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-21 15:44:26.186 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=8) Duplicate column name 'email'
+2026-07-21 15:44:26.187 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-21 15:44:26.188 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=8) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-21 15:44:26.189 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-21 15:44:26.191 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=8) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-21 15:44:26.210 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:44:26.211 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=8) Duplicate column name 'password'
+2026-07-21 15:44:26.214 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:44:26.214 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=8) Duplicate column name 'password'
+2026-07-21 15:44:26.215 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:44:26.215 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=8) Duplicate column name 'password'
+2026-07-21 15:44:26.241 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-21 15:44:26.258 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-21 15:44:26.263 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-21 15:44:26.270 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-21 15:44:26.274 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-21 15:44:26.278 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-21 15:44:26.278 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-21 15:44:26.278 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-21 15:44:26.522 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-21 15:44:27.170 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-21 15:44:27.193 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-21 15:44:27.200 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 4.803 seconds (process running for 5.571)
+2026-07-21 15:44:27.401 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-21 15:44:27.401 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-21 15:44:27.402 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-07-21 15:47:52.512 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-21 15:47:52.575 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 8312 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-21 15:47:52.576 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-21 15:47:52.576 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-21 15:47:53.452 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-21 15:47:53.461 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-21 15:47:53.463 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-21 15:47:53.464 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-21 15:47:53.531 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-21 15:47:53.531 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 908 ms
+2026-07-21 15:47:53.716 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-21 15:47:53.719 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-21 15:47:53.728 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-21 15:47:53.743 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-21 15:47:53.832 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@73a0f2b
+2026-07-21 15:47:53.833 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-21 15:47:53.833 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-21 15:47:53.845 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-21 15:47:53.852 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=13) Duplicate column name 'email'
+2026-07-21 15:47:53.853 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-21 15:47:53.853 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=13) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-21 15:47:53.854 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-21 15:47:53.854 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=13) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-21 15:47:53.855 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:47:53.855 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=13) Duplicate column name 'password'
+2026-07-21 15:47:53.856 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:47:53.857 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=13) Duplicate column name 'password'
+2026-07-21 15:47:53.857 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:47:53.858 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=13) Duplicate column name 'password'
+2026-07-21 15:47:53.871 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-21 15:47:53.881 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-21 15:47:53.884 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-21 15:47:53.887 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-21 15:47:53.891 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-21 15:47:53.894 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-21 15:47:53.895 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-21 15:47:53.895 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-21 15:47:54.047 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-21 15:47:54.370 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-21 15:47:54.375 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-07-21 15:47:54.376 [main] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-21 15:47:54.377 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-21 15:47:54.380 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-21 15:47:54.380 [main] INFO  crm.config.DatabaseConnection - Connection pool closed
+2026-07-21 15:47:54.392 [main] INFO  o.s.b.a.logging.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-07-21 15:47:54.413 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2026-07-21 15:49:20.851 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-21 15:49:20.891 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 13172 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-21 15:49:20.892 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-21 15:49:20.892 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-21 15:49:21.663 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-21 15:49:21.673 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-21 15:49:21.674 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-21 15:49:21.675 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-21 15:49:21.724 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-21 15:49:21.725 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 799 ms
+2026-07-21 15:49:21.884 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-21 15:49:21.887 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-21 15:49:21.889 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-21 15:49:21.899 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-21 15:49:21.975 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@5a917723
+2026-07-21 15:49:21.976 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-21 15:49:21.977 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-21 15:49:21.985 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-21 15:49:21.990 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=18) Duplicate column name 'email'
+2026-07-21 15:49:21.992 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-21 15:49:21.992 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=18) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-21 15:49:21.993 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-21 15:49:21.993 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=18) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-21 15:49:21.994 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:49:21.994 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=18) Duplicate column name 'password'
+2026-07-21 15:49:21.995 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:49:21.996 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=18) Duplicate column name 'password'
+2026-07-21 15:49:21.996 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-21 15:49:21.997 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=18) Duplicate column name 'password'
+2026-07-21 15:49:22.008 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-21 15:49:22.010 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-21 15:49:22.011 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-21 15:49:22.012 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-21 15:49:22.012 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-21 15:49:22.013 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-21 15:49:22.013 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-21 15:49:22.013 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-21 15:49:22.046 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-21 15:49:22.293 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-21 15:49:22.306 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-21 15:49:22.312 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 1.676 seconds (process running for 2.064)
+2026-07-21 15:49:36.041 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-21 15:49:36.041 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-21 15:49:36.043 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-21 15:55:52.993 [http-nio-8080-exec-4] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-21 15:57:47.588 [http-nio-8080-exec-6] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -90,7 +189,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 14:04:10.193 [http-nio-8080-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-21 15:57:47.593 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -142,7 +241,7 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 14:04:10.195 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
+2026-07-21 15:57:47.593 [http-nio-8080-exec-6] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -183,7 +282,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 14:04:10.196 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+2026-07-21 15:57:47.600 [http-nio-8080-exec-6] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -224,53 +323,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 14:04:48.917 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2026-07-24 19:03:50.840 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
-2026-07-24 19:03:50.923 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 17624 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
-2026-07-24 19:03:50.924 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
-2026-07-24 19:03:50.925 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
-2026-07-24 19:03:52.110 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2026-07-24 19:03:52.131 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
-2026-07-24 19:03:52.135 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
-2026-07-24 19:03:52.135 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
-2026-07-24 19:03:52.226 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2026-07-24 19:03:52.227 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1250 ms
-2026-07-24 19:03:52.493 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
-2026-07-24 19:03:52.496 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
-2026-07-24 19:03:52.508 [main] INFO  crm.config.AppConfig - Default values loaded
-2026-07-24 19:03:52.524 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
-2026-07-24 19:03:52.641 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@550e9be6
-2026-07-24 19:03:52.643 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
-2026-07-24 19:03:52.643 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
-2026-07-24 19:03:52.655 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
-2026-07-24 19:03:52.659 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=141) Duplicate column name 'email'
-2026-07-24 19:03:52.660 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
-2026-07-24 19:03:52.660 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=141) Can't DROP COLUMN `experience_level`; check that it exists
-2026-07-24 19:03:52.661 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
-2026-07-24 19:03:52.661 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=141) Can't DROP COLUMN `due_date`; check that it exists
-2026-07-24 19:03:52.662 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
-2026-07-24 19:03:52.664 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=141) Duplicate column name 'password'
-2026-07-24 19:03:52.665 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
-2026-07-24 19:03:52.665 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=141) Duplicate column name 'password'
-2026-07-24 19:03:52.666 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
-2026-07-24 19:03:52.666 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=141) Duplicate column name 'password'
-2026-07-24 19:03:52.685 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
-2026-07-24 19:03:52.694 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
-2026-07-24 19:03:52.698 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
-2026-07-24 19:03:52.702 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
-2026-07-24 19:03:52.707 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
-2026-07-24 19:03:52.710 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
-2026-07-24 19:03:52.710 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
-2026-07-24 19:03:52.710 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
-2026-07-24 19:03:52.893 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
-2026-07-24 19:03:53.289 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
-2026-07-24 19:03:53.308 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2026-07-24 19:03:53.316 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.83 seconds (process running for 3.399)
-2026-07-24 19:04:15.343 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-07-24 19:04:15.343 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2026-07-24 19:04:15.343 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2026-07-24 19:04:28.710 [http-nio-8080-exec-5] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
-2026-07-24 19:05:19.038 [http-nio-8080-exec-6] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+2026-07-21 16:00:12.391 [http-nio-8080-exec-3] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -311,7 +364,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:19.052 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-21 16:00:12.393 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -363,7 +416,7 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:19.054 [http-nio-8080-exec-6] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
+2026-07-21 16:00:12.394 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -404,7 +457,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:19.060 [http-nio-8080-exec-6] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+2026-07-21 16:00:12.394 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -445,7 +498,9 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:51.225 [http-nio-8080-exec-3] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+2026-07-21 16:00:14.397 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
+2026-07-21 16:00:43.845 [http-nio-8080-exec-3] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-21 16:05:03.615 [http-nio-8080-exec-5] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -486,7 +541,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:51.225 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-21 16:05:03.615 [http-nio-8080-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -538,7 +593,7 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:51.235 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
+2026-07-21 16:05:03.621 [http-nio-8080-exec-5] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -579,7 +634,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:51.235 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+2026-07-21 16:05:03.621 [http-nio-8080-exec-5] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -620,25 +675,292 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:05:53.234 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
-2026-07-24 19:06:05.222 [http-nio-8080-exec-6] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 32 orders
-2026-07-24 19:06:05.222 [http-nio-8080-exec-4] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 32 orders
-2026-07-24 19:07:24.860 [http-nio-8080-exec-4] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 16 courses
-2026-07-24 19:07:24.860 [http-nio-8080-exec-3] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 16 courses
-2026-07-24 19:08:35.620 [http-nio-8080-exec-4] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 32 orders
-2026-07-24 19:08:35.620 [http-nio-8080-exec-8] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 32 orders
-2026-07-24 19:09:13.826 [http-nio-8080-exec-3] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
-2026-07-24 19:09:39.795 [http-nio-8080-exec-6] DEBUG crm.dao.CourseSessionDao - Entity saved in course_sessions: ID=10
-2026-07-24 19:09:39.801 [http-nio-8080-exec-6] DEBUG crm.repository.EnrollmentRepository - Saving Enrollment : Enrollment(super=crm.model.entity.Enrollment@33bead62, sessionId=10, contactId=2, enrollmentDate=2026-07-24T19:09:39.801955, status=CONFIRMED, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
-2026-07-24 19:09:39.807 [http-nio-8080-exec-6] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=41
-2026-07-24 19:09:39.807 [http-nio-8080-exec-6] DEBUG crm.repository.ContactRepository - Saving Contact : Contact(super=crm.model.entity.Contact@71a77196, contactType=INDIVIDUAL, firstName=Cristina, lastName=Marin, birthDate=null, companyName=null, fiscalCode=null, registrationNumber=null, industry=null, employeeCount=null, email=cristina.marin@example.com, phone=0722333555, addressStreet=null, addressCity=null, addressCounty=null, addressPostalCode=null, leadSource=REFERRAL, leadStatus=ENROLLED, leadScore=80, experienceLevel=INTERMEDIATE, learningGoal=Avansare carieră, firstContactDate=2026-06-03T19:06:22, lastContactDate=2026-07-24T19:09:39.807141900, assignedTo=2, gdprConsent=true, gdprConsentDate=null, marketingConsent=false)
-2026-07-24 19:09:39.813 [http-nio-8080-exec-6] DEBUG crm.dao.ContactDao - Entity updated in contacts: ID=2
-2026-07-24 19:09:39.813 [http-nio-8080-exec-6] DEBUG crm.observer.EventBus - Notificare eveniment: LEAD_STATUS_CHANGED de la ContactService
-2026-07-24 19:09:39.815 [http-nio-8080-exec-6] INFO  crm.service.contact.ContactService - Status schimbat pentru contact 2: QUALIFIED -> ENROLLED
-2026-07-24 19:09:39.819 [http-nio-8080-exec-6] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
-2026-07-24 19:09:39.843 [http-nio-8080-exec-6] INFO  crm.service.notification.NotificationService - [EMAIL] To: cristina.marin@example.com, Subject: Course enrollment confirmation
-2026-07-24 19:09:39.843 [http-nio-8080-exec-6] DEBUG crm.service.notification.NotificationService - Content:
-Salut Cristina Marin,
+2026-07-21 16:05:05.620 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
+2026-07-21 16:07:54.873 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-21 16:07:54.883 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-21 16:07:54.887 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-21 16:07:54.887 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-21 16:07:54.890 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-21 16:07:54.890 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed
+2026-07-23 20:23:14.458 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-23 20:23:14.532 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 22908 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-23 20:23:14.533 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-23 20:23:14.533 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-23 20:23:15.689 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-23 20:23:15.701 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-23 20:23:15.705 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-23 20:23:15.705 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-23 20:23:15.774 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-23 20:23:15.775 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1186 ms
+2026-07-23 20:23:15.845 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-23 20:23:15.848 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-23 20:23:15.858 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-23 20:23:15.871 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-23 20:23:15.992 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@692dba54
+2026-07-23 20:23:15.994 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-23 20:23:15.994 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-23 20:23:16.011 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-23 20:23:16.017 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=71) Duplicate column name 'email'
+2026-07-23 20:23:16.018 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 20:23:16.018 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=71) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 20:23:16.019 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 20:23:16.019 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=71) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 20:23:16.021 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 20:23:16.022 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=71) Duplicate column name 'password'
+2026-07-23 20:23:16.023 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 20:23:16.023 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=71) Duplicate column name 'password'
+2026-07-23 20:23:16.025 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 20:23:16.025 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=71) Duplicate column name 'password'
+2026-07-23 20:23:16.043 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-23 20:23:16.054 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-23 20:23:16.057 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-23 20:23:16.060 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-23 20:23:16.067 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-23 20:23:16.070 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-23 20:23:16.070 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-23 20:23:16.070 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-23 20:23:16.249 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-23 20:23:16.611 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-23 20:23:16.630 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-23 20:23:16.634 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.546 seconds (process running for 3.041)
+2026-07-23 20:24:22.255 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-23 20:24:22.255 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-23 20:24:22.256 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-07-23 20:24:32.999 [http-nio-8080-exec-3] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-23 20:25:01.094 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-23 20:57:04.452 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-23 20:57:04.518 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 10268 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-23 20:57:04.518 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-23 20:57:04.519 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-23 20:57:05.632 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-23 20:57:05.648 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-23 20:57:05.651 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-23 20:57:05.651 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-23 20:57:05.727 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-23 20:57:05.727 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1162 ms
+2026-07-23 20:57:05.786 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-23 20:57:05.792 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-23 20:57:05.794 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-23 20:57:05.811 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-23 20:57:05.932 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@290e8cab
+2026-07-23 20:57:05.933 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-23 20:57:05.934 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-23 20:57:05.945 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-23 20:57:05.950 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=76) Duplicate column name 'email'
+2026-07-23 20:57:05.951 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 20:57:05.952 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=76) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 20:57:05.952 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 20:57:05.953 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=76) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 20:57:05.953 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 20:57:05.953 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=76) Duplicate column name 'password'
+2026-07-23 20:57:05.955 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 20:57:05.955 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=76) Duplicate column name 'password'
+2026-07-23 20:57:05.956 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 20:57:05.956 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=76) Duplicate column name 'password'
+2026-07-23 20:57:05.971 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-23 20:57:05.975 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-23 20:57:05.978 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-23 20:57:05.980 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-23 20:57:05.985 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-23 20:57:05.987 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-23 20:57:05.987 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-23 20:57:05.987 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-23 20:57:06.095 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-23 20:57:06.431 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-23 20:57:06.451 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-23 20:57:06.456 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.303 seconds (process running for 2.809)
+2026-07-23 20:57:24.275 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-23 20:57:24.276 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-23 20:57:24.277 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-07-23 20:57:35.403 [http-nio-8080-exec-4] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-23 20:58:04.406 [http-nio-8080-exec-6] DEBUG crm.dao.MeditationSessionDao - Entity saved in meditation_sessions: ID=37
+2026-07-23 20:58:04.407 [http-nio-8080-exec-6] DEBUG crm.observer.EventBus - Notificare eveniment: SESSION_BOOKED de la TrainerController
+2026-07-23 20:58:04.425 [http-nio-8080-exec-6] DEBUG crm.repository.InvoiceRepository - Saving Invoice : Invoice(super=crm.model.entity.Invoice@6623fcca, invoiceNumber=INV-2026-00037, sessionId=37, clientId=21, clientEmail=raul.veca04@e-uvt.ro, issueDate=2026-07-23, hours=1, hourlyRate=10.00, subtotal=10.00, discountRate=0.00, discountAmount=0.00, total=10.00, paidAmount=10.00, status=PAID, paymentDate=2026-07-23, description=Sedinta online cu trainer (2026-07-23, 18:00-19:00, 1h))
+2026-07-23 20:58:04.429 [http-nio-8080-exec-6] DEBUG crm.dao.InvoiceDao - Entity saved in session_invoices: ID=23
+2026-07-23 20:58:04.429 [http-nio-8080-exec-6] INFO  crm.service.invoice.InvoiceService - Invoice auto-generated: INV-2026-00037 for session 37 (1h x $10 - 0% = $10.00)
+2026-07-23 20:58:25.679 [http-nio-8080-exec-7] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
+	at org.apache.coyote.Response.action(Response.java:201)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 20:58:25.692 [http-nio-8080-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:471)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:182)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1360)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1161)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+	at org.apache.catalina.core.ApplicationDispatcher.doDispatch(ApplicationDispatcher.java:538)
+	at org.apache.catalina.core.ApplicationDispatcher.dispatch(ApplicationDispatcher.java:509)
+	at org.apache.catalina.core.AsyncContextImpl$AsyncRunnable.run(AsyncContextImpl.java:599)
+	at org.apache.catalina.core.AsyncContextImpl.doInternalDispatch(AsyncContextImpl.java:342)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:163)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:237)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:243)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1797)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 20:58:25.692 [http-nio-8080-exec-7] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
+java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
+	at org.apache.coyote.Response.action(Response.java:201)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 20:58:25.692 [http-nio-8080-exec-7] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
+	at org.apache.coyote.Response.action(Response.java:201)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 21:00:27.469 [http-nio-8080-exec-8] DEBUG crm.dao.IssueReportDao - Entity saved in issue_reports: ID=25
+2026-07-23 21:00:27.470 [http-nio-8080-exec-8] INFO  crm.service.support.IssueReportService - Issue reported: id=25, reporter=raul.veca04@e-uvt.ro
+2026-07-23 21:00:35.107 [http-nio-8080-exec-3] DEBUG crm.repository.EnrollmentRepository - Saving Enrollment : Enrollment(super=crm.model.entity.Enrollment@4a0f8bfd, sessionId=9, contactId=21, enrollmentDate=2026-07-23T21:00:35.107541300, status=CONFIRMED, attendedSessions=null, attendanceRate=null, examPassed=null, finalGrade=null, certificateIssued=null, certificateNumber=null, rating=null, feedback=null, notes=null)
+2026-07-23 21:00:35.112 [http-nio-8080-exec-3] DEBUG crm.dao.EnrollmentDao - Entity saved in enrollments: ID=40
+2026-07-23 21:00:35.112 [http-nio-8080-exec-3] DEBUG crm.observer.EventBus - Notificare eveniment: ENROLLMENT_CREATED de la EnrollmentService
+2026-07-23 21:00:35.131 [http-nio-8080-exec-3] INFO  crm.service.notification.NotificationService - [EMAIL] To: raul.veca04@e-uvt.ro, Subject: Course enrollment confirmation
+2026-07-23 21:00:35.131 [http-nio-8080-exec-3] DEBUG crm.service.notification.NotificationService - Content:
+Salut Raul Veca,
 
 Your enrollment has been confirmed successfully!
 Status: CONFIRMED
@@ -647,13 +969,13 @@ You will soon receive details about the course schedule and the required materia
 
 Mult succes!
 Echipa Training IT
-2026-07-24 19:09:39.843 [http-nio-8080-exec-6] INFO  crm.service.notification.NotificationService - [SMS] To: 0722333555, Subject: (no subject)
-2026-07-24 19:09:39.843 [http-nio-8080-exec-6] DEBUG crm.service.notification.NotificationService - Content:
+2026-07-23 21:00:35.131 [http-nio-8080-exec-3] INFO  crm.service.notification.NotificationService - [SMS] To: 0757 684 617, Subject: (no subject)
+2026-07-23 21:00:35.131 [http-nio-8080-exec-3] DEBUG crm.service.notification.NotificationService - Content:
 Inscrierea ta a fost confirmata. Multumim!
-2026-07-24 19:09:39.843 [http-nio-8080-exec-6] INFO  c.o.listeners.EnrollmentConfirmationObserver - Enrollment confirmation sent to contact 2
-2026-07-24 19:09:39.843 [http-nio-8080-exec-6] INFO  crm.service.enrollment.EnrollmentService - Enrollment created: contact=2, session=10
-2026-07-24 19:09:39.843 [http-nio-8080-exec-6] INFO  crm.service.review.ReviewService - Course purchased: client=cristina.marin@example.com, course=10, enrollment=41
-2026-07-24 19:09:39.994 [http-nio-8080-exec-1] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+2026-07-23 21:00:35.137 [http-nio-8080-exec-3] INFO  c.o.listeners.EnrollmentConfirmationObserver - Enrollment confirmation sent to contact 21
+2026-07-23 21:00:35.137 [http-nio-8080-exec-3] INFO  crm.service.enrollment.EnrollmentService - Enrollment created: contact=21, session=9
+2026-07-23 21:00:35.138 [http-nio-8080-exec-3] INFO  crm.service.review.ReviewService - Course purchased: client=raul.veca04@e-uvt.ro, course=8, enrollment=40
+2026-07-23 21:00:50.254 [http-nio-8080-exec-1] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -686,15 +1008,15 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
 	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
 	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.send(PublicStatsBroadcaster.java:154)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:122)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
 	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
 	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
 	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:09:39.994 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-23 21:00:50.254 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -746,89 +1068,7 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:09:40.000 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.send(PublicStatsBroadcaster.java:154)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:122)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
-	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:09:40.001 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.send(PublicStatsBroadcaster.java:154)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:122)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
-	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.214 [http-nio-8080-exec-4] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+2026-07-23 21:00:50.255 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -869,7 +1109,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.214 [http-nio-8080-exec-9] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+2026-07-23 21:00:50.256 [http-nio-8080-exec-1] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -910,7 +1150,188 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.215 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-23 21:01:03.461 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-23 21:36:41.942 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-23 21:36:42.004 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 6260 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-23 21:36:42.005 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-23 21:36:42.005 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-23 21:36:42.995 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-23 21:36:43.008 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-23 21:36:43.012 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-23 21:36:43.012 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-23 21:36:43.082 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-23 21:36:43.082 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1036 ms
+2026-07-23 21:36:43.148 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-23 21:36:43.151 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-23 21:36:43.156 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-23 21:36:43.171 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-23 21:36:43.302 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@3119cf6f
+2026-07-23 21:36:43.304 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-23 21:36:43.304 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-23 21:36:43.317 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-23 21:36:43.323 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=81) Duplicate column name 'email'
+2026-07-23 21:36:43.324 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 21:36:43.324 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=81) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 21:36:43.327 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 21:36:43.327 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=81) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 21:36:43.329 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:36:43.329 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=81) Duplicate column name 'password'
+2026-07-23 21:36:43.330 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:36:43.330 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=81) Duplicate column name 'password'
+2026-07-23 21:36:43.331 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:36:43.331 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=81) Duplicate column name 'password'
+2026-07-23 21:36:43.345 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-23 21:36:43.347 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-23 21:36:43.348 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-23 21:36:43.349 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-23 21:36:43.353 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-23 21:36:43.355 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-23 21:36:43.356 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-23 21:36:43.356 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-23 21:36:43.475 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-23 21:36:43.817 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-23 21:36:43.833 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-23 21:36:43.838 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.166 seconds (process running for 2.627)
+2026-07-23 21:36:46.948 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-23 21:36:46.959 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-23 21:36:46.963 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-23 21:36:46.963 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-23 21:36:46.966 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-23 21:36:46.966 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed
+2026-07-23 21:39:23.664 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-23 21:39:23.720 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 22012 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-23 21:39:23.720 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-23 21:39:23.721 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-23 21:39:24.985 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-23 21:39:24.994 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-23 21:39:24.996 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-23 21:39:24.997 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-23 21:39:25.057 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-23 21:39:25.058 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1274 ms
+2026-07-23 21:39:25.123 [main] WARN  crm.web.ai.ClaudeClient - ANTHROPIC_API_KEY not set - AI features are disabled
+2026-07-23 21:39:25.125 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-23 21:39:25.130 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-23 21:39:25.141 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-23 21:39:25.244 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@2ddb3ae8
+2026-07-23 21:39:25.245 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-23 21:39:25.246 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-23 21:39:25.256 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-23 21:39:25.263 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=86) Duplicate column name 'email'
+2026-07-23 21:39:25.266 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 21:39:25.267 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=86) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 21:39:25.268 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 21:39:25.268 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=86) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 21:39:25.270 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:39:25.270 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=86) Duplicate column name 'password'
+2026-07-23 21:39:25.271 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:39:25.272 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=86) Duplicate column name 'password'
+2026-07-23 21:39:25.273 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:39:25.273 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=86) Duplicate column name 'password'
+2026-07-23 21:39:25.286 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-23 21:39:25.288 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-23 21:39:25.290 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-23 21:39:25.291 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-23 21:39:25.295 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-23 21:39:25.296 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-23 21:39:25.297 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-23 21:39:25.297 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-23 21:39:25.392 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-23 21:39:25.731 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-23 21:39:25.748 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-23 21:39:25.753 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.357 seconds (process running for 2.802)
+2026-07-23 21:39:26.997 [SpringApplicationShutdownHook] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-23 21:39:27.009 [tomcat-shutdown] INFO  o.s.boot.web.embedded.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-23 21:39:27.011 [SpringApplicationShutdownHook] INFO  crm.web.config.CrmRuntimeConfig - Shutting down CRM domain resources
+2026-07-23 21:39:27.012 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown initiated...
+2026-07-23 21:39:27.013 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Shutdown completed.
+2026-07-23 21:39:27.015 [SpringApplicationShutdownHook] INFO  crm.config.DatabaseConnection - Connection pool closed
+2026-07-23 21:43:42.060 [background-preinit] INFO  org.hibernate.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-23 21:43:42.123 [main] INFO  crm.web.CrmWebApplication - Starting CrmWebApplication using Java 25 with PID 3468 (D:\TrainingIT_site\target\classes started by raulv in D:\TrainingIT_site)
+2026-07-23 21:43:42.123 [main] DEBUG crm.web.CrmWebApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-07-23 21:43:42.124 [main] INFO  crm.web.CrmWebApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-23 21:43:43.183 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-07-23 21:43:43.200 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-07-23 21:43:43.203 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-23 21:43:43.204 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.55]
+2026-07-23 21:43:43.277 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-23 21:43:43.277 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1111 ms
+2026-07-23 21:43:43.517 [main] INFO  crm.web.ai.ClaudeClient - Claude client initialized (model=claude-opus-4-8)
+2026-07-23 21:43:43.520 [main] INFO  crm.web.config.CrmRuntimeConfig - Bootstrapping CRM domain layer for the web application
+2026-07-23 21:43:43.523 [main] INFO  crm.config.AppConfig - Default values loaded
+2026-07-23 21:43:43.538 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Starting...
+2026-07-23 21:43:43.640 [main] INFO  com.zaxxer.hikari.pool.HikariPool - CrmHikariPool - Added connection org.mariadb.jdbc.Connection@73a0f2b
+2026-07-23 21:43:43.641 [main] INFO  com.zaxxer.hikari.HikariDataSource - CrmHikariPool - Start completed.
+2026-07-23 21:43:43.642 [main] INFO  crm.config.DatabaseConnection - Connection pool initialized successfully (size: 20)
+2026-07-23 21:43:43.650 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'email'
+2026-07-23 21:43:43.654 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.email already present or table absent: (conn=91) Duplicate column name 'email'
+2026-07-23 21:43:43.654 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 21:43:43.655 [main] DEBUG crm.web.config.WebSchemaInitializer - employees.experience_level already absent or table missing: (conn=91) Can't DROP COLUMN `experience_level`; check that it exists
+2026-07-23 21:43:43.655 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1091-42000: Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 21:43:43.656 [main] DEBUG crm.web.config.WebSchemaInitializer - session_invoices.due_date already absent or table missing: (conn=91) Can't DROP COLUMN `due_date`; check that it exists
+2026-07-23 21:43:43.656 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:43:43.656 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on contacts already present or table absent: (conn=91) Duplicate column name 'password'
+2026-07-23 21:43:43.658 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:43:43.658 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on admins already present or table absent: (conn=91) Duplicate column name 'password'
+2026-07-23 21:43:43.658 [main] WARN  org.mariadb.jdbc.message.server.ErrorPacket - Error: 1060-42S21: Duplicate column name 'password'
+2026-07-23 21:43:43.659 [main] DEBUG crm.web.config.WebSchemaInitializer - Password column on employees already present or table absent: (conn=91) Duplicate column name 'password'
+2026-07-23 21:43:43.675 [main] INFO  crm.web.config.WebSchemaInitializer - Web feature tables ensured (employees, course_metrics, admins, trainers, meditation_sessions, session_invoices, issue_reports)
+2026-07-23 21:43:43.677 [main] INFO  crm.observer.EventBus - Global observer registered: AuditLogObserver
+2026-07-23 21:43:43.679 [main] INFO  crm.observer.EventBus - Observer registered for event 'CONTACT_CREATED': WelcomeEmailObserver
+2026-07-23 21:43:43.680 [main] INFO  crm.observer.EventBus - Observer registered for event 'ENROLLMENT_CREATED': EnrollmentConfirmationObserver
+2026-07-23 21:43:43.684 [main] INFO  crm.observer.EventBus - Observer registered for event 'SESSION_BOOKED': InvoiceGenerationObserver
+2026-07-23 21:43:43.685 [main] INFO  crm.observer.EventBus - Observer registered for event 'ACTIVITY_COMPLETED': LeadScoreUpdateObserver
+2026-07-23 21:43:43.686 [main] INFO  crm.web.config.CrmRuntimeConfig - Domain observers registered
+2026-07-23 21:43:43.686 [main] INFO  crm.web.config.CrmRuntimeConfig - CRM domain layer ready
+2026-07-23 21:43:43.773 [main] INFO  crm.facade.CrmFacade - CrmFacade initialized
+2026-07-23 21:43:44.107 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-07-23 21:43:44.129 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2026-07-23 21:43:44.134 [main] INFO  crm.web.CrmWebApplication - Started CrmWebApplication in 2.362 seconds (process running for 2.841)
+2026-07-23 21:44:03.928 [http-nio-8080-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-23 21:44:03.928 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-23 21:44:03.929 [http-nio-8080-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 0 ms
+2026-07-23 21:44:20.099 [http-nio-8080-exec-5] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-23 21:45:10.395 [http-nio-8080-exec-3] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
+	at org.apache.coyote.Response.action(Response.java:201)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 21:45:10.410 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -962,7 +1383,130 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.215 [http-nio-8080-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-23 21:45:10.412 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
+java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
+	at org.apache.coyote.Response.action(Response.java:201)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 21:45:10.412 [http-nio-8080-exec-3] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
+	at org.apache.coyote.Response.action(Response.java:201)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 21:45:42.618 [http-nio-8080-exec-8] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+java.io.IOException: An established connection was aborted by the software in your host machine
+	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
+	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
+	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
+	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
+	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
+	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
+	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
+	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
+	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
+	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
+	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
+	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
+	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
+	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
+	at org.apache.coyote.Response.action(Response.java:201)
+	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
+	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
+	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
+	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
+	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
+	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
+	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
+	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
+	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
+	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+	at java.base/java.lang.Thread.run(Thread.java:1474)
+2026-07-23 21:45:42.618 [http-nio-8080-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -1014,7 +1558,7 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.216 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
+2026-07-23 21:45:42.618 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -1055,7 +1599,7 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.217 [http-nio-8080-exec-9] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
+2026-07-23 21:45:42.618 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 java.io.IOException: An established connection was aborted by the software in your host machine
 	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
 	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
@@ -1096,136 +1640,32 @@ java.io.IOException: An established connection was aborted by the software in yo
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.217 [http-nio-8080-exec-4] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+2026-07-23 21:45:44.630 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
+2026-07-23 21:45:57.535 [http-nio-8080-exec-3] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 32 orders
+2026-07-23 21:45:57.535 [http-nio-8080-exec-5] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 32 orders
+2026-07-23 21:46:05.078 [http-nio-8080-exec-4] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 16 courses
+2026-07-23 21:46:05.078 [http-nio-8080-exec-1] DEBUG crm.service.analytics.MetricsService - Loaded CTR counts for 16 courses
+2026-07-23 21:47:28.721 [http-nio-8080-exec-6] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-23 22:17:29.142 [http-nio-8080-exec-1] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+org.springframework.web.context.request.async.AsyncRequestTimeoutException
+	at org.springframework.web.context.request.async.TimeoutDeferredResultProcessingInterceptor.handleTimeout(TimeoutDeferredResultProcessingInterceptor.java:42)
+	at org.springframework.web.context.request.async.DeferredResultInterceptorChain.triggerAfterTimeout(DeferredResultInterceptorChain.java:81)
+	at org.springframework.web.context.request.async.WebAsyncManager.lambda$startDeferredResultProcessing$5(WebAsyncManager.java:434)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest.onTimeout(StandardServletAsyncWebRequest.java:186)
+	at org.apache.catalina.core.AsyncListenerWrapper.fireOnTimeout(AsyncListenerWrapper.java:44)
+	at org.apache.catalina.core.AsyncContextImpl.timeout(AsyncContextImpl.java:136)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:133)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:243)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1797)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:12.218 [http-nio-8080-exec-9] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
-	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:10:14.221 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
-2026-07-24 19:10:38.745 [http-nio-8080-exec-1] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 33 orders
-2026-07-24 19:10:38.749 [http-nio-8080-exec-7] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 33 orders
-2026-07-24 19:11:31.868 [http-nio-8080-exec-6] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 33 orders
-2026-07-24 19:11:31.868 [http-nio-8080-exec-7] DEBUG crm.service.enrollment.PurchaseHistoryService - Purchase history built: 33 orders
-2026-07-24 19:12:48.022 [http-nio-8080-exec-1] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
-2026-07-24 19:13:22.198 [http-nio-8080-exec-7] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
-	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:22.199 [http-nio-8080-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-23 22:17:29.142 [http-nio-8080-exec-1] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -1277,130 +1717,30 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:22.199 [http-nio-8080-exec-7] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+2026-07-23 22:17:29.142 [http-nio-8080-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Ignoring exception, response committed already: org.springframework.web.context.request.async.AsyncRequestTimeoutException
+2026-07-23 22:17:29.142 [http-nio-8080-exec-1] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.context.request.async.AsyncRequestTimeoutException]
+2026-07-23 22:17:29.722 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
+2026-07-23 22:17:32.159 [http-nio-8080-exec-7] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-23 22:47:33.139 [http-nio-8080-exec-3] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+org.springframework.web.context.request.async.AsyncRequestTimeoutException
+	at org.springframework.web.context.request.async.TimeoutDeferredResultProcessingInterceptor.handleTimeout(TimeoutDeferredResultProcessingInterceptor.java:42)
+	at org.springframework.web.context.request.async.DeferredResultInterceptorChain.triggerAfterTimeout(DeferredResultInterceptorChain.java:81)
+	at org.springframework.web.context.request.async.WebAsyncManager.lambda$startDeferredResultProcessing$5(WebAsyncManager.java:434)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest.onTimeout(StandardServletAsyncWebRequest.java:186)
+	at org.apache.catalina.core.AsyncListenerWrapper.fireOnTimeout(AsyncListenerWrapper.java:44)
+	at org.apache.catalina.core.AsyncContextImpl.timeout(AsyncContextImpl.java:136)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:133)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:243)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1797)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:22.199 [http-nio-8080-exec-7] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
-	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:54.388 [http-nio-8080-exec-8] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
-	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:54.388 [http-nio-8080-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+2026-07-23 22:47:33.139 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
 org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
 	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
 	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
@@ -1452,86 +1792,81 @@ org.springframework.http.converter.HttpMessageNotWritableException: No converter
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:54.389 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+2026-07-23 22:47:33.139 [http-nio-8080-exec-3] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Ignoring exception, response committed already: org.springframework.web.context.request.async.AsyncRequestTimeoutException
+2026-07-23 22:47:33.142 [http-nio-8080-exec-3] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.context.request.async.AsyncRequestTimeoutException]
+2026-07-23 22:47:33.697 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
+2026-07-23 22:47:36.148 [http-nio-8080-exec-10] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch started
+2026-07-23 23:17:37.147 [http-nio-8080-exec-7] ERROR crm.web.exception.GlobalExceptionHandler - Unexpected error on /api/public/stats/stream
+org.springframework.web.context.request.async.AsyncRequestTimeoutException
+	at org.springframework.web.context.request.async.TimeoutDeferredResultProcessingInterceptor.handleTimeout(TimeoutDeferredResultProcessingInterceptor.java:42)
+	at org.springframework.web.context.request.async.DeferredResultInterceptorChain.triggerAfterTimeout(DeferredResultInterceptorChain.java:81)
+	at org.springframework.web.context.request.async.WebAsyncManager.lambda$startDeferredResultProcessing$5(WebAsyncManager.java:434)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1604)
+	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest.onTimeout(StandardServletAsyncWebRequest.java:186)
+	at org.apache.catalina.core.AsyncListenerWrapper.fireOnTimeout(AsyncListenerWrapper.java:44)
+	at org.apache.catalina.core.AsyncContextImpl.timeout(AsyncContextImpl.java:136)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:133)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:243)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1797)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:54.389 [http-nio-8080-exec-8] ERROR o.a.c.c.C.[.[localhost].[/].[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
-java.io.IOException: An established connection was aborted by the software in your host machine
-	at java.base/sun.nio.ch.SocketDispatcher.write0(Native Method)
-	at java.base/sun.nio.ch.SocketDispatcher.write(SocketDispatcher.java:57)
-	at java.base/sun.nio.ch.IOUtil.writeFromNativeBuffer(IOUtil.java:137)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:102)
-	at java.base/sun.nio.ch.IOUtil.write(IOUtil.java:58)
-	at java.base/sun.nio.ch.SocketChannelImpl.implWrite(SocketChannelImpl.java:562)
-	at java.base/sun.nio.ch.SocketChannelImpl.write(SocketChannelImpl.java:614)
-	at org.apache.tomcat.util.net.NioChannel.write(NioChannel.java:129)
-	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.doWrite(NioEndpoint.java:1436)
-	at org.apache.tomcat.util.net.SocketWrapperBase.doWrite(SocketWrapperBase.java:748)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flushBlocking(SocketWrapperBase.java:714)
-	at org.apache.tomcat.util.net.SocketWrapperBase.flush(SocketWrapperBase.java:699)
-	at org.apache.coyote.http11.Http11OutputBuffer$SocketOutputBuffer.flush(Http11OutputBuffer.java:574)
-	at org.apache.coyote.http11.filters.ChunkedOutputFilter.flush(ChunkedOutputFilter.java:132)
-	at org.apache.coyote.http11.Http11OutputBuffer.flush(Http11OutputBuffer.java:216)
-	at org.apache.coyote.http11.Http11Processor.flush(Http11Processor.java:1283)
-	at org.apache.coyote.AbstractProcessor.action(AbstractProcessor.java:408)
-	at org.apache.coyote.Response.action(Response.java:201)
-	at org.apache.catalina.connector.OutputBuffer.doFlush(OutputBuffer.java:298)
-	at org.apache.catalina.connector.OutputBuffer.flush(OutputBuffer.java:264)
-	at org.apache.catalina.connector.CoyoteOutputStream.flush(CoyoteOutputStream.java:130)
-	at org.springframework.web.context.request.async.StandardServletAsyncWebRequest$LifecycleServletOutputStream.flush(StandardServletAsyncWebRequest.java:415)
-	at org.springframework.util.StreamUtils.copy(StreamUtils.java:137)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:128)
-	at org.springframework.http.converter.StringHttpMessageConverter.writeInternal(StringHttpMessageConverter.java:44)
-	at org.springframework.http.converter.AbstractHttpMessageConverter.write(AbstractHttpMessageConverter.java:234)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.sendInternal(ResponseBodyEmitterReturnValueHandler.java:315)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterReturnValueHandler$DefaultSseEmitterHandler.send(ResponseBodyEmitterReturnValueHandler.java:302)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.sendInternal(ResponseBodyEmitter.java:256)
-	at org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitter.send(ResponseBodyEmitter.java:243)
-	at org.springframework.web.servlet.mvc.method.annotation.SseEmitter.send(SseEmitter.java:130)
-	at crm.web.stats.PublicStatsBroadcaster.heartbeat(PublicStatsBroadcaster.java:164)
-	at crm.web.stats.PublicStatsBroadcaster.tick(PublicStatsBroadcaster.java:137)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:369)
-	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:310)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1090)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:614)
+2026-07-23 23:17:37.148 [http-nio-8080-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Failure in @ExceptionHandler crm.web.exception.GlobalExceptionHandler#handleGeneric(Exception, HttpServletRequest)
+org.springframework.http.converter.HttpMessageNotWritableException: No converter for [class crm.web.dto.ApiError] with preset Content-Type 'text/event-stream'
+	at org.springframework.web.servlet.mvc.method.annotation.AbstractMessageConverterMethodProcessor.writeWithMessageConverters(AbstractMessageConverterMethodProcessor.java:364)
+	at org.springframework.web.servlet.mvc.method.annotation.HttpEntityMethodProcessor.handleReturnValue(HttpEntityMethodProcessor.java:263)
+	at org.springframework.web.method.support.HandlerMethodReturnValueHandlerComposite.handleReturnValue(HandlerMethodReturnValueHandlerComposite.java:78)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:136)
+	at org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.doResolveHandlerMethodException(ExceptionHandlerExceptionResolver.java:471)
+	at org.springframework.web.servlet.handler.AbstractHandlerMethodExceptionResolver.doResolveException(AbstractHandlerMethodExceptionResolver.java:73)
+	at org.springframework.web.servlet.handler.AbstractHandlerExceptionResolver.resolveException(AbstractHandlerExceptionResolver.java:182)
+	at org.springframework.web.servlet.handler.HandlerExceptionResolverComposite.resolveException(HandlerExceptionResolverComposite.java:80)
+	at org.springframework.web.servlet.DispatcherServlet.processHandlerException(DispatcherServlet.java:1360)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1161)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1106)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:101)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:162)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:138)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:610)
+	at org.apache.catalina.core.ApplicationDispatcher.doDispatch(ApplicationDispatcher.java:538)
+	at org.apache.catalina.core.ApplicationDispatcher.dispatch(ApplicationDispatcher.java:509)
+	at org.apache.catalina.core.AsyncContextImpl$AsyncRunnable.run(AsyncContextImpl.java:599)
+	at org.apache.catalina.core.AsyncContextImpl.doInternalDispatch(AsyncContextImpl.java:342)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:163)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:88)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.asyncDispatch(CoyoteAdapter.java:237)
+	at org.apache.coyote.AbstractProcessor.dispatch(AbstractProcessor.java:243)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:57)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1797)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:973)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:491)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
 	at java.base/java.lang.Thread.run(Thread.java:1474)
-2026-07-24 19:13:56.388 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers
+2026-07-23 23:17:37.149 [http-nio-8080-exec-7] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Ignoring exception, response committed already: org.springframework.web.context.request.async.AsyncRequestTimeoutException
+2026-07-23 23:17:37.149 [http-nio-8080-exec-7] WARN  o.s.w.s.m.support.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.context.request.async.AsyncRequestTimeoutException]
+2026-07-23 23:17:37.902 [public-stats-watch] DEBUG crm.web.stats.PublicStatsBroadcaster - Public stats watch stopped - no subscribers

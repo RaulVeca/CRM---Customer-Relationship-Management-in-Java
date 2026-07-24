@@ -267,21 +267,21 @@ export default function Home() {
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -bottom-48 -left-40 h-[34rem] w-[34rem] rounded-full opacity-15 blur-3xl dark:opacity-20"
-          style={{ background: "radial-gradient(circle, var(--color-brand-600), transparent 60%)" }}
+          style={{ background: "radial-gradient(circle, var(--color-accent-500), transparent 60%)" }}
         />
         <div className="relative mx-auto max-w-6xl px-6 py-24 sm:py-28">
           <div className="ti-rise max-w-3xl">
             <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-brand-50 px-3 py-1 text-xs font-medium text-brand-700 dark:border-white/15 dark:bg-white/5 dark:text-brand-200">
-              <StarBurstIcon className="h-3.5 w-3.5 text-brand-500 dark:text-brand-400" />
+              <StarBurstIcon className="h-3.5 w-3.5 text-accent-500 dark:text-accent-400" />
               Professional IT training
             </span>
             {greetingName ? (
               <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                Welcome back, <span className="text-brand-600 dark:text-brand-400">{greetingName}</span>.
+                Welcome back, <span className="text-accent-500 dark:text-accent-400">{greetingName}</span>.
               </h1>
             ) : (
               <h1 className="mt-6 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-                Level up your <span className="text-brand-600 dark:text-brand-400">IT career</span>.
+                Level up your <span className="text-accent-500 dark:text-accent-400">IT career</span>.
               </h1>
             )}
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-600 dark:text-zinc-300">
