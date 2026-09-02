@@ -148,19 +148,6 @@ public class EmployeeDao extends AbstractDao<Employee> {
         }
     }
 
-    public long countByCompanyId(Long companyId) {
-        String sql = "SELECT COUNT(*) FROM employees WHERE company_id = ?";
-        try (Connection conn = db.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setLong(1, companyId);
-            try (ResultSet rs = ps.executeQuery()) {
-                return rs.next() ? rs.getLong(1) : 0;
-            }
-        } catch (SQLException ex) {
-            throw new DataAccessException("Error in countByCompanyId", ex);
-        }
-    }
-
     // =====================================================
     // Helpers
     // =====================================================

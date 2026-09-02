@@ -21,16 +21,4 @@ public class SmsNotificationFactory implements NotificationFactory {
         String body = "Inscrierea ta a fost confirmata. Multumim!";
         return new Notification(contact.getPhone(), null, body, CHANNEL);
     }
-
-    @Override
-    public Notification createSessionReminder(Contact contact, String sessionDetails) {
-        String body = "Reminder: sesiunea ta de curs incepe maine. Detalii: " + sessionDetails;
-        return new Notification(contact.getPhone(), null, body, CHANNEL);
-    }
-
-    @Override
-    public Notification createFollowUp(Contact contact, String reason) {
-        String body = "Buna! Ti-am trimis un email cu detalii despre " + reason;
-        return new Notification(contact.getPhone(), null, body, CHANNEL);
-    }
 }

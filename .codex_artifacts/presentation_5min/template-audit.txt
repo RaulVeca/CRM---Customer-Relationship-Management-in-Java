@@ -1,0 +1,6 @@
+Source deck: 15 slides, 16:9 (960 x 540 px), one master and one DEFAULT layout.
+Visual system: white background, navy titles, blue secondary titles, alternating pale pink and pale blue content fills, gold emphasis, UVT logo in the upper-left, and a pale footer band.
+Typography: Arial for audience-facing content; large navy section titles, smaller blue subtitles, and compact footer text. All edited shapes retain their inherited typography and geometry unless explicitly listed in the frame map.
+Insertion contract: each requested slide is duplicated from the matching source slide. No new slide design, overlay, chart, table, or image is introduced.
+Special slides: System Architecture preserves only the original architecture diagram and expands its frame to the slide canvas with contain fitting. Application Demo preserves the transition shell and removes the embedded demo media so the body is empty.
+Pacing: seven slides for a five-minute defense, with concise visible copy and speaker notes targeting approximately 4 minutes 40 seconds plus transition time.

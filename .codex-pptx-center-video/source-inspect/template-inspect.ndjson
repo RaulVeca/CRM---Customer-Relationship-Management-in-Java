@@ -1,0 +1,88 @@
+{"kind":"slide","id":"sl/y90nupkv","slide":1,"title":"TRAININGIT","textShapes":4}
+{"kind":"shape","id":"sh/547294r6","slide":1,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/k3yl0zql","slide":1,"textChars":66,"textLines":2}
+{"kind":"textbox","id":"sh/7qp4be9c","slide":1,"textChars":73,"textLines":2}
+{"kind":"textbox","id":"sh/65g3298r","slide":1,"textChars":48,"textLines":2}
+{"kind":"textbox","id":"sh/ts7md4r2","slide":1,"textChars":20,"textLines":2}
+{"kind":"slide","id":"sl/hwbqtkby","slide":2,"title":"Problem and Motivation","textShapes":10}
+{"kind":"shape","id":"sh/9072xkry","slide":2,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/ozy1ofad","slide":2,"textChars":22,"textLines":1}
+{"kind":"textbox","id":"sh/b29kza94","slide":2,"textChars":73,"textLines":1}
+{"kind":"textbox","id":"sh/a10jqpsj","slide":2,"textChars":5,"textLines":1}
+{"kind":"textbox","id":"sh/x4r21kru","slide":2,"textChars":17,"textLines":1}
+{"kind":"textbox","id":"sh/w3i1sfa9","slide":2,"textChars":98,"textLines":1}
+{"kind":"shape","id":"sh/r65knqtk","slide":2,"name":"Straight Connector 7","bbox":[280,380,760,0]}
+{"kind":"textbox","id":"sh/q5wjelsz","slide":2,"textChars":17,"textLines":1}
+{"kind":"textbox","id":"sh/ove9o7yd","slide":2,"textChars":102,"textLines":1}
+{"kind":"shape","id":"sh/9wnqhczy","slide":2,"name":"Straight Connector 10","bbox":[280,590,760,0]}
+{"kind":"textbox","id":"sh/mtwrmxg7","slide":2,"textChars":19,"textLines":1}
+{"kind":"textbox","id":"sh/nu58f2hs","slide":2,"textChars":92,"textLines":1}
+{"kind":"textbox","id":"sh/wjy9sry9","slide":2,"textChars":223,"textLines":3}
+{"kind":"slide","id":"sl/ofy9wn61","slide":3,"title":"Related Work","textShapes":5}
+{"kind":"shape","id":"sh/cza94vmx","slide":3,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/d0jax03i","slide":3,"textChars":12,"textLines":1}
+{"kind":"textbox","id":"sh/298ryl4v","slide":3,"textChars":65,"textLines":1}
+{"kind":"textbox","id":"sh/3ah8rqlg","slide":3,"textChars":5,"textLines":1}
+{"kind":"textbox","id":"sh/obq90bml","slide":3,"textChars":102,"textLines":1}
+{"kind":"textbox","id":"sh/m5cra54z","slide":3,"textChars":161,"textLines":1}
+{"kind":"table","id":"tb/u5o7algj","slide":3,"name":"Table 13","rows":5,"cols":3,"preview":"Tool family | Strength | Limitation","bbox":[270,230,1400,506]}
+{"kind":"slide","id":"sl/jyx0ra1s","slide":4,"title":"Contribution","textShapes":9}
+{"kind":"shape","id":"sh/1cj2d8b6","slide":4,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/0ba143al","slide":4,"textChars":12,"textLines":1}
+{"kind":"textbox","id":"sh/rm1k7yt4","slide":4,"textChars":59,"textLines":1}
+{"kind":"textbox","id":"sh/ql8jytsj","slide":4,"textChars":5,"textLines":1}
+{"kind":"textbox","id":"sh/doj29oba","slide":4,"textChars":20,"textLines":1}
+{"kind":"textbox","id":"sh/sna103ap","slide":4,"textChars":185,"textLines":1}
+{"kind":"shape","id":"sh/3ihk3et8","slide":4,"name":"Straight Connector 7","bbox":[270,380,1400,0]}
+{"kind":"textbox","id":"sh/ih8ju9sn","slide":4,"textChars":10,"textLines":1}
+{"kind":"textbox","id":"sh/kbm987y5","slide":4,"textChars":203,"textLines":5}
+{"kind":"textbox","id":"sh/5cva1cfq","slide":4,"textChars":15,"textLines":1}
+{"kind":"textbox","id":"sh/i94r6xgz","slide":4,"textChars":164,"textLines":3}
+{"kind":"slide","id":"sl/i107q5of","slide":5,"title":"System Architecture","textShapes":3}
+{"kind":"shape","id":"sh/dgbulwnm","slide":5,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/cf2tcr61","slide":5,"textChars":19,"textLines":1}
+{"kind":"textbox","id":"sh/z2tcnm5s","slide":5,"textChars":60,"textLines":1}
+{"kind":"textbox","id":"sh/yhkbe1o7","slide":5,"textChars":5,"textLines":1}
+{"kind":"image","id":"im/g7atobq5","slide":5,"name":"Picture 10","bbox":[406.57,139.18,1106.87,894.82]}
+{"kind":"slide","id":"sl/x8f69ofe","slide":6,"title":"The AI Layer","textShapes":17}
+{"kind":"shape","id":"sh/yhg7epsj","slide":6,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/zi98nu94","slide":6,"textChars":12,"textLines":1}
+{"kind":"textbox","id":"sh/87ipkzal","slide":6,"textChars":58,"textLines":1}
+{"kind":"textbox","id":"sh/98rqt4r6","slide":6,"textChars":5,"textLines":1}
+{"kind":"textbox","id":"sh/ml07i9sv","slide":6,"textChars":24,"textLines":1}
+{"kind":"textbox","id":"sh/7m98ru9g","slide":6,"textChars":12,"textLines":1}
+{"kind":"textbox","id":"sh/oryp8fah","slide":6,"textChars":102,"textLines":1}
+{"kind":"shape","id":"sh/pc76hkr2","slide":6,"name":"Straight Connector 8","bbox":[270,327,770,0]}
+{"kind":"textbox","id":"sh/h4bupgn6","slide":6,"textChars":19,"textLines":1}
+{"kind":"textbox","id":"sh/w32twb6l","slide":6,"textChars":31,"textLines":1}
+{"kind":"textbox","id":"sh/v2tcn650","slide":6,"textChars":93,"textLines":1}
+{"kind":"shape","id":"sh/u1kbu1ov","slide":6,"name":"Straight Connector 12","bbox":[270,491,770,0]}
+{"kind":"textbox","id":"sh/5svutgni","slide":6,"textChars":27,"textLines":1}
+{"kind":"textbox","id":"sh/47mt0b6x","slide":6,"textChars":31,"textLines":1}
+{"kind":"textbox","id":"sh/j6dcr65c","slide":6,"textChars":87,"textLines":1}
+{"kind":"shape","id":"sh/i54bylor","slide":6,"name":"Straight Connector 16","bbox":[270,655,770,0]}
+{"kind":"textbox","id":"sh/twfux0ne","slide":6,"textChars":21,"textLines":1}
+{"kind":"textbox","id":"sh/svmt4v6t","slide":6,"textChars":17,"textLines":1}
+{"kind":"textbox","id":"sh/cbe5g3ih","slide":6,"textChars":83,"textLines":1}
+{"kind":"textbox","id":"sh/qpwnet0b","slide":6,"textChars":221,"textLines":1}
+{"kind":"textbox","id":"sh/bq547yhw","slide":6,"textChars":100,"textLines":1}
+{"kind":"image","id":"im/neh8na9g","slide":6,"name":"Picture 42","bbox":[1111.04,190,567.92,355]}
+{"kind":"slide","id":"sl/gnmp4jqx","slide":7,"title":"Application Demo","textShapes":5}
+{"kind":"shape","id":"sh/cb2tkvap","slide":7,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/dcbud0ra","slide":7,"textChars":16,"textLines":1}
+{"kind":"textbox","id":"sh/ydkbm5sv","slide":7,"textChars":28,"textLines":1}
+{"kind":"textbox","id":"sh/zedcfa9g","slide":7,"textChars":5,"textLines":1}
+{"kind":"textbox","id":"sh/kzmdova1","slide":7,"textChars":9,"textLines":1}
+{"kind":"textbox","id":"sh/l0vuh0rm","slide":7,"textChars":40,"textLines":1}
+{"kind":"image","id":"im/rul4vapk","slide":7,"name":"In Powerpoint","bbox":[629.33,554.83,1920,1080]}
+{"kind":"slide","id":"sl/fu1gfa1s","slide":8,"title":"Conclusion","textShapes":8}
+{"kind":"shape","id":"sh/18byd4zy","slide":8,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/g72x4zyd","slide":8,"textChars":10,"textLines":1}
+{"kind":"textbox","id":"sh/ri9g7uhw","slide":8,"textChars":55,"textLines":1}
+{"kind":"textbox","id":"sh/6h0fypgb","slide":8,"textChars":5,"textLines":1}
+{"kind":"textbox","id":"sh/tkby9kzm","slide":8,"textChars":11,"textLines":1}
+{"kind":"textbox","id":"sh/sjix0zy1","slide":8,"textChars":297,"textLines":5}
+{"kind":"textbox","id":"sh/je9g3ahk","slide":8,"textChars":24,"textLines":1}
+{"kind":"textbox","id":"sh/id0fu50z","slide":8,"textChars":283,"textLines":5}
+{"kind":"textbox","id":"sh/o7ydoret","slide":8,"textChars":88,"textLines":1}
+{"kind":"notice","message":"Truncated: omitted 0 lines. Increase maxChars or narrow target."}

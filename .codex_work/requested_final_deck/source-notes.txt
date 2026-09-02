@@ -1,0 +1,7 @@
+User-provided visual and content sources:
+- C:\Users\raulv\Downloads\Powerpoint_Presentation.pptx: design authority and source slides 1, 2, 3, 4, 6, 11, 14 and 15.
+- D:\TrainingIT_site\Powerpoint_Presentation_5_minute.pptx: approved shortened wording for Problem and Motivation.
+- C:\Users\raulv\OneDrive\Desktop\documente_licenta\TrainingIT_thePDF.pdf: thesis context already reflected in the source slides.
+- C:\Users\raulv\Downloads\TrainingIT_conspectare.docx: oral-defense context already reflected in the shortened Problem and Motivation slide.
+
+No web research or external assets are used.

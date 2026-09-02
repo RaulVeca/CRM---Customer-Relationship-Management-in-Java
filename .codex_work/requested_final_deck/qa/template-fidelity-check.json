@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "checkedAt": "2026-08-31T22:50:37.106Z",
+  "workspace": "D:\\TrainingIT_site\\.codex_work\\requested_final_deck",
+  "finalPptx": "D:\\TrainingIT_site\\Powerpoint_Presentation_final.pptx",
+  "starterPptx": "D:\\TrainingIT_site\\.codex_work\\requested_final_deck\\template-starter.pptx",
+  "mapPath": "D:\\TrainingIT_site\\.codex_work\\requested_final_deck\\template-frame-map.json",
+  "starterLayoutDir": "D:\\TrainingIT_site\\.codex_work\\requested_final_deck\\template-starter-layout",
+  "finalLayoutDir": "D:\\TrainingIT_site\\.codex_work\\requested_final_deck\\final-layout",
+  "editDir": "D:\\TrainingIT_site\\.codex_work\\requested_final_deck",
+  "issueCount": 0,
+  "issues": []
+}

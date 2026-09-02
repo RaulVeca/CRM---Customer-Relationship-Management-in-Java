@@ -1,0 +1,5 @@
+Source deck: 8 slides, 1920 x 1080 px, UVT visual system.
+All output slides reuse their corresponding source slide and inherited layout/master hierarchy.
+Slide 7 uses the Blank layout with a full-slide UVT background, title/subtitle, demo label/flow text, page number, and an embedded MP4 with a PNG poster frame.
+The video frame is 1920 x 1080 px at left 629.33, top 554.83, placing most of it outside the slide.
+Insertion contract: preserve every element; only resize and reposition the existing video/poster object on slide 7.

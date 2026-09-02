@@ -1,0 +1,10 @@
+Source deck: C:\Users\raulv\Downloads\Powerpoint_Presentation.pptx
+Source structure: 15 slides, 960 x 540 px, one UVT master and one DEFAULT layout.
+Brand system: UVT navy and white; UVT logo at top-left; Arial typography; navy titles, blue subtitles, pale pink footer rail, restrained gold/blue callouts.
+Selected slides: source 1, 2, 3, 4, 6, 11, 14 and 15, in that order.
+Preserve-only slides: title, Related Work Gap, Contribution, The AI Layer, Application Demo poster, Conclusion and Future Work, except for updated page markers and speaker-note source blocks.
+Problem slide: source slide 2 keeps its exact geometry and typography, but its text is replaced with the approved shortened version from Powerpoint_Presentation_5_minute.pptx.
+Architecture slide: source slide 6 remains on the same template; the title becomes System Architecture, the four right-hand explanatory bands are deleted, and the existing diagram image is enlarged within the inherited content area.
+Application Demo: the source video poster is preserved visually. The embedded MP4 is not retained by the available PPTX export surface, as confirmed with the user.
+Page markers: content slides are renumbered Page 1 / 7 through Page 7 / 7.
+No other slide or application-code changes are authorized.

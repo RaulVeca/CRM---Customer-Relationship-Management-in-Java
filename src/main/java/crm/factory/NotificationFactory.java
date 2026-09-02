@@ -16,10 +16,6 @@ public interface NotificationFactory {
 
     Notification createEnrollmentConfirmation(Contact contact, Enrollment enrollment);
 
-    Notification createSessionReminder(Contact contact, String sessionDetails);
-
-    Notification createFollowUp(Contact contact, String reason);
-
     /**
      * Clasa internă pentru o notificare.
      */

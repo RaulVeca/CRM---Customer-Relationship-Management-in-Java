@@ -45,20 +45,9 @@ public class ContactBuilder {
         return this;
     }
 
-    public ContactBuilder asCorporate() {
-        contact.setContactType(ContactType.CORPORATE);
-        return this;
-    }
-
     public ContactBuilder name(String firstName, String lastName) {
         contact.setFirstName(firstName);
         contact.setLastName(lastName);
-        return this;
-    }
-
-    public ContactBuilder companyName(String companyName) {
-        contact.setCompanyName(companyName);
-        contact.setContactType(ContactType.CORPORATE);
         return this;
     }
 
@@ -91,30 +80,8 @@ public class ContactBuilder {
         return this;
     }
 
-    public ContactBuilder fiscalDetails(String fiscalCode, String registrationNumber) {
-        contact.setFiscalCode(fiscalCode);
-        contact.setRegistrationNumber(registrationNumber);
-        return this;
-    }
-
-    public ContactBuilder industry(String industry, Integer employeeCount) {
-        contact.setIndustry(industry);
-        contact.setEmployeeCount(employeeCount);
-        return this;
-    }
-
     public ContactBuilder leadSource(LeadSource source) {
         contact.setLeadSource(source);
-        return this;
-    }
-
-    public ContactBuilder leadStatus(LeadStatus status) {
-        contact.setLeadStatus(status);
-        return this;
-    }
-
-    public ContactBuilder leadScore(int score) {
-        contact.setLeadScore(Math.max(0, Math.min(100, score)));
         return this;
     }
 
@@ -128,19 +95,9 @@ public class ContactBuilder {
         return this;
     }
 
-    public ContactBuilder assignedTo(Long userId) {
-        contact.setAssignedTo(userId);
-        return this;
-    }
-
     public ContactBuilder withGdprConsent() {
         contact.setGdprConsent(true);
         contact.setGdprConsentDate(LocalDateTime.now());
-        return this;
-    }
-
-    public ContactBuilder withMarketingConsent() {
-        contact.setMarketingConsent(true);
         return this;
     }
 
@@ -156,15 +113,10 @@ public class ContactBuilder {
         if (contact.getEmail() == null || contact.getEmail().isEmpty()) {
             throw new IllegalStateException("The email is required");
         }
-        if (contact.getContactType() == ContactType.INDIVIDUAL) {
-            if (contact.getFirstName() == null && contact.getLastName() == null) {
-                throw new IllegalStateException(
-                    "First or last name is required for an individual");
-            }
-        } else if (contact.getContactType() == ContactType.CORPORATE) {
-            if (contact.getCompanyName() == null || contact.getCompanyName().isEmpty()) {
-                throw new IllegalStateException("The company name is required");
-            }
+        if (contact.getContactType() == ContactType.INDIVIDUAL
+                && contact.getFirstName() == null && contact.getLastName() == null) {
+            throw new IllegalStateException(
+                "First or last name is required for an individual");
         }
     }
 }

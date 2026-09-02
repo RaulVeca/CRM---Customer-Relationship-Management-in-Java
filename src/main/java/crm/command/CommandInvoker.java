@@ -55,8 +55,4 @@ public class CommandInvoker {
     public Deque<Command<?>> getHistory() {
         return new ArrayDeque<>(history);
     }
-
-    public void clearHistory() {
-        history.clear();
-    }
 }

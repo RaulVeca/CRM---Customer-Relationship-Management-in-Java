@@ -16,7 +16,6 @@ import crm.validation.ContactValidatorChain;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -200,10 +199,6 @@ public class ContactService {
 
     public List<Contact> getContactsByStatus(LeadStatus status) {
         return contactRepository.findByLeadStatus(status);
-    }
-
-    public List<Contact> getContactsAssignedTo(Long userId) {
-        return contactRepository.findByAssignedTo(userId);
     }
 
     public boolean deleteContact(Long id) {

@@ -1,0 +1,9 @@
+Output slide 1: source slide 1 preserved visually; speaker notes added for the opening.
+Output slide 2: source slide 2 copy shortened substantially; layout and all styling retained.
+Output slide 3: source slide 5 title reframed as a takeaway and caption shortened; diagram retained unchanged.
+Output slide 4: source slide 6 copy shortened within the four existing architecture bands; diagram retained unchanged.
+Output slide 5: source slide 10 subtitle and takeaway shortened; sequence diagram retained unchanged.
+Output slide 6: source slide 12 subtitle and caption shortened; the three source screenshots are retained as a stable cue for a live walkthrough.
+Output slide 7: source slide 15 copy reduced to three implemented results, two validation points, and three next steps; layout and styling retained.
+All content slides: page markers updated for a six-content-slide sequence.
+All output slides: concise speaker notes added, including timing and source blocks.

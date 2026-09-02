@@ -1,0 +1,10 @@
+Source deck: Powerpoint_Presentation.pptx
+Source size: 960 x 540 px (16:9), 15 slides.
+Visual system: UVT navy/white identity, logo at top-left, Arial headings and body, blue title/subtitle hierarchy, pink footer rail, gold/blue callout headers.
+Structure: slide 1 is a full-bleed title; slides 2-15 share local header and footer elements rather than inherited placeholders. The deck contains one table, multiple embedded PNG diagrams/screenshots, and one embedded MP4 on source slide 14.
+Reusable patterns selected: title slide (1), text/problem slide (2), system diagram (5), architecture diagram with four explanatory bands (6), sequence diagram (10), three-view application demo (12), two-column conclusion (15).
+Typography contract: preserve each selected source text box's existing Arial family, size, weight, spacing, insets, alignment, and vertical anchor. Copy is shortened to fit without reducing font sizes.
+Page marker contract: source markers are local text shapes. They will be rewritten from the original 13-page sequence to Page 1 / 6 through Page 6 / 6, excluding the title slide.
+Insertion contract: no new visible primitives, diagrams, images, or overlays. Existing source slides are duplicated and edited in place. The source deck remains unchanged and retains its embedded MP4; the shortened copy uses the source deck's three-view screenshot slide for predictable pacing.
+Narrative: problem -> one platform/two experiences -> four-layer architecture -> event-driven flow -> live demo -> validated result and next steps.
+Communication job: By the end, the thesis committee should understand that TrainingIT is one coherent storefront-and-CRM product, implemented on a shared backend and data model, with event-driven reactions that remove manual reconciliation.

@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "checkedAt": "2026-09-01T00:08:00.645Z",
+  "workspace": "D:\\TrainingIT_site\\.codex-pptx-template-architecture",
+  "finalPptx": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\final-check.pptx",
+  "starterPptx": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-starter.pptx",
+  "mapPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-frame-map.json",
+  "starterLayoutDir": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-starter-layout",
+  "finalLayoutDir": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\final-after-theme\\layouts",
+  "editDir": "D:\\TrainingIT_site\\.codex-pptx-template-architecture",
+  "issueCount": 0,
+  "issues": []
+}

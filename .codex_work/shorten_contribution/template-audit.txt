@@ -1,0 +1,7 @@
+Source: C:\Users\raulv\Downloads\5 min.pptx
+Slide count: 8.
+All slides use the existing UVT visual system, with the source theme, logos, footer chrome, fonts, spacing, layouts and page markers preserved.
+Slide 4 is the only editable slide. Its existing title, subtitle, section headers, colored panels, positioning and typography are preserved.
+Only the three inherited narrative text boxes on slide 4 are rewritten: Applied contribution, Objectives body and Design boundary body.
+Slides 1-3 and 5-8 are preserve-only.
+No structural placeholders are added, removed or left unfilled.

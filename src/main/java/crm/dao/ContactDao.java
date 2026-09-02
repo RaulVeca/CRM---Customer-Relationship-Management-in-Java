@@ -254,18 +254,6 @@ public class ContactDao extends AbstractDao<Contact> {
         }
     }
 
-    public List<Contact> findByAssignedTo(Long userId) {
-        String sql = "SELECT * FROM contacts WHERE assigned_to = ? ORDER BY lead_score DESC";
-        try (Connection conn = db.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setLong(1, userId);
-            return mapResults(ps);
-        } catch (SQLException e) {
-            throw new DataAccessException("Error in findByAssignedTo", e);
-        }
-    }
-
     public List<Contact> search(String searchTerm, int offset, int limit) {
         String sql = "SELECT * FROM contacts WHERE " +
                 "LOWER(first_name) LIKE ? OR LOWER(last_name) LIKE ? OR " +
@@ -282,19 +270,6 @@ public class ContactDao extends AbstractDao<Contact> {
             return mapResults(ps);
         } catch (SQLException e) {
             throw new DataAccessException("Error in search", e);
-        }
-    }
-
-    public List<Contact> findStaleLeads(LocalDateTime threshold) {
-        String sql = "SELECT * FROM contacts WHERE last_contact_date < ? " +
-                "AND lead_status IN ('CONTACTED', 'INTERESTED')";
-        try (Connection conn = db.getConnection();
-             PreparedStatement ps = conn.prepareStatement(sql)) {
-
-            ps.setTimestamp(1, Timestamp.valueOf(threshold));
-            return mapResults(ps);
-        } catch (SQLException e) {
-            throw new DataAccessException("Error in findStaleLeads", e);
         }
     }
 

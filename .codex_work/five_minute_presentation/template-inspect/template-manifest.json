@@ -1,0 +1,295 @@
+{
+  "sourcePptx": "C:\\Users\\raulv\\Downloads\\Powerpoint_Presentation.pptx",
+  "workspace": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation",
+  "outDir": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect",
+  "generatedAt": "2026-08-31T16:27:46.847Z",
+  "slideCount": 15,
+  "slideArtifacts": [
+    {
+      "slide": 1,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-01.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-01.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-01.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-01.layout.json"
+    },
+    {
+      "slide": 2,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-02.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-02.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-02.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-02.layout.json"
+    },
+    {
+      "slide": 3,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-03.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-03.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-03.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-03.layout.json"
+    },
+    {
+      "slide": 4,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-04.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-04.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-04.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-04.layout.json"
+    },
+    {
+      "slide": 5,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-05.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-05.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-05.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-05.layout.json"
+    },
+    {
+      "slide": 6,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-06.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-06.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-06.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-06.layout.json"
+    },
+    {
+      "slide": 7,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-07.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-07.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-07.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-07.layout.json"
+    },
+    {
+      "slide": 8,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-08.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-08.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-08.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-08.layout.json"
+    },
+    {
+      "slide": 9,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-09.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-09.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-09.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-09.layout.json"
+    },
+    {
+      "slide": 10,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-10.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-10.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-10.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-10.layout.json"
+    },
+    {
+      "slide": 11,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-11.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-11.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-11.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-11.layout.json"
+    },
+    {
+      "slide": 12,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-12.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-12.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-12.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-12.layout.json"
+    },
+    {
+      "slide": 13,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-13.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-13.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-13.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-13.layout.json"
+    },
+    {
+      "slide": 14,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-14.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-14.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-14.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-14.layout.json"
+    },
+    {
+      "slide": 15,
+      "previewPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\source-slides\\source-slide-15.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-15.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\layouts\\source-slide-15.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-15.layout.json"
+    }
+  ],
+  "inspectPath": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\template-inspect.ndjson",
+  "inspectRelativePath": "template-inspect/template-inspect.ndjson",
+  "inspectTruncated": true,
+  "inspectMetadata": {
+    "revision": "wgl47p",
+    "target": {
+      "id": "pr/9v8msx"
+    },
+    "kind": {
+      "requested": "slide,textbox,shape,image,table,chart",
+      "tokens": [
+        "slide",
+        "textbox",
+        "shape",
+        "image",
+        "table",
+        "chart"
+      ]
+    },
+    "include": {
+      "tokens": []
+    },
+    "exclude": {
+      "tokens": []
+    },
+    "notices": []
+  },
+  "extractedMedia": [
+    {
+      "entry": "ppt/media/image1.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image1.png",
+      "relativePath": "template-inspect/assets/ppt/media/image1.png",
+      "bytes": 515177
+    },
+    {
+      "entry": "ppt/media/image2.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image2.png",
+      "relativePath": "template-inspect/assets/ppt/media/image2.png",
+      "bytes": 48550
+    },
+    {
+      "entry": "ppt/media/image3.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image3.png",
+      "relativePath": "template-inspect/assets/ppt/media/image3.png",
+      "bytes": 49548
+    },
+    {
+      "entry": "ppt/media/image4.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image4.png",
+      "relativePath": "template-inspect/assets/ppt/media/image4.png",
+      "bytes": 174373
+    },
+    {
+      "entry": "ppt/media/image6.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image6.png",
+      "relativePath": "template-inspect/assets/ppt/media/image6.png",
+      "bytes": 267780
+    },
+    {
+      "entry": "ppt/media/image7.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image7.png",
+      "relativePath": "template-inspect/assets/ppt/media/image7.png",
+      "bytes": 183905
+    },
+    {
+      "entry": "ppt/media/image8.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image8.png",
+      "relativePath": "template-inspect/assets/ppt/media/image8.png",
+      "bytes": 305779
+    },
+    {
+      "entry": "ppt/media/image9.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image9.png",
+      "relativePath": "template-inspect/assets/ppt/media/image9.png",
+      "bytes": 200814
+    },
+    {
+      "entry": "ppt/media/image13.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image13.png",
+      "relativePath": "template-inspect/assets/ppt/media/image13.png",
+      "bytes": 154746
+    },
+    {
+      "entry": "ppt/media/image10.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image10.png",
+      "relativePath": "template-inspect/assets/ppt/media/image10.png",
+      "bytes": 113998
+    },
+    {
+      "entry": "ppt/media/image5.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image5.png",
+      "relativePath": "template-inspect/assets/ppt/media/image5.png",
+      "bytes": 224357
+    },
+    {
+      "entry": "ppt/media/image11.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image11.png",
+      "relativePath": "template-inspect/assets/ppt/media/image11.png",
+      "bytes": 163050
+    },
+    {
+      "entry": "ppt/media/image14.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image14.png",
+      "relativePath": "template-inspect/assets/ppt/media/image14.png",
+      "bytes": 266320
+    },
+    {
+      "entry": "ppt/media/image12.png",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\image12.png",
+      "relativePath": "template-inspect/assets/ppt/media/image12.png",
+      "bytes": 101462
+    },
+    {
+      "entry": "ppt/media/media1.mp4",
+      "path": "D:\\TrainingIT_site\\.codex_work\\five_minute_presentation\\template-inspect\\assets\\ppt\\media\\media1.mp4",
+      "relativePath": "template-inspect/assets/ppt/media/media1.mp4",
+      "bytes": 6138467
+    }
+  ],
+  "fonts": [
+    "+mj-cs",
+    "+mj-ea",
+    "+mj-lt",
+    "+mn-cs",
+    "+mn-ea",
+    "+mn-lt",
+    "Angsana New",
+    "Aptos",
+    "Aptos Display",
+    "Arial",
+    "Calibri",
+    "Calibri Light",
+    "Cordia New",
+    "Courier New",
+    "DaunPenh",
+    "DokChampa",
+    "Ebrima",
+    "Estrangelo Edessa",
+    "Euphemia",
+    "Gautami",
+    "Iskoola Pota",
+    "Javanese Text",
+    "Kalinga",
+    "Kartika",
+    "Latha",
+    "Leelawadee UI",
+    "MV Boli",
+    "Mangal",
+    "Microsoft Himalaya",
+    "Microsoft JhengHei",
+    "Microsoft New Tai Lue",
+    "Microsoft Tai Le",
+    "Microsoft Uighur",
+    "Microsoft Yi Baiti",
+    "Mongolian Baiti",
+    "MoolBoran",
+    "Myanmar Text",
+    "Nirmala UI",
+    "Nyala",
+    "Phagspa",
+    "Plantagenet Cherokee",
+    "Raavi",
+    "Segoe UI",
+    "Shruti",
+    "Sylfaen",
+    "Times New Roman",
+    "Tunga",
+    "Vrinda",
+    "新細明體",
+    "游ゴシック",
+    "游ゴシック Light",
+    "等线",
+    "等线 Light",
+    "맑은 고딕"
+  ],
+  "packageParts": {
+    "mediaCount": 15,
+    "slideXmlCount": 15,
+    "chartCount": 0,
+    "tableSlideCount": 1
+  }
+}

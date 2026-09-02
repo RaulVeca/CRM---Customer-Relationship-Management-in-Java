@@ -1,0 +1,2 @@
+No design deviations. The existing video geometry and slide layout are preserved exactly.
+The only package entries to change are ppt/media/media1.mp4 and ppt/media/image5.png.

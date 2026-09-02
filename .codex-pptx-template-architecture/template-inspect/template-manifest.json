@@ -1,0 +1,118 @@
+{
+  "sourcePptx": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\visual-template.pptx",
+  "workspace": "D:\\TrainingIT_site\\.codex-pptx-template-architecture",
+  "outDir": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect",
+  "generatedAt": "2026-08-31T23:53:40.162Z",
+  "slideCount": 3,
+  "slideArtifacts": [
+    {
+      "slide": 1,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\source-slides\\source-slide-01.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-01.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\layouts\\source-slide-01.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-01.layout.json"
+    },
+    {
+      "slide": 2,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\source-slides\\source-slide-02.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-02.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\layouts\\source-slide-02.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-02.layout.json"
+    },
+    {
+      "slide": 3,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\source-slides\\source-slide-03.png",
+      "previewRelativePath": "template-inspect/source-slides/source-slide-03.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\layouts\\source-slide-03.layout.json",
+      "layoutRelativePath": "template-inspect/layouts/source-slide-03.layout.json"
+    }
+  ],
+  "inspectPath": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\template-inspect.ndjson",
+  "inspectRelativePath": "template-inspect/template-inspect.ndjson",
+  "inspectTruncated": false,
+  "inspectMetadata": {
+    "revision": "o1yp95",
+    "target": {
+      "id": "pr/3xuvis"
+    },
+    "kind": {
+      "requested": "slide,textbox,shape,image,table,chart",
+      "tokens": [
+        "slide",
+        "textbox",
+        "shape",
+        "image",
+        "table",
+        "chart"
+      ]
+    },
+    "include": {
+      "tokens": []
+    },
+    "exclude": {
+      "tokens": []
+    },
+    "notices": []
+  },
+  "extractedMedia": [
+    {
+      "entry": "ppt/media/image1.jpeg",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\assets\\ppt\\media\\image1.jpeg",
+      "relativePath": "template-inspect/assets/ppt/media/image1.jpeg",
+      "bytes": 350236
+    },
+    {
+      "entry": "ppt/media/image2.jpeg",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-template-architecture\\template-inspect\\assets\\ppt\\media\\image2.jpeg",
+      "relativePath": "template-inspect/assets/ppt/media/image2.jpeg",
+      "bytes": 254186
+    }
+  ],
+  "fonts": [
+    "+mj-cs",
+    "+mj-ea",
+    "+mj-lt",
+    "+mn-cs",
+    "+mn-ea",
+    "+mn-lt",
+    "Angsana New",
+    "Arial",
+    "Bebas Neue Bold",
+    "Calibri",
+    "Cordia New",
+    "DaunPenh",
+    "DokChampa",
+    "Estrangelo Edessa",
+    "Euphemia",
+    "Gautami",
+    "Helvetica Now Display Bold",
+    "Iskoola Pota",
+    "Kalinga",
+    "Kartika",
+    "Latha",
+    "MV Boli",
+    "Mangal",
+    "Microsoft Himalaya",
+    "Microsoft Uighur",
+    "Microsoft Yi Baiti",
+    "Mongolian Baiti",
+    "MoolBoran",
+    "Nyala",
+    "Plantagenet Cherokee",
+    "Raavi",
+    "Shruti",
+    "Times New Roman",
+    "Tunga",
+    "Vrinda",
+    "宋体",
+    "新細明體",
+    "맑은 고딕",
+    "ＭＳ Ｐゴシック"
+  ],
+  "packageParts": {
+    "mediaCount": 2,
+    "slideXmlCount": 3,
+    "chartCount": 0,
+    "tableSlideCount": 0
+  }
+}

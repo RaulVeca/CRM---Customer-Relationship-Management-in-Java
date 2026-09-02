@@ -55,7 +55,7 @@ public class CrmFacade {
     private final ActivityService activityService;
     private final EmployeeService employeeService;
     private final ReviewService reviewService;
-    private final PurchaseHistoryService purchaseHistoryService;
+    private final PurchaseHistoryService purchaseHistoryService;     // aici sunt atributele de tipuri diferite de clase
     private final AnalyticsService analyticsService;
     private final MetricsService metricsService;
     private final IssueReportService issueReportService;
@@ -64,7 +64,7 @@ public class CrmFacade {
     private CrmFacade() {
         this.contactService = ContactService.getInstance();
         this.courseService = CourseService.getInstance();
-        this.enrollmentService = EnrollmentService.getInstance();
+        this.enrollmentService = EnrollmentService.getInstance(); // aici se fac obiecte new CrmFacade() din atributele de la inceput
         this.invoiceService = InvoiceService.getInstance();
         this.opportunityService = OpportunityService.getInstance();
         this.activityService = ActivityService.getInstance();
@@ -175,10 +175,6 @@ public class CrmFacade {
 
     public void deactivateCourse(Long id) {
         courseService.deactivateCourse(id);
-    }
-
-    public Optional<Course> findCourseByCode(String code) {
-        return courseService.findByCode(code);
     }
 
     // =====================================================
@@ -378,10 +374,6 @@ public class CrmFacade {
         return employeeService.getByCompany(companyId);
     }
 
-    public long countEmployeesForCompany(Long companyId) {
-        return employeeService.countByCompany(companyId);
-    }
-
     public boolean deleteEmployee(Long id) {
         return employeeService.deleteEmployee(id);
     }
@@ -398,3 +390,5 @@ public class CrmFacade {
         return contactService.countByStatus(status);
     }
 }
+
+// se apeleaza toate functiile tuturor serviciilor pentru utilizatori si admini, aici din 'facade'

@@ -113,11 +113,6 @@ public class MeditationSessionDao extends AbstractDao<MeditationSession> {
         });
     }
 
-    /** All sessions booked with a trainer on a single day, ordered by hour. */
-    public List<MeditationSession> findByTrainerOnDate(Long trainerId, LocalDate date) {
-        return findByTrainerBetween(trainerId, date, date);
-    }
-
     /**
      * Every session a given contact has ever booked, ordered chronologically, so
      * the contact can review and cancel their own bookings.

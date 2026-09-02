@@ -1,0 +1,1228 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/hgzapcr6",
+    "id": "hgzapcr6",
+    "slide": 13,
+    "layoutId": "/ppt/slideLayouts/slideLayout1.xml",
+    "layoutName": "DEFAULT",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#4472C4",
+      "accent2": "#ED7D31",
+      "accent3": "#A5A5A5",
+      "accent4": "#FFC000",
+      "accent5": "#5B9BD5",
+      "accent6": "#70AD47",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#44546A",
+      "lt2": "#E7E6E6",
+      "hlink": "#0563C1",
+      "folHlink": "#954F72"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Calibri Light"
+      },
+      "minorFont": {
+        "latinTypeface": "Calibri"
+      }
+    },
+    "typefaces": [
+      "Arial",
+      "Calibri",
+      "Calibri Light"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout1.xml",
+      "name": "DEFAULT",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/bedg3m9s",
+      "id": "24",
+      "name": "Image 0",
+      "bbox": [
+        29.76,
+        0,
+        90.24,
+        90.24
+      ],
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "/ppt/media/image3.png",
+        "contentType": "image/png",
+        "byteLength": 49548
+      },
+      "fillImage": {
+        "assetId": "/ppt/media/image3.png",
+        "contentType": "image/png",
+        "byteLength": 49548
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bq9orito",
+      "id": "3",
+      "name": "Text 0",
+      "bbox": [
+        132.48,
+        8.64,
+        792,
+        38.4
+      ],
+      "geometry": "rect",
+      "text": "Testing and Validation",
+      "textPreview": "Testing and Validation",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Testing and Validation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Testing and Validation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Testing and Validation",
+              "fontSize": 28,
+              "typeface": "Arial",
+              "color": "#022461",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/o3i5w3ad",
+      "id": "4",
+      "name": "Text 1",
+      "bbox": [
+        134.4,
+        48,
+        792,
+        28.8
+      ],
+      "geometry": "rect",
+      "text": "Correctness here is about propagation, not isolated algorithms",
+      "textPreview": "Correctness here is about propagation, not isolated algorithms",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Correctness here is about propagation, not isolated algorithms"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Correctness here is about propagation, not isolated algorithms",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Correctness here is about propagation, not isolated algorithms",
+              "fontSize": 16.67,
+              "typeface": "Arial",
+              "color": "#2F5D8C"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/p4r6p8by",
+      "id": "5",
+      "name": "Shape 2",
+      "bbox": [
+        0,
+        525.12,
+        960,
+        14.88
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/21gnuts7",
+      "id": "6",
+      "name": "Shape 3",
+      "bbox": [
+        29.76,
+        496.32,
+        808.32,
+        26.88
+      ],
+      "geometry": "roundRect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/32ponyts",
+      "id": "7",
+      "name": "Shape 4",
+      "bbox": [
+        29.76,
+        494.4,
+        900.48,
+        0
+      ],
+      "geometry": "line",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "lineColor": "#BFBFBF",
+      "lineWidth": 1
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gzy5s3a1",
+      "id": "8",
+      "name": "Text 5",
+      "bbox": [
+        43.2,
+        496.32,
+        576,
+        26.88
+      ],
+      "geometry": "rect",
+      "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+      "textPreview": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+              "fontSize": 10,
+              "typeface": "Arial",
+              "color": "#3C3C3C",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1076lobm",
+      "id": "9",
+      "name": "Text 6",
+      "bbox": [
+        758.4,
+        496.32,
+        171.84,
+        26.88
+      ],
+      "geometry": "rect",
+      "text": "Page 12 / 13",
+      "textPreview": "Page 12 / 13",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Page 12 / 13"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Page 12 / 13",
+          "resolvedTextStyle": {
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Page 12 / 13",
+              "fontSize": 10,
+              "typeface": "Arial",
+              "color": "#3C3C3C",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/hcfy9k3u",
+      "id": "10",
+      "name": "Shape 7",
+      "bbox": [
+        40.32,
+        109.44,
+        284.16,
+        32.64
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#022461"
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/gb6x0zm9",
+      "id": "11",
+      "name": "Text 8",
+      "bbox": [
+        52.8,
+        109.44,
+        259.2,
+        32.64
+      ],
+      "geometry": "rect",
+      "text": "Input validation",
+      "textPreview": "Input validation",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Input validation"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Input validation",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Input validation",
+              "fontSize": 15.33,
+              "typeface": "Arial",
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/vaxg7ulo",
+      "id": "12",
+      "name": "Shape 9",
+      "bbox": [
+        40.32,
+        142.08,
+        284.16,
+        240
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/u9ofyp43",
+      "id": "13",
+      "name": "Text 10",
+      "bbox": [
+        55.68,
+        146.88,
+        253.44,
+        230.4
+      ],
+      "geometry": "rect",
+      "text": "Validated on two levels. The client checks missing fields, password confirmation and the mandatory GDPR consent. On the server, payloads pass Spring Validation, and contact data additionally goes through a Chain-of-Responsibility validator that checks the e-mail, the phone number, the GDPR flag and the contact type in sequence - so an invalid contact never reaches the database.",
+      "textPreview": "Validated on two levels. The client checks missing fields, password confirmation and the mandatory GDPR consent. On the server, payloads ...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 10,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Validated on two levels. The client checks"
+          },
+          {
+            "index": 2,
+            "text": "missing fields, password confirmation and"
+          },
+          {
+            "index": 3,
+            "text": "the mandatory GDPR consent. On the"
+          },
+          {
+            "index": 4,
+            "text": "server, payloads pass Spring Validation, and"
+          },
+          {
+            "index": 5,
+            "text": "contact data additionally goes through a"
+          },
+          {
+            "index": 6,
+            "text": "Chain-of-Responsibility validator that checks"
+          },
+          {
+            "index": 7,
+            "text": "the e-mail, the phone number, the GDPR"
+          },
+          {
+            "index": 8,
+            "text": "flag and the contact type in sequence - so"
+          },
+          {
+            "index": 9,
+            "text": "an invalid contact never reaches the"
+          },
+          {
+            "index": 10,
+            "text": "database."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Validated on two levels. The client checks missing fields, password confirmation and the mandatory GDPR consent. On the server, payloads pass Spring Validation, and contact data additionally goes through a Chain-of-Responsibility validator that checks the e-mail, the phone number, the GDPR flag and the contact type in sequence - so an invalid contact never reaches the database.",
+          "lineSpacingPercent": 112000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Validated on two levels. The client checks missing fields, password confirmation and the mandatory GDPR consent. On the server, payloads pass Spring Validation, and contact data additionally goes through a Chain-of-Responsibility validator that checks the e-mail, the phone number, the GDPR flag and the contact type in sequence - so an invalid contact never reaches the database.",
+              "fontSize": 12.8,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/t8fy5k3i",
+      "id": "14",
+      "name": "Shape 11",
+      "bbox": [
+        337.92,
+        109.44,
+        284.16,
+        32.64
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#2588E6"
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/876xwfmx",
+      "id": "15",
+      "name": "Text 12",
+      "bbox": [
+        350.4,
+        109.44,
+        259.2,
+        32.64
+      ],
+      "geometry": "rect",
+      "text": "Robustness by design",
+      "textPreview": "Robustness by design",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Robustness by design"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Robustness by design",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Robustness by design",
+              "fontSize": 15.33,
+              "typeface": "Arial",
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7mdg3als",
+      "id": "16",
+      "name": "Shape 13",
+      "bbox": [
+        337.92,
+        142.08,
+        284.16,
+        240
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6l4fu547",
+      "id": "17",
+      "name": "Text 14",
+      "bbox": [
+        353.28,
+        146.88,
+        253.44,
+        230.4
+      ],
+      "geometry": "rect",
+      "text": "Invoice generation is idempotent, so a repeated event cannot produce a duplicate. Observer failures are isolated: an error while generating an invoice is logged but does not roll back the booking that triggered it. The AI layer degrades gracefully. Deletions in the Issues tab are guarded by an explicit \"this cannot be undone\" confirmation.",
+      "textPreview": "Invoice generation is idempotent, so a repeated event cannot produce a duplicate. Observer failures are isolated: an error while generati...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 8,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Invoice generation is idempotent, so a"
+          },
+          {
+            "index": 2,
+            "text": "repeated event cannot produce a duplicate."
+          },
+          {
+            "index": 3,
+            "text": "Observer failures are isolated: an error while"
+          },
+          {
+            "index": 4,
+            "text": "generating an invoice is logged but does not"
+          },
+          {
+            "index": 5,
+            "text": "roll back the booking that triggered it. The AI"
+          },
+          {
+            "index": 6,
+            "text": "layer degrades gracefully. Deletions in the"
+          },
+          {
+            "index": 7,
+            "text": "Issues tab are guarded by an explicit \"this"
+          },
+          {
+            "index": 8,
+            "text": "cannot be undone\" confirmation."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Invoice generation is idempotent, so a repeated event cannot produce a duplicate. Observer failures are isolated: an error while generating an invoice is logged but does not roll back the booking that triggered it. The AI layer degrades gracefully. Deletions in the Issues tab are guarded by an explicit \"this cannot be undone\" confirmation.",
+          "lineSpacingPercent": 112000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Invoice generation is idempotent, so a repeated event cannot produce a duplicate. Observer failures are isolated: an error while generating an invoice is logged but does not roll back the booking that triggered it. The AI layer degrades gracefully. Deletions in the Issues tab are guarded by an explicit \"this cannot be undone\" confirmation.",
+              "fontSize": 12.8,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/lkvy103m",
+      "id": "18",
+      "name": "Shape 15",
+      "bbox": [
+        635.52,
+        109.44,
+        284.16,
+        32.64
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#E4AB26"
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/kjmxsfm1",
+      "id": "19",
+      "name": "Text 16",
+      "bbox": [
+        648,
+        109.44,
+        259.2,
+        32.64
+      ],
+      "geometry": "rect",
+      "text": "Functional testing",
+      "textPreview": "Functional testing",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Functional testing"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Functional testing",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Functional testing",
+              "fontSize": 15.33,
+              "typeface": "Arial",
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 19,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/cnqh8fux",
+      "id": "20",
+      "name": "Shape 17",
+      "bbox": [
+        635.52,
+        142.08,
+        284.16,
+        240
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 20,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/xozyhkbi",
+      "id": "21",
+      "name": "Text 18",
+      "bbox": [
+        650.88,
+        146.88,
+        253.44,
+        230.4
+      ],
+      "geometry": "rect",
+      "text": "The main user journeys were tested manually against a running instance backed by a real MariaDB database: registration creating a lead; login routing USER and ADMIN correctly; a one-click enrolment appearing in Purchases; a review updating the average rating live; a booking producing an invoice with the right discount; exports to CSV, Excel and PDF.",
+      "textPreview": "The main user journeys were tested manually against a running instance backed by a real MariaDB database: registration creating a lead; l...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 9,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The main user journeys were tested"
+          },
+          {
+            "index": 2,
+            "text": "manually against a running instance backed"
+          },
+          {
+            "index": 3,
+            "text": "by a real MariaDB database: registration"
+          },
+          {
+            "index": 4,
+            "text": "creating a lead; login routing USER and"
+          },
+          {
+            "index": 5,
+            "text": "ADMIN correctly; a one-click enrolment"
+          },
+          {
+            "index": 6,
+            "text": "appearing in Purchases; a review updating"
+          },
+          {
+            "index": 7,
+            "text": "the average rating live; a booking producing"
+          },
+          {
+            "index": 8,
+            "text": "an invoice with the right discount; exports to"
+          },
+          {
+            "index": 9,
+            "text": "CSV, Excel and PDF."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The main user journeys were tested manually against a running instance backed by a real MariaDB database: registration creating a lead; login routing USER and ADMIN correctly; a one-click enrolment appearing in Purchases; a review updating the average rating live; a booking producing an invoice with the right discount; exports to CSV, Excel and PDF.",
+          "lineSpacingPercent": 112000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "The main user journeys were tested manually against a running instance backed by a real MariaDB database: registration creating a lead; login routing USER and ADMIN correctly; a one-click enrolment appearing in Purchases; a review updating the average rating live; a booking producing an invoice with the right discount; exports to CSV, Excel and PDF.",
+              "fontSize": 12.8,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 21,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/q18f65cr",
+      "id": "22",
+      "name": "Shape 19",
+      "bbox": [
+        40.32,
+        399.36,
+        879.36,
+        59.52
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 22,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/bmhgfatc",
+      "id": "23",
+      "name": "Text 20",
+      "bbox": [
+        55.68,
+        403.2,
+        848.64,
+        51.84
+      ],
+      "geometry": "rect",
+      "text": "The project also includes the Spring Boot test harness as a foundation; extending it into full unit and integration coverage is identified as future work.",
+      "textPreview": "The project also includes the Spring Boot test harness as a foundation; extending it into full unit and integration coverage is identifie...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "The project also includes the Spring Boot test harness as a foundation; extending it into full unit and integration coverage is identified as"
+          },
+          {
+            "index": 2,
+            "text": "future work."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "The project also includes the Spring Boot test harness as a foundation; extending it into full unit and integration coverage is identified as future work.",
+          "lineSpacingPercent": 112000,
+          "resolvedTextStyle": {
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "The project also includes the Spring Boot test harness as a foundation; extending it into full unit and integration coverage is identified as future work.",
+              "fontSize": 14,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

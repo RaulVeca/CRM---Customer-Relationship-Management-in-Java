@@ -1,0 +1,6 @@
+Primary user-provided sources:
+- C:\Users\raulv\OneDrive\Desktop\documente_licenta\TrainingIT_thePDF.pdf (47 pages): thesis structure, problem, proposed solution, architecture, event-driven implementation, testing, conclusion.
+- C:\Users\raulv\Downloads\TrainingIT_conspectare.docx: concise Romanian study guide and oral-defense formulations, used to prioritize the core argument and confirm technical claims.
+- C:\Users\raulv\Downloads\Powerpoint_Presentation.pptx: source content, diagrams, screenshots, embedded demo video, and visual design authority.
+
+No web research or external assets were used.

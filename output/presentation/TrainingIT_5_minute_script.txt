@@ -1,0 +1,50 @@
+TRAININGIT - SCRIPT PENTRU 5 MINUTE
+
+Tinta: aproximativ 4:35-4:50 de discurs, lasand 10-25 de secunde rezerva.
+Ritm recomandat: calm, 125-135 de cuvinte pe minut.
+Slide-uri prezentate: 1, 2, 3, 4, 6, 10, 11, 12, 13, 15.
+Slide-uri de rezerva pentru intrebari: 5, 7, 8, 9 si 14.
+
+SLIDE 1 - TITLE (0:00-0:12)
+
+Good morning. My name is Raul Veca, and I will present TrainingIT, a web application that combines a programming-course storefront with an integrated CRM for the training company.
+
+SLIDE 2 - PROBLEM AND MOTIVATION (0:12-0:45)
+
+A training company serves two sides. Learners expect a simple catalogue, trusted reviews, fast purchasing and easy tutoring bookings. The company needs leads, purchase history, invoices, analytics and corporate accounts. These needs are normally handled by separate systems, so information must be synchronised and can become inconsistent. TrainingIT removes that gap by recording each customer action once and using it directly in the administrative workflow.
+
+SLIDE 3 - RELATED WORK GAP (0:45-1:05)
+
+Existing products solve only parts of this workflow. Marketplaces focus on selling, Moodle on learning content, CRMs on customer management, and e-commerce engines treat a course as an ordinary product. TrainingIT specialises both the storefront and the CRM for one training provider, on one shared data model.
+
+SLIDE 4 - CONTRIBUTION (1:05-1:30)
+
+My contribution is a functional product, not only a prototype. It includes a learner portal, a seven-section administration portal, persistent MariaDB storage, an event-driven Java domain layer and optional AI features. The goal is deliberately focused: one coherent system that a learner can use easily and a small training company can operate without manual reconciliation.
+
+SLIDE 6 - APPLICATION ARCHITECTURE (1:30-2:00)
+
+The system has four layers. A Next.js and React client communicates with a Spring Boot REST API and receives live statistics through Server-Sent Events. The domain layer contains the business rules, commands and event observers, while repositories and DAOs persist the data in MariaDB. The optional Claude service is outside the core, so the application remains functional without it.
+
+SLIDE 10 - ONE CLICK, SEVERAL REACTIONS (2:00-2:42)
+
+This sequence is the central idea of the solution. When a learner confirms a purchase, the server finds or creates the contact and course session, stores the enrolment and publishes an event. Independent observers can then update the audit trail, confirmations, lead state and live statistics. A review is accepted only after a purchase and is stored on the enrolment, which guarantees one review per learner and course. One action therefore produces several consistent reactions without synchronising separate applications.
+
+SLIDE 11 - THE AI LAYER (2:42-3:05)
+
+The optional AI layer provides a course assistant, individual recommendations, recommendations for company teams and live translation. The features share one Claude client, but they are strictly additive: when the API key is absent, the AI controls disappear and every core storefront and CRM function continues to work.
+
+SLIDE 12 - APPLICATION DEMO (3:05-3:38)
+
+These screens show the two sides of the running product. The learner sees personalised statistics and a filterable course catalogue. The administrator manages company employees and can request team recommendations. The important connection is immediate: a purchase appears in the Purchases section, a tutoring booking can generate its invoice automatically, and a reported problem reaches the Issues section without duplicate data entry.
+
+SLIDE 13 - TESTING AND VALIDATION (3:38-4:07)
+
+Testing focused on the complete propagation of user actions. I verified validation in the client, server and domain layer, as well as idempotent invoice generation, isolated observer failures and graceful AI degradation. The main user journeys were tested end to end against a real MariaDB database. Full automated unit and integration coverage remains future work.
+
+SLIDE 15 - CONCLUSION (4:07-4:42)
+
+To conclude, TrainingIT demonstrates that a course storefront and a CRM can be one coherent product. A visitor becomes a tracked lead on registration and a customer on the first purchase; later purchases, reviews, bookings and issues reach the administration portal automatically. The main next steps are automated testing and stronger production authentication. The central result is simple: one click, several reactions, and no manual reconciliation. Thank you.
+
+REZERVA DE TIMP
+
+La un ritm de 130 de cuvinte pe minut, textul este sub limita de 5 minute. Nu citi titlurile, endpointurile, tehnologiile din fiecare caseta sau toate listele de pe slide. Foloseste slide-ul ca suport vizual si spune numai textul de mai sus.

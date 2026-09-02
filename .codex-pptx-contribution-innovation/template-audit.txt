@@ -1,0 +1,7 @@
+Source deck: TrainingIT_UVT.pptx
+Slide count: 8
+Format: 16:9 UVT-branded presentation
+Reusable structure: title slide plus seven numbered content slides using a shared master, left UVT rail, top institutional heading, bottom URL/page marker, and bottom-right UVT slogan.
+Typography: Calibri; dark navy headings; 24 px body copy on the Contribution slide.
+Insertion contract: preserve all source slides and inherited elements. Rewrite only the existing applied-contribution body on source slide 4; retain its geometry and typography.
+Inherited placeholder audit: no new placeholders will be introduced; existing master/layout furniture remains untouched.

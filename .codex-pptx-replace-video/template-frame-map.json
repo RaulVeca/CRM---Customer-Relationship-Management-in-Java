@@ -1,0 +1,24 @@
+{
+  "sourceDeck": "TrainingIT_UVT.pptx",
+  "outputDeck": "TrainingIT_UVT - Demo video.pptx",
+  "slides": [
+    {"outputSlide": 1, "sourceSlide": 1, "editTargets": []},
+    {"outputSlide": 2, "sourceSlide": 2, "editTargets": []},
+    {"outputSlide": 3, "sourceSlide": 3, "editTargets": []},
+    {"outputSlide": 4, "sourceSlide": 4, "editTargets": []},
+    {"outputSlide": 5, "sourceSlide": 5, "editTargets": []},
+    {"outputSlide": 6, "sourceSlide": 6, "editTargets": []},
+    {
+      "outputSlide": 7,
+      "sourceSlide": 7,
+      "editTargets": [
+        {
+          "sourceElementId": "im/rul4vapk",
+          "action": "replace",
+          "reason": "Replace the embedded video and poster while preserving the existing centered frame [68.94, 75.22, 1743.6, 980.78]."
+        }
+      ]
+    },
+    {"outputSlide": 8, "sourceSlide": 8, "editTargets": []}
+  ]
+}

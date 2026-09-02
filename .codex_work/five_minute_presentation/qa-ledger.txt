@@ -1,0 +1,16 @@
+Final deck visual QA - Powerpoint_Presentation_5_minute.pptx
+
+Slide 1: Title is centered, minimal, and fully visible; UVT branding preserved.
+Slide 2: Three problem statements and two solution callouts fit without clipping; page marker correct.
+Slide 3: Takeaway title stays on one line; system diagram and caption remain legible; page marker correct.
+Slide 4: Four architecture bands fit with original font sizes; diagram and captions remain aligned; page marker correct.
+Slide 5: Sequence diagram remains intact; title, subtitle and takeaway are visible; page marker correct.
+Slide 6: Three application screenshots and labels are visible; new caption fits; page marker correct.
+Slide 7: Both bullet columns and final takeaway fit cleanly; page marker correct.
+
+Structural QA:
+- 7 slides and 7 speaker-notes parts.
+- No empty structural placeholders.
+- No detected slide overflow.
+- Template fidelity check passed with zero issues.
+- Source deck and application code were not modified.

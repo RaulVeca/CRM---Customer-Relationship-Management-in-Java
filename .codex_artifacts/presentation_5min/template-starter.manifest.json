@@ -1,0 +1,89 @@
+{
+  "sourcePptx": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\Powerpoint_Presentation.pptx",
+  "mapPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-frame-map.json",
+  "output": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter.pptx",
+  "outputBytes": 666993,
+  "sourceSlideCount": 15,
+  "slideCount": 7,
+  "previewDir": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview",
+  "layoutDir": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout",
+  "slides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 2,
+      "narrativeRole": "problem and motivation",
+      "reuseMode": "duplicate-slide",
+      "editTargetCount": 7,
+      "previewPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview\\starter-slide-01.png",
+      "previewRelativePath": "template-starter-preview/starter-slide-01.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout\\starter-slide-01.layout.json",
+      "layoutRelativePath": "template-starter-layout/starter-slide-01.layout.json"
+    },
+    {
+      "outputSlide": 2,
+      "sourceSlide": 3,
+      "narrativeRole": "related work comparison",
+      "reuseMode": "duplicate-slide",
+      "editTargetCount": 5,
+      "previewPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview\\starter-slide-02.png",
+      "previewRelativePath": "template-starter-preview/starter-slide-02.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout\\starter-slide-02.layout.json",
+      "layoutRelativePath": "template-starter-layout/starter-slide-02.layout.json"
+    },
+    {
+      "outputSlide": 3,
+      "sourceSlide": 4,
+      "narrativeRole": "applied contribution",
+      "reuseMode": "duplicate-slide",
+      "editTargetCount": 5,
+      "previewPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview\\starter-slide-03.png",
+      "previewRelativePath": "template-starter-preview/starter-slide-03.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout\\starter-slide-03.layout.json",
+      "layoutRelativePath": "template-starter-layout/starter-slide-03.layout.json"
+    },
+    {
+      "outputSlide": 4,
+      "sourceSlide": 6,
+      "narrativeRole": "system architecture diagram",
+      "reuseMode": "duplicate-slide",
+      "editTargetCount": 2,
+      "previewPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview\\starter-slide-04.png",
+      "previewRelativePath": "template-starter-preview/starter-slide-04.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout\\starter-slide-04.layout.json",
+      "layoutRelativePath": "template-starter-layout/starter-slide-04.layout.json"
+    },
+    {
+      "outputSlide": 5,
+      "sourceSlide": 11,
+      "narrativeRole": "optional AI layer",
+      "reuseMode": "duplicate-slide",
+      "editTargetCount": 3,
+      "previewPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview\\starter-slide-05.png",
+      "previewRelativePath": "template-starter-preview/starter-slide-05.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout\\starter-slide-05.layout.json",
+      "layoutRelativePath": "template-starter-layout/starter-slide-05.layout.json"
+    },
+    {
+      "outputSlide": 6,
+      "sourceSlide": 14,
+      "narrativeRole": "blank application demo transition",
+      "reuseMode": "duplicate-slide",
+      "editTargetCount": 3,
+      "previewPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview\\starter-slide-06.png",
+      "previewRelativePath": "template-starter-preview/starter-slide-06.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout\\starter-slide-06.layout.json",
+      "layoutRelativePath": "template-starter-layout/starter-slide-06.layout.json"
+    },
+    {
+      "outputSlide": 7,
+      "sourceSlide": 15,
+      "narrativeRole": "conclusion and future work",
+      "reuseMode": "duplicate-slide",
+      "editTargetCount": 5,
+      "previewPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-preview\\starter-slide-07.png",
+      "previewRelativePath": "template-starter-preview/starter-slide-07.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex_artifacts\\presentation_5min\\template-starter-layout\\starter-slide-07.layout.json",
+      "layoutRelativePath": "template-starter-layout/starter-slide-07.layout.json"
+    }
+  ]
+}

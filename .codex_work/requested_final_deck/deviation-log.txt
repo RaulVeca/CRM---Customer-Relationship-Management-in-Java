@@ -1,0 +1,8 @@
+Output slide 1: source slide 1 preserved exactly; source note block appended.
+Output slide 2: source slide 2 copy replaced with the approved shortened Problem and Motivation text; layout and typography preserved; page marker updated.
+Output slide 3: source slide 3 preserved exactly; page marker updated; source note block appended.
+Output slide 4: source slide 4 preserved exactly; page marker updated; source note block appended.
+Output slide 5: source slide 6 title renamed to System Architecture; eight right-hand panel elements deleted; existing diagram enlarged; page marker updated.
+Output slide 6: source slide 11 preserved exactly; page marker updated; source note block appended.
+Output slide 7: source slide 14 video poster preserved; page marker updated; embedded playback unavailable by confirmed limitation.
+Output slide 8: source slide 15 preserved exactly; page marker updated; source note block appended.

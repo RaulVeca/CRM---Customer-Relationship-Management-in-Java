@@ -1,0 +1,63 @@
+TRAININGIT - PLAN DE SCURTARE A POWERPOINT-ULUI
+
+DIAGNOSTIC
+
+- Prezentarea actuala are 15 slide-uri.
+- Notitele contin aproximativ 1.000 de cuvinte: circa 7-8 minute la un ritm normal.
+- Videoclipul incorporat are 2 minute si 15 secunde; daca este redat integral, prezentarea ajunge spre 9-10 minute.
+- Slide-urile 8 si 9 contin diagrame prea detaliate pentru a fi citite de comisie in timpul unei prezentari de 5 minute.
+- Notitele slide-ului 14 repeta din greseala textul despre testare de la slide-ul 13.
+
+TRASEUL PRINCIPAL RECOMANDAT
+
+1. Title
+2. Problem and Motivation
+3. Related Work Gap
+4. Contribution
+6. Application Architecture
+10. One Click, Several Reactions
+11. The AI Layer
+12. Application Demo - cele trei capturi statice
+13. Testing and Validation
+15. Conclusion and Future Work
+
+SLIDE-URI PASTRATE CA BACKUP, DAR NEPREZENTATE
+
+- 5 - System Context: util daca esti intrebat despre actori sau dependente.
+- 7 - Role-Based Navigation: util pentru intrebari despre acces si reducerea corporate.
+- 8 - Domain Design: util pentru intrebari despre design patterns.
+- 9 - Data Model: util pentru intrebari despre relatii, Enrollment si facturi.
+- 14 - Video: nu il reda in prezentarea de 5 minute. Pastreaza-l doar ca rezerva sau inlocuieste-l ulterior cu un clip de maximum 30-40 de secunde.
+
+CE TREBUIE SCURTAT PE SLIDE-URILE VIZIBILE
+
+SLIDE 2
+Pastreaza trei idei scurte: learner needs, company needs, integration gap. In caseta din dreapta pastreaza o singura formulare: one system, one shared record, automatic business reactions.
+
+SLIDE 3
+Pastreaza tabelul, dar scurteaza fiecare celula la o sintagma. Mesajul final trebuie sa ramana: existing tools solve one side; TrainingIT unifies both for one provider.
+
+SLIDE 4
+Pastreaza contributia intr-o singura fraza, maximum trei obiective si o singura fraza despre design boundary. Lista actuala repeta informatii din slide-urile urmatoare.
+
+SLIDE 6
+Foloseste diagrama doar ca imagine de ansamblu. In partea dreapta pastreaza numai numele celor patru straturi si cate o responsabilitate, nu enumerarea tuturor tehnologiilor si serviciilor.
+
+SLIDE 10
+Acesta este slide-ul central. Pastreaza-l, dar prezinta doar traseul purchase -> enrolment -> event -> observers -> live statistics. Detaliile endpointurilor raman vizibile doar pentru intrebari.
+
+SLIDE 11
+Pastreaza cele patru functii AI ca etichete scurte si mesajul obligatoriu: optional and gracefully disabled. Nu citi endpointurile.
+
+SLIDE 12
+Pastreaza cele trei capturi. Nu mai reda si videoclipul de pe slide-ul 14. Explica in 30-35 de secunde legatura dintre portalul cursantului si cel administrativ.
+
+SLIDE 13
+Inlocuieste paragrafele cu trei idei: three-level validation; robustness under failure; manual end-to-end verification. Pastreaza explicit limitarea privind lipsa acoperirii automate complete.
+
+SLIDE 15
+Redu sectiunea Implemented la trei rezultate si Future Work la doua prioritati: automated testing si stronger authentication. Pastreaza concluzia finala despre one click, several reactions, no reconciliation.
+
+REGULA PENTRU PREZENTARE
+
+Nu incerca sa explici tot ce este afisat. Comisia poate vedea lista; tu trebuie sa explici ideea, dovada si rezultatul. Daca apare o intrebare tehnica, deschizi unul dintre slide-urile de backup.

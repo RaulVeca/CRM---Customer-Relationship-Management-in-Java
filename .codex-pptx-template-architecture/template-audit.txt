@@ -1,0 +1,7 @@
+Visual reference: PPT_Template.pptx, 16:9, 1920 x 1080 px.
+Template patterns: slide 1 is a dark-blue academic title cover; slide 2 is the white content canvas with UVT logo rail, university header, faint watermark, footer URL, and Shaping Leaders mark; slide 3 is a dark-blue closing bumper.
+Typography: Helvetica Now Display Bold and Bebas Neue Bold for template display text, Calibri for supporting content.
+Output mapping: cover -> template slide 1; seven technical/content slides -> template slide 2. The closing bumper is omitted because the source narrative ends with a content-bearing conclusion.
+Insertion contract: preserve authentic template background artwork on every slide. Rewrite the four inherited title-slide text boxes. Add English source-deck content only inside the bounded central content zone of duplicated template slide 2.
+System Architecture: use the authentic extracted diagram image, centered and enlarged to the maximum readable height while preserving its aspect ratio.
+No external sources are introduced.

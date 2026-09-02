@@ -1,0 +1,5 @@
+Source deck: C:\Users\raulv\Downloads\5 min.pptx
+Structure: 8 slides using one inherited master and layout.
+Visual contract: preserve every slide, all visible content, fonts, geometry, images, page numbers, and template furniture exactly.
+Requested edit: clear the speaker-notes text on every slide.
+No source slides are omitted and no visible slide element is edited.

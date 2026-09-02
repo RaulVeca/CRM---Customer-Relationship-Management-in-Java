@@ -1,0 +1,1138 @@
+{
+  "schema": "openai.presentation.layout/v4",
+  "unit": "px",
+  "slide": {
+    "aid": "sl/uoviee",
+    "id": "uoviee",
+    "slide": 7,
+    "layoutId": "/ppt/slideLayouts/slideLayout1.xml",
+    "layoutName": "DEFAULT",
+    "masterLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+    "backgroundColor": "#FFFFFF",
+    "frame": {
+      "left": 0,
+      "top": 0,
+      "width": 960,
+      "height": 540
+    }
+  },
+  "theme": {
+    "colorSchemeName": "Office",
+    "colors": {
+      "accent1": "#4472C4",
+      "accent2": "#ED7D31",
+      "accent3": "#A5A5A5",
+      "accent4": "#FFC000",
+      "accent5": "#5B9BD5",
+      "accent6": "#70AD47",
+      "dk1": "#000000",
+      "lt1": "#FFFFFF",
+      "dk2": "#44546A",
+      "lt2": "#E7E6E6",
+      "hlink": "#0563C1",
+      "folHlink": "#954F72"
+    },
+    "fontScheme": {
+      "name": "Office",
+      "majorFont": {
+        "latinTypeface": "Calibri Light"
+      },
+      "minorFont": {
+        "latinTypeface": "Calibri"
+      }
+    },
+    "typefaces": [
+      "Arial",
+      "Calibri",
+      "Calibri Light"
+    ]
+  },
+  "inheritedLayers": [
+    {
+      "scope": "layout",
+      "id": "/ppt/slideLayouts/slideLayout1.xml",
+      "name": "DEFAULT",
+      "parentLayoutId": "/ppt/slideMasters/slideMaster1.xml",
+      "elements": []
+    },
+    {
+      "scope": "master",
+      "id": "/ppt/slideMasters/slideMaster1.xml",
+      "type": "master",
+      "elements": []
+    }
+  ],
+  "elements": [
+    {
+      "order": 1,
+      "kind": "image",
+      "scope": "slide",
+      "aid": "im/9kjexcfe",
+      "id": "20",
+      "name": "Image 0",
+      "bbox": [
+        29.76,
+        0,
+        90.24,
+        90.24
+      ],
+      "contentType": "image/png",
+      "asset": {
+        "assetId": "/ppt/media/image3.png",
+        "contentType": "image/png",
+        "byteLength": 49548
+      },
+      "fillImage": {
+        "assetId": "/ppt/media/image3.png",
+        "contentType": "image/png",
+        "byteLength": 49548
+      }
+    },
+    {
+      "order": 2,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/1ori1kv2",
+      "id": "3",
+      "name": "Text 0",
+      "bbox": [
+        132.48,
+        8.64,
+        792,
+        38.4
+      ],
+      "geometry": "rect",
+      "text": "Conclusion and Future Work",
+      "textPreview": "Conclusion and Future Work",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Conclusion and Future Work"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Conclusion and Future Work",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Conclusion and Future Work",
+              "fontSize": 28,
+              "typeface": "Arial",
+              "color": "#022461",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6xgz25wf",
+      "id": "4",
+      "name": "Text 1",
+      "bbox": [
+        134.4,
+        48,
+        792,
+        28.8
+      ],
+      "geometry": "rect",
+      "text": "One product where the storefront and the CRM are the same system",
+      "textPreview": "One product where the storefront and the CRM are the same system",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "One product where the storefront and the CRM are the same system"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "One product where the storefront and the CRM are the same system",
+          "runs": [
+            {
+              "index": 1,
+              "text": "One product where the storefront and the CRM are the same system",
+              "fontSize": 16.67,
+              "typeface": "Arial",
+              "color": "#2F5D8C"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ryp0vad0",
+      "id": "5",
+      "name": "Shape 2",
+      "bbox": [
+        0,
+        525.12,
+        960,
+        14.88
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 5,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/szih4vel",
+      "id": "6",
+      "name": "Shape 3",
+      "bbox": [
+        29.76,
+        496.32,
+        808.32,
+        26.88
+      ],
+      "geometry": "roundRect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 6,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/t0rix0v6",
+      "id": "7",
+      "name": "Shape 4",
+      "bbox": [
+        29.76,
+        494.4,
+        900.48,
+        0
+      ],
+      "geometry": "line",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "lineColor": "#BFBFBF",
+      "lineWidth": 1
+    },
+    {
+      "order": 7,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/itgzylwj",
+      "id": "8",
+      "name": "Text 5",
+      "bbox": [
+        43.2,
+        496.32,
+        576,
+        26.88
+      ],
+      "geometry": "rect",
+      "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+      "textPreview": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA",
+              "fontSize": 10,
+              "typeface": "Arial",
+              "color": "#3C3C3C",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/jup0rqd4",
+      "id": "9",
+      "name": "Text 6",
+      "bbox": [
+        758.4,
+        496.32,
+        171.84,
+        26.88
+      ],
+      "geometry": "rect",
+      "text": "Page 13 / 13",
+      "textPreview": "Page 13 / 13",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Page 13 / 13"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Page 13 / 13",
+          "resolvedTextStyle": {
+            "alignment": "right"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "Page 13 / 13",
+              "fontSize": 10,
+              "typeface": "Arial",
+              "color": "#3C3C3C",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/jqxgbid8",
+      "id": "10",
+      "name": "Shape 7",
+      "bbox": [
+        40.32,
+        109.44,
+        436.8,
+        32.64
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#022461"
+    },
+    {
+      "order": 10,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ipof2dc3",
+      "id": "11",
+      "name": "Text 8",
+      "bbox": [
+        52.8,
+        109.44,
+        411.84,
+        32.64
+      ],
+      "geometry": "rect",
+      "text": "Implemented",
+      "textPreview": "Implemented",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Implemented"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Implemented",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Implemented",
+              "fontSize": 17.33,
+              "typeface": "Arial",
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/5sfyd8ve",
+      "id": "12",
+      "name": "Shape 9",
+      "bbox": [
+        40.32,
+        142.08,
+        436.8,
+        289.92
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 12,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/4r6h43ut",
+      "id": "13",
+      "name": "Text 10",
+      "bbox": [
+        55.68,
+        148.8,
+        406.08,
+        276.48
+      ],
+      "geometry": "rect",
+      "text": "A client portal: catalogue, one-click purchase, star reviews, 1:1 booking with calendar and payment, issue reporting.\nA seven-tab administrator portal: contacts, courses, purchases, invoices, analytics, employees, issues.\nAn event-driven Java domain layer on classic design patterns, with automatic invoicing and lead scoring.\nLive statistics over SSE, Excel import, and CSV / Excel / PDF export.\nAn optional Claude layer: assistant, recommendation quiz, per-company advice, live translation.",
+      "textPreview": "A client portal: catalogue, one-click purchase, star reviews, 1:1 booking with calendar and payment, issue reporting. | A seven-tab admin...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 10,
+        "lines": [
+          {
+            "index": 1,
+            "text": "○ A client portal: catalogue, one-click purchase, star reviews, 1:1"
+          },
+          {
+            "index": 2,
+            "text": "booking with calendar and payment, issue reporting."
+          },
+          {
+            "index": 3,
+            "text": "○ A seven-tab administrator portal: contacts, courses, purchases,"
+          },
+          {
+            "index": 4,
+            "text": "invoices, analytics, employees, issues."
+          },
+          {
+            "index": 5,
+            "text": "○ An event-driven Java domain layer on classic design patterns, with"
+          },
+          {
+            "index": 6,
+            "text": "automatic invoicing and lead scoring."
+          },
+          {
+            "index": 7,
+            "text": "○ Live statistics over SSE, Excel import, and CSV / Excel / PDF"
+          },
+          {
+            "index": 8,
+            "text": "export."
+          },
+          {
+            "index": 9,
+            "text": "○ An optional Claude layer: assistant, recommendation quiz,"
+          },
+          {
+            "index": 10,
+            "text": "per-company advice, live translation."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A client portal: catalogue, one-click purchase, star reviews, 1:1 booking with calendar and payment, issue reporting.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "A client portal: catalogue, one-click purchase, star reviews, 1:1 booking with calendar and payment, issue reporting.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "A seven-tab administrator portal: contacts, courses, purchases, invoices, analytics, employees, issues.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "A seven-tab administrator portal: contacts, courses, purchases, invoices, analytics, employees, issues.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "An event-driven Java domain layer on classic design patterns, with automatic invoicing and lead scoring.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "An event-driven Java domain layer on classic design patterns, with automatic invoicing and lead scoring.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 4,
+          "text": "Live statistics over SSE, Excel import, and CSV / Excel / PDF export.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Live statistics over SSE, Excel import, and CSV / Excel / PDF export.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 5,
+          "text": "An optional Claude layer: assistant, recommendation quiz, per-company advice, live translation.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "An optional Claude layer: assistant, recommendation quiz, per-company advice, live translation.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/ruhgfidk",
+      "id": "14",
+      "name": "Shape 11",
+      "bbox": [
+        482.88,
+        109.44,
+        436.8,
+        32.64
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#E4AB26"
+    },
+    {
+      "order": 14,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/6toz6dcz",
+      "id": "15",
+      "name": "Text 12",
+      "bbox": [
+        495.36,
+        109.44,
+        411.84,
+        32.64
+      ],
+      "geometry": "rect",
+      "text": "Limitations and next steps",
+      "textPreview": "Limitations and next steps",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": "Limitations and next steps"
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Limitations and next steps",
+          "runs": [
+            {
+              "index": 1,
+              "text": "Limitations and next steps",
+              "fontSize": 17.33,
+              "typeface": "Arial",
+              "color": "#FFFFFF",
+              "bold": true
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/tgzyhsvq",
+      "id": "16",
+      "name": "Shape 13",
+      "bbox": [
+        482.88,
+        142.08,
+        436.8,
+        289.92
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#FEF3F7"
+    },
+    {
+      "order": 16,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/svqh8nu5",
+      "id": "17",
+      "name": "Text 14",
+      "bbox": [
+        498.24,
+        148.8,
+        406.08,
+        276.48
+      ],
+      "geometry": "rect",
+      "text": "Automated test suite - unit and integration tests over the commands, observers, scoring strategies and REST endpoints, enabling continuous integration.\nStronger authentication - token-based sessions, password hashing at rest, e-mail verification and a genuine reset flow with expiring links.\nRicher analytics - historical trends, cohort analysis and exportable dashboards beyond point-in-time metrics.\nDeeper AI - conversation memory and AI summaries of support issues.\nDeployment and scaling - containerising the two services for a cloud deployment.",
+      "textPreview": "Automated test suite - unit and integration tests over the commands, observers, scoring strategies and REST endpoints, enabling continuou...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 1,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "top",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 12,
+        "lines": [
+          {
+            "index": 1,
+            "text": "○ Automated test suite - unit and integration tests over the"
+          },
+          {
+            "index": 2,
+            "text": "commands, observers, scoring strategies and REST endpoints,"
+          },
+          {
+            "index": 3,
+            "text": "enabling continuous integration."
+          },
+          {
+            "index": 4,
+            "text": "○ Stronger authentication - token-based sessions, password"
+          },
+          {
+            "index": 5,
+            "text": "hashing at rest, e-mail verification and a genuine reset flow with"
+          },
+          {
+            "index": 6,
+            "text": "expiring links."
+          },
+          {
+            "index": 7,
+            "text": "○ Richer analytics - historical trends, cohort analysis and exportable"
+          },
+          {
+            "index": 8,
+            "text": "dashboards beyond point-in-time metrics."
+          },
+          {
+            "index": 9,
+            "text": "○ Deeper AI - conversation memory and AI summaries of support"
+          },
+          {
+            "index": 10,
+            "text": "issues."
+          },
+          {
+            "index": 11,
+            "text": "○ Deployment and scaling - containerising the two services for a"
+          },
+          {
+            "index": 12,
+            "text": "cloud deployment."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "Automated test suite - unit and integration tests over the commands, observers, scoring strategies and REST endpoints, enabling continuous integration.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Automated test suite - unit and integration tests over the commands, observers, scoring strategies and REST endpoints, enabling continuous integration.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 2,
+          "text": "Stronger authentication - token-based sessions, password hashing at rest, e-mail verification and a genuine reset flow with expiring links.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Stronger authentication - token-based sessions, password hashing at rest, e-mail verification and a genuine reset flow with expiring links.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 3,
+          "text": "Richer analytics - historical trends, cohort analysis and exportable dashboards beyond point-in-time metrics.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Richer analytics - historical trends, cohort analysis and exportable dashboards beyond point-in-time metrics.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 4,
+          "text": "Deeper AI - conversation memory and AI summaries of support issues.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Deeper AI - conversation memory and AI summaries of support issues.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        },
+        {
+          "index": 5,
+          "text": "Deployment and scaling - containerising the two services for a cloud deployment.",
+          "lineSpacingPercent": 110000,
+          "runs": [
+            {
+              "index": 1,
+              "text": "Deployment and scaling - containerising the two services for a cloud deployment.",
+              "fontSize": 13.07,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/7ydg3ydg",
+      "id": "18",
+      "name": "Shape 15",
+      "bbox": [
+        40.32,
+        410.88,
+        879.36,
+        57.6
+      ],
+      "geometry": "rect",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "insets": {
+          "top": 4.8,
+          "right": 9.6,
+          "bottom": 4.8,
+          "left": 9.6
+        }
+      },
+      "textLayout": {
+        "lineCount": 1,
+        "lines": [
+          {
+            "index": 1,
+            "text": ""
+          }
+        ]
+      },
+      "fillColor": "#F0F7FF"
+    },
+    {
+      "order": 18,
+      "kind": "shape",
+      "scope": "slide",
+      "aid": "sh/mx4futcv",
+      "id": "19",
+      "name": "Text 16",
+      "bbox": [
+        55.68,
+        414.72,
+        848.64,
+        49.92
+      ],
+      "geometry": "rect",
+      "text": "A visitor becomes a tracked lead on registration and a customer on the first purchase, and every action after that propagates into the administration portal by itself. That is the result: one click, several reactions, no reconciliation.",
+      "textPreview": "A visitor becomes a tracked lead on registration and a customer on the first purchase, and every action after that propagates into the ad...",
+      "resolvedFontSize": 24,
+      "resolvedTextStyle": {
+        "anchor": 2,
+        "fontSize": 24,
+        "typeface": "Calibri",
+        "color": "tx1",
+        "alignment": "left",
+        "verticalAlignment": "middle",
+        "wrap": "square",
+        "insets": {
+          "top": 0,
+          "right": 0,
+          "bottom": 0,
+          "left": 0
+        }
+      },
+      "textLayout": {
+        "lineCount": 2,
+        "lines": [
+          {
+            "index": 1,
+            "text": "A visitor becomes a tracked lead on registration and a customer on the first purchase, and every action after that propagates into the"
+          },
+          {
+            "index": 2,
+            "text": "administration portal by itself. That is the result: one click, several reactions, no reconciliation."
+          }
+        ]
+      },
+      "paragraphs": [
+        {
+          "index": 1,
+          "text": "A visitor becomes a tracked lead on registration and a customer on the first purchase, and every action after that propagates into the administration portal by itself. That is the result: one click, several reactions, no reconciliation.",
+          "lineSpacingPercent": 112000,
+          "resolvedTextStyle": {
+            "alignment": "center"
+          },
+          "runs": [
+            {
+              "index": 1,
+              "text": "A visitor becomes a tracked lead on registration and a customer on the first purchase, and every action after that propagates into the administration portal by itself. That is the result: one click, several reactions, no reconciliation.",
+              "fontSize": 14.4,
+              "typeface": "Arial",
+              "color": "#1A1A1A"
+            }
+          ],
+          "marginLeft": 0
+        }
+      ]
+    }
+  ],
+  "composeRuns": []
+}

@@ -1,0 +1,4 @@
+Slide 1: template cover text rewritten in English and repositioned only as needed to fit the TrainingIT title and subtitle.
+Slides 2-8: template content background preserved; source-deck content rebuilt as editable native text/table elements within the safe central zone.
+Slide 5: architecture diagram centered and enlarged for clarity.
+Slide 7: live-demo slide remains intentionally sparse, matching the source deck's presentation role.

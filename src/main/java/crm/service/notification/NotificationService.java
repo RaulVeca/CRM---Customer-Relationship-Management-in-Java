@@ -60,21 +60,6 @@ public class NotificationService {
         }
     }
 
-    public void sendSessionReminder(Contact contact, String sessionDetails) {
-        Notification email = emailFactory.createSessionReminder(contact, sessionDetails);
-        send(email);
-
-        if (contact.getPhone() != null) {
-            Notification sms = smsFactory.createSessionReminder(contact, sessionDetails);
-            send(sms);
-        }
-    }
-
-    public void sendFollowUp(Contact contact, String reason) {
-        Notification n = emailFactory.createFollowUp(contact, reason);
-        send(n);
-    }
-
     /**
      * Trimite efectiv notificarea. În implementarea reală ar folosi SMTP/Twilio.
      */

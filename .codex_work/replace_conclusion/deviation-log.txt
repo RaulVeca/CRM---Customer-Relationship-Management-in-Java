@@ -1,0 +1,2 @@
+Slide 8: full-slide replacement using slide 6 (Conclusion) from Powerpoint_Presentation_5_minute.pptx. Only the page marker changes from 6 / 6 to 7 / 7; source speaker notes are not imported.
+Slides 1-7: no intentional changes.

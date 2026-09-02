@@ -100,10 +100,4 @@ public class AppConfig {
             return defaultValue;
         }
     }
-
-    public boolean getBooleanProperty(String key, boolean defaultValue) {
-        String value = properties.getProperty(key);
-        if (value == null) return defaultValue;
-        return Boolean.parseBoolean(value);
-    }
 }

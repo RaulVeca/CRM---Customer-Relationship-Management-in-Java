@@ -42,8 +42,4 @@ public class Invoice extends BaseEntity {
     private LocalDate paymentDate;
     private String description;
 
-    public BigDecimal getRemainingAmount() {
-        BigDecimal paid = paidAmount != null ? paidAmount : BigDecimal.ZERO;
-        return total.subtract(paid);
-    }
 }

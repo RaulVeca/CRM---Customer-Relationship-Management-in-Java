@@ -6,7 +6,6 @@ import crm.model.enums.DeliveryMode;
 import crm.model.enums.SessionStatus;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

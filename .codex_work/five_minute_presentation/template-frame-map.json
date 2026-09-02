@@ -1,0 +1,100 @@
+{
+  "outputSlides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 1,
+      "narrativeRole": "brand title preserve-only",
+      "reuseMode": "duplicate-slide",
+      "editTargets": []
+    },
+    {
+      "outputSlide": 2,
+      "sourceSlide": 2,
+      "narrativeRole": "problem thesis",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/b29kza94", "action": "rewrite" },
+        { "sourceElementId": "sh/ove9o7yd", "action": "rewrite" },
+        { "sourceElementId": "sh/9wnqhczy", "action": "rewrite" },
+        { "sourceElementId": "sh/mtwrmxg7", "action": "rewrite" },
+        { "sourceElementId": "sh/ahwrqhgj", "action": "rewrite" },
+        { "sourceElementId": "sh/cnupgny5", "action": "rewrite" },
+        { "sourceElementId": "sh/q5wjelsz", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 3,
+      "sourceSlide": 5,
+      "narrativeRole": "solution map",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/cf2tcr61", "action": "rewrite" },
+        { "sourceElementId": "sh/z2tcnm5s", "action": "rewrite" },
+        { "sourceElementId": "sh/ahkvi1cb", "action": "rewrite" },
+        { "sourceElementId": "sh/m5kbi1oj", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 4,
+      "sourceSlide": 6,
+      "narrativeRole": "architecture synthesis",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/zi98nu94", "action": "rewrite" },
+        { "sourceElementId": "sh/87ipkzal", "action": "rewrite" },
+        { "sourceElementId": "sh/v2tcn650", "action": "rewrite" },
+        { "sourceElementId": "sh/5svutgni", "action": "rewrite" },
+        { "sourceElementId": "sh/j6dcr65c", "action": "rewrite" },
+        { "sourceElementId": "sh/twfux0ne", "action": "rewrite" },
+        { "sourceElementId": "sh/pc76hkr2", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 5,
+      "sourceSlide": 10,
+      "narrativeRole": "event flow proof",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/zelojyl8", "action": "rewrite" },
+        { "sourceElementId": "sh/d87uxg3m", "action": "rewrite" },
+        { "sourceElementId": "sh/m1cnetkj", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 6,
+      "sourceSlide": 12,
+      "narrativeRole": "application demo",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/ra943il8", "action": "rewrite" },
+        { "sourceElementId": "sh/hkbm5wzu", "action": "rewrite" },
+        { "sourceElementId": "sh/a543mx4r", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 7,
+      "sourceSlide": 15,
+      "narrativeRole": "conclusion summary",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/k3y5ov21", "action": "rewrite" },
+        { "sourceElementId": "sh/76p4jqls", "action": "rewrite" },
+        { "sourceElementId": "sh/vqdsrqx4", "action": "rewrite" },
+        { "sourceElementId": "sh/5wvax0f6", "action": "rewrite" },
+        { "sourceElementId": "sh/judsvqxg", "action": "rewrite" },
+        { "sourceElementId": "sh/l0bqlgf2", "action": "rewrite" },
+        { "sourceElementId": "sh/m9c3e1kn", "action": "rewrite" }
+      ]
+    }
+  ],
+  "omittedSourceSlides": [
+    { "sourceSlide": 3, "reason": "Related-work comparison is supporting material for questions, not the five-minute core narrative." },
+    { "sourceSlide": 4, "reason": "Contribution is expressed more visually by the system-context slide." },
+    { "sourceSlide": 7, "reason": "Role navigation is visible in the demo and does not need a separate slide." },
+    { "sourceSlide": 8, "reason": "Detailed domain patterns are retained in the thesis for technical questions." },
+    { "sourceSlide": 9, "reason": "The full data model is too detailed for the available speaking time." },
+    { "sourceSlide": 11, "reason": "Optional AI is mentioned in the architecture and demo instead of a dedicated slide." },
+    { "sourceSlide": 13, "reason": "Validation evidence is summarized on the conclusion slide." }
+    ,{ "sourceSlide": 14, "reason": "The static three-view demo slide gives a reliable presentation cue; the live walkthrough is kept in speaker notes." }
+  ]
+}

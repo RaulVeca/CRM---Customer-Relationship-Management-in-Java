@@ -37,10 +37,6 @@ public class Opportunity extends BaseEntity {
         return stage == OpportunityStage.WON || stage == OpportunityStage.LOST;
     }
 
-    public boolean isWon() {
-        return stage == OpportunityStage.WON;
-    }
-
     public BigDecimal getWeightedValue() {
         if (quotedValue == null || probabilityPercent == null) {
             return BigDecimal.ZERO;

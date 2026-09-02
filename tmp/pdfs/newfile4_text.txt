@@ -1,0 +1,1915 @@
+
+===== PDF PAGE 1 =====
+Abstract
+This thesis presents a full-stack Customer Relationship Management (CRM) system devel-
+oped for the TrainingIT platform, serving as a practical framework for analyzing software architecture
+and object-oriented design patterns. The architecture consists of two deeply decoupled subsystems
+connected via a strict REST/JSON contract. The autonomous Java backend (Spring Boot 3.5)
+manages its own schema, HikariCP connection pool, and native JDBC transactions, while the fron-
+tend operates as a standalone Next.js 16 single-page application built with minimal external de-
+pendencies. Furthermore, the implementation integrates classic Gang of Four and enterprise design
+patterns(cid:22)including Facade, Singleton, Command, Observer, Factory, Strategy, and Chain
+of Responsibility(cid:22)collaborating seamlessly within a single live transactional (cid:29)ow. Concluding with
+a transparent self-evaluation, this work explicitly documents its own architectural limitations to serve
+as a foundation for future development.
+Keywords: CRM, software architecture, design patterns, Spring Boot, Next.js, REST API, JDBC,
+separation of concerns.
+1
+
+===== PDF PAGE 2 =====
+Rezumat
+Aceast(cid:160) lucrare prezint(cid:160) proiectarea si implementarea unui sistem full-stack de Management al
+,
+Relatiilor cu Clientii (CRM) pentru platforma TrainingIT, conceput ca vehicul empiric pentru
+, ,
+studiul aplicat al arhitecturii software si al sabloanelor de proiectare. Arhitectura se bazeaz(cid:160) pe dou(cid:160)
+, ,
+subsisteme profund decuplate, conectate printr-un contract strict REST/JSON: un backend autonom
+(cid:238)n Java (Spring Boot 3.5) (cid:22) care (cid:238)si gestioneaz(cid:160) propria schem(cid:160), pool-ul de conexiuni HikariCP si
+, ,
+tranzactiile prin JDBC nativ (cid:22) si o aplicatie frontend single-page Next.js 16 cu dependente externe
+, , , ,
+minime.Implementarea integreaz(cid:160) sabloane clasice (Gang of Four) si enterprise(cid:22)Facade, Singleton,
+, ,
+Command, Observer, Factory, Strategy si Chain of Responsibility(cid:22)care colaboreaz(cid:160) armo-
+,
+nios (cid:238)n cadrul unui singur (cid:29)ux tranzactional real. ˛n (cid:28)nal, lucrarea adopt(cid:160) o pozitie critic(cid:160) si trans-
+, , ,
+parent(cid:160), catalog(cid:226)nd explicit propriile limit(cid:160)ri arhitecturale ca punct de plecare pentru dezvolt(cid:160)rile
+viitoare.
+Cuvinte-cheie: CRM, arhitectur(cid:160) software, sabloane de proiectare, Spring Boot, Next.js, API
+,
+REST, JDBC, separarea responsabilit(cid:160)tilor.
+,
+2
+
+===== PDF PAGE 3 =====
+Contents
+1 Introduction 7
+1.1 Application Design Objectives . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+1.2 Structure of the Written Work . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+1.3 Structural topology of the project . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+2 State of the Art 10
+2.1 The Architecture of a Modern CRM: A Layered Breakdown [4, 24] . . . . . . . . . . . . 10
+2.1.1 The Presentation Layer (The Frontend) [23] . . . . . . . . . . . . . . . . . . . . . 11
+2.1.2 The Business Logic Layer (The Core) . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.1.3 The Data Layer (Persistence) [20, 30] . . . . . . . . . . . . . . . . . . . . . . . . 11
+2.2 The Market (cid:22) Key Players and Strategic Rationales . . . . . . . . . . . . . . . . . . . . 11
+2.3 Financial dynamics(cid:22)or, more pragmatically, budgetary constraints: SaaS versus Open
+Source . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+2.4 The ultimate transformative dimension or disruptive vector: AI and ML[6, 10] . . . . . 13
+2.5 Multidimensional challenges, regulatory constraints, and security vectors . . . . . . . . . 13
+2.6 In conclusion, let us consider the Cloud paradigm and the (cid:28)eld’s future trajectories. . . 14
+3 Software Design 15
+3.1 Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+3.2 Human actors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.3 System actors (external integrations) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+3.4 Use cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+3.4.1 Visitor (Unauthenticated) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+3.4.2 Authenticated User . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+3.4.3 Trainee (B2C Customer / Employee) . . . . . . . . . . . . . . . . . . . . . . . . . 20
+3.4.4 B2B Manager (HR Representative) . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+3.4.5 Institutional Representative (B2I_MANAGER) . . . . . . . . . . . . . . . . . . . 20
+3.4.6 Trainer (Instructor) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+3.5 Partner Trainer (B2I) . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+3.5.1 Auditor / QA Inspector . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+3.5.2 Administrator . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+3.6 System actors (cid:22) delegations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+3.7 Use case diagrams . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+3.7.1 B2C channel (cid:22) individual customer . . . . . . . . . . . . . . . . . . . . . . . . . 22
+3.7.2 B2B / B2I channels and trainer network . . . . . . . . . . . . . . . . . . . . . . . 22
+3.7.3 Internal CRM (cid:22) Administrator . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+4 Software Implementation 26
+4.1 Explaining Backend Architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+4.1.1 System Entities [13, 15] . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 28
+4.1.2 Error handling and the uni(cid:28)ed error contract . . . . . . . . . . . . . . . . . . . . 29
+4.1.3 Persistence infrastructure. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+4.1.4 AI Integration . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+4.1.5 The mass reporting and analysis subsystem . . . . . . . . . . . . . . . . . . . . . 32
+4.1.6 Security System . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+4.2 Explaining Frontend Architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 32
+4.2.1 A Disjoint Architecture(cid:22)By Design . . . . . . . . . . . . . . . . . . . . . . . . . 32
+4.2.2 The App Router paradigm and the shared structural framework . . . . . . . . . 34
+4.2.3 A uni(cid:28)ed, abstracted, and strictly typed layer for server interfacing . . . . . . . . 34
+4.2.4 Client-side stateless authentication and authorization mechanisms . . . . . . . . 35
+3
+
+===== PDF PAGE 4 =====
+4.2.5 State management without a dedicated state management library . . . . . . . . . 35
+4.2.6 Real-time data via Server-Sent Events . . . . . . . . . . . . . . . . . . . . . . . . 36
+4.2.7 Architectural Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 36
+5 Case Study: The process of purchasing course materials via the public interface 38
+5.1 Actors and Trigger. Postconditons and preconditions The process of purchasing course
+materials . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 38
+5.2 End-to-end (cid:29)ow traceability: a layered approach . . . . . . . . . . . . . . . . . . . . . . 41
+5.2.1 Initiation segment: the frontend subsystem . . . . . . . . . . . . . . . . . . . . . 41
+5.2.2 The Backend Segment: the propagation path from Controller to Service . . . . . 41
+5.2.3 The transactional focal point: EnrollmentService. . . . . . . . . . . . . . . . . . . 42
+5.2.4 The return path and zero-latency asynchronous updates . . . . . . . . . . . . . . 43
+5.3 Structural Articulation: Implementation of Design Patterns and the Noti(cid:28)cation Service 43
+5.3.1 The Observer Mechanism: WelcomeEmailObserver . . . . . . . . . . . . . . . . . 43
+5.3.2 The Strategy Pattern: Lead Scoring Modeling . . . . . . . . . . . . . . . . . . . . 45
+5.3.3 The Chain of Responsibility Pattern: Structural Contact Validation. . . . . . . . 45
+6 Conclusions 46
+6.1 Main Contributions . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 46
+6.2 Future Development . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 47
+6.3 Conclusion on Architectural Resilience . . . . . . . . . . . . . . . . . . . . . . . . . . . . 48
+References 49
+4
+
+===== PDF PAGE 5 =====
+List of Figures
+1 TrainingIT Overview . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+2 System Actors Structure . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+3 B2C Use cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 23
+4 B2B & B2I Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 24
+5 Administrator Use Cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
+6 General Software architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 26
+7 Backend Architecture . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 27
+8 Entity - Relationship Diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 31
+9 Context Diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 33
+10 Sequence Diagram for the process of purchasing course materials . . . . . . . . . . . . . 39
+11 Activity Diagram . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 40
+12 Stages and function-calls to explain the process of purchasing course materials . . . . . 44
+5
+
+===== PDF PAGE 6 =====
+List of Tables
+1 Human actors . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+2 System actors (external integrations) . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+3 Actions available without an account. . . . . . . . . . . . . . . . . . . . . . . . . . . . . 18
+4 Common cases, inherited by all authenticated roles. . . . . . . . . . . . . . . . . . . . . 19
+5 The learning (cid:29)ow of the individual client. . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+6 Company-wide course acquisition and administration. . . . . . . . . . . . . . . . . . . . 20
+7 Public sector procurement. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+8 Content creation and delivery. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+9 Monetization in the marketplace. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+10 Quality and (cid:28)nancial control, strictly read-only. . . . . . . . . . . . . . . . . . . . . . . 21
+11 The platform’s back-o(cid:30)ce functions (CRM). . . . . . . . . . . . . . . . . . . . . . . . . 21
+12 System actors (cid:22) delegations . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 22
+13 System Entities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 30
+14 Enumeration used in TrainingIT software system . . . . . . . . . . . . . . . . . . . . . . 31
+6
+
+===== PDF PAGE 7 =====
+1 Introduction
+In the contemporary techno-economic and industrial ecosystem, Customer Relationship Manage-
+ment (CRM) systems have evolved beyond the rudimentary stage of simple contact logs to become
+central pillars of an organization’s operational and decision-making strategies. These platforms syn-
+ergistically integrate complex sales management work(cid:29)ows, multichannel communication channels,
+advanced analytical reporting mechanisms, and(cid:22)to an increasingly signi(cid:28)cant extent(cid:22)subsystems
+based on Arti(cid:28)cial Intelligence. For a business entity specializing in IT training, such as the Train-
+ingIT platform, this type of software infrastructure must orchestrate(cid:22)in a multifaceted manner(cid:22)
+everything from granular interactions with individual learners to large-scale corporate transactions,
+as well as the dynamic course catalog, enrollment processes, automated tax invoicing, and technical
+support work(cid:29)ows.
+The intrinsic motivation for this research stems from a dual structural necessity: The pragmatic
+dimension: The imperative to build a fully functional application grounded in the operational realities
+of a complete business cycle(cid:22)analytically tracing the path from an anonymous visitor browsing the
+public catalog to the completion of enrollment and the automatic generation of the associated tax
+documents.
+The academic dimension: The need to use this software artifact as a genuine empirical vehicle for
+dissecting complex software architectures and for the deliberate, applied implementation of Object-
+Oriented Design Patterns. Too often, these structural patterns are illustrated in isolation, using
+arti(cid:28)cial or overly simpli(cid:28)ed examples; The present work aims to demonstrate their organically in-
+tertwined viability within a real-world system, where each pattern addresses and resolves a speci(cid:28)c
+runtime vulnerability, thereby avoiding their introduction based on purely theoretical considerations.
+From a pedagogical perspective, the project aims to achieve clearly de(cid:28)ned methodological mile-
+stones:
+(cid:136) Deep assimilation of the "Separation of Concerns" principle: Demonstrating how a precise lay-
+ering of the codebase results in a transparent, fully testable, and easily maintainable system
+[22, 31].
+(cid:136) Applied study of classic (Gang of Four) and Enterprise design patterns [16, 15]: A detailed
+analysis of interactions between patterns such as Singleton, Facade, Command, Repository/DAO,
+Factory, Observer, Strategy, and Chain of Responsibility. The objective goes beyond mere iden-
+ti(cid:28)cation by name, focusing instead on how these structures collaborate polymorphically within
+the same execution thread, playing a decisive role in decoupling components.
+(cid:136) Understanding asynchronous and decoupled communication mechanisms: Investigating the in-
+terface between two fully autonomous applications(cid:22)a Java backend and a Next.js frontend(cid:22)
+via a strict REST/JSON contract, complemented by the implementation of modern real-time
+synchronization technologies (such as Server-Sent Events/SSE) and state management that
+avoids intrusive global libraries.
+(cid:136) Cultivating a critical mindset and epistemological integrity in software engineering [27]: Devel-
+oping the ability to honestly identify, map, and document the inherent discrepancies between
+ideal theoretical models and the constraints of actual technological implementation.
+1.1 Application Design Objectives
+From a software systems engineering perspective, the primary objective was to build a fully autonomous
+Java backend where the web framework served solely as a thin peripheral layer for interface exposure,
+keeping the business logic structurally independent. Speci(cid:28)cally, the aim was for the domain core
+to independently manage its own relational schema, active connection pool, and transaction bound-
+aries, theoretically allowing it to run outside any web container. The backend subsystem was built on
+7
+
+===== PDF PAGE 8 =====
+Spring Boot 3.5, with persistence handled in MariaDB via native JDBC statements and a Hikar-
+iCP connection pool; the use of an ORM layer was programmatically avoided to maintain absolute,
+deterministic control over query performance.
+A second major objective focused on the radical decoupling of the graphical interface. The fron-
+tend subsystem was designed as a standalone Single-Page Application(cid:22)implemented using Next.js 16
+(App Router), $\rightarrow$, and TypeScript 5(cid:22)communicating with the server exclusively via
+REST/JSON messages without sharing any session state. This disjoint architecture allows both com-
+ponents to evolve completely independently. Additionally, the design incorporated advanced services(cid:22)
+such as contextual recommendations, virtual sales assistants, chatbot modules, and dynamic language
+localization(cid:22)by interfacing with an external Arti(cid:28)cial Intelligence engine; however, this engine was
+designed as a strictly optional module capable of graceful degradation, thereby preventing application
+failure in the event of third-party API unavailability.
+1.2 Structure of the Written Work
+The body of this work is structured into (cid:28)ve fundamental chapters, framed by a contextual introduction
+and a summary of conclusions:
+(cid:136) Chapter 2: Current State of Knowledge (cid:21) Reviews the landscape of contemporary CRM systems,
+modern layered architectures, and key industry players; it also analyzes the economic trade-o(cid:27)
+between SaaS paradigms and Open-Source solutions, as well as the disruptive shifts introduced
+by Arti(cid:28)cial Intelligence and stringent security regulations.
+(cid:136) Chapter 3: System Design (cid:21) Details the conceptual modeling of human and system actors,
+permission inheritance mechanisms, and the network of use cases distributed across speci(cid:28)c
+B2C, B2B, and B2I channels. Use Case Diagrams (cid:21) Dedicated to the graphical representation
+and formalization of use case diagrams corresponding to the previously mentioned operational
+channels.
+(cid:136) Chapter 4: Software Implementation (cid:21) Represents the technical core of the thesis, meticulously
+describing the layered backend architecture, speci(cid:28)c design pattern implementations, domain
+entity structures, and the architectural mapping of the frontend.
+(cid:136) Chapter 5: Detailed Case Study (cid:21) Exhaustively traces the end-to-end transactional (cid:29)ow of
+purchasing a course via the public interface; it analyzes the data path from frontend initiation(cid:22)
+through controllers, facades, and services(cid:22)to (cid:28)nal database persistence, dynamically highlighting
+each design pattern activated during execution.
+(cid:136) Chapter 6: Conclusions and Perspectives (cid:21) Summarizes research (cid:28)ndings and outlines guidelines
+for future development directions.
+1.3 Structural topology of the project
+In terms of macro-structural organization, the project is divided into two completely independent
+subsystems:
+Overlaying this segmentation of backend packages are cross-cutting concerns, such as the central
+event bus (Observer pattern), the uni(cid:28)ed exception handling layer, and the dedicated AI interfacing
+module.
+In turn, the frontend subsystem adheres to the App Router paradigm, where each directory maps
+to a speci(cid:28)c route and an immutable root layout provides the shared structural framework for pages;
+meanwhile, a series of dedicated modules abstracts network communication, secure authentication, the
+live translation engine, and native state management. Through this structural rigor, the project aims
+to deliver not merely a functional software tool, but a coherent and traceable demonstration of how
+fundamental software engineering principles and design patterns can be rigorously applied within a
+real-world system.
+8
+
+===== PDF PAGE 9 =====
+Figure 1: TrainingIT Overview
+9
+
+===== PDF PAGE 10 =====
+2 State of the Art
+Modern CRM systems provide tools for managing customer information, sales activities, communica-
+tion and business opportunities. Popular solutions such as Salesforce, HubSpot, Zoho CRM and
+Odoo o(cid:27)er extensive functionality, cloud access and integration with external services. However, these
+platforms can be complex or expensive for smaller organizations.
+In the current economic and technological landscape, de(cid:28)ned by accelerated digitalization, CRM
+(Customer Relationship Management) platforms have become fundamental pillars of business strate-
+gies. These systems have surpassed the stage of simple contact management, evolving into complex
+business intelligence solutions that integrate operational work(cid:29)ows, predictive analytics, and auto-
+mated decision-making systems. The preference for scalable, customizable solutions that are indepen-
+dent of major vendors has stimulated the rise of open-source alternatives, which guarantee full control
+over the codebase and enhanced adaptability to pre-existing digital infrastructures.
+Customer Relationship Management(cid:22)or CRM, as it is universally known in the industry (and
+there is no point in pretending otherwise)(cid:22)is not, ontologically speaking, merely a software package
+one implements via "plug-and-play" to instantly solve a problem. Rather, it represents a strate-
+gic paradigm(cid:22)a cognitive and operational stance adopted by an organization toward its consumer
+ecosystem(cid:22)while the IT infrastructure, however algorithmically advanced, serves only *ex post* as an
+enabler of this vision. This paper is premised on precisely this axiom: the thesis that a customer whose
+behavior is deeply mapped, who is actively engaged and retained for the long term, translates(cid:22)sooner
+or later (usually later, given conversion cycles)(cid:22)into optimized ROI (Return on Investment) and
+sustainable pro(cid:28)tability. Conceptually, it is a simple equation; operationally, a formidable challenge.
+If we look back analytically, the (cid:28)eld’s evolutionary trajectory has been truly spectacular, even
+though, at a micro level(cid:22)caught up in daily operations(cid:22)such paradigm shifts often go unnoticed. In
+the 1980s and 90s, the conversation centered exclusively on Sales Force Automation (SFA)(cid:22)essentially
+rather rudimentary IT architectures (and I say this not pejoratively, but simply to highlight their
+nascent stage). Their scope was limited to managing contact entities, opportunities, and the sales
+pipeline(cid:22)and nothing more. They essentially mitigated administrative process redundancy and stan-
+dardized the sales funnel; that was the extent of their utility. Subsequently, with the arrival of the
+2000s, we witnessed a systemic maturation: CRM transcended departmental sales boundaries, inte-
+grating marketing and post-sales technical support across the board; e(cid:27)ectively, it captured the entire
+customer lifecycle(cid:22)from the initial touchpoint (a (cid:28)rst sales-oriented "hello") to, say, in an ideal loy-
+alty scenario, the tenth repeat purchase. It is an eminently holistic perspective, as the document so
+elegantly articulates.
+The 2010(cid:21)2020 decade orchestrated the transition toward cloud computing architectures and the
+Social CRM model(cid:22)marking an in(cid:29)ection point fully validated by the text: the cloud has irreversibly
+democratized access to technology. What did this mean, precisely? It meant that one was no longer
+constrained by enterprise status or exorbitant CAPEX budgets to maintain a high-performance CRM
+instance; barriers to entry collapsed, horizontal scalability became the norm, and social networks began
+injecting a previously inaccessible volume of unstructured data into the system(cid:22)the digital footprint
+and behavioral metadata that users generate inherently, often quite involuntarily. And what about the
+present? Today, we are witnessing a fundamental recon(cid:28)guration driven by Arti(cid:28)cial Intelligence (AI),
+machine learning algorithms, and predictive modeling. We are no longer simply analyzing transactional
+databases that passively store historical records; instead, we are working with neural systems capable(cid:22)
+albeit with varying degrees of accuracy, naturally, yet undeniably capable(cid:22)of extrapolating patterns
+and probabilistically anticipating what is to come.
+2.1 The Architecture of a Modern CRM: A Layered Breakdown [4, 24]
+At this point, the discussion takes a sharp turn into technical territory(cid:22)and rightly so. A modern
+CRM no longer adheres to the monolithic paradigm; to be clear, it is no longer that massive, opaque,
+and indivisible block where refactoring a single feature e(cid:27)ectively requires tearing the entire house
+10
+
+===== PDF PAGE 11 =====
+down to its foundations. Far from it. Today, we are dealing with systems that are inherently modular
+and scalable, built upon microservices architectures and designed with a speci(cid:28)c premise in mind: the
+ability to decouple and replace a module without causing the entire software edi(cid:28)ce to shudder or
+collapse. Broadly speaking, this architecture is organized into three layers of abstraction.
+2.1.1 The Presentation Layer (The Frontend) [23]
+This is the graphical interface(cid:22)essentially the point of contact with the human user. Here, we en-
+counter a rather harsh operational reality(cid:22)one that the work in question lays out without sugarcoating:
+you might have the most robust inference engine running underneath, but if the UI (User Interface) is
+hostile or cognitively overwhelming, users simply develop resistance; the battle for adoption is won or
+lost right here, down to the last millimeter. That is precisely why there is such an aggressive push today
+toward omnichannel experiences, responsive design, native mobile solutions, or(cid:22)where appropriate(cid:22)
+Progressive Web Apps (PWAs). From a strictly technical standpoint, we are talking about frameworks
+like React, Angular, or Vue(cid:22)and, naturally, about those interactive analytical dashboards that take
+massive volumes of data, run them through aggregation (cid:28)lters, and visually condense them into a few
+key performance indicators that can be deciphered at a single glance. As for mobility, solutions like
+React Native or Flutter are employed speci(cid:28)cally to ensure a consistent experience(cid:22)an isomorphic
+one(cid:22)regardless of the device the client is holding.
+2.1.2 The Business Logic Layer (The Core)
+The operational heart(cid:22)or processing nucleus, however one chooses to label it. This is where the center
+of gravity truly lies: procedural work(cid:29)ows, routing rules, algorithms, and complex work(cid:29)ow engines
+that capture and automate recurring transactional tasks, alongside advanced noti(cid:28)cation systems and
+triggers designed to alert you proactively before a process breakdown occurs. This layer also houses
+the analytics modules that render KPIs in real-time and(cid:22)crucially(cid:22)orchestrates interoperability with
+the external ecosystem (such as ERPs and e-commerce platforms) via REST or GraphQL APIs. It
+represents a conceptual decoupling inspired by the "Headless" approach(cid:22)a form of architectural free-
+dom that allows you to extend the CRM instance asynchronously, tailoring it precisely to your speci(cid:28)c
+business needs.
+2.1.3 The Data Layer (Persistence) [20, 30]
+The system’s long-term memory. The major challenge here(cid:22)and a point where the work highlights
+a (cid:28)nely tuned balance(cid:22)lies in the triangle formed by integrity, high availability (HA), and minimal
+latency. The current standard dictates a "Polyglot Persistence" model(cid:22)which, setting aside the some-
+what pompous ring of the academic term, conceals a damn simple and pragmatic principle: do not try
+to force heterogeneous data into a single type of schema. For transactional workloads, where rigor-
+ous data consistency (the ACID standard) is non-negotiable, you implement relational databases like
+PostgreSQL or MySQL. For completely unstructured data(cid:22)logs, Big Data volumes(cid:22)you naturally
+pivot toward the NoSQL ecosystem: MongoDB, Cassandra, or in-memory instances like Redis. And,
+overarching all of this, there are strict encryption protocols, automated backups, and robust disaster
+recovery mechanisms. Because if you lose this data in a system collapse or security breach, you lose
+the company entirely; it isn’t just a matter of a few (cid:28)les being deleted from a server.
+2.2 The Market (cid:22) Key Players and Strategic Rationales
+The competitive landscape is deeply fragmented(cid:22)a highly bene(cid:28)cial, atomized structure, as it allows
+each organization to identify a solution precisely tailored to its operational complexity. This analy-
+sis accurately maps out three major market segments. At the very top(cid:22)the Tier 1 level(cid:22)we (cid:28)nd
+enterprise-grade suites. Salesforce stands out as the undisputed industry leader; thanks to its native
+multi-tenant ecosystem and proprietary Apex language, it functions less like a mere CRM and more
+11
+
+===== PDF PAGE 12 =====
+like a true operating system for the entire business architecture. Next is Microsoft Dynamics 365(cid:22)a
+natural choice for organizations already structurally integrated into the Microsoft ecosystem, o(cid:27)ering
+one-click access to Power BI analytics and Azure infrastructure. Finally, one cannot overlook Oracle
+CX Cloud, a suite strategically positioned for businesses handling high-volume transaction processing
+and facing stringent regulatory compliance requirements [8, 9].
+In the middle of this spectrum, we see the rise of the open-source paradigm: SuiteCRM, EspoCRM,
+and Odoo (though, to be precise, Odoo represents a complete ERP architecture where the CRM module
+is merely one granular component), as well as OroCRM, which caters to speci(cid:28)c B2B work(cid:29)ows. In this
+segment, the central argument(cid:22)a point carrying signi(cid:28)cant weight in software architecture decisions(cid:22)
+lies in having absolute control over the digital asset. You own the source code entirely and can refactor
+it to meet your own technical speci(cid:28)cations, thereby fundamentally eliminating the vulnerability known
+as vendor lock-in.
+Finally, "best-of-breed" solutions(cid:22)which are hyper-specialized in their functionality(cid:22)enter the
+picture: HubSpot, which e(cid:27)ectively disrupted the market by championing the Inbound Marketing
+methodology and o(cid:27)ering a user interface (UX) so intuitive that adoption is virtually guaranteed, even
+among users with minimal digital literacy; Pipedrive, a platform with a singular focus(cid:22)in the best
+possible sense(cid:22)dedicated exclusively to rigorous sales pipeline management, free from extraneous fea-
+tures; and Zendesk, which remains the industry benchmark for optimizing customer support processes,
+after-sales assistance, and complex ticketing systems.
+2.3 Financial dynamics(cid:22)or, more pragmatically, budgetary constraints:
+SaaS versus Open Source
+We have arrived at one of the document’s most rigorous sections(cid:22)grounded in genuine analytical
+honesty(cid:22)as it deliberately eschews o(cid:27)ering a mere commercial illusion. The strategic choice involved
+is far from being determined solely by the platform’s functional attributes; instead, it is structurally
+anchored in the Total Cost of Ownership (TCO) metric(cid:22)an econometric indicator that encompasses
+the entirety of cash (cid:29)ows projected from the initial procurement phase through to the (cid:28)nal decommis-
+sioning of the digital asset [3, 26].
+With SaaS, which relies on OPEX(cid:22)speci(cid:28)cally, recurring subscription costs scaled per user(cid:22)the
+aggregate cost mounts at such an accelerated pace as the organization scales linearly and the user base
+multiplies that management unexpectedly (cid:28)nds itself facing a prohibitive bill. While this approach is
+highly predictable in the short term and operationally convenient, therein lies the model’s systemic
+vulnerability [3, 26]. In stark contrast, open-source architectures(cid:22)despite entailing signi(cid:28)cantly higher
+initial CAPEX due to the massive capital outlays required early on for deployment, rigorous security
+audits, and sta(cid:27) training(cid:22)feature a marginal cost per additional user that asymptotically approaches
+zero. In the long run, this represents indisputably superior economic e(cid:30)ciency. The document resolves
+this dilemma with absolute clarity: there is no universal panacea, only an optimal solution tailored to
+the speci(cid:28)c constraints of one’s own business model.
+Furthermore, several structural pitfalls loom on the horizon(cid:22)issues the study conceptualizes with-
+out sugarcoating. There is the phenomenon of vendor lock-in(cid:22)that rigid dependency on a supplier
+which carries the major risk that, should a decision be made to o(cid:27)board, the data migration process
+could devolve into a genuine technical and (cid:28)nancial nightmare; a risk that the open-source model,
+incidentally, inherently neutralizes. Then there is the matter of maintenance and retaining in-house
+expertise(cid:22)a point requiring close attention, as open-source is often "free" only in theory or rhetoric;
+who actually bears the salary costs for system administrators, Python or PHP developers, and cy-
+bersecurity specialists? The bene(cid:28)ciary organization, of course. By opting for SaaS, this operational
+burden is fully outsourced, yet this comes at the cost of severely eroding internal technical skills. Fi-
+nally, integration costs must be realistically assessed; no CRM architecture exists in an information
+vacuum, and interconnecting with pre-existing legacy systems can become prohibitively expensive due
+to the strict limitations imposed by proprietary commercial APIs.
+12
+
+===== PDF PAGE 13 =====
+2.4 The ultimate transformative dimension or disruptive vector: AI and
+ML[6, 10]
+If there is one factor substantially reshaping the CRM ecosystem(cid:22)and we are not speaking here of
+a merely incremental evolution, but of a truly radical paradigm shift(cid:22)it is undoubtedly Arti(cid:28)cial
+Intelligence. This paper asserts with axiomatic certainty that we are witnessing a structural transition
+from purely reactive systems(cid:22)whose sole utility lay in the passive storage and *ex-post* reporting of
+historical data(cid:22)to predictive, proactive architectures capable, by de(cid:28)nition, of anticipating commercial
+outcomes.
+In practical terms? Advanced Churn Prediction capabilities (probabilistic modeling of customer
+attrition risk) [6, 10], where algorithms such as Random Forest or XGBoost(cid:22)rigorously trained on
+transactional history(cid:22)detect subtle early warning signs of a deteriorating user relationship, instantly
+triggering an automated retention work(cid:29)ow. Concurrently, predictive Lead Scoring systems play a
+crucial role, preventing sales teams from wasting time on pro(cid:28)les with a minimal probability of con-
+version. There are also Dynamic Pricing strategies based on Reinforcement Learning, where prices are
+algorithmically adjusted in real-time according to demand vectors and backend inventory levels [33].
+Finally, high-(cid:28)delity recommendation systems(cid:22)conceptually similar to those established by streaming
+platforms(cid:22)precisely target commercial o(cid:27)erings tailored to the consumer’s psychographic pro(cid:28)le [28].
+Natural Language Processing (NLP) and sentiment analysis(cid:22)utilizing models based on Transformer
+architectures like BERT(cid:22)empirically determine, by reading unstructured emails and reviews, whether
+customer sentiment is shifting toward severe dissatisfaction or satisfaction [34, 11, 17]. And evidently
+there is the implementation of conversational chatbots and autonomous virtual agents powered by
+Large Language Models (LLMs)(cid:22)architectures designed to fully alleviate the operational pressure
+weighing on support centers [6, 10]. The central thesis(cid:22)articulated with remarkable conceptual el-
+egance within the work(cid:22)is that the CRM is undergoing a profound transformation: evolving from
+a mere passive database(cid:22)an inert digital archive of past interactions(cid:22)into a genuine, autonomous
+engine for organizational growth and scaling.
+2.5 Multidimensional challenges, regulatory constraints, and security vec-
+tors
+The work would lack rigorous academic standing had it bypassed the elements of greatest operational
+friction. Consider the omnichannel approach(cid:22)distinct from simple multi-channel strategies, as a major
+conceptual demarcation exists between the two: while multi-channel implies merely a di(cid:27)use presence
+across heterogeneous communication vectors, the omnichannel strategy entails structural inter-channel
+synergy(cid:22)the only means of delivering that highly coveted 360-degree view of the consumer [32, 1].
+Furthermore, the imperative of data governance comes to the fore: compliance with GDPR standards
+in Europe and CCPA in California the operationalization of the "Privacy by Design" principle [12],
+the guarantee of the right to be forgotten, rigorous consent management, and the maintenance of
+immutable audit logs. Here, the author’s warning is stark and unequivocal: failure to align with
+these mandatory standards not only invites punitive (cid:28)nancial sanctions but also irreparably erodes the
+brand’s trust capital. Finally, we are witnessing technological convergence with the IoT (Internet of
+Things) ecosystem, where physical devices transform into sensory nodes that feed the CRM system with
+continuous telemetry streams, thereby paving the way for highly sophisticated predictive maintenance.
+Information security is comprehensively addressed through the "Defense in Depth" paradigm, struc-
+tured across multiple layers of resilience: Identity and Access Management (IAM) complemented by
+Multi-Factor Authentication (MFA) and Single Sign-On (SSO) protocols; advanced encryption us-
+ing the AES-256 algorithm for data-at-rest and TLS for data-in-transit; and the strict application of
+the principle of least privilege implemented via Role-Based Access Control (RBAC) mechanisms and
+"need-to-know" rules [29]. Furthermore, proactive monitoring is ensured through advanced Intrusion
+Detection and Prevention Systems (IDS/IPS), while operational continuity is guaranteed by backup
+strategies featuring geo-redundancy and rigorous Disaster Recovery plans, designed to asymptotically
+13
+
+===== PDF PAGE 14 =====
+minimize Recovery Time Objective (RTO) and Recovery Point Objective (RPO) metrics.
+2.6 In conclusion, let us consider the Cloud paradigm and the (cid:28)eld’s future
+trajectories.
+Cloud computing architectures and advanced containerization technologies(cid:22)utilizing dedicated plat-
+forms such as Docker or Kubernetes(cid:22)have fundamentally rede(cid:28)ned the entire software development
+lifecycle [7, 19]. We now speak of elastic scalability, automated auto-scaling mechanisms, high availabil-
+ity, and zero-downtime deployment strategies implemented via Blue-Green or Canary methodologies.
+Despite the constantly shifting technological landscape, the SaaS (Software as a Service) model endures
+as the global industry’s *de facto* standard. Looking beyond the technological horizon, we see the
+emergence of conversational and generative AI, the integration of Augmented Reality (AR) into sales
+processes, the use of Blockchain protocols to guarantee absolute data integrity, and Edge computing
+paradigms for processing information (cid:29)ows at the network’s edge.
+The document’s conclusion(cid:22)if distilled into a single fundamental thesis(cid:22)is that the future sus-
+tainability of CRM systems is intrinsically linked to the architectural capacity to fuse these diverse,
+disruptive technologies into a uni(cid:28)ed matrix [7, 19]. We are witnessing, in e(cid:27)ect, an ontological
+shift: a transition from a mere toolset for data persistence and management to what this paper
+conceptualizes(cid:22)using a phrase destined to become a benchmark(cid:22)as an autonomous engine for or-
+chestrating experiences, capable of anticipating human needs with near-instantaneous precision.
+14
+
+===== PDF PAGE 15 =====
+3 Software Design
+3.1 Overview
+The architecture of the CRM system developed for the TrainingIT platform is grounded in the prin-
+ciple of Separation of Concerns (SoC) and the strict segregation of roles between human actors and
+systemic agents. This architectural decision is essential for ensuring the system’s long-term scalabil-
+ity, maintainability, and security. By automating recurring operational work(cid:29)ows and implementing
+a Role-Based Access Control (RBAC) model, the system assigns each user only the necessary privi-
+leges (Principle of Least Privilege). This approach optimizes user interface performance and minimizes
+database-level vulnerabilities [29, 22].
+At the core of human interactions lies a hierarchical permission inheritance model. Every user
+begins with the status of "Visitor" (unauthenticated user), possessing read-only access to the public
+catalog. Upon authentication, the entity is granted an expanded set of rights. Within the client
+portfolio, a fundamental architectural distinction is drawn between the "Learner" (the B2C entity(cid:22)
+the end consumer of educational resources) and the "B2B Manager" (the representative of a legal
+entity).
+The B2B Manager role is intrinsic to the enterprise-oriented business model, entailing responsibility
+for bulk purchases and license distribution. Their relationship with a(cid:30)liated learners is one of structural
+aggregation, supported by an analytics dashboard for monitoring performance metrics (KPIs) at the
+cohort level. Thus, while the Learner navigates the cognitive acquisition process, the B2B Manager
+oversees the return on investment (ROI) at the organizational level [29, 22].
+From an internal operational perspective, the dichotomy between the Administrator and the Trainer
+illustrates the decoupling of operational governance processes from pedagogical activity. The Adminis-
+trator holds superuser privileges regarding commercial parameters, system con(cid:28)gurations, and pricing
+policies. To prevent the administrative node from becoming a performance bottleneck, the system
+delegates content delivery responsibilities to the Trainer. The latter operates within a restricted scope,
+focusing exclusively on managing instructional materials, assessing learners, and providing educational
+support, while architectural constraints restrict access to (cid:28)nancial or contractual modules.
+Last but not least, the architecture incorporates third-party systems and arti(cid:28)cial intelligence
+modules that operate as autonomous agents, handling asynchronous tasks and administrative routines.
+Without this automated infrastructure, ensuring continuous availability (High Availability (cid:21) 24/7)
+would be unfeasible.
+The core system delegates (cid:28)nancial transaction processing to a Payment System via secure API
+calls. This action sequentially triggers the Billing System(cid:22)driven by webhooks(cid:22)to automatically
+generate tax documents. Simultaneously, the AI system (Claude) functions as an integrated digi-
+tal assistant (embedded agent): it facilitates heuristic navigation for visitors, processes Level 1 (L1)
+support requests from learners using natural language processing (NLP), and optimizes work(cid:29)ows,
+thereby relieving the administrator of repetitive support tasks [29, 22]. This complex matrix of micro-
+delegations transforms the application from a simple web platform into an autonomous, resilient, and
+high-performance software ecosystem.
+If by B2I we mean interaction with government institutions, universities, or public administration...
+well, the procurement work(cid:29)ow di(cid:27)ers fundamentally from classic corporate B2B. We are no longer
+talking simply about an HR manager approving a budget with a company card. Here, we essentially
+enter the realm of formalized procedures: public procurement, tenders, integration with state plat-
+forms (such as SEAP/SICAP in Romania), and(cid:22)imperatively(cid:22)strict B2G/B2I electronic invoicing
+work(cid:29)ows.
+Consequently, our B2B Manager undergoes, if you will, a structural transformation into an Insti-
+tutional Representative (B2I_MANAGER). This role requires a much more rigid set of permissions,
+additional supporting documentation (tax clearance certi(cid:28)cates, cost estimates), and policy-making
+that ensures legal compliance. It is(cid:22)in my view(cid:22)a completely di(cid:27)erent beast in terms of bureau-
+cratic processing, one that the AI system should handle using distinct protocols.
+15
+
+===== PDF PAGE 16 =====
+On the other hand(cid:22)and one could argue this is even more interesting(cid:22)if we interpret B2I as
+"Business-to-Instructor," we are looking at a paradigm where the trainer is not merely an employee
+to whom the administrator delegates courses, but rather... well, an independent business partner (a
+freelancer). In this scenario, the architectural relationship based on delegation transforms radically into
+one of commercial symbiosis. The trainer (acting as a B2I entity) manages their own micro-ecosystem
+within the TrainingIT platform. Consequently, their interface requires a completely separate analytics
+dashboard to monitor not only their students but also (cid:28)nancial metrics: revenue-share models, sales
+conversion rates for their courses, and retention funnels. Essentially, the platform metamorphoses from
+a simple CRM for educational delivery into a(cid:22)let’s call it(cid:22)multi-tenant architecture (akin to Udemy
+or Coursera), where the administrator’s role is limited to quality assurance (QA) and commission
+processing.
+This aspect of the B2I model necessitates that external systems(cid:22)particularly the payment system(cid:22)
+support "split routing." This means automatically dividing collected funds between the TrainingIT
+account and the instructor’s account for every transaction, without human intervention.Yes, absolutely.
+To be honest... if we look at this architecture as a whole, it remains(cid:22)well(cid:22)somewhat detached from
+the reality of the underlying technical infrastructure. We have masterfully covered the commercial
+side(cid:22)payments and billing(cid:22)but (and I’d like to emphasize this point), the actual educational process
+and user retention... well, these require auxiliary system actors. Without them, the application would
+simply collapse under its own operational weight. If we were to fully map out this ecosystem, here are
+the systemic agents(cid:22)and, tangentially, a human role(cid:22)that would also need to be integrated:
+(cid:136) Storage and Streaming System (e.g., AWS S3, Vimeo API): After all, the CRM won’t store video
+(cid:28)les tens of gigabytes in size directly within its relational database. That massive multimedia
+content e(cid:27)ectively needs to be o(cid:31)oaded to a CDN (Content Delivery Network). This way, the
+central system merely manages permissions, while the external service delivers the video stream
+directly to the learner, optimizing bandwidth usage.
+(cid:136) The Noti(cid:28)cation Gateway (e.g., SendGrid, Twilio): This asynchronous agent e(cid:27)ectively shoulders
+the entire burden of transactional communication. Password resets, live session reminders, email-
+ing certi(cid:28)cates(cid:22)while the AI (Claude) can certainly generate the content, ensuring deliverability
+(avoiding the spam folder) is the exclusive domain of this system microservice.
+(cid:136) Videoconferencing System (e.g., Zoom API / MS Teams): If the TrainingIT platform also delivers
+synchronous (live) modules, then session integration must be automated. The trainer con(cid:28)gures
+the course within the platform, and the system instantly triggers the creation of a meeting in
+the external environment, returning unique participation links. It is a classic yet vital form of
+delegation.
+(cid:136) The Auditor / QA Inspector: Especially in the context of the B2I integration we discussed
+earlier, a need arises for a role with strict read-only permissions(cid:22)an entity that, well, does not
+engage in (cid:28)nancial transactions or delivery, but validates the legal or educational compliance of
+the materials (such as a representative of the certi(cid:28)cation authority).
+3.2 Human actors
+All human actors derive from two abstract actors. Visitor is the root (public access); Authenticated
+User inherits it and adds the capabilities available after authentication, being in turn specialized by
+concrete roles. Each concrete role automatically inherits the use cases of its parent actors, without
+duplicating them.The human actors of this aplication are the following :
+16
+
+===== PDF PAGE 17 =====
+Figure 2: System Actors Structure
+# Actor Type Role
+A1 Visitor (Unauthenticated) abstract / Anonymous audience, no account.
+root
+A2 Authenticated User abstract The common base of all logged in
+roles.
+A3 Trainee (B2C Customer / Employee) concrete Individual client or employee trainee.
+A4 B2B Manager (HR Representative) concrete HR who purchases and allocates
+training for employees.
+A5 Institutional Representative concrete Public sector purchaser
+(B2I_MANAGER) (SEAP/SICAP).
+A6 Trainer (Instructor) concrete Create and deliver your own courses.
+A7 Partner Trainer (B2I) concrete External partner selling in the
+marketplace.
+A8 Auditor / QA Inspector concrete Quality and (cid:28)nancial control,
+read-only.
+A9 Administrator abstract Platform CRM operator.
+Table 1: Human actors
+17
+
+===== PDF PAGE 18 =====
+3.3 System actors (external integrations)
+# Actor Role
+S1 AI system (Claude) Support, recommendations, translation and sales
+insights.
+S2 Storage and Streaming System Delivery and storage of multimedia content.
+S3 Payment System (Stripe / Netopia) Payment processing and automatic invoicing.
+S4 Noti(cid:28)cation Gateway (SendGrid / Twilio) Email and SMS noti(cid:28)cations.
+S5 Videoconferencing System (Zoom / MS Teams) Live sessions in the marketplace.
+Table 2: System actors (external integrations)
+3.4 Use cases
+This section lists use cases grouped by actor. The cases of the abstract actor User Authenticated are
+inherited by all concrete roles and are not repeated in each of them.
+3.4.1 Visitor (Unauthenticated)
+Actions available without an account.
+Code Use case Description
+V1 Browse public catalog Browse available courses without logging in.
+V2 Create account / request a quote Register or request a training o(cid:27)er.
+Table 3: Actions available without an account.
+The "Browse public catalog" use case allows visitors to explore the course o(cid:27)erings without being
+logged in. Upon opening the page, the interface (cid:28)rst loads category (cid:28)lters via a ‘GET /api/public/categories‘
+call, followed by the actual list of courses via ‘GET /api/public/courses‘(cid:22)or, if the visitor selects a
+category, via the (cid:28)ltered variant ‘GET /api/public/courses?category={category}‘. Concurrently, the
+(cid:28)gures displayed in the header (number of courses, number of students, and average rating) are up-
+dated in real-time via a Server-Sent Events stream (‘GET /api/public/stats/stream‘); this stream
+sends current values upon connection and pushes updates whenever changes occur, eliminating the
+need for separate requests. Browsing activity also generates analytics data for the internal team:
+as soon as a course becomes visible, the application reports impressions once per browser via ‘POST
+/api/public/metrics/impressions‘ (including the list of ‘courseIds‘), while a click-through is recorded via
+‘POST /api/public/courses/{id}/click‘ the (cid:28)rst time a course card is expanded [21, 5]. These two met-
+rics calls feed the click-through rate (CTR) indicator in the administration module without impacting
+the visitor’s experience. If the visitor already has an active session, a ‘GET /api/public/me/purchases‘
+call is optionally included, used solely to visually mark courses the user already owns.
+The "Create account / request a quote" use case covers the transition of an anonymous visitor
+into a registered user. Upon completing the sign-up form and consenting to data processing (GDPR),
+the application sends a single ‘POST /api/auth/register‘ call containing a ‘RegisterRequest‘ object
+in the body(cid:22)comprising the individual contact’s personal details: full name, date of birth, email,
+phone number, full address, experience level, learning objective, lead source, password, and consent
+preferences. In turn, the backend (‘AuthController.register‘) creates an INDIVIDUAL-type Contact
+and returns an ‘AuthSession‘, which automatically authenticates the user and redirects them to the
+home page; indeed, registration is the only method by which a visitor can create an account. The
+"request a quote" component, associated with B2B/B2I channels, currently lacks a dedicated public
+endpoint: functionally, a quote request would correspond to the creation of an ‘Opportunity‘ entity
+(‘POST /api/opportunities‘), but that service is presently available only to administrators [21, 5].
+18
+
+===== PDF PAGE 19 =====
+Consequently, in the current implementation stage ("as-is"), the use case e(cid:27)ectively covers only account
+creation, while the quote request remains a proposed architectural extension ("to-be").
+3.4.2 Authenticated User
+Common cases, inherited by all authenticated roles.
+Code Use case Description
+UA1 Login & pro(cid:28)le management Login/logout and updating account data.
+UA2 Reset password Recovering access via email.
+UA3 View noti(cid:28)cations Check your personal noti(cid:28)cations.
+UA4 Report a problem Submit an issue to the support team.
+UA5 Chat with the AI assistant Ask questions about classes to Assistant Claude.
+UA6 Live page translation Translate the interface into the desired language.
+Table 4: Common cases, inherited by all authenticated roles.
+Authentication and Pro(cid:28)le Management
+System analysis reveals that the entire access control architecture revolves around a single de-
+terministic operation. When the user enters their credentials (email and password)(cid:22)an action that
+initiates the work(cid:29)ow(cid:22)the security of the entire session relies on a single ‘POST /api/auth/login‘ call.
+The request body directly encapsulates the ‘{ email, password }‘ pair. The server response follows
+a simpli(cid:28)ed paradigm, returning an ‘AuthSession‘ object that de(cid:28)nes the subject’s identity and priv-
+ilege level (‘USER‘ or ‘ADMIN‘). This state is persisted locally in the browser under the ‘ctrAuth‘
+key. Regarding architectural certainty(cid:22)and contrary to expectations of recurring pro(cid:28)le queries(cid:22)the
+system operates in a strictly decentralized manner. Once the user session is stored in ‘localStorage‘,
+its termination (the logout operation) does not query the backend; instead, it is executed exclusively
+on the client side via the ‘clearSession‘ function. Similarly, pro(cid:28)le management(cid:22)while included in the
+speci(cid:28)cations(cid:22)currently lacks a dedicated transactional endpoint, meaning data validity relies on the
+snapshot obtained at login. This structural limitation is an empirical fact worth noting.
+Password Reset
+This use case follows a paradigm of absolute linearity, even though a preliminary critical assessment
+might tempt one to attribute hidden complexity to it. Although the recovery (cid:29)ow is empirically de(cid:28)ned
+by the user’s cognitive vulnerability(cid:22)forgetting the password(cid:22)its structural simplicity drastically
+reduces error vectors: the interface presents a dedicated page that triggers a single asynchronous
+‘POST /api/auth/reset-password‘ call [21, 5], delegating the entire business logic to the backend.
+Absence of complex choreography: There is no polymorphic exchange of tokens visible in the UI, nor
+are there intermediate states. State isolation: From the frontend perspective, the use case entails
+minimal network resource consumption. From an epistemic standpoint, it is precisely this austerity of
+the (cid:29)ow that ensures the system’s robustness. Reducing transactional components (fewer active links)
+limits the likelihood of nuanced error states or synchronization issues.
+Noti(cid:28)cation Viewing
+In this scenario, the reality of the technical implementation di(cid:27)ers fundamentally from initial as-
+sumptions; it is crucial not to presuppose functionality that has not yet been validated within the
+system. Although user-facing noti(cid:28)cation viewing is conceptualized as an interactive component, the
+current architecture completely lacks a native query endpoint (such as ‘GET /api/noti(cid:28)cations‘). Cur-
+rent system knowledge indicates that noti(cid:28)cation logic resides exclusively on the server side within the
+‘EmailNoti(cid:28)cationFactory‘ component. Its role is to asynchronously compose and dispatch structured
+messages:
+1. Welcome emails
+2. Registration con(cid:28)rmations
+19
+
+===== PDF PAGE 20 =====
+Code Use case Description
+C1 View course details See the extended description and course
+syllabus.
+C2 Buy course (B2C) Purchase and enroll in a course.
+C3 My courses List of purchased courses and progress.
+C4 Write/edit review Give rating and feedback to a course you have
+taken.
+C5 Read course reviews Check out reviews from other learners.
+C6 Schedule a trainer session Book a 1-on-1 session based on availability.
+C7 My sessions View scheduled sessions.
+C8 Course recommendations Get personalized suggestions generated by AI.
+Table 5: The learning (cid:29)ow of the individual client.
+3. Session reminders
+4. Administrative follow-ups
+Consequently, the (cid:29)ow is strictly unidirectional: the noti(cid:28)cation is generated and transmitted to the
+client but cannot be retrieved via an API query. UA3 currently represents a potential capability
+("to-be"). While the distribution channel is operational, transforming it into a native in-app work(cid:29)ow
+requires extending the API with a read endpoint.
+3.4.3 Trainee (B2C Customer / Employee)
+The learning (cid:29)ow of the individual client.
+3.4.4 B2B Manager (HR Representative)
+Company-wide course acquisition and administration.
+Code Use case Description
+B1 Bulk purchase (B2B) Buy course licenses for multiple employees.
+B2 Licenses & employee progress Assign licenses and monitor team progress.
+Table 6: Company-wide course acquisition and administration.
+3.4.5 Institutional Representative (B2I_MANAGER)
+Public sector procurement.
+Code Use case Description
+I1 SEAP/SICAP acquisition + e-invoice Public procurement with electronic invoicing.
+I2 Compliance reporting Generates institutional compliance reports.
+Table 7: Public sector procurement.
+3.4.6 Trainer (Instructor)
+Content creation and delivery.
+20
+
+===== PDF PAGE 21 =====
+Code Use case Description
+T1 Create & publish course De(cid:28)ne the content and publish the course.
+T2 Schedule live sessions Schedule live sessions for learners.
+Table 8: Content creation and delivery.
+3.5 Partner Trainer (B2I)
+Monetization in the marketplace.
+Code Use case Description
+TP1 Publishing in the marketplace List your own courses in the marketplace.
+TP2 Revenue & commissions Track your a(cid:30)liate income and commissions.
+Table 9: Monetization in the marketplace.
+3.5.1 Auditor / QA Inspector
+Quality and (cid:28)nancial control, strictly read-only.
+Code Use case Description
+AU1 Didactic audit &amp; QA (read-only) Inspect the quality of the teaching content.
+AU2 Financial audit (read-only) Check invoices and income, without
+modi(cid:28)cation.
+Table 10: Quality and (cid:28)nancial control, strictly read-only.
+3.5.2 Administrator
+The platform’s back-o(cid:30)ce functions (CRM).
+Code Use case Description
+AD1 Dashboard & KPI Key indicators and general statistics.
+AD2 Contact / lead management CRUD contacts, score and lead status.
+AD3 Course management CRUD courses and sessions.
+AD4 Employee management (+ import) Employee management, including mass import.
+AD5 Registration tracking Monitor enrollments and their history.
+AD6 Invoices & PDF export Issue and export invoices in PDF format.
+AD7 Opportunity pipeline Manage the stages of sales opportunities.
+AD8 Activity planning Schedule tasks and follow-ups.
+AD9 Analytics & reports Reports on contacts and pipeline.
+AD10 Issue management Handles issues reported by users.
+AD11 Recommendations per company (AI) AI-generated course suggestions for a client.
+AD12 Sales Insights (AI) AI analytics on sales opportunities.
+Table 11: The platform’s back-o(cid:30)ce functions (CRM).
+3.6 System actors (cid:22) delegations
+System actors do not initiate (cid:29)ows on their own; they execute tasks delegated by human instances (
+"delegate" / "trigger" / "include" relationships).
+21
+
+===== PDF PAGE 22 =====
+System actor Use case Triggered by
+AI system (Claude) L1 support & course recommendations UA5, C8, AD11
+AI system (Claude) Sales chat & opportunity insights AD12
+AI system (Claude) Content translation UA6
+Storage and Streaming course content to the learner C1, T1
+Streaming System
+Storage and Storage / upload of multimedia materials T1, TP1
+Streaming System
+Payment System Payment Processing (B2C / B2B) C2, B1
+(Stripe/Netopia)
+Payment System Trigger automatic billing I1, AD6
+(Stripe/Netopia)
+Noti(cid:28)cation Send email / SMS noti(cid:28)cations C6, B2
+Gateway
+Videoconferencing Create live session & generate link T2, TP1
+System
+Table 12: System actors (cid:22) delegations
+3.7 Use case diagrams
+The complete model is divided into three diagrams, corresponding to the functional channels of the
+platform.
+3.7.1 B2C channel (cid:22) individual customer
+The visitor explores the catalog and creates an account; the authenticated user gets a pro(cid:28)le, noti(cid:28)ca-
+tions, AI chat, and translation; the learner buys, learns, reviews, and schedules sessions. The dotted
+lines represent delegations to external services.
+3.7.2 B2B / B2I channels and trainer network
+The B2B manager buys in bulk and allocates licenses; the institutional representative purchases
+through SEAP/SICAP with electronic invoicing; internal trainers and partners publish and support
+content; the QA auditor inspects didactically and (cid:28)nancially, read-only.
+3.7.3 Internal CRM (cid:22) Administrator
+Platform back-o(cid:30)ce: contact and sales pipeline management, courses, employees, registrations, invoices
+with PDF export, activities and issues, plus two AI-assisted cases.
+22
+
+===== PDF PAGE 23 =====
+Figure 3: B2C Use cases
+23
+
+===== PDF PAGE 24 =====
+Figure 4: B2B & B2I Use Cases
+24
+
+===== PDF PAGE 25 =====
+Figure 5: Administrator Use Cases
+25
+
+===== PDF PAGE 26 =====
+4 Software Implementation
+The software application architecture is based on the client-server model.The frontend uses Next.js
+16 (with React 19, TypeScript, and Tailwind), running on port 3000 [36, 35]. It sends HTTP/JSON
+requests to the server and receives real-time data through SSE (Server-Sent Events). The backend
+is built with Spring Boot 3.5 (port 8080), providing a REST API and business logic [36, 35]. It
+communicates with an external AI API (Anthropic Claude) for advanced features. Data is stored in
+a MariaDB database (crm_training), with the connection e(cid:30)ciently managed via JDBC using the
+HikariCP pool. The architecture clearly separates the interface from data processing. The full-stack
+CRM app is for an IT training company, and it’s based on two independent layers that communicate
+exclusively through REST/JSON messages:
+Figure 6: General Software architecture
+The distinctive feature of this architecture is the clear decoupling of business logic. The backend
+is a traditional Java core built on design patterns(cid:22)developed to ensure extensibility and robustness(cid:22)
+where Spring Boot acts exclusively as a web presentation layer. The domain is fully autonomous,
+independently managing its schema and connection pool, while Spring serves to expose the REST API
+and integrate into the overall functional framework [36, 35].
+4.1 Explaining Backend Architecture
+The core of the TrainingIT_site application is a robust Java domain built from scratch using clearly
+de(cid:28)ned layers, where the Spring Boot framework acts strictly as a web wrapper. The autonomy of this
+core is evident from startup: the main class intentionally disables automatic database con(cid:28)guration.
+Consequently, the domain manages its connection pool, schema, and transactions entirely indepen-
+dently. Spring intervenes only at the surface level to expose functionality via a REST API and to
+inject the facade. This complete decoupling ensures that the business logic remains independent of the
+framework, with the code possessing the theoretical potential to run even as a desktop application.
+The architectural layering follows a classic and highly transparent path regarding traceability. Po-
+sitioned at the client-facing boundary(cid:22)acting as interfacing vectors(cid:22)are the REST controllers from
+the ‘crm.web.controller‘ package (approximately sixteen in total); these components bear virtually no
+complex logical responsibility beyond converting HTTP requests into domain-speci(cid:28)c calls and re-
+turning clean Data Transfer Object (DTO) instances [36, 35]. They have no direct coupling to the
+26
+
+===== PDF PAGE 27 =====
+Figure 7: Backend Architecture
+27
+
+===== PDF PAGE 28 =====
+service layer; instead, their interaction is mediated exclusively through a single centralizing compo-
+nent: ‘CrmFacade‘. This represents a pure implementation of the Facade design pattern(cid:22)a single
+architectural pivot point designed to conceal the inherent complexity of backend subsystems behind
+an abstraction layer. When a controller issues a request(cid:22)conceptually, such as "create a course" or
+"enroll a contact"(cid:22)it is the facade that possesses the topological intelligence to delegate execution,
+without the original caller ever needing to uncover the number of services, commands, or repositories
+sequentially activated behind the scenes.
+Directly beneath this facade layer lies the service layer (‘crm.service.*‘), housing the functional core
+and the actual business logic(cid:22)a core that integrates processes for contact entities, courses, enrollments,
+invoicing, metrics analysis, reviews, and technical support. Each service is structurally con(cid:28)gured as
+a Singleton, with instantiation accessed via the classic ‘getInstance()‘ call(cid:22)a design decision mirrored
+in ‘AppCon(cid:28)g‘ (elegantly optimized using the Bill Pugh idiom to ensure thread safety without explicit
+synchronization) and in the management of ‘DatabaseConnection‘. For state mutations requiring
+encapsulation as atomic, self-contained units of execution(cid:22)such as instantiating a contact, processing
+an enrollment, or transitioning a sales opportunity to a di(cid:27)erent stage of the funnel(cid:22)the Command
+pattern is employed, orchestrated by its own ‘CommandInvoker‘. Further down the stack, access to
+the persistence layer is intelligently bifurcated: on one hand, Repository classes operate directly with
+domain objects, o(cid:27)ering a highly abstracted, business-oriented interface; on the other, the underlying
+DAO (Data Access Object) [36, 35] instances communicate directly with the MariaDB instance using
+raw JDBC statements. No traces of JPA or Hibernate are found in this ecosystem; all transactional
+interaction relies on explicit SQL queries(cid:22)a choice that, while introducing some syntactic verbosity,
+provides absolute, deterministic control over performance [36, 35].
+However, the element that lends a genuine architectural identity to this backend lies in the rich-
+ness and organic intersection of various design patterns structurally interwoven within the code. A
+centralized Observer mechanism, implemented as an EventBus, intercepts asynchronous noti(cid:28)cations
+whenever a critical state change occurs in the system; at this point, specialized consumers (listeners)
+react in a completely decoupled manner: one module logs the entry in the audit trail, another trig-
+gers the onboarding email, a third generates the (cid:28)scal document, while a (cid:28)nal subsystem dynamically
+recalculates the lead’s score [16, 18]. This scoring algorithm itself employs the Strategy pattern(cid:22)an
+abstraction allowing for dynamic switching between linear evaluation logic and a complex strategy tai-
+lored to the B2B segment, without altering the immutability of the rest of the codebase. The contact
+data validation process sequentially traverses a Chain of Responsibility structure (successively verifying
+email and phone number compliance, entity type, and GDPR constraints); the noti(cid:28)cation subsystem
+is generated via Factory mechanisms that dynamically arbitrate between email and SMS channels,
+while complex object graphs are assembled using dedicated Builder implementations. The entire as-
+sembly of components is interconnected during the initial execution phase by ‘CrmRuntimeCon(cid:28)g‘,
+a class that orchestrates the domain bootstrapping process, asynchronously registers observers, and
+exposes the main facade as a managed bean within the Spring IoC container.
+The resulting con(cid:28)guration yields a highly cohesive backend where each functional responsibility
+occupies a clearly de(cid:28)ned domain, rendering the execution (cid:29)ow of a request perfectly predictable:
+the path proceeds linearly from the controller, through the facade and into the service layer, before
+being picked up by commands or repositories and (cid:28)nally reaching the DAO and database persistence(cid:22)
+a dynamic complemented by asynchronous events branching out laterally. Ultimately, what we are
+dealing with is a veritable "living manual"(cid:22)a practical compendium of design patterns rigorously
+implemented within the architecture of a real-world production application.
+4.1.1 System Entities [13, 15]
+Upon scrutinizing the data ontology (located deep within the ‘src/main/java/crm/model/‘ namespace),
+the (cid:28)rst observation that stands out(cid:22)though, frankly, I had expected a fully interconnected object
+graph(cid:22)is the discovery of an ecosystem comprising 13 concrete entities. All of them revolve around
+and extend a single abstract superclass: ‘BaseEntity‘. From an epistemic standpoint, what is truly
+28
+
+===== PDF PAGE 29 =====
+striking about this architecture is the nature of the relationships. Rather than embracing the semantic
+associations established by JPA (such as ‘@ManyToOne‘ annotations), the links between entities...
+well, they resort to an almost blunt pragmatism: manually managed foreign keys in the form of ‘Long‘
+primitives (‘id‘) [13, 15]. We are, therefore, looking at what theory terms an "anemic" model(cid:22)a choice
+that, while bypassing ORM "magic," o(cid:27)ers undeniable structural transparency.
+Mapping these data structures reveals a division that we can summarize in the following matrix:
+Controlled Vocabulary: System Enumerations
+Regarding strict typologies, the system(cid:22)consistent within its semantic limitations(cid:22)imposes a
+series of enumerations that dictate states and categories:
+If we step back a little and view architecture through the lens of functional cohesion, it becomes
+evident that these structures are not simply thrown together; rather, they coalesce three absolutely
+distinct sub-domains:
+1. The Educational Dimension (Courses & Delivery): A linear progression of Course (cid:25) CourseSes-
+sion (cid:25) Enrollment. Interestingly, the review component (the rating/feedback pair, which I had
+already internalized from previous analyses) is also incorporated here.
+2. The Commercial Dimension (CRM & Sales): A relationship ecosystem governed by Contact,
+Opportunity, Activity, and Employee.
+3. Individualized Aspect (1-on-1 Sessions & Billing): MeditationSession (cid:24) Invoice Link.
+The ‘MeditationSession‘ naming(cid:22)it is truly fascinating how historical artifacts persist in the code.
+This name, betraying the legacy of a previous template (most likely an application dedicated to school
+meditation sessions), was recycled to represent a session booking with a trainer. For the sake of
+semantic clarity, renaming it to ‘TrainerSession‘ or ‘Booking‘ is essential, especially since this is the
+entity that actually underpins the ‘TrainerController‘ and the billing system.When examining how the
+system’s actors are modeled, we observe a somewhat counterintuitive redundancy. Roles are scattered
+across three entirely di(cid:27)erent areas: (cid:28)rst, within the ‘User.role‘ enum, and subsequently rei(cid:28)ed as
+standalone ‘Admin‘ and ‘Trainer‘ entities. As for the essential "Learner" entity, it is simply missing
+as a dedicated structure; instead, the client is represented generically, subsumed under the "Contact"
+umbrella. This structural gap is precisely why there is a clear discrepancy between the richness of the
+theoretical model found in the actor diagrams(cid:22)which feature roles such as B2B, B2I, and Auditor(cid:22)
+and the far more pragmatic reality of the actual implementation.
+4.1.2 Error handling and the uni(cid:28)ed error contract
+In this regard, the backend exposes a centralized mechanism for the semantic translation of domain
+exceptions into coherent HTTP responses(cid:22)an element unfortunately missing from previous itera-
+tions. The class hierarchy within the ‘crm.exception‘ package is highly branched, stemming from
+a single abstract root type, ‘CrmException‘, from which ‘BusinessException‘, ‘ValidationException‘,
+‘ResourceNotFoundException‘, and ‘DataAccessException‘ successively derive. A single ‘GlobalEx-
+ceptionHandler‘ component, contextually annotated with ‘@RestControllerAdvice‘, intercepts all such
+runtime anomalies and deterministically maps them to speci(cid:28)c status codes: a non-existent persis-
+tence resource converts to a ‘404 Not Found‘; a structural validation failure translates to a ‘400 Bad
+Request‘ (inevitably accompanied by the full error matrix); a violation of business axioms becomes a
+‘422 Unprocessable Entity‘; while a critical persistence error returns a standard ‘500 Internal Server
+Error‘. Naturally, there is also specialized handling for the scenario where the AI engine is unavailable
+(‘503 Service Unavailable‘). Each such response is polymorphically encapsulated within a uniform
+DTO(cid:22)‘ApiError‘ (containing status, message, path, and details attributes)(cid:22)which the frontend sub-
+system, through isomorphism, reconstructs into its own ‘ApiError‘ object, thereby closing a perfect
+architectural loop between the two application instances.
+29
+
+===== PDF PAGE 30 =====
+snoitaleR
+setubirrtA
+snoitcnuF
+ytitnE
+-
+DIUnoisreVlaires
+(cid:160)numoc (cid:160)salcrepuS
+ytitnEesaB
+1#
+,aetatitnedi (cid:160)rugisa(
+)tcartsba(
+is aerazilaires , )elaropmet eletadatem
+(cid:25)
+resU
+oTdengissa
+,epyTtcatnoc
+tneilc / daeL
+tcatnoC
+2#
+,emaNtsal/emaNtsr(cid:28)
+)(cid:160)mr(cid:28) uas (cid:160)naosrep(
+,edoClacs(cid:28)
+,emaNynapmoc
+,sutatSdael
+,ecruoSdael
+tnesnoCrpdg
+,erocSdael
+-
+,suballys
+,eman
+,edoc
+iulusruc aitin(cid:28)eD
+esruoC
+3#
+,
+,level
+,yrogetac
+)(cid:160)trefo(
+evitca
+,sruoHnoitarud
+(cid:25)
+esruoC
+dIesruoc
+,edoCnoisses
+a (cid:160)tamargorp (cid:160)tnatsnI
+noisseSesruoC
+4#
+,
+,etaDdne/etaDtrats
+)(cid:160)purg( sruc iunu
+,edoMyreviled
+,sutats
+,stnapicitraPxam
+etaroproCsi
+,gnitaRegareva
+(cid:25)
+dInoisses
+,etaRecnadnetta
+,sutats
+tcatnoc iunu aereircsn˛
+tnemllornE
+5#
+dItcatnoc
+,noisseSesruoC
+,dessaPmaxe
++( enuises o
+al
+(cid:25)
+tcatnoC
+,gnitar
+,rebmuNetac(cid:28)itrec
+)aiznecer
+kcabdeef
+(cid:25)
+,reniarT
+dIreniart
+,etaDnoisses
+enuises eravrezeR
+noisseSnoitaideM
+6#
+(cid:25)
+tcatnoC
+dItcatnoc
+ruoHdne/ruoHtrats
+reniart nu uc 1-al-1
+(cid:25)
+dInoisses
+,sruoh
+,rebmuNeciovni
+o urtnep (cid:160)rutcaF
+eciovnI
+7#
+,noisseSnoitatideM
+,etaRtnuocsid
+,etaRylruoh
+enuises ed eravrezer
+(cid:25)
+tcatnoC
+dItneilc
+etaDtnemyap
+,sutats
+,latot
+(cid:25)
+,tcatnoC
+dItneilc
+,eulaVdetamitse
+,eltit
+ed etatinutropO
+ytinutroppO
+8#
+(cid:25)
+esU
+oTdengissa
+,eulaVdetouq
+B2B enilepip( erazn(cid:226)v
+,egats
+,tnecrePytilibaborp
+)I2B /
+nosaeRtsol
+(cid:25)
+,tcatnoC
+dItcatnoc
+,tcejbus
+,epyTytivitca
+ed ksat / enuitcaretn
+ytivitcA
+9#
+,
+(cid:25)
+dIytinutroppo
+,ytiroirp
+,etaDdeludehcs
+)pu-wollof( ir(cid:160)zn(cid:226)v
+,ytinutroppO
+puwolloFseriuqer
+,emoctuo
+(cid:25)
+yBdetaerc/oTdengissa
+resU -
+,liame
+,emanresu
+apihce( nretni tnoC
+resU
+01#
+,elor
+,hsaHdrowssap
+)TIgniniarT
+nigoLtsal
+-
+liame
+,emaNtsal/emaNtsr(cid:28)
+rotartsinimdA
+nimdA
+11#
+)eritbus etatitne( ,
+-
+liame
+,emaNtsal/emaNtsr(cid:28)
+etatitne( rotcurtsnI
+reniarT
+21#
+)eritbus ,
+(cid:25)
+tcatnoC
+dIynapmoc
+,egassem
+,liamEretroper
+a fo eeyolpmE
+eeyolpmE
+31#
+sutats
+tneilc etaroproc
+-
+,egassem
+,liamEretroper
+na yb detroer eussi
+nA
+tropeR
+eussI
+41#
+sutats
+resu
+seititnE
+metsyS
+:31
+elbaT
+30
+
+===== PDF PAGE 31 =====
+Enum Values
+#1 UserRole ADMIN, SALES_MANAGER, SALES_AGENT,
+TRAINER, SUPPORT, MARKETING
+#2 ContactType INDIVIDUAL, CORPORATE
+#3 LeadStatus NEW, CONTACTED, INTERESTED, QUALIFIED,
+ENROLLED, LOST
+#4 OpportunityStage LEAD_QUALIFICATION, NEEDS_ANALYSIS,
+PROPOSAL_SENT, NEGOTIATION,
+CONTRACT_REVIEW, WON, LOST
+#5 EnrollmentStatus PENDING, CONFIRMED, ATTENDING,
+COMPLETED, DROPPED, CANCELLED
+#6 PaymentStatus UNPAID, PARTIAL, PAID, REFUNDED, OVERDUE
+#7 CourseCategory PROGRAMMING, AI, DATA_SCIENCE,
+WEB_DEVELOPMENT, MOBILE, DEVOPS,
+CYBERSECURITY,
+PROFESSIONAL_RECONVERSION, WORKSHOP
+#8 DeliveryMode ONLINE, ON_SITE, HYBRID, AT_CLIENT
+#9 SessionStatus PLANNED, OPEN_ENROLLMENT, FULL, ACTIVE,
+COMPLETED, CANCELLED
+#10 ActivityType EMAIL, CALL, MEETING, TASK, NOTE, SMS, DEMO
+Table 14: Enumeration used in TrainingIT software system
+Figure 8: Entity - Relationship Diagram
+31
+
+===== PDF PAGE 32 =====
+4.1.3 Persistence infrastructure.
+The sovereignty and autonomy of the domain layer warrant a separate conceptual discussion. The
+‘DatabaseConnection‘ component is con(cid:28)gured as a Singleton that exclusively manages the HikariCP
+connection pool, using parameters extracted from ‘AppCon(cid:28)g‘ (such as maximum size, idle connec-
+tions, allocation timeouts, and deterministic lifecycle) [13, 15]. During the bootstrapping phase, the
+‘WebSchemaInitializer.ensureTables()‘ call programmatically executes the ‘schema.sql‘ script, allowing
+the application to auto-generate its own relational schema within the MariaDB instance. Precisely
+because the Spring framework’s automatic ‘DataSource‘ is deliberately disabled, the entire persistence
+management resides exclusively within the domain core(cid:22)an irrefutable empirical argument for the
+previously described structural autonomy [13, 15].
+4.1.4 AI Integration
+AI integration is implemented as an optional module featuring graceful degradation capabilities.
+The ‘crm.web.ai‘ package encapsulates the ‘ClaudeClient‘ class(cid:22)a lightweight architectural wrapper
+around the o(cid:30)cial Anthropic SDK(cid:22)alongside the ‘AiService‘ component; the latter powers features
+such as course recommendations, sales process assistance, the conversational chatbot, and language
+localization. A particularly elegant architectural detail lies in the strict dependency on the ‘AN-
+THROPIC_API_KEY‘ environment variable: if the key is missing, the client instantiates with a
+‘null‘ value, the ‘isEnabled()‘ method predictably returns ‘false‘, and subsequent calls trigger a speci(cid:28)c
+exception (‘AiUnavailableException‘ (cid:25) 503) rather than causing a catastrophic system crash [2, 25].
+The rest of the software ecosystem continues to function seamlessly, providing a textbook example of
+graceful degradation and loose coupling regarding an external dependency [2, 25].
+4.1.5 The mass reporting and analysis subsystem
+The ReportService/ReportController functional pairing generates binary exports in Excel (using the
+Apache POI library) and PDF (via OpenPDF) formats, while the EmployeeExcelImporter compo-
+nent orchestrates the reverse operation(cid:22)speci(cid:28)cally, the bulk import of employee entities from a pre-
+formatted spreadsheet. This operational layer clearly demonstrates that the backend(cid:22)far transcending
+the simplistic pattern of CRUD operations exposed via a REST interface(cid:22)delivers advanced capabil-
+ities for analytical reporting and high-volume batch processing [2, 25].
+4.1.6 Security System
+To resolve any potential cognitive dissonance regarding the claims made in Chapter 1 concerning
+the "Defense in Depth" concept, a point of utmost technical candor is required: within the actual
+topology of the current codebase, the authentication model is implemented in a minimalist fashion
+(residing strictly client-side via ‘localStorage‘ persistence), the CORS policy in ‘WebCon(cid:28)g‘ is restric-
+tively con(cid:28)gured for the Next.js server origin only, and mechanisms typical of a genuine production
+environment(cid:22)such as data-at-rest encryption, MFA protocols, server-side RBAC, or immutable audit
+logs(cid:22)currently represent only strategic directions for future development [22]. Ultimately, the sys-
+tem stands as a genuine academic demonstration of applied software architecture and design patterns,
+rather than a hardened, secure instance ready for industrial-scale production deployment.
+4.2 Explaining Frontend Architecture
+4.2.1 A Disjoint Architecture(cid:22)By Design
+The most crucial aspect to grasp regarding the TrainingIT interface(cid:22)prior to any detailed analysis(cid:22)is
+that it bears no organic connection to the backend structure whatsoever [24, 22]. Residing in isolation
+within its own dedicated folder (‘frontend/‘) and running autonomously on its speci(cid:28)c port (3000
+in the development environment), the interface communicates with the Java server solely via HTTP
+32
+
+===== PDF PAGE 33 =====
+protocols and JSON payloads(cid:22)and nothing else. There is no shared session, no server-side dynamic
+page rendering, and no deep integration beyond a strict REST contract [14]. Structurally, the behavior
+is analogous to that of two individuals living in separate buildings who communicate exclusively by
+phone: each independently manages their own household while agreeing on the semantics of their verbal
+information exchange. The advantage of this radical decoupling is immense. The Java domain can
+be entirely refactored(cid:22)leveraging its full array of design patterns(cid:22)without disrupting a single line
+of TypeScript; conversely, the graphical interface can be redesigned from scratch without requiring
+the recompilation of any server-side components. The only common ground where both subsystems
+converge is the topology of the data transmitted over the wire.
+Figure 9: Context Diagram
+The technology stack is designed to be exceptionally lean. The application is built upon Next.js 16
+(utilizing the App Router paradigm), React 19, TypeScript 5, and Tailwind CSS v4. A standout feature
+is the minimal footprint of runtime dependencies: the ‘package.json‘ (cid:28)le lists strictly three libraries(cid:22)
+‘next‘, ‘react‘, and ‘react-dom‘ [14]. All other components(cid:22)encompassing everything from visual theme
+management, authentication logic, and live localization to the contextual chatbot, graphical rendering,
+asynchronous review ticker, and scroll-triggered animations(cid:22)are implemented in-house rather than
+imported from third-party libraries. This represents a deliberate strategic choice, not an oversight.
+Minimizing external dependencies directly results in an optimized bundle size, a signi(cid:28)cantly reduced
+cyber-attack surface, and, above all, the assurance that every micro-behavior on the page is fully
+understood and controlled by the development team, rather than inherited from an epistemological
+"black box" that remains unexamined.
+It is also essential to highlight a methodological warning located at the root of the folder. The
+AGENTS.md (cid:28)le explicitly states(cid:22)in unequivocal terms(cid:22)that "this is NOT the Next.js you know";
+the implemented version introduces substantial deviations from standard conventions, making it im-
+perative for any software engineer accessing the codebase to consult the internal documentation found
+in ‘node_modules/next/dist/docs/‘. It serves, in e(cid:27)ect, as a reminder embedded directly into the
+infrastructure: "do not assume prior knowledge; study the instructions (cid:28)rst." From an architectural
+standpoint, this approach rigidly locks in a speci(cid:28)c runtime version and treats its internal documen-
+tation as the sole, absolute source of technical truth [25].
+33
+
+===== PDF PAGE 34 =====
+4.2.2 The App Router paradigm and the shared structural framework
+Routing strictly adheres to conventions based on the App Router’s directory structure: every folder
+within the ‘src/app/‘ space automatically generates a URL endpoint, while each ‘page.tsx‘ (cid:28)le serves
+as the deterministic entry point for that page. The public-facing site thus exposes the landing page
+(‘/‘), authentication (cid:29)ow screens (‘/login‘, ‘/register‘, ‘/forgot-password‘), student-speci(cid:28)c private areas
+(‘/my-courses‘, ‘/my-sessions‘, ‘/schedule‘), and a dedicated reviews route (‘/courses/[id]/reviews‘)
+that utilizes a dynamic segment(cid:22)a structural pattern capable of polymorphically mapping any unique
+course identi(cid:28)er. In parallel, an administrative branch under ‘/admin/*‘ houses the CRM’s internal
+screens(cid:22)covering contact, course, and purchase management, billing, metrics analysis, HR, and issue
+reporting(cid:22)with each assigned its own distinct page.
+Meanwhile, the ‘app/layout.tsx‘ (cid:28)le(cid:22)the root layout(cid:22)serves as the true backbone of the entire
+frontend subsystem. Conceptually, it acts much like an immutable structural frame encapsulating
+the dynamic canvas of a painting, regardless of the speci(cid:28)c artwork inserted within. It renders the
+peripheral elements that frame every page: a sticky-positioned header with a blur e(cid:27)ect, integrating
+the corporate logo, main navigation, language selector, theme toggle, and a context-aware menu based
+on session status; a central content container; a multi-column footer; and two permanently (cid:29)oating
+widgets(cid:22)an AI chatbot and a technical issue reporting module. Crucially, it is at this level that the
+two cross-cutting guards(cid:22)upon which the entire component tree depends(cid:22)are injected: ‘Translation-
+Provider‘, which globally encapsulates the structure, and ‘AuthGuard‘, which (cid:28)lters routed content.
+Since the frame is rendered only once while pages merely succeed one another within it, these archi-
+tectural responsibilities are declared in a single location and propagate comprehensively throughout(cid:22)
+eliminating syntactic redundancy and the risk of operational omissions.
+4.2.3 A uni(cid:28)ed, abstracted, and strictly typed layer for server interfacing
+All network communication with the backend is channeled through a minimalist module, ‘lib/api.ts‘.
+It encapsulates the browser’s native ‘fetch‘ method within a strictly typed utility, providing speci(cid:28)c
+methods for standard verbs(cid:22)‘get‘, ‘post‘, ‘put‘, ‘patch‘, ‘del‘(cid:22)alongside a dedicated upload method
+for binary (cid:28)les. Routing all tra(cid:30)c through this single point yields recurring bene(cid:28)ts. The server
+address is retrieved once from the ‘NEXT_PUBLIC_API_URL‘ environment variable (defaulting to
+‘http://localhost:8080‘), meaning that switching the application to a di(cid:27)erent backend instance requires
+changing only a single line of code. Every request injects the ‘cache: "no-store"‘ directive, forcing the
+interface to invariably re(cid:29)ect the server’s live state and preventing the persistence of stale cached
+data. The ‘Content-Type‘ header is handled automatically: processed as JSON in most scenarios but
+deliberately omitted during (cid:28)le transfers to allow the browser to autonomously generate the multipart
+boundary. Error handling is isomorphic: any non-OK response is converted into a typed ‘ApiError‘
+containing the HTTP status code and the native server message, enabling UI components to intercept
+and display errors consistently. Consequently, no component accesses the ‘fetch‘ API directly; instead,
+they simply express their functional intent (e.g., ‘api.get<PublicCourse[]>("/api/public/courses")‘)
+and delegate the underlying networking mechanics to this layer. It acts as a true computational
+receptionist: instead of making a vague inquiry across the entire hotel structure, you send your request
+to a single point of contact that knows exactly which routing paths to follow.
+Type safety extends beyond physical network boundaries via the ‘lib/types.ts‘ module(cid:22)a robust
+set of TypeScript interfaces that isomorphically mirror the DTOs and entities managed by Spring
+Boot, such as ‘PublicCourse‘, ‘PublicStats‘, ‘MyPurchase‘, ‘AuthSession‘, and other structures. While
+it is true that they are not automatically validated by the compiler against the server’s active schema
+in real time, they document the contract with utmost precision and provide IDE-level assurance that
+the code accesses exactly the (cid:28)elds the server actually transmits.
+34
+
+===== PDF PAGE 35 =====
+4.2.4 Client-side stateless authentication and authorization mechanisms
+The adopted security model features an inherently stateless architecture residing on the client side(cid:22)a
+choice perfectly aligned with the nature of a Single Page Application (SPA) interfacing with a stateless
+API. Following a successful authentication, the identity structure returned by ‘/api/auth/login/*‘(cid:22)
+encapsulating the role, ID, name, email, and(cid:22)where applicable(cid:22)the speci(cid:28)c employee discount(cid:22)is
+persisted in ‘localStorage‘ under a unique key, strictly typed as ‘AuthSession‘. There are two distinct,
+well-de(cid:28)ned roles: ‘USER‘ (associated with a contact or trainee) and ‘ADMIN‘ (associated with a
+trainer). These are generated by completely separate login endpoints, thereby eliminating the risk
+of a standard contact accidentally acquiring an administrative session(cid:22)whether surreptitiously or by
+chance. The ‘lib/auth.ts‘ module manages the session lifecycle via the ‘getSession‘, ‘setSession‘, and
+‘clearSession‘ methods. Two technical details enhance its robustness. First, any change in session state
+globally propagates a custom event, ‘AUTH_EVENT‘; this ensures that any component monitoring
+the authentication status is noti(cid:28)ed instantly, eliminating the need for manual property passing ("prop
+drilling") through the component tree. Second, both upon session initiation and invalidation, any
+related application instances are automatically cleared, guaranteeing that a new account never inherits
+state residues from the previous user. The process symbolically mirrors the handing over of electronic
+hotel room keys: the access card is recon(cid:28)gured, rendering the old codes completely inoperable.
+Security policies are implemented in concentric layers. The AuthGuard component, embedded in
+the root layout surrounding all routed content, serves as the site’s primary gateway. It evaluates the ses-
+sion by simultaneously monitoring the custom ‘AUTH_EVENT‘ and the native ‘storage‘ event (which
+ensures synchronization across di(cid:27)erent browser tabs) and determines redirection via a pure function,
+‘decideRedirect‘: an unauthenticated user has access only to the login, registration, and password
+recovery routes; a ‘USER‘ pro(cid:28)le accesses exclusively the public interface, with access to the adminis-
+tration area prohibited; while an ‘ADMIN‘ pro(cid:28)le is con(cid:28)ned to the ‘/admin/*‘ namespace, landing on
+the ‘/admin/contacts‘ route. During the initial session read or while a redirection is being resolved, the
+system renders a minimalist "Loading..." indicator(cid:22)thereby preventing protected content from brie(cid:29)y
+(cid:29)ashing on the screen before the guard mechanism issues its deterministic decision. Additionally, the
+administrative area implements an independent veri(cid:28)cation barrier within ‘admin/layout.tsx‘, which
+instantly invalidates the session and redirects to the login page any user who does not explicitly hold
+the ‘ADMIN‘ role. Consequently, the critical area enjoys dual protection(cid:22)much like a safe secured by
+both a mechanical latch and a combination lock.
+4.2.5 State management without a dedicated state management library
+You won’t (cid:28)nd any instances of Redux, MobX, or Zustand in this structure(cid:22)and their absence is
+entirely intentional. Application state is orchestrated using only native React tools, supported by
+a few (cid:29)exible structural patterns. Ephemeral state(cid:22)local to a speci(cid:28)c screen(cid:22)is managed via a
+combination of ‘useState‘ and ‘useE(cid:27)ect‘. State that must persist across page refreshes (such as session
+data, language settings, or the visual theme) relies on ‘localStorage‘. In scenarios where a mutation in
+a peripheral node of the component tree needs to propagate to a disjoint node, the application employs
+custom window-level events (e.g., ‘AUTH_EVENT‘) alongside the native ‘storage‘ event, rather than
+a centralized global store; this creates a lightweight, explicit pub-sub mechanism(cid:22)following the "emit
+globally, intercept if interested" principle(cid:22)that keeps components completely decoupled. Truly global
+concerns that span the entire component graph are handled via React Context(cid:22)as seen with the
+‘TranslationProvider‘. This is a highly pragmatic approach, free of unnecessary complexity and tailored
+to the application’s actual scale: state is kept as close as possible to its point of use and is elevated to
+a global level only when a genuine system requirement demands it. Why deploy an industrial crane
+just to move a simple chair?
+35
+
+===== PDF PAGE 36 =====
+4.2.6 Real-time data via Server-Sent Events
+The landing page goes beyond a simple, one-o(cid:27) query for metrics; it establishes a persistent subscrip-
+tion to the data stream. Leveraging the browser’s native EventSource API, it opens a continuous
+communication channel to ‘/api/public/stats/stream‘, receiving an update signal whenever a server-
+side change occurs regarding course volume, enrolled student counts, average ratings, or the review
+tally. Thanks to EventSource’s native automatic reconnection capability, this mechanism demonstrates
+remarkable resilience, even during brief periods of backend downtime. The direct result is that the
+numerical values on the landing page update in real time(cid:22)a new enrollment anywhere in the system is
+re(cid:29)ected within seconds, without requiring resource-heavy polling logic within the component or any
+manual page refresh. This behavior mirrors that of a car dashboard: you do not periodically query
+the system to check fuel levels; instead, the gauge needle moves automatically in response to actual
+changes in fuel volume.
+The AI-based global dynamic localization subsystem(cid:22)one of the most notable components(cid:22)
+handles live translation through an AI-powered mechanism strictly divided into two layers: a context
+provider and an execution engine. The ‘TranslationProvider‘ component (a React Context) manages
+the active language state, a "busy" boolean (cid:29)ag, and the ‘setLang‘ mutation function; it retrieves
+the persisted preference only after the DOM mounting phase, a technique designed to prevent errors
+caused by hydration mismatches. When a non-English language is activated, the provider adjusts the
+root element’s ‘lang‘ attribute and text direction accordingly(cid:22)including handling right-to-left (RTL)
+scripts(cid:22)while simultaneously activating the underlying translation engine. The engine itself, located
+in ‘lib/translate.ts‘, employs a highly prudent strategy: it invariably processes only the original English
+DOM structure to generate the target language version, whereas switching languages or reverting to
+English is achieved by reloading the page. This approach ensures the source text remains permanently
+unaltered and the resulting translation is complete and semantically accurate, eliminating the need for
+any reverse "de-translation" process. A dynamic dictionary of key-value pairs (English -> translated) is
+populated from a ‘localStorage‘ cache and via batched calls(cid:22)subject to a throttling algorithm(cid:22)to the
+‘/api/ai/translate‘ endpoint (limited to a maximum of 25 strings per request and no more than three
+concurrent executions); meanwhile, a ‘MutationObserver‘ instance recursively applies the dictionary
+as the SPA navigates or receives asynchronous data(cid:22)such as course lists(cid:22)ensuring comprehensive
+coverage. Whitespace, source code elements, and scripts are deliberately excluded from this process.
+The behavior evokes the image of a simultaneous interpreter working discreetly behind the scenes at
+a conference, faithfully translating every new term appearing on the screen in real time.
+The design system and visual theme management are governed by Tailwind CSS v4, con(cid:28)gured
+via an ‘@theme‘ directive block within ‘globals.css‘, thereby eliminating the need for a traditional
+JavaScript-based con(cid:28)guration (cid:28)le. Design tokens are explicit and integrated into the brand identity:
+a magenta/fuchsia color palette derived from the o(cid:30)cial TrainingIT logo, a creamy-white background,
+and a deep "ink" black, paired with Plus Jakarta Sans as the primary heading font and Geist Mono for
+code blocks. Dark Mode is managed at the CSS class level, activated by applying the ‘.dark‘ class to
+the root ‘<html>‘ element. A subtle yet crucial technical detail resolves the issue of "theme (cid:29)ashing"
+(where the incorrect theme brie(cid:29)y appears during loading): a small inline script executes before the
+page’s initial render, reading the user’s persisted preference or the operating system’s native setting
+and instantly applying the ‘dark‘ class where appropriate, ensuring the correct theme is present from
+the very (cid:28)rst frame. This involves pure DOM code(cid:22)completely independent of the React lifecycle(cid:22)
+implemented speci(cid:28)cally to guarantee execution prior to the hydration phase; it acts much like (cid:29)ipping
+on a light switch just before someone enters a room, eliminating any risk of stumbling in the dark,
+even for a fraction of a second.
+4.2.7 Architectural Summary
+In essence, the frontend subsystem is structured as a fully autonomous Single-Page Application (SPA)
+that strictly adheres to the contemporary standards of the chosen framework, treating the backend
+36
+
+===== PDF PAGE 37 =====
+solely as an external source of transactional data. Its architecture rests on several clear guiding prin-
+ciples: a rigorously de(cid:28)ned REST boundary; a single, strongly typed gateway for channeling network
+interactions; a stateless client-side authentication model secured by layered role-based access controls;
+a policy of minimizing external dependencies through custom implementations; state management via
+native React mechanisms supported by contextual events; real-time synchronization using Server-Sent
+Events (SSE); an AI-driven dynamic localization engine; and a design system governed by theme-aware
+tokens. The internal coherence of these granular, explicit, and decoupled decisions is the decisive factor
+ensuring the interface’s structural unity and guaranteeing long-term maintainability.
+37
+
+===== PDF PAGE 38 =====
+5 Case Study: The process of purchasing course materials via
+the public interface
+For this analysis, I have selected the most dynamic transactional (cid:29)ow within the application’s entire
+architecture(cid:22)that critical in(cid:29)ection point where a visitor triggers the "Enroll to This Course" UI
+element, instantly activating the underlying software machinery.
+This use case proves remarkably complex precisely because, despite appearing trivial(cid:22)seemingly
+involving nothing more than a simple click interaction followed by an asynchronous acknowledgment(cid:22)
+its dynamics structurally engage nearly every abstraction layer and a signi(cid:28)cant portion of the backend
+design patterns: the Facade, business services, repository instances, DAO components, native JDBC
+executions, and, in the (cid:28)nal stage, the centralized Observer that propagates email noti(cid:28)cations and
+recalculates statistical aggregates in real time \cite{gof1994, fowler2002eaa}.
+I therefore propose that we unpack this process step-by-step, rigorously tracing the sequence of
+calls exactly as they unfold(cid:22)sequentially and deterministically(cid:22)within the codebase.
+This chapter maps the most dynamic scenario within the TrainingIT application ecosystem: the
+critical moment when a visitor triggers the enrollment process via the "Enroll to This Course" UI
+element. While seemingly trivial(cid:22)involving just a simple click and an asynchronous con(cid:28)rmation(cid:22)this
+technical action structurally engages nearly every abstraction layer of the application and a signi(cid:28)cant
+portion of the design patterns shaping the backend: Facade, Singleton, Repository/DAO, Builder,
+Strategy, Observer, Factory, and(cid:22)within the administrative processing branch(cid:22)the Command pattern
+[16, 15].
+A de(cid:28)ning characteristic of this architecture is that the backend is not essentially a native "Spring
+Boot project," but rather a classic Java domain (vanilla Java domain) rigorously structured around
+the aforementioned patterns; the Spring framework serves merely as a wrapper for the web layer.
+The most compelling evidence of this is found in the ‘CrmWebApplication‘ startup class, where data
+source autocon(cid:28)guration is deliberately disabled; being fully autonomous, the domain manages its own
+connection pool (via HikariCP), data schema, and transaction control.
+5.1 Actors and Trigger. Postconditons and preconditions The process of
+purchasing course materials
+Primary actor: the end user (the authenticated visitor on the public interface), who initiates the
+process of purchasing course materials.
+(cid:136) Trigger: the capture of the click event associated with the enrollment button integrated into the
+‘CourseCard.tsx‘ frontend component.
+(cid:136) Outcome: an enrollment instance successfully persisted to the database; a contact object in-
+stantiated *ex novo* or, where applicable, polymorphically reused; an email noti(cid:28)cation (cid:29)ow
+(supplemented by SMS, provided a valid phone number exists in the system); an immutable
+audit log entry; and the real-time refresh of statistical metrics.
+Preconditions and postconditions
+(cid:136) Precondition: the course entity exists in the data store and is in the "active" state; the visitor is
+uniquely identi(cid:28)ed by their email, (cid:28)rst name, and last name attributes.
+(cid:136) Postcondition (success scenario): a tuple is generated in the ‘enrollments‘ table marked with
+the status CONFIRMED, while the transactional status of the lead entity associated with the
+contact shifts to ENROLLED.
+(cid:136) Postcondition (returning user case): if the enrollment record already exists in the database, the
+system returns it unchanged(cid:22)making the operation’s behavior fully idempotent.
+38
+
+===== PDF PAGE 39 =====
+Figure 10: Sequence Diagram for the process of purchasing course materials
+39
+
+===== PDF PAGE 40 =====
+Figure 11: Activity Diagram
+40
+
+===== PDF PAGE 41 =====
+5.2 End-to-end (cid:29)ow traceability: a layered approach
+5.2.1 Initiation segment: the frontend subsystem
+The entire mechanism originates in the ‘CourseCard.tsx‘ component. The course card maintains
+internal state regarding whether the authenticated user has purchased the resource in question; if
+so, it renders a static gray UI element labeled "Enrolled," whereas otherwise, it displays an active
+registration button. Upon intercepting a click event, the component aggregates the user’s identity
+metadata (email, (cid:28)rst name, last name) and issues a single POST request(cid:22)via the minimalist wrapper
+located in ‘lib/api.ts‘(cid:22)to the ‘/api/public/courses/{id}/purchase‘ endpoint. The frontend layer does
+not possess(cid:22)and structurally refuses to hold(cid:22)a semantic representation of the "purchase" concept.
+At this level of abstraction, the process boils down to a simple ‘Promise‘ instance that either resolves
+successfully with a ‘201 Created‘ status code and an ‘enrollmentId‘, or is rejected, triggering the
+rendering of an error message in the UI. All decision-making logic resides beyond this boundary,
+computationally hidden on port 8080.
+5.2.2 The Backend Segment: the propagation path from Controller to Service
+The incoming HTTP request is intercepted by the ‘PublicCatalogController.purchase()‘ method(cid:22)a
+REST controller that, strictly adhering to the architectural discipline governing the entire project,
+encapsulates absolutely no business logic. Its role is limited to deserializing the request body and
+immediately delegating execution to ‘CrmFacade‘, which serves as the sole entry point into the domain
+layer (following the Facade pattern). The facade passes the (cid:29)ow along to ‘ReviewService‘, where actual
+processing (cid:28)nally takes place.
+The ‘ReviewService.purchaseCourse‘ method orchestrates a genuine operational choreography. Ini-
+tially, it validates the course’s existence and status via ‘courseService.getById‘. Subsequently, it re-
+solves the buyer’s identity by calling ‘(cid:28)ndOrCreateContact(email, ...)‘: if the email address already
+exists in the system, it reuses the existing contact instance; otherwise, it creates a new one *ex nihilo*
+and integrates it into the CRM database. Next, a strict idempotency check is performed: if the contact
+already has an active enrollment for the course in question, the service avoids duplicating the record and
+instead simply returns the existing instance. Consequently, a "double-click" caused by user impulsive-
+ness will never result in redundant (cid:28)scal documents. Finally, the ‘resolveSession(course)‘ method selects
+the speci(cid:28)c course session and hands o(cid:27) responsibility to ‘EnrollmentService.enrollContact(contactId,
+sessionId)‘.
+Inside the Noti(cid:28)cationService and the Noti(cid:28)cation Factory
+We have seen how, upon enrollment, the EnrollmentCon(cid:28)rmationObserver calls Noti(cid:28)cationSer-
+vice.sendEnrollmentCon(cid:28)rmation(...). Now, let’s open the box and see exactly what happens inside(cid:22)
+because this is where one of the cleanest pattern implementations in the entire project lies: a Factory
+(speci(cid:28)cally, an Abstract Factory) used by a Singleton.
+The Service: a conductor who doesn’t compose the music
+Noti(cid:28)cationService is(cid:22)like almost everything in this domain(cid:22)a Singleton: a single instance ob-
+tained via getInstance(), using the classic double-checked locking pattern within a synchronized block.
+Yet, its role is more subtle than it appears. It doesn’t write email text or format SMS messages.
+Its constructor holds just two tools: an emailFactory and an smsFactory, both of the common type
+Noti(cid:28)cationFactory. The service acts, in a sense, as a conductor(cid:22)it knows when something needs to
+be sent and via which channel, but it leaves the actual composition of the message entirely to the
+factories.
+This is clearly visible in sendEnrollmentCon(cid:28)rmation(contact, enrollment). The method performs
+two actions in a speci(cid:28)c, deliberate order. First, it asks the email factory to build a con(cid:28)rmation
+noti(cid:28)cation(cid:22)emailFactory.createEnrollmentCon(cid:28)rmation(...)(cid:22)and sends it. The email is always sent;
+it is the primary channel. Then(cid:22)and only then(cid:22)it checks a condition: if (contact.getPhone() !=
+null). If the person has a phone number on (cid:28)le, another noti(cid:28)cation is built, this time using the
+41
+
+===== PDF PAGE 42 =====
+smsFactory, and an SMS is sent as well. The business logic(cid:22)"email is mandatory, SMS only if we have
+the number"(cid:22)resides here, in the service, exactly where it belongs. The factories have no knowledge
+of this rule; they simply respond to the command: "create a con(cid:28)rmation for me."
+At the end of the chain lies the private ‘send(n)‘ method, and here is a moment of honesty: in the
+current version, it doesn’t actually send anything out into the world. It simply logs the activity(cid:22)using
+‘logger.info‘ for the channel, recipient, and subject, and logging the body at the debug level. It is
+explicitly marked with a ‘// TODO: real integration with SMTP/Twilio‘. In other words, the entire
+noti(cid:28)cation infrastructure is built and functionally complete in terms of structure; it is just missing
+the (cid:28)nal link(cid:22)connecting to a real SMTP server and an SMS provider. For the application’s purpose
+(demonstrating design patterns), this is perfectly su(cid:30)cient: you can see in the logs, in black and white,
+exactly which email would have been sent and to whom.
+The Factory: the same command, di(cid:27)erent products
+This is where the elegance lies. ‘Noti(cid:28)cationFactory‘ is an interface declaring four "recipes":
+‘createWelcomeNoti(cid:28)cation‘, ‘createEnrollmentCon(cid:28)rmation‘, ‘createSessionReminder‘, and ‘create-
+FollowUp‘. Each returns the same type of product(cid:22)a ‘Noti(cid:28)cation‘ object, a simple, immutable
+structure (with ‘(cid:28)nal‘ (cid:28)elds) containing four pieces of data: recipient, subject, body, and channel.
+Note that ‘Noti(cid:28)cation‘ is de(cid:28)ned within the interface as a nested class; it is the abstract product that
+any factory promises to deliver.
+Then come the two concrete implementations, which embody the true charm of the pattern. ‘Email-
+Noti(cid:28)cationFactory‘ produces rich noti(cid:28)cations: a full subject line ("Course enrollment con(cid:28)rmation"),
+a multi-line body featuring a personalized greeting via ‘contact.getFullName()‘, the enrollment status,
+and the signature "IT Training Team." The recipient is an email address. ‘SmsNoti(cid:28)cationFactory‘,
+on the other hand, produces the exact same category of product but tailored for a di(cid:27)erent medium:
+no subject (the (cid:28)eld is ‘null‘, as SMS messages lack subjects), a short, to-the-point body(cid:22)"Your en-
+rollment has been con(cid:28)rmed. Thank you!"(cid:22)and a recipient set to a phone number rather than an
+email address.
+That’s the beauty of it: the caller(cid:22)‘Noti(cid:28)cationService‘(cid:22)neither knows nor cares whether the
+message consists of three paragraphs or seven words, or whether it’s sent via email or to a phone. It
+simply calls ‘createEnrollmentCon(cid:28)rmation‘ on a factory, and polymorphism handles the rest. Want to
+add a new channel tomorrow(cid:22)say, push noti(cid:28)cations? You write a ‘PushNoti(cid:28)cationFactory‘ that im-
+plements the same interface, add it to the service, and the existing code remains completely una(cid:27)ected.
+That is the promise of the Abstract Factory pattern: families of related products (email/SMS/push)
+created via a common interface, interchangeable without impacting the client. A quick, necessary
+clari(cid:28)cation: the code comment labels this "Abstract Factory," and the spirit is indeed that(cid:22)families
+of noti(cid:28)cations across di(cid:27)erent channels. In the textbook "pure" form, a single factory would produce
+the entire family at once; here, the service holds two separate factories and selects the channel itself.
+It is a pragmatic variant(cid:22)a hybrid with a touch of Factory Method(cid:22)yet the core concept (decoupling
+product creation from product usage) is (cid:29)awlessly upheld.
+5.2.3 The transactional focal point: EnrollmentService.
+After recon(cid:28)rming the validity of the session and the contact entity, EnrollmentService performs a
+(cid:28)nal anti-duplication check; it then instantiates(cid:22)using the Builder pattern(cid:22)an ‘Enrollment‘ object
+with its state set directly to ‘CONFIRMED‘. The rationale for this direct con(cid:28)rmation(cid:22)bypassing
+any intermediate "pending payment" state(cid:22)lies in the fact that, as noted in the code comments,
+the purchasing process in this architecture is designed to be strictly instantaneous, entirely omitting
+the traditional checkout phase. Enrollment persistence is mediated by the ‘EnrollmentRepository‘
+component (a Repository-style abstraction layer sitting atop the DAO structure); upon determining
+that the entity is new, it delegates the operation to ‘EnrollmentDao.save()‘. At this point, we (cid:28)nally
+reach the low-level infrastructure ("bare metal"): the execution of a ‘PreparedStatement‘ contain-
+ing an ‘INSERT INTO enrollments (...)‘ instruction. This utilizes a connection retrieved from the
+42
+
+===== PDF PAGE 43 =====
+HikariCP-managed pool and requests ‘RETURN_GENERATED_KEYS‘ to capture the newly gen-
+erated identi(cid:28)er, thereby permanently persisting the tuple in MariaDB. However, the service’s logic
+does not end with this write operation; it updates the contact’s lead status to ‘ENROLLED‘ and(cid:22)
+with notable architectural elegance(cid:22)propagates an ‘EnrollmentCreatedEvent‘ across the ‘EventBus‘
+(a pure implementation of the Observer pattern) [16, 18]. The service neither knows nor concerns itself
+with the identity of the listeners; its role is purely informational, broadcasting the fact that "a new
+enrollment has been instantiated" throughout the system.
+5.2.4 The return path and zero-latency asynchronous updates
+Once the state has been persisted, the enrollment entity travels back up the same hierarchical axis: from
+the service layer, through the facade, to the controller, which encapsulates it in a ‘PurchaseResponse‘
+object and returns an HTTP 201 Created status code. Concurrently, the frontend interface switches the
+graphical button’s state to "Enrolled" and renders the transaction con(cid:28)rmation. Simultaneously, on
+a completely asynchronous and decoupled execution path, the ‘PublicStatsBroadcaster‘ component(cid:22)
+whose logic recalculates public metrics at (cid:28)xed two-second intervals, strictly contingent upon an active
+user being present on the page(cid:22)detects the change in the total number of students and pushes the new
+aggregated values via the SSE (Server-Sent Events) protocol to all open instances of the main page.
+Consequently, the numerical indicator on the landing page registers an organic, incremental increase
+that appears to evolve entirely on its own.
+The table below shows the sequence of calls for the scenario of a new customer purchasing a course.
+The logical indentation of the calls is indicated in the right-hand column by the pattern activated at
+each step.
+5.3 Structural Articulation: Implementation of Design Patterns and the
+Noti(cid:28)cation Service
+The ‘Noti(cid:28)cationService‘ component is structurally con(cid:28)gured as a Singleton instance, with a func-
+tional responsibility that proves far more nuanced than a cursory empirical assessment might suggest:
+it neither generates raw email text nor formats the payload associated with an SMS. Within its con-
+structor, it encapsulates two distinct tools as dependencies(cid:22)an instance of ‘emailFactory‘ and one
+of ‘smsFactory‘, both subsumed under the common abstract type ‘Noti(cid:28)cationFactory‘. The service
+acts here as a veritable topological conductor: it holds the temporal knowledge regarding when an
+artifact must be dispatched and via which speci(cid:28)c channel, yet it leaves the morphological assembly
+of the message entirely to the factory subsystems. This behavior is clearly illustrated in the body
+of the ‘sendEnrollmentCon(cid:28)rmation(contact, enrollment)‘ method: the email (cid:29)ow is invariably trig-
+gered, whereas the SMS component activates strictly contingent upon the evaluation of the expression
+‘contact.getPhone() != null‘. The business axiom resides exclusively at the service level; the factories
+possess no internal representation of this constraint. Thus, ‘EmailNoti(cid:28)cationFactory‘ instantiates
+complex polymorphic structures (incorporating a subject, a multi-line body, and a signature block),
+while ‘SmsNoti(cid:28)cationFactory‘ delivers a corresponding artifact(cid:22)identical in basic type but extremely
+concise and devoid of a header. If, in the future, it becomes necessary to extend the architecture with
+a new communication channel(cid:22)such as push noti(cid:28)cations(cid:22)this would simply require implementing a
+new concrete factory adhering to the same interface, without structurally compromising the stability
+of the existing codebase.
+5.3.1 The Observer Mechanism: WelcomeEmailObserver
+Complementarily, the Noti(cid:28)cationService component intercepts and reacts to a completely distinct
+class of events. The WelcomeEmailObserver class(cid:22)attached during the bootstrapping phase to the
+CONTACT_CREATED event type(cid:22)activates asynchronously the moment a new contact instance is
+created on the heap, orchestrating the dispatch of the onboarding message. At this point, we witness
+43
+
+===== PDF PAGE 44 =====
+Step / Call What Happens • Pattern
+#1 POST /purchase Frontend (CourseCard) sends the
+request containing email, (cid:28)rst name,
+and last name.
+#2 PublicCatalogController.purchase( ) Deserializes the request and delegates.
+Contains no business logic.
+#3 CrmFacade.purchaseCourse( ) Single entry point into the domain.
+FACADE + SINGLETON
+#4 ReviewService.purchaseCourse( ) Orchestrates the purchase process.
+SINGLETON
+#5 CourseService.getById( ) Validates the existence of the
+course.SINGLETON
+#6 (cid:28)ndOrCreateContact( ) Email not found -> a new contact is
+created.
+#7 ContactService.createContact( ) Creates the contact.SINGLETON
+#8 validateAndThrow( ) Email -> Phone -> Type -> GDPR.
+CHAIN OF RESPONSIBILITY
+#9 calculateInitialScore( ) Initial score calculation, Simple (B2C)
+or B2B. STRATEGY
+#10 ContactRepository (cid:25) ContactDao INSERT contact (HikariCP ->
+MariaDB).REPOSITORY + DAO
+#11 publish(ContactCreatedEvent) WelcomeEmailObserver -> sends
+welcome email. OBSERVER +
+FACTORY
+#12 resolveSession(course) Selects the speci(cid:28)c course session for
+the enrollment.
+#13 EnrollmentService.enrollContact( ) Creates the enrollment. SINGLETON
+#14 Enrollment.builder( ) Builds the object with a
+CONFIRMED status. BUILDER
+#15 EnrollmentRepository (cid:25) EnrollmentDao INSERT enrollment (HikariCP ->
+MariaDB).• REPOSITORY + DAO
+#16 updateLeadStatus( ) Lead status changes to ENROLLED
+#17 publish(EnrollmentCreatedEvent) AuditLog + con(cid:28)rmation (email &
+SMS). OBSERVER + FACTORY
+#18 201 Created { enrollmentId } The response propagates back up the
+chain; UI displays "Enrolled".
+Figure 12: Stages and function-calls to explain the process of purchasing course materials
+44
+
+===== PDF PAGE 45 =====
+the closing of a truly surprising architectural loop: within the transactional acquisition (cid:29)ow, the ‘(cid:28)nd-
+OrCreateContact‘ function invokes the underlying ‘createContact‘ method, which instantly propagates
+a ‘ContactCreatedEvent‘. Consequently, a single purchase action initiated by a newly registered visitor
+sequentially triggers two distinct events: the welcome event (occurring upon instantiation) and the
+transaction con(cid:28)rmation event (occurring upon enrollment). Conversely, in the case of a returning
+customer, the contact entity is retrieved directly from persistent storage, bypassing the generation
+(cid:29)ow; since the ‘ContactCreatedEvent‘ is not published to the bus, the system sends only the transac-
+tion con(cid:28)rmation(cid:22)demonstrating a fully polymorphic execution dynamic that operates without any
+explicit ‘if‘ control structures.
+5.3.2 The Strategy Pattern: Lead Scoring Modeling
+Upon instantiation of the contact entity, the ‘LeadScoringContext‘ component dynamically selects
+the speci(cid:28)c algorithm based on the contact’s structural type: the ‘CORPORATE‘ value triggers the
+injection of the ‘B2BLeadScoringStrategy‘, whereas any other case resolves to the ‘SimpleLeadScor-
+ingStrategy‘. The service layer merely requests the evaluation of the scoring metric and receives a scalar
+numeric value in return; it has no computational visibility into the speci(cid:28)c algorithm employed at run-
+time. This distinction is far from merely aesthetic: an ‘EMAIL_OPENED‘ event carries a weight of 15
+units for an individual pro(cid:28)le but counts for only 5 units if the subject is a corporation(cid:22)re(cid:29)ecting the
+fact that the B2B segment encompasses speci(cid:28)c states that the B2C model does not even formally rec-
+ognize in its schema (such as ‘RFP_RECEIVED‘, credited with 60 units, or ‘BUDGET_DISCUSSED‘
+with 50).
+5.3.3 The Chain of Responsibility Pattern: Structural Contact Validation.
+Prior to the stage where a new contact is permanently persisted in MariaDB, the ‘ContactValida-
+torChain‘ component subjects the object to rigorous (cid:28)ltering via four sequentially chained control
+elements: Email-> Phone-> ContactType-> GDPR. Each node in this structure implements only
+its own granular logic (‘doValidate‘), while the framework method ‘validate‘(cid:22)declared with the ‘(cid:28)-
+nal‘ modi(cid:28)er, e(cid:27)ectively a Template Method pattern grafted onto the chain’s topology(cid:22)executes the
+local evaluation and passes the context to the successor node. However, unlike the canonical imple-
+mentations found in technical literature, the chain does not halt execution upon the (cid:28)rst detection
+of non-compliance; instead, it exhaustively traverses all components and accumulates a collection of
+errors, thereby allowing the end user to view an aggregated list of all semantic anomalies in the form.
+From an analytical standpoint, it is worth noting that the ‘GdprValidator‘ node encapsulates a condi-
+tional structure whose logical evaluation can never resolve to true (an ‘if TRUE‘ statement immediately
+followed by an ‘if FALSE‘ branch operating on the exact same variable); in practical terms, this renders
+it an inert link(cid:22)or "dead code"(cid:22)that will never alter the validation state. Although this anomaly does
+not block the main data acquisition (cid:29)ow, it is undoubtedly a "silent bug" that requires remediation
+during refactoring.
+45
+
+===== PDF PAGE 46 =====
+6 Conclusions
+The fundamental objective of this work was the design and implementation of a comprehensive Cus-
+tomer Relationship Management (CRM) system for the TrainingIT platform; this project served as a
+concrete, empirical vehicle for investigating software architecture structures and the practical applica-
+tion of object-oriented design patterns. The resulting modular system comprises a backend component
+developed in Java using Spring Boot 3.5(cid:22)with deterministic data persistence in a MariaDB database
+via native JDBC statements and a HikariCP-managed connection pool(cid:22)and a standalone frontend
+instance (a single-page application implemented in Next.js 16), with the two subsystems interfacing
+exclusively through a strict REST/JSON contract.
+At the frontend subsystem level, the same principle of radical decoupling governs the entire de-
+sign logic: a strictly stateless security and authentication model residing entirely on the client side
+and secured via access-(cid:28)ltering gateways layered by user role; a single, abstracted, and strongly typed
+gateway for channeling all network calls; operational state management handled natively via the React
+framework’s internal tools(cid:22)contextually supported by custom events and Context instances(cid:22)thereby
+avoiding the introduction of a cumbersome global library from the outset; real-time data synchroniza-
+tion based on Server-Sent Events protocols; and, as a distinctive feature, a live linguistic localization
+engine powered by Arti(cid:28)cial Intelligence algorithms(cid:22)all these functionalities being built upon a set of
+external dependencies deliberately kept to an absolute minimum.
+The retrospective analysis was also undertaken with a necessary measure of critical honesty(cid:22)a fact
+that constitutes, in itself, a valuable methodological contribution of the work. Certain discrepancies
+between the theoretical conceptual model and the actual technological implementation were explicitly
+identi(cid:28)ed and cataloged, without any attempt at concealment: the formal model of actors and use
+cases appears considerably denser and richer than the software system actually delivered; the data
+model adopts a deliberately "anemic" structure, with foreign keys managed in a rudimentary fashion
+as manually handled ‘Long‘ identi(cid:28)ers(cid:22)to the detriment of the advanced associations typical of a
+classic ORM; the ‘MeditationSession‘ entity perpetuates an anachronistic naming convention inherited
+from a pre-existing project template, whereas renaming it to ‘TrainerSession‘ would clearly be more
+appropriate; and the ‘GdprValidator‘ component encapsulates a completely inert conditional branch(cid:22)
+a genuine "silent bug" that never a(cid:27)ects the validation state and requires urgent remediation during
+a future refactoring session.
+The project exhibits clear structural limitations(cid:22)factors that, in fact, precisely de(cid:28)ne its future
+development trajectory. The authentication mechanism exists in a minimalist form and operates
+exclusively on the client side(cid:22)an approach suitable for an academic demonstration but inadequate
+for a genuine production environment. While the (cid:28)nancial transaction processing and noti(cid:28)cation
+channels (email and SMS) are structurally complete, they remain disconnected from actual external
+providers (gateways). Consequently, the primary strategic development goals focus on: bolstering
+security by enforcing role-based access control and session validation on the server; integrating o(cid:30)cial
+APIs for payment processing and messaging; reconciling the system’s heterogeneous role taxonomy;
+and addressing speci(cid:28)c defects identi(cid:28)ed within the codebase.
+In conclusion, the CRM system developed for the TrainingIT platform fully achieves its initially
+established fundamental objective. We are dealing with a fully functional, end-to-end application
+whose intrinsic value lies less in an excessive abundance of super(cid:28)cial features and considerably more
+in its remarkable architectural clarity: a software ecosystem where every responsibility occupies a
+strictly de(cid:28)ned place, where design patterns are deliberately and demonstrably implemented, and
+where remaining vulnerabilities have been mapped with the utmost integrity(cid:22)thereby providing the
+ideal epistemic foundation for ongoing development e(cid:27)orts.
+6.1 Main Contributions
+While the functional domain addressed by this work(cid:22)Customer Relationship Management(cid:22)is a ma-
+ture (cid:28)eld dominated by established commercial and open-source platforms, the original value of the
+46
+
+===== PDF PAGE 47 =====
+present project does not reside in the invention of a novel business feature, but rather in the architec-
+tural method through which the system is constructed and, equally important, in the epistemological
+honesty with which it is documented. The contributions can be articulated across (cid:28)ve distinct axes.
+The (cid:28)rst contribution is the demonstration of a radically decoupled architecture, in which the backend
+and the frontend exist as two fully autonomous applications that communicate exclusively through
+a strict REST/JSON contract, without any shared session state. The Java backend is deliberately
+structured as a pure, self-governing domain that manages its own relational schema, its own HikariCP
+connection pool, and its own transaction boundaries; the Spring Boot framework is reduced to the
+role of a thin web wrapper, to the point where the domain core retains the theoretical capacity to
+run outside any web container. This inversion of the conventional, framework-centric Spring project
+constitutes a deliberate structural statement about the primacy of business logic over infrastructure.
+The second contribution is the deliberate rejection of an ORM layer. By relying on native JDBC
+statements and explicit SQL, together with a manually managed, (cid:16)anemic(cid:17) domain model, the project
+trades the syntactic convenience of JPA/Hibernate for deterministic control over query performance
+and for full structural transparency, thereby eliminating the hidden behaviour that object-relational
+mapping frameworks typically introduce. The third and most pedagogically signi(cid:28)cant contribution is
+the treatment of design patterns not as isolated textbook illustrations, but as structures that collabo-
+rate organically within a single, real execution (cid:29)ow. The detailed case study of the enrollment process
+shows how a single user action sequentially and asynchronously engages the Facade, Singleton, Repos-
+itory/DAO, Command, Builder, Strategy, Chain of Responsibility, Observer, and Factory patterns.
+The system therefore functions as a (cid:16)living manual(cid:17): a practical compendium in which each pattern
+resolves a concrete, situated responsibility rather than being introduced on purely theoretical grounds.
+The fourth contribution lies in the minimal-dependency frontend. The Single-Page Application is built
+upon only three external libraries, with all remaining behaviour(cid:22)AI-driven live localization, a con-
+textual chatbot, stateless client-side authentication, real-time synchronization via Server-Sent Events,
+and native state management without Redux, MobX, or Zustand(cid:22)implemented in-house. This choice
+yields a reduced cyber-attack surface, an optimized bundle, and, above all, complete intellectual own-
+ership of every micro-behaviour on the page. The AI subsystem is further engineered as an optional
+module exhibiting graceful degradation, preventing any catastrophic failure in the event of external
+API unavailability. The (cid:28)fth contribution, and arguably the one that best distinguishes an academic
+artifact from a commercial one, is the project’s critical self-documentation. Rather than concealing its
+imperfections, the work explicitly identi(cid:28)es and catalogues them: the inert conditional branch within
+the GdprValidator (a genuine (cid:16)silent bug(cid:17)), the anachronistic MeditationSession naming inherited
+from a previous template, the discrepancy between the rich theoretical actor model and the leaner
+implementation, and the client-side authentication model suitable only for demonstration. This trans-
+parency transforms the identi(cid:28)ed limitations into a principled foundation for future development, and
+constitutes, in itself, a methodological contribution grounded in engineering integrity.
+6.2 Future Development
+Like any application worth taking further, TrainingIT has its un(cid:28)nished business(cid:22)some tasks cry out
+for attention, while others can wait. Let’s look at them one by one, honestly. The (cid:28)rst(cid:22)and by far the
+most pressing(cid:22)issue is security. Right now, authentication happens entirely in the browser, relying
+on a key stored in ‘localStorage‘. That works great for a demo, but in a production environment, it’s
+a bit like locking the door but leaving the key in the lock. The logical next step is to move this to the
+server: implementing real sessions or JWT tokens, storing passwords as hashes (using bcrypt, not
+plain text), enforcing roles at the backend level rather than just hiding them in the UI, and(cid:22)since
+we’re getting serious(cid:22)adding two-factor authentication. Without these, the rest is just a beautiful
+house left unlocked.
+Then there are the integrations, which(cid:22)to be honest(cid:22)exist mostly on paper right now. The
+noti(cid:28)cation system (email and SMS) is structurally ready, thanks to a clean Factory pattern, but
+the ‘send()‘ method doesn’t actually transmit anything; it just logs the action, accompanied by an
+47
+
+===== PDF PAGE 48 =====
+honest // TODO comment. Connecting to a real SMTP server and a service like Twilio would (cid:28)nally
+bring the system to life. The same applies to payments: the current purchase (cid:29)ow assumes an instant
+transaction without a proper checkout process. Integrating a service like Stripe or Netopia would turn
+the "purchase" from a mere concept into reality, complete with the necessary (cid:28)scal invoicing.
+Finally, there are some minor technical debts that are visible but signi(cid:28)cant. The ‘GdprValidator‘
+contains a condition that can never evaluate to true(cid:22)a safeguard that pretends to protect but actually
+does nothing; this needs to be (cid:28)xed. MeditationSession(cid:22)a name left over from an old template(cid:22)
+deserves to be renamed ‘TrainerSession‘ or ‘Booking‘ so it (cid:28)nally re(cid:29)ects what it actually is. And last
+but not least, the roles: the diagrams promise rich actor types (B2B, B2I, Auditor) that the code
+doesn’t yet recognize(cid:22)so we either build them or align the promise with reality. It has to be one or
+the other.
+Implementation of integrations with external third-party subsystems
+The noti(cid:28)cation channels(cid:22)operationalized via asynchronous email and SMS (cid:29)ows(cid:22)currently imple-
+ment a purely declarative ‘send()‘ method, despite bene(cid:28)ting from impeccable structural abstraction
+through the Factory pattern. This method is limited to logging calls to the console and is marked
+with a ‘// TODO‘ directive. Establishing an actual interface with a real SMTP server and a dedicated
+cellular communication API (such as Twilio) represents the critical step for the operational activation
+of this subsystem.
+The transactional layer follows a similar pattern: the current work(cid:29)ow involves a simulated instant
+purchase, lacking a genuine checkout component. Integrating payment aggregators such as Stripe
+or Netopia will shift the operation from the symbolic to the factual realm, subsequently triggering
+automated tax invoicing work(cid:29)ows.
+Persistence Layer Optimization and Schema Control
+The adopted data model(cid:22)while transparent due to the use of manually managed foreign keys as
+scalar ‘Long‘ identi(cid:28)ers(cid:22)demands rigorous implementation discipline. Replacing the raw execution
+of the ‘schema.sql‘ script at initialization with an advanced, controlled schema migration tool (such
+as Flyway or Liquibase) will enhance deployment predictability. Furthermore, transactions spanning
+multiple relational tables require redesigning to ensure strict atomicity. Additionally, implementing
+optimized indexes on frequently queried columns will prevent performance degradation as the stored
+data volume grows exponentially.
+6.3 Conclusion on Architectural Resilience
+A fundamental point worth highlighting is that none of these evolutionary paths con(cid:29)ict with the
+current architectural topology; on the contrary, they are organically grounded in it. Precisely be-
+cause of the rigorous decoupling of responsibilities(cid:22)combined with the fact that emitting entities
+hold no cognitive representations of their listeners and services do not determine their own strate-
+gies at runtime(cid:22)each functional extension can be seamlessly integrated without the risk of disrupting
+established structures. This characteristic serves as undeniable con(cid:28)rmation that the system’s struc-
+tural foundation was designed and implemented in accordance with the highest software engineering
+standards.
+48
+
+===== PDF PAGE 49 =====
+References
+[1] Ross Anderson. Security Engineering: A Guide to Building Dependable Distributed Systems.
+Wiley, 3 edition, 2020.
+[2] Anthropic. Claude developer documentation, 2024.
+[3] Michael Armbrust, Armando Fox, Rean Gri(cid:30)th, Anthony D. Joseph, Randy Katz, Andy Konwin-
+ski, Gunho Lee, David Patterson, Ariel Rabkin, Ion Stoica, and Matei Zaharia. A view of cloud
+computing. Communications of the ACM, 53(4):50(cid:21)58, 2010.
+[4] Len Bass, Paul Clements, and Rick Kazman. Software Architecture in Practice. Addison-Wesley
+Professional, 3 edition, 2012.
+[5] Grady Booch, James Rumbaugh, and Ivar Jacobson. The Uni(cid:28)ed Modeling Language User Guide.
+Addison-Wesley, 2 edition, 2005.
+[6] Leo Breiman. Random forests. Machine Learning, 45(1):5(cid:21)32, 2001.
+[7] Brendan Burns, Joe Beda, and Kelsey Hightower. Kubernetes: Up and Running. O’Reilly Media,
+2 edition, 2019.
+[8] Francis Buttle and Stan Maklan. Customer Relationship Management: Concepts and Technologies.
+Routledge, Abingdon, 4 edition, 2019.
+[9] Injazz J. Chen and Karen Popovich. Understanding customer relationship management (crm):
+People, process and technology. Business Process Management Journal, 9(5):672(cid:21)688, 2003.
+[10] Tianqi Chen and Carlos Guestrin. Xgboost: A scalable tree boosting system. In Proceedings
+of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining,
+pages 785(cid:21)794, 2016.
+[11] Jacob Devlin, Ming-Wei Chang, Kenton Lee, and Kristina Toutanova. Bert: Pre-training of deep
+bidirectional transformers for language understanding. In Proceedings of NAACL-HLT, pages
+4171(cid:21)4186, 2019.
+[12] European Parliament and Council of the European Union. Regulation (eu) 2016/679 (general
+data protection regulation). O(cid:30)cial Journal of the European Union, L 119, 2016.
+[13] Eric Evans. Domain-Driven Design: Tackling Complexity in the Heart of Software. Addison-
+Wesley, 2003.
+[14] Roy Thomas Fielding. Architectural Styles and the Design of Network-based Software Architec-
+tures. PhD thesis, University of California, Irvine, 2000.
+[15] Martin Fowler. Patterns of Enterprise Application Architecture. Addison-Wesley, Boston, 2002.
+[16] Erich Gamma, Richard Helm, Ralph Johnson, and John Vlissides. Design Patterns: Elements of
+Reusable Object-Oriented Software. Addison-Wesley, Reading, MA, 1994.
+[17] Ian Goodfellow, Yoshua Bengio, and Aaron Courville. Deep Learning. MIT Press, 2016.
+[18] Gregor Hohpe and Bobby Woolf. Enterprise Integration Patterns: Designing, Building, and
+Deploying Messaging Solutions. Addison-Wesley, 2003.
+[19] Jez Humble and David Farley. Continuous Delivery: Reliable Software Releases through Build,
+Test, and Deployment Automation. Addison-Wesley, 2010.
+[20] Martin Kleppmann. Designing Data-Intensive Applications. O’Reilly Media, 2017.
+49
+
+===== PDF PAGE 50 =====
+[21] Craig Larman. Applying UML and Patterns: An Introduction to Object-Oriented Analysis and
+Design and Iterative Development. Prentice Hall, 3 edition, 2004.
+[22] Robert C. Martin. Clean Architecture: A Craftsman’s Guide to Software Structure and Design.
+Prentice Hall, 2017.
+[23] Meta Open Source. React documentation, 2024.
+[24] Sam Newman. Building Microservices: Designing Fine-Grained Systems. O’Reilly Media, 2
+edition, 2021.
+[25] Michael T. Nygard. Release It! Design and Deploy Production-Ready Software. Pragmatic Book-
+shelf, 2 edition, 2018.
+[26] Adrian Payne and Pennie Frow. A strategic framework for customer relationship management.
+Journal of Marketing, 69(4):167(cid:21)176, 2005.
+[27] Roger S. Pressman and Bruce R. Maxim. Software Engineering: A Practitioner’s Approach.
+McGraw-Hill Education, 8 edition, 2014.
+[28] Francesco Ricci, Lior Rokach, and Bracha Shapira. Recommender Systems Handbook. Springer, 2
+edition, 2015.
+[29] Ravi S. Sandhu, Edward J. Coyne, Hal L. Feinstein, and Charles E. Youman. Role-based access
+control models. IEEE Computer, 29(2):38(cid:21)47, 1996.
+[30] Abraham Silberschatz, Henry F. Korth, and S. Sudarshan. Database System Concepts. McGraw-
+Hill Education, 7 edition, 2019.
+[31] Ian Sommerville. Software Engineering. Pearson, 10 edition, 2015.
+[32] William Stallings. Cryptography and Network Security: Principles and Practice. Pearson, 7
+edition, 2017.
+[33] Richard S. Sutton and Andrew G. Barto. Reinforcement Learning: An Introduction. MIT Press,
+2 edition, 2018.
+[34] Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez,
+Lukasz Kaiser, and Illia Polosukhin. Attention is all you need. In Advances in Neural Information
+Processing Systems (NeurIPS), volume 30, 2017.
+[35] VMware, Inc. Spring boot reference documentation, 2024.
+[36] Craig Walls. Spring in Action. Manning Publications, 6 edition, 2022.
+50

@@ -1,0 +1,10 @@
+{"kind":"slide","id":"sl/y90nupkv","slide":1,"title":"TITLUL LUCRĂRII","textShapes":4}
+{"kind":"shape","id":"sh/547294r6","slide":1,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"textbox","id":"sh/k3yl0zql","slide":1,"name":"TextBox 3","text":"TITLUL LUCRĂRII","textPreview":"TITLUL LUCRĂRII","textChars":15,"textLines":1,"bbox":[0,375.33,1920,64.33]}
+{"kind":"textbox","id":"sh/7qp4be9c","slide":1,"name":"TextBox 4","text":"FACULTATEA DE INFORMATICĂ\nPROGRAMUL DE STUDII: INFORMATICĂ","textPreview":"FACULTATEA DE INFORMATICĂ | PROGRAMUL DE STUDII: INFORMATICĂ","textChars":58,"textLines":2,"bbox":[0,106,1920,100]}
+{"kind":"textbox","id":"sh/65g3298r","slide":1,"name":"TextBox 5","text":"COORDONATOR:       \nLect. Univ. Dr. Ștefănigă Sebastian-Aurelian","textPreview":"COORDONATOR:        | Lect. Univ. Dr. Ștefănigă Sebastian-Aurelian","textChars":64,"textLines":2,"bbox":[108,807.96,695.68,106.2]}
+{"kind":"textbox","id":"sh/ts7md4r2","slide":1,"name":"TextBox 6","text":"CANDIDAT:\n...................................","textPreview":"CANDIDAT: | ...................................","textChars":45,"textLines":2,"bbox":[1531.01,807.96,280.99,106.2]}
+{"kind":"slide","id":"sl/hwbqtkby","slide":2,"title":"Slide 2","textShapes":0}
+{"kind":"shape","id":"sh/9072xkry","slide":2,"name":"Freeform 2","bbox":[0,0,1920,1080]}
+{"kind":"slide","id":"sl/ofy9wn61","slide":3,"title":"Slide 3","textShapes":0}
+{"kind":"shape","id":"sh/cza94vmx","slide":3,"name":"Freeform 2","bbox":[0,0,1920,1080]}

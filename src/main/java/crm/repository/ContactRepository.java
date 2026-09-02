@@ -5,7 +5,6 @@ import crm.model.entity.Contact;
 import crm.model.enums.LeadStatus;
 import crm.patterns.GenericDao;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -71,24 +70,10 @@ public class ContactRepository extends AbstractRepository<Contact> {
     }
 
     /**
-     * Returnează contactele alocate unui utilizator.
-     */
-    public List<Contact> findByAssignedTo(Long userId) {
-        return contactDao.findByAssignedTo(userId);
-    }
-
-    /**
      * Caută contacte folosind un termen de căutare.
      */
     public List<Contact> search(String searchTerm, int offset, int limit) {
         return contactDao.search(searchTerm, offset, limit);
-    }
-
-    /**
-     * Returnează lead-urile inactive (necontactate de mai mult de X timp).
-     */
-    public List<Contact> findStaleLeads(LocalDateTime threshold) {
-        return contactDao.findStaleLeads(threshold);
     }
 
     /**

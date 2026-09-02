@@ -42,8 +42,4 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
     public List<Employee> findByCompanyId(Long companyId) {
         return employeeDao.findByCompanyId(companyId);
     }
-
-    public long countByCompanyId(Long companyId) {
-        return employeeDao.countByCompanyId(companyId);
-    }
 }

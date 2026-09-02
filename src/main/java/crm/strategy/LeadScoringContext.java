@@ -28,11 +28,6 @@ public class LeadScoringContext {
         this.strategy = selectStrategy(contact);
     }
 
-    public void setStrategy(LeadScoringStrategy strategy) {
-        logger.debug("Strategy changed to: {}", strategy.getStrategyName());
-        this.strategy = strategy;
-    }
-
     public int calculateInitialScore(Contact contact) {
         int score = strategy.calculateInitialScore(contact);
         logger.debug("Initial score for contact {} (strategy: {}): {}",

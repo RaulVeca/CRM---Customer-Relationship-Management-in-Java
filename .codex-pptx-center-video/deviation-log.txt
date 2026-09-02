@@ -1,0 +1,2 @@
+Slide 7: resize and reposition the existing embedded video frame to a centered 16:9 content area beneath the header. No other element is edited.
+Slides 1-6 and 8: preserve exactly.

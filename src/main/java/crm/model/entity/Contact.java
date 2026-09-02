@@ -17,6 +17,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @Builder
 @ToString(callSuper = true)
+
 public class Contact extends BaseEntity {
 
     private ContactType contactType;
@@ -77,15 +78,6 @@ public class Contact extends BaseEntity {
     public boolean isCorporate() {
         return contactType == ContactType.CORPORATE;
     }
-
-    public boolean isIndividual() {
-        return contactType == ContactType.INDIVIDUAL;
-    }
-
-    public boolean isHotLead() {
-        return leadScore != null && leadScore >= 70;
-    }
-
 
     public void setGdprConsentDate(LocalDateTime time) {
         this.gdprConsentDate = time;

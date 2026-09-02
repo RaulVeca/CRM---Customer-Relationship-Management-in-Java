@@ -1,0 +1,2 @@
+Slide 4 only: shortened the visible copy in the three inherited content text boxes to improve pacing for a five-minute defense.
+No other slide, shape, layout, master, note, page marker, media asset or theme element is intentionally changed.

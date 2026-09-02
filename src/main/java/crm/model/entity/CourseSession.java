@@ -30,15 +30,4 @@ public class CourseSession extends BaseEntity {
     private BigDecimal averageRating;
     private Boolean isCorporate;
 
-    public boolean isFull() {
-        return currentParticipants != null 
-            && maxParticipants != null 
-            && currentParticipants >= maxParticipants;
-    }
-
-    public int availableSeats() {
-        if (maxParticipants == null) return 0;
-        int current = currentParticipants != null ? currentParticipants : 0;
-        return Math.max(0, maxParticipants - current);
-    }
 }

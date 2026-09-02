@@ -60,10 +60,6 @@ public class ActivityService {
         return activityRepository.findByContactId(contactId);
     }
 
-    public List<Activity> getByOpportunity(Long opportunityId) {
-        return activityRepository.findByOpportunityId(opportunityId);
-    }
-
     public List<Activity> getUpcomingForUser(Long userId, int days) {
         return activityRepository.findUpcomingForUser(userId, days);
     }

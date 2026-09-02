@@ -1,0 +1,90 @@
+{
+  "outputSlides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 1,
+      "narrativeRole": "opening thesis",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/547294r6", "action": "keep", "reason": "Preserve authentic cover artwork" },
+        { "sourceElementId": "sh/k3yl0zql", "action": "rewrite-and-reposition", "reason": "Replace template title with the English TrainingIT title" },
+        { "sourceElementId": "sh/7qp4be9c", "action": "rewrite", "reason": "Translate faculty and programme information into English" },
+        { "sourceElementId": "sh/65g3298r", "action": "rewrite-and-reposition", "reason": "Replace coordinator label with English supervisor information" },
+        { "sourceElementId": "sh/ts7md4r2", "action": "rewrite-and-reposition", "reason": "Replace candidate placeholder with the candidate name" }
+      ]
+    },
+    {
+      "outputSlide": 2,
+      "sourceSlide": 2,
+      "narrativeRole": "problem analysis",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/9072xkry", "action": "keep", "reason": "Preserve authentic content-slide artwork" },
+        { "action": "add", "newPrimitiveAllowed": true, "mustNotOverlapInherited": true, "reason": "Populate the template's intentionally blank content canvas", "zone": { "left": 250, "top": 35, "width": 1500, "height": 980 } }
+      ]
+    },
+    {
+      "outputSlide": 3,
+      "sourceSlide": 2,
+      "narrativeRole": "comparison table",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/9072xkry", "action": "keep", "reason": "Preserve authentic content-slide artwork" },
+        { "action": "add", "newPrimitiveAllowed": true, "mustNotOverlapInherited": true, "reason": "Populate the template's intentionally blank content canvas", "zone": { "left": 250, "top": 35, "width": 1500, "height": 980 } }
+      ]
+    },
+    {
+      "outputSlide": 4,
+      "sourceSlide": 2,
+      "narrativeRole": "contribution summary",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/9072xkry", "action": "keep", "reason": "Preserve authentic content-slide artwork" },
+        { "action": "add", "newPrimitiveAllowed": true, "mustNotOverlapInherited": true, "reason": "Populate the template's intentionally blank content canvas", "zone": { "left": 250, "top": 35, "width": 1500, "height": 980 } }
+      ]
+    },
+    {
+      "outputSlide": 5,
+      "sourceSlide": 2,
+      "narrativeRole": "technology architecture map",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/9072xkry", "action": "keep", "reason": "Preserve authentic content-slide artwork" },
+        { "action": "add", "newPrimitiveAllowed": true, "mustNotOverlapInherited": true, "reason": "Add and center the authentic architecture diagram", "zone": { "left": 250, "top": 35, "width": 1500, "height": 980 } }
+      ]
+    },
+    {
+      "outputSlide": 6,
+      "sourceSlide": 2,
+      "narrativeRole": "AI feature summary",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/9072xkry", "action": "keep", "reason": "Preserve authentic content-slide artwork" },
+        { "action": "add", "newPrimitiveAllowed": true, "mustNotOverlapInherited": true, "reason": "Populate the template's intentionally blank content canvas", "zone": { "left": 250, "top": 35, "width": 1500, "height": 980 } }
+      ]
+    },
+    {
+      "outputSlide": 7,
+      "sourceSlide": 2,
+      "narrativeRole": "application demo",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/9072xkry", "action": "keep", "reason": "Preserve authentic content-slide artwork" },
+        { "action": "add", "newPrimitiveAllowed": true, "mustNotOverlapInherited": true, "reason": "Add the demo title and live-demo cue", "zone": { "left": 250, "top": 35, "width": 1500, "height": 980 } }
+      ]
+    },
+    {
+      "outputSlide": 8,
+      "sourceSlide": 2,
+      "narrativeRole": "conclusion summary",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/9072xkry", "action": "keep", "reason": "Preserve authentic content-slide artwork" },
+        { "action": "add", "newPrimitiveAllowed": true, "mustNotOverlapInherited": true, "reason": "Populate the template's intentionally blank content canvas", "zone": { "left": 250, "top": 35, "width": 1500, "height": 980 } }
+      ]
+    }
+  ],
+  "omittedSourceSlides": [
+    { "sourceSlide": 3, "reason": "The closing bumper cannot support the content-bearing conclusion slide." }
+  ]
+}

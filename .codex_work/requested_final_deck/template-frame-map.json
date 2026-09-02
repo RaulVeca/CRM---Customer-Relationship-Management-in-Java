@@ -1,0 +1,99 @@
+{
+  "outputSlides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 1,
+      "narrativeRole": "brand title preserve-only",
+      "reuseMode": "duplicate-slide",
+      "editTargets": []
+    },
+    {
+      "outputSlide": 2,
+      "sourceSlide": 2,
+      "narrativeRole": "problem thesis",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/b29kza94", "action": "rewrite" },
+        { "sourceElementId": "sh/ove9o7yd", "action": "rewrite" },
+        { "sourceElementId": "sh/9wnqhczy", "action": "rewrite" },
+        { "sourceElementId": "sh/mtwrmxg7", "action": "rewrite" },
+        { "sourceElementId": "sh/ahwrqhgj", "action": "rewrite" },
+        { "sourceElementId": "sh/cnupgny5", "action": "rewrite" },
+        { "sourceElementId": "sh/q5wjelsz", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 3,
+      "sourceSlide": 3,
+      "narrativeRole": "related work comparison",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/n6ls3alk", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 4,
+      "sourceSlide": 4,
+      "narrativeRole": "contribution summary",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/ih8ju9sn", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 5,
+      "sourceSlide": 6,
+      "narrativeRole": "system architecture diagram",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/zi98nu94", "action": "rewrite" },
+        { "sourceElementId": "sh/w32twb6l", "action": "delete" },
+        { "sourceElementId": "sh/v2tcn650", "action": "delete" },
+        { "sourceElementId": "sh/u1kbu1ov", "action": "delete" },
+        { "sourceElementId": "sh/5svutgni", "action": "delete" },
+        { "sourceElementId": "sh/47mt0b6x", "action": "delete" },
+        { "sourceElementId": "sh/j6dcr65c", "action": "delete" },
+        { "sourceElementId": "sh/i54bylor", "action": "delete" },
+        { "sourceElementId": "sh/twfux0ne", "action": "delete" },
+        { "sourceElementId": "im/zax8jq94", "action": "rewrite-and-reposition" },
+        { "sourceElementId": "sh/pc76hkr2", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 6,
+      "sourceSlide": 11,
+      "narrativeRole": "AI layer",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/61kzalof", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 7,
+      "sourceSlide": 14,
+      "narrativeRole": "application demo",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/ehwvat8n", "action": "rewrite" }
+      ]
+    },
+    {
+      "outputSlide": 8,
+      "sourceSlide": 15,
+      "narrativeRole": "conclusion summary",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "sourceElementId": "sh/m9c3e1kn", "action": "rewrite" }
+      ]
+    }
+  ],
+  "omittedSourceSlides": [
+    { "sourceSlide": 5, "reason": "Not requested in the final slide list." },
+    { "sourceSlide": 7, "reason": "Not requested in the final slide list." },
+    { "sourceSlide": 8, "reason": "Not requested in the final slide list." },
+    { "sourceSlide": 9, "reason": "Not requested in the final slide list." },
+    { "sourceSlide": 10, "reason": "Not requested in the final slide list." },
+    { "sourceSlide": 12, "reason": "The requested demo slide is the source video-poster slide 14." },
+    { "sourceSlide": 13, "reason": "Not requested in the final slide list." }
+  ]
+}

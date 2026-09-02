@@ -70,10 +70,6 @@ public class EmployeeService {
         return employeeRepository.findByCompanyId(companyId);
     }
 
-    public long countByCompany(Long companyId) {
-        return employeeRepository.countByCompanyId(companyId);
-    }
-
     public boolean deleteEmployee(Long id) {
         return employeeRepository.deleteById(id);
     }

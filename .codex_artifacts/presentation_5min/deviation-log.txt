@@ -1,0 +1,7 @@
+Slide 1: copy shortened for a 5-minute oral presentation; layout and component hierarchy preserved.
+Slide 2: title changed from "Related Work Gap" to requested "Related Work"; comparison table preserved; framing sentences shortened.
+Slide 3: contribution and objectives shortened; source layout preserved.
+Slide 4: all source chrome and explanatory panels removed by request; the authentic source architecture diagram is the only visible element and is enlarged with aspect ratio preserved.
+Slide 5: AI summary shortened; four feature descriptions and source screenshot preserved.
+Slide 6: embedded video image removed to create the requested blank demo body; title shell preserved.
+Slide 7: implemented work and future directions shortened to presentation cues; layout preserved.

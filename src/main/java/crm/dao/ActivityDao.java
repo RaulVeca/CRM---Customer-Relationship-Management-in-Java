@@ -117,11 +117,6 @@ public class ActivityDao extends AbstractDao<Activity> {
         return findBy(sql, contactId);
     }
 
-    public List<Activity> findByOpportunityId(Long oppId) {
-        String sql = "SELECT * FROM activities WHERE opportunity_id = ? ORDER BY scheduled_date DESC";
-        return findBy(sql, oppId);
-    }
-
     public List<Activity> findUpcoming(Long userId, int days) {
         String sql = "SELECT * FROM activities WHERE assigned_to = ? AND scheduled_date BETWEEN NOW() " +
                 "AND DATE_ADD(NOW(), INTERVAL ? DAY) AND status = 'SCHEDULED' ORDER BY scheduled_date";

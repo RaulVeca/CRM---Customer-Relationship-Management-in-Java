@@ -51,7 +51,6 @@ public class ClaudeClient {
     /** A single conversation turn. */
     public record Turn(String role, String content) {
         public static Turn user(String c) { return new Turn("user", c); }
-        public static Turn assistant(String c) { return new Turn("assistant", c); }
     }
 
     /**

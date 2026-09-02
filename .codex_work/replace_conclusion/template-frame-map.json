@@ -1,0 +1,44 @@
+{
+  "outputSlides": [
+    { "outputSlide": 1, "sourceSlide": 1, "narrativeRole": "title", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 2, "sourceSlide": 2, "narrativeRole": "problem and motivation", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 3, "sourceSlide": 3, "narrativeRole": "related work", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 4, "sourceSlide": 4, "narrativeRole": "contribution", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 5, "sourceSlide": 5, "narrativeRole": "system architecture", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 6, "sourceSlide": 6, "narrativeRole": "AI layer", "reuseMode": "duplicate-slide", "editTargets": [] },
+    { "outputSlide": 7, "sourceSlide": 7, "narrativeRole": "application demo", "reuseMode": "duplicate-slide", "editTargets": [] },
+    {
+      "outputSlide": 8,
+      "sourceSlide": 8,
+      "narrativeRole": "conclusion replaced from approved secondary deck",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        {
+          "action": "replace",
+          "sourceElementIds": [
+            "sh/g72x4zyd",
+            "sh/ri9g7uhw",
+            "sh/6h0fypgb",
+            "sh/tkby9kzm",
+            "sh/sjix0zy1",
+            "sh/je9g3ahk",
+            "sh/id0fu50z",
+            "sh/o7ydoret",
+            "sh/98rehwve",
+            "sh/m5gvmhwn",
+            "sh/n6pwfmd8",
+            "sh/0jydkreh",
+            "sh/1k7edwv2",
+            "sh/ehgvihwr",
+            "sh/zipwbmdc",
+            "sh/kfixwbe1",
+            "sh/lgbepgvm",
+            "im/yp8rix47"
+          ],
+          "reason": "Replace the entire final slide with the Conclusion slide from Powerpoint_Presentation_5_minute.pptx"
+        }
+      ]
+    }
+  ],
+  "omittedSourceSlides": []
+}

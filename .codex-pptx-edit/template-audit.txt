@@ -1,0 +1,5 @@
+Source deck: 8 slides, 16:9 (960 x 540 px), Office theme.
+Visual system: UPT blue/white academic template, Arial for visible text, fixed logo/title/footer chrome.
+Slide 4 uses one full-width contribution summary and two lower content columns.
+Requested insertion contract: preserve all slides and all inherited/source elements; rewrite only the three body text elements on source slide 4 (shape IDs 13, 17, and 21). Keep font family, size, line spacing, insets, alignment, positions, fills, and headers unchanged.
+No external sources or assets are introduced.

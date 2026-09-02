@@ -1,0 +1,6 @@
+Replacement source: Demo.mp4
+Video: H.264, 1920x1080, 60 fps
+Audio: AAC stereo, 48 kHz
+Duration: approximately 2 minutes 15 seconds
+Poster frame: extracted at 00:00:01, 1280x720 PNG
+Compatibility: Uses PowerPoint-compatible H.264/AAC codecs and the same 16:9 aspect ratio as the existing frame.

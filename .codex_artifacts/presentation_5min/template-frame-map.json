@@ -1,0 +1,100 @@
+{
+  "outputSlides": [
+    {
+      "outputSlide": 1,
+      "sourceSlide": 2,
+      "narrativeRole": "problem and motivation",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "action": "rewrite", "sourceElementId": "sh/b29kza94" },
+        { "action": "rewrite", "sourceElementId": "sh/q5wjelsz" },
+        { "action": "rewrite", "sourceElementId": "sh/ove9o7yd" },
+        { "action": "rewrite", "sourceElementId": "sh/9wnqhczy" },
+        { "action": "rewrite", "sourceElementId": "sh/mtwrmxg7" },
+        { "action": "rewrite", "sourceElementId": "sh/ahwrqhgj" },
+        { "action": "rewrite", "sourceElementId": "sh/cnupgny5" }
+      ]
+    },
+    {
+      "outputSlide": 2,
+      "sourceSlide": 3,
+      "narrativeRole": "related work comparison",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "action": "rewrite", "sourceElementId": "sh/d0jax03i" },
+        { "action": "rewrite", "sourceElementId": "sh/298ryl4v" },
+        { "action": "rewrite", "sourceElementId": "sh/n6ls3alk" },
+        { "action": "rewrite", "sourceElementId": "sh/n2l4fq98" },
+        { "action": "rewrite", "sourceElementId": "sh/83ulovat" }
+      ]
+    },
+    {
+      "outputSlide": 3,
+      "sourceSlide": 4,
+      "narrativeRole": "applied contribution",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "action": "rewrite", "sourceElementId": "sh/rm1k7yt4" },
+        { "action": "rewrite", "sourceElementId": "sh/ih8ju9sn" },
+        { "action": "rewrite", "sourceElementId": "sh/jadsz2xk" },
+        { "action": "rewrite", "sourceElementId": "sh/v6tsv2xo" },
+        { "action": "rewrite", "sourceElementId": "sh/oz29krqh" }
+      ]
+    },
+    {
+      "outputSlide": 4,
+      "sourceSlide": 6,
+      "narrativeRole": "system architecture diagram",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "action": "delete", "sourceElementIds": ["im/b61sbutc", "sh/zi98nu94", "sh/87ipkzal", "sh/98rqt4r6", "sh/ml07i9sv", "sh/7m98ru9g", "sh/oryp8fah", "sh/pc76hkr2", "sh/w32twb6l", "sh/v2tcn650", "sh/u1kbu1ov", "sh/5svutgni", "sh/47mt0b6x", "sh/j6dcr65c", "sh/i54bylor", "sh/twfux0ne"] },
+        { "action": "rewrite-and-reposition", "sourceElementId": "im/zax8jq94" }
+      ]
+    },
+    {
+      "outputSlide": 5,
+      "sourceSlide": 11,
+      "narrativeRole": "optional AI layer",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "action": "rewrite", "sourceElementId": "sh/n69grmpw" },
+        { "action": "rewrite", "sourceElementId": "sh/61kzalof" },
+        { "action": "rewrite", "sourceElementId": "sh/65wzelo7" }
+      ]
+    },
+    {
+      "outputSlide": 6,
+      "sourceSlide": 14,
+      "narrativeRole": "blank application demo transition",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "action": "rewrite", "sourceElementId": "sh/jepwf2pc" },
+        { "action": "rewrite", "sourceElementId": "sh/ehwvat8n" },
+        { "action": "delete", "sourceElementId": "im/etsv65k7" }
+      ]
+    },
+    {
+      "outputSlide": 7,
+      "sourceSlide": 15,
+      "narrativeRole": "conclusion and future work",
+      "reuseMode": "duplicate-slide",
+      "editTargets": [
+        { "action": "rewrite", "sourceElementId": "sh/76p4jqls" },
+        { "action": "rewrite", "sourceElementId": "sh/m9c3e1kn" },
+        { "action": "rewrite", "sourceElementId": "sh/vqdsrqx4" },
+        { "action": "rewrite", "sourceElementId": "sh/judsvqxg" },
+        { "action": "rewrite", "sourceElementId": "sh/l0bqlgf2" }
+      ]
+    }
+  ],
+  "omittedSourceSlides": [
+    { "sourceSlide": 1, "reason": "Title slide was not requested." },
+    { "sourceSlide": 5, "reason": "System context was not requested." },
+    { "sourceSlide": 7, "reason": "Role navigation was not requested." },
+    { "sourceSlide": 8, "reason": "Domain design was not requested." },
+    { "sourceSlide": 9, "reason": "Data model was not requested." },
+    { "sourceSlide": 10, "reason": "Event sequence was not requested." },
+    { "sourceSlide": 12, "reason": "Screenshot demo slide was replaced by a blank demo transition." },
+    { "sourceSlide": 13, "reason": "Testing slide was not requested." }
+  ]
+}

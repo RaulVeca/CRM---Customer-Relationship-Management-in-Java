@@ -1,0 +1,174 @@
+{
+  "sourcePptx": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-check.pptx",
+  "workspace": "D:\\TrainingIT_site\\.codex-pptx-center-video",
+  "outDir": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect",
+  "generatedAt": "2026-09-01T00:24:41.476Z",
+  "slideCount": 8,
+  "slideArtifacts": [
+    {
+      "slide": 1,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-01.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-01.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-01.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-01.layout.json"
+    },
+    {
+      "slide": 2,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-02.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-02.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-02.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-02.layout.json"
+    },
+    {
+      "slide": 3,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-03.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-03.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-03.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-03.layout.json"
+    },
+    {
+      "slide": 4,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-04.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-04.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-04.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-04.layout.json"
+    },
+    {
+      "slide": 5,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-05.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-05.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-05.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-05.layout.json"
+    },
+    {
+      "slide": 6,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-06.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-06.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-06.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-06.layout.json"
+    },
+    {
+      "slide": 7,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-07.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-07.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-07.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-07.layout.json"
+    },
+    {
+      "slide": 8,
+      "previewPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\source-slides\\source-slide-08.png",
+      "previewRelativePath": "final-inspect/source-slides/source-slide-08.png",
+      "layoutPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\layouts\\source-slide-08.layout.json",
+      "layoutRelativePath": "final-inspect/layouts/source-slide-08.layout.json"
+    }
+  ],
+  "inspectPath": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\template-inspect.ndjson",
+  "inspectRelativePath": "final-inspect/template-inspect.ndjson",
+  "inspectTruncated": true,
+  "inspectMetadata": {
+    "revision": "tjs6mu",
+    "target": {
+      "id": "pr/idah6u"
+    },
+    "kind": {
+      "requested": "slide,textbox,shape,image,table,chart",
+      "tokens": [
+        "slide",
+        "textbox",
+        "shape",
+        "image",
+        "table",
+        "chart"
+      ]
+    },
+    "include": {
+      "tokens": []
+    },
+    "exclude": {
+      "tokens": []
+    },
+    "notices": []
+  },
+  "extractedMedia": [
+    {
+      "entry": "ppt/media/image3.png",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\assets\\ppt\\media\\image3.png",
+      "relativePath": "final-inspect/assets/ppt/media/image3.png",
+      "bytes": 224357
+    },
+    {
+      "entry": "ppt/media/image2.jpeg",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\assets\\ppt\\media\\image2.jpeg",
+      "relativePath": "final-inspect/assets/ppt/media/image2.jpeg",
+      "bytes": 254186
+    },
+    {
+      "entry": "ppt/media/image4.png",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\assets\\ppt\\media\\image4.png",
+      "relativePath": "final-inspect/assets/ppt/media/image4.png",
+      "bytes": 113998
+    },
+    {
+      "entry": "ppt/media/image1.jpeg",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\assets\\ppt\\media\\image1.jpeg",
+      "relativePath": "final-inspect/assets/ppt/media/image1.jpeg",
+      "bytes": 350236
+    },
+    {
+      "entry": "ppt/media/image5.png",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\assets\\ppt\\media\\image5.png",
+      "relativePath": "final-inspect/assets/ppt/media/image5.png",
+      "bytes": 430823
+    },
+    {
+      "entry": "ppt/media/media1.mp4",
+      "path": "D:\\TrainingIT_site\\.codex-pptx-center-video\\final-inspect\\assets\\ppt\\media\\media1.mp4",
+      "relativePath": "final-inspect/assets/ppt/media/media1.mp4",
+      "bytes": 10323307
+    }
+  ],
+  "fonts": [
+    "+mj-lt",
+    "+mn-lt",
+    "Angsana New",
+    "Arial",
+    "Bebas Neue Bold",
+    "Calibri",
+    "Cordia New",
+    "Courier New",
+    "DaunPenh",
+    "DokChampa",
+    "Estrangelo Edessa",
+    "Euphemia",
+    "Gautami",
+    "Helvetica Now Display Bold",
+    "Iskoola Pota",
+    "Kalinga",
+    "Kartika",
+    "Latha",
+    "MV Boli",
+    "Mangal",
+    "Microsoft Himalaya",
+    "Microsoft Uighur",
+    "Microsoft Yi Baiti",
+    "Mongolian Baiti",
+    "MoolBoran",
+    "Nyala",
+    "Plantagenet Cherokee",
+    "Raavi",
+    "Shruti",
+    "Times New Roman",
+    "Tunga",
+    "Vrinda",
+    "宋体",
+    "新細明體",
+    "맑은 고딕",
+    "ＭＳ Ｐゴシック"
+  ],
+  "packageParts": {
+    "mediaCount": 6,
+    "slideXmlCount": 8,
+    "chartCount": 0,
+    "tableSlideCount": 1
+  }
+}

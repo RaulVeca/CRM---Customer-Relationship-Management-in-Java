@@ -1,0 +1,132 @@
+{"kind":"layout","layoutId":"/ppt/slideMasters/slideMaster1.xml","name":"","type":"master"}
+{"kind":"layout","layoutId":"/ppt/slideLayouts/slideLayout1.xml","name":"DEFAULT"}
+{"kind":"slide","id":"sl/y90nupkv","slide":1,"title":"WEST UNIVERSITY OF TIMIȘOARA","textShapes":7}
+{"kind":"textbox","id":"sh/k3yl0zql","slide":1,"name":"Text 0","text":"WEST UNIVERSITY OF TIMIȘOARA","textPreview":"WEST UNIVERSITY OF TIMIȘOARA","textChars":28,"textLines":1,"bbox":[499.2,15.36,431.04,28.8]}
+{"kind":"textbox","id":"sh/7qp4be9c","slide":1,"name":"Text 1","text":"TrainingIT","textPreview":"TrainingIT","textChars":10,"textLines":1,"bbox":[57.6,145.92,844.8,59.52]}
+{"kind":"textbox","id":"sh/65g3298r","slide":1,"name":"Text 2","text":"A Web-Based Application for Selling Programming Courses","textPreview":"A Web-Based Application for Selling Programming Courses","textChars":55,"textLines":1,"bbox":[57.6,203.52,844.8,38.4]}
+{"kind":"textbox","id":"sh/ts7md4r2","slide":1,"name":"Text 3","text":"Raul Veca","textPreview":"Raul Veca","textChars":9,"textLines":1,"bbox":[57.6,266.88,844.8,32.64]}
+{"kind":"textbox","id":"sh/sryl4zqx","slide":1,"name":"Text 4","text":"Supervisor: Lect. Dr. Sebastian Ștefăniga","textPreview":"Supervisor: Lect. Dr. Sebastian Ștefăniga","textChars":41,"textLines":1,"bbox":[57.6,302.4,844.8,28.8]}
+{"kind":"textbox","id":"sh/fu94fe98","slide":1,"name":"Text 5","text":"Faculty of Computer Science  ·  Bachelor Thesis Defense, 2026","textPreview":"Faculty of Computer Science  ·  Bachelor Thesis Defense, 2026","textChars":61,"textLines":1,"bbox":[57.6,333.12,844.8,28.8]}
+{"kind":"textbox","id":"sh/utg3698n","slide":1,"name":"Text 6","text":"www.uvt.ro","textPreview":"www.uvt.ro","textChars":10,"textLines":1,"bbox":[43.2,489.6,288,28.8]}
+{"kind":"image","id":"im/jqxw72dk","slide":1,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"notes","id":"nt/y90nupkv","slide":1,"text":""}
+{"kind":"slide","id":"sl/hwbqtkby","slide":2,"title":"Problem and Motivation","textShapes":10}
+{"kind":"textbox","id":"sh/ozy1ofad","slide":2,"name":"Text 0","text":"Problem and Motivation","textPreview":"Problem and Motivation","textChars":22,"textLines":1,"bbox":[132.48,8.64,792,38.4]}
+{"kind":"textbox","id":"sh/b29kza94","slide":2,"name":"Text 1","text":"A storefront and a CRM should not depend on fragile synchronization","textPreview":"A storefront and a CRM should not depend on fragile synchronization","textChars":67,"textLines":1,"bbox":[134.4,48,792,28.8]}
+{"kind":"shape","id":"sh/a10jqpsj","slide":2,"name":"Shape 2","bbox":[0,525.12,960,14.88]}
+{"kind":"shape","id":"sh/x4r21kru","slide":2,"name":"Shape 3","bbox":[29.76,496.32,808.32,26.88]}
+{"kind":"shape","id":"sh/w3i1sfa9","slide":2,"name":"Shape 4","bbox":[29.76,494.4,900.48,0]}
+{"kind":"textbox","id":"sh/r65knqtk","slide":2,"name":"Text 5","text":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textPreview":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textChars":44,"textLines":1,"bbox":[43.2,496.32,576,26.88]}
+{"kind":"textbox","id":"sh/q5wjelsz","slide":2,"name":"Text 6","text":"Page 1 / 7","textPreview":"Page 1 / 7","textChars":10,"textLines":1,"bbox":[758.4,496.32,171.84,26.88]}
+{"kind":"textbox","id":"sh/ove9o7yd","slide":2,"name":"Text 7","text":"The customer side.  Learners need a clear catalogue, trusted reviews, quick purchase and simple tutoring reservations.","textPreview":"The customer side.  Learners need a clear catalogue, trusted reviews, quick purchase and simple tutoring reservations.","textChars":118,"textLines":1,"bbox":[43.2,110.4,513.6,96]}
+{"kind":"textbox","id":"sh/9wnqhczy","slide":2,"name":"Text 8","text":"The business side.  The company needs leads, purchases, invoices, analytics and corporate clients in one operational view.","textPreview":"The business side.  The company needs leads, purchases, invoices, analytics and corporate clients in one operational view.","textChars":122,"textLines":1,"bbox":[43.2,216,513.6,120]}
+{"kind":"textbox","id":"sh/mtwrmxg7","slide":2,"name":"Text 9","text":"The integration gap.  Separate tools create duplicate or inconsistent data and require slow manual reconciliation.","textPreview":"The integration gap.  Separate tools create duplicate or inconsistent data and require slow manual reconciliation.","textChars":114,"textLines":1,"bbox":[43.2,345.6,513.6,100.8]}
+{"kind":"shape","id":"sh/nu58f2hs","slide":2,"name":"Shape 10","bbox":[580.8,110.4,336,34.56]}
+{"kind":"textbox","id":"sh/wjy9sry9","slide":2,"name":"Text 11","text":"Problem statement","textPreview":"Problem statement","textChars":17,"textLines":1,"bbox":[593.28,110.4,311.04,34.56]}
+{"kind":"shape","id":"sh/xk7qlczu","slide":2,"name":"Shape 12","bbox":[580.8,144.96,336,174.72]}
+{"kind":"textbox","id":"sh/ahwrqhgj","slide":2,"name":"Text 13","text":"Use one application and one shared data model so each customer action is captured once and drives the relevant CRM processes automatically.","textPreview":"Use one application and one shared data model so each customer action is captured once and drives the relevant CRM processes automatically.","textChars":139,"textLines":1,"bbox":[596.16,149.76,305.28,165.12]}
+{"kind":"shape","id":"sh/bip8jmho","slide":2,"name":"Shape 14","bbox":[580.8,314.88,336,96]}
+{"kind":"textbox","id":"sh/cnupgny5","slide":2,"name":"Text 15","text":"One system. Two role-based experiences. No manual reconciliation.","textPreview":"One system. Two role-based experiences. No manual reconciliation.","textChars":65,"textLines":1,"bbox":[596.16,318.72,305.28,88.32]}
+{"kind":"image","id":"im/mpcv2l0b","slide":2,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"notes","id":"nt/hwbqtkby","slide":2,"text":""}
+{"kind":"slide","id":"sl/ofy9wn61","slide":3,"title":"Related Work","textShapes":6}
+{"kind":"textbox","id":"sh/d0jax03i","slide":3,"name":"Text 0","text":"Related Work","textPreview":"Related Work","textChars":12,"textLines":1,"bbox":[132.48,8.64,792,38.4]}
+{"kind":"textbox","id":"sh/298ryl4v","slide":3,"name":"Text 1","text":"Existing tools solve parts of the problem, not the whole workflow","textPreview":"Existing tools solve parts of the problem, not the whole workflow","textChars":65,"textLines":1,"bbox":[134.4,48,792,28.8]}
+{"kind":"shape","id":"sh/3ah8rqlg","slide":3,"name":"Shape 2","bbox":[0,525.12,960,14.88]}
+{"kind":"shape","id":"sh/obq90bml","slide":3,"name":"Shape 3","bbox":[29.76,496.32,808.32,26.88]}
+{"kind":"shape","id":"sh/pcjqtg36","slide":3,"name":"Shape 4","bbox":[29.76,494.4,900.48,0]}
+{"kind":"textbox","id":"sh/m5cra54z","slide":3,"name":"Text 5","text":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textPreview":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textChars":44,"textLines":1,"bbox":[43.2,496.32,576,26.88]}
+{"kind":"textbox","id":"sh/n6ls3alk","slide":3,"name":"Text 6","text":"Page 2 / 7","textPreview":"Page 2 / 7","textChars":10,"textLines":1,"bbox":[758.4,496.32,171.84,26.88]}
+{"kind":"textbox","id":"sh/n2l4fq98","slide":3,"name":"Text 7","text":"Each family of tools covers one side well; none unifies a course storefront and a CRM in a single product.","textPreview":"Each family of tools covers one side well; none unifies a course storefront and a CRM in a single product.","textChars":106,"textLines":1,"bbox":[43.2,105.6,873.6,26.88]}
+{"kind":"shape","id":"sh/943mhgre","slide":3,"name":"Shape 8","bbox":[43.2,407.04,873.6,69.12]}
+{"kind":"textbox","id":"sh/83ulovat","slide":3,"name":"Text 9","text":"TrainingIT unifies both sides in one application built on one shared data model, and specialises the generic CRM notions for the training domain: course sessions, trainer calendars, per-hour tutoring with employee discounts, and course-level click-through analytics.","textPreview":"TrainingIT unifies both sides in one application built on one shared data model, and specialises the generic CRM notions for the training...","textChars":266,"textLines":1,"bbox":[58.56,410.88,842.88,61.44]}
+{"kind":"table","id":"tb/1kruxsbi","slide":3,"name":"Table 0","rows":5,"cols":3,"preview":"Tool family | Strength | Limitation","bbox":[43.2,140.16,873.6,240]}
+{"kind":"image","id":"im/gne5cvel","slide":3,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"notes","id":"nt/ofy9wn61","slide":3,"text":""}
+{"kind":"slide","id":"sl/jyx0ra1s","slide":4,"title":"Contribution","textShapes":10}
+{"kind":"textbox","id":"sh/0ba143al","slide":4,"name":"Text 0","text":"Contribution","textPreview":"Contribution","textChars":12,"textLines":1,"bbox":[132.48,8.64,792,38.4]}
+{"kind":"textbox","id":"sh/rm1k7yt4","slide":4,"name":"Text 1","text":"A working product, not a prototype: storefront and CRM as one system","textPreview":"A working product, not a prototype: storefront and CRM as one system","textChars":68,"textLines":1,"bbox":[134.4,48,792,28.8]}
+{"kind":"shape","id":"sh/ql8jytsj","slide":4,"name":"Shape 2","bbox":[0,525.12,960,14.88]}
+{"kind":"shape","id":"sh/doj29oba","slide":4,"name":"Shape 3","bbox":[29.76,496.32,808.32,26.88]}
+{"kind":"shape","id":"sh/sna103ap","slide":4,"name":"Shape 4","bbox":[29.76,494.4,900.48,0]}
+{"kind":"textbox","id":"sh/3ihk3et8","slide":4,"name":"Text 5","text":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textPreview":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textChars":44,"textLines":1,"bbox":[43.2,496.32,576,26.88]}
+{"kind":"textbox","id":"sh/ih8ju9sn","slide":4,"name":"Text 6","text":"Page 3 / 7","textPreview":"Page 3 / 7","textChars":10,"textLines":1,"bbox":[758.4,496.32,171.84,26.88]}
+{"kind":"shape","id":"sh/kbm987y5","slide":4,"name":"Shape 7","bbox":[43.2,107.52,873.6,34.56]}
+{"kind":"textbox","id":"sh/5cva1cfq","slide":4,"name":"Text 8","text":"Applied contribution","textPreview":"Applied contribution","textChars":20,"textLines":1,"bbox":[55.68,107.52,848.64,34.56]}
+{"kind":"shape","id":"sh/i94r6xgz","slide":4,"name":"Shape 9","bbox":[43.2,142.08,873.6,69.12]}
+{"kind":"textbox","id":"sh/jadsz2xk","slide":4,"name":"Text 10","text":"TrainingIT combines a course marketplace and a complete CRM in one working application, built on an event-driven Java core with optional Claude-powered features.","textPreview":"TrainingIT combines a course marketplace and a complete CRM in one working application, built on an event-driven Java core with optional ...","textChars":161,"textLines":1,"bbox":[58.56,146.88,842.88,59.52]}
+{"kind":"shape","id":"sh/w72947yt","slide":4,"name":"Shape 11","bbox":[43.2,218.88,427.2,34.56]}
+{"kind":"textbox","id":"sh/x8vaxsfe","slide":4,"name":"Text 12","text":"Objectives","textPreview":"Objectives","textChars":10,"textLines":1,"bbox":[55.68,218.88,402.24,34.56]}
+{"kind":"shape","id":"sh/a5kr2xg3","slide":4,"name":"Shape 13","bbox":[43.2,253.44,427.2,203.52]}
+{"kind":"textbox","id":"sh/v6tsv2xo","slide":4,"name":"Text 14","text":"A learner portal for courses, purchases, reviews and tutoring.\nA seven-tab CRM portal for daily operations.\nAn event-driven Java domain with automatic reactions.\nMariaDB persistence and optional AI that degrades safely.","textPreview":"A learner portal for courses, purchases, reviews and tutoring. | A seven-tab CRM portal for daily operations. | An event-driven Java doma...","textChars":219,"textLines":4,"bbox":[58.56,260.16,396.48,190.08]}
+{"kind":"shape","id":"sh/g36tgryd","slide":4,"name":"Shape 15","bbox":[489.6,218.88,427.2,34.56]}
+{"kind":"textbox","id":"sh/h4fa9wfy","slide":4,"name":"Text 16","text":"Design boundary","textPreview":"Design boundary","textChars":15,"textLines":1,"bbox":[502.08,218.88,402.24,34.56]}
+{"kind":"shape","id":"sh/p0batw72","slide":4,"name":"Shape 17","bbox":[489.6,253.44,427.2,203.52]}
+{"kind":"textbox","id":"sh/oz29krqh","slide":4,"name":"Text 18","text":"Not a general-purpose marketplace or CRM.\n\nTrainingIT is built for training companies: a simple learner storefront over a practical CRM core. AI remains optional.","textPreview":"Not a general-purpose marketplace or CRM. |  | TrainingIT is built for training companies: a simple learner storefront over a practical C...","textChars":162,"textLines":3,"bbox":[504.96,258.24,396.48,193.92]}
+{"kind":"image","id":"im/83apgj29","slide":4,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"notes","id":"nt/jyx0ra1s","slide":4,"text":""}
+{"kind":"slide","id":"sl/i107q5of","slide":5,"title":"System Architecture","textShapes":4}
+{"kind":"textbox","id":"sh/cf2tcr61","slide":5,"name":"Text 0","text":"System Architecture","textPreview":"System Architecture","textChars":19,"textLines":1,"bbox":[132.48,8.64,792,38.4]}
+{"kind":"textbox","id":"sh/z2tcnm5s","slide":5,"name":"Text 1","text":"Four layers behind one REST API and a real-time event stream","textPreview":"Four layers behind one REST API and a real-time event stream","textChars":60,"textLines":1,"bbox":[134.4,48,792,28.8]}
+{"kind":"shape","id":"sh/yhkbe1o7","slide":5,"name":"Shape 2","bbox":[0,525.12,960,14.88]}
+{"kind":"shape","id":"sh/l4bupwny","slide":5,"name":"Shape 3","bbox":[29.76,496.32,808.32,26.88]}
+{"kind":"shape","id":"sh/032tgr6d","slide":5,"name":"Shape 4","bbox":[29.76,494.4,900.48,0]}
+{"kind":"textbox","id":"sh/n6dcr65o","slide":5,"name":"Text 5","text":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textPreview":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textChars":44,"textLines":1,"bbox":[43.2,496.32,576,26.88]}
+{"kind":"textbox","id":"sh/m5kbi1oj","slide":5,"name":"Text 6","text":"Page 4 / 7","textPreview":"Page 4 / 7","textChars":10,"textLines":1,"bbox":[758.4,496.32,171.84,26.88]}
+{"kind":"image","id":"im/rqdw7qls","slide":5,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"image","id":"im/6p4fyl47","slide":5,"name":"Image 1","bbox":[189.89,76.26,571.27,415.74]}
+{"kind":"notes","id":"nt/i107q5of","slide":5,"text":""}
+{"kind":"slide","id":"sl/x8f69ofe","slide":6,"title":"The AI Layer","textShapes":10}
+{"kind":"textbox","id":"sh/zi98nu94","slide":6,"name":"Text 0","text":"The AI Layer","textPreview":"The AI Layer","textChars":12,"textLines":1,"bbox":[132.48,8.64,792,38.4]}
+{"kind":"textbox","id":"sh/87ipkzal","slide":6,"name":"Text 1","text":"Optional intelligence, powered by the Anthropic Claude API","textPreview":"Optional intelligence, powered by the Anthropic Claude API","textChars":58,"textLines":1,"bbox":[134.4,48,792,28.8]}
+{"kind":"shape","id":"sh/98rqt4r6","slide":6,"name":"Shape 2","bbox":[0,525.12,960,14.88]}
+{"kind":"shape","id":"sh/ml07i9sv","slide":6,"name":"Shape 3","bbox":[29.76,496.32,808.32,26.88]}
+{"kind":"shape","id":"sh/7m98ru9g","slide":6,"name":"Shape 4","bbox":[29.76,494.4,900.48,0]}
+{"kind":"textbox","id":"sh/oryp8fah","slide":6,"name":"Text 5","text":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textPreview":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textChars":44,"textLines":1,"bbox":[43.2,496.32,576,26.88]}
+{"kind":"textbox","id":"sh/pc76hkr2","slide":6,"name":"Text 6","text":"Page 5 / 7","textPreview":"Page 5 / 7","textChars":10,"textLines":1,"bbox":[758.4,496.32,171.84,26.88]}
+{"kind":"shape","id":"sh/h4bupgn6","slide":6,"name":"Shape 7","bbox":[43.2,113.28,480,74.88]}
+{"kind":"textbox","id":"sh/w32twb6l","slide":6,"name":"Text 8","text":"Conversational assistant   /api/ai/chat\nAnswers questions about courses, enrolment and corporate training, using the live catalogue as context.","textPreview":"Conversational assistant   /api/ai/chat | Answers questions about courses, enrolment and corporate training, using the live catalogue as ...","textChars":143,"textLines":2,"bbox":[56.64,117.12,453.12,67.2]}
+{"kind":"shape","id":"sh/v2tcn650","slide":6,"name":"Shape 9","bbox":[43.2,195.84,480,74.88]}
+{"kind":"textbox","id":"sh/u1kbu1ov","slide":6,"name":"Text 10","text":"Recommendation quiz   /api/ai/recommendations/visitor\nMatches a visitor's interests, level and goal to courses, each with a fit score and a reason.","textPreview":"Recommendation quiz   /api/ai/recommendations/visitor | Matches a visitor's interests, level and goal to courses, each with a fit score a...","textChars":147,"textLines":2,"bbox":[56.64,199.68,453.12,67.2]}
+{"kind":"shape","id":"sh/5svutgni","slide":6,"name":"Shape 11","bbox":[43.2,278.4,480,74.88]}
+{"kind":"textbox","id":"sh/47mt0b6x","slide":6,"name":"Text 12","text":"Per-company recommendations   /api/ai/recommendations/company\nAnalyses employee roles and interests to propose a training programme for a whole team.","textPreview":"Per-company recommendations   /api/ai/recommendations/company | Analyses employee roles and interests to propose a training programme for...","textChars":149,"textLines":2,"bbox":[56.64,282.24,453.12,67.2]}
+{"kind":"shape","id":"sh/j6dcr65c","slide":6,"name":"Shape 13","bbox":[43.2,360.96,480,74.88]}
+{"kind":"textbox","id":"sh/i54bylor","slide":6,"name":"Text 14","text":"Live page translation   /api/ai/translate\nTranslates the interface into any language, preserving brand names, people, e-mails and numbers.","textPreview":"Live page translation   /api/ai/translate | Translates the interface into any language, preserving brand names, people, e-mails and numbers.","textChars":138,"textLines":2,"bbox":[56.64,364.8,453.12,67.2]}
+{"kind":"shape","id":"sh/twfux0ne","slide":6,"name":"Shape 15","bbox":[43.2,443.52,480,32.64]}
+{"kind":"textbox","id":"sh/svmt4v6t","slide":6,"name":"Text 16","text":"Strictly additive: with no API key the buttons disappear","textPreview":"Strictly additive: with no API key the buttons disappear","textChars":56,"textLines":1,"bbox":[55.68,443.52,455.04,32.64]}
+{"kind":"shape","id":"sh/cbe5g3ih","slide":6,"name":"Shape 17","bbox":[43.2,476.16,480,0]}
+{"kind":"shape","id":"sh/qpwnet0b","slide":6,"name":"Shape 18","bbox":[549.12,359.04,367.68,117.12]}
+{"kind":"textbox","id":"sh/bq547yhw","slide":6,"name":"Text 19","text":"All four features share one Claude client and one API key. I implemented the prompts, the REST endpoints, the structured JSON response handling and the matching interfaces - and made sure the rest of the application stays fully operational when AI is not configured.","textPreview":"All four features share one Claude client and one API key. I implemented the prompts, the REST endpoints, the structured JSON response ha...","textChars":266,"textLines":1,"bbox":[564.48,362.88,336.96,109.44]}
+{"kind":"image","id":"im/neh8na9g","slide":6,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"image","id":"im/md8ru5sv","slide":6,"name":"Image 1","bbox":[549.12,117.12,367.68,229.44]}
+{"kind":"notes","id":"nt/x8f69ofe","slide":6,"text":""}
+{"kind":"slide","id":"sl/gnmp4jqx","slide":7,"title":"Application Demo","textShapes":4}
+{"kind":"textbox","id":"sh/dcbud0ra","slide":7,"name":"Text 0","text":"Application Demo","textPreview":"Application Demo","textChars":16,"textLines":1,"bbox":[132.48,8.64,792,38.4]}
+{"kind":"textbox","id":"sh/ydkbm5sv","slide":7,"name":"Text 1","text":"Video","textPreview":"Video","textChars":5,"textLines":1,"bbox":[134.4,48,792,28.8]}
+{"kind":"shape","id":"sh/zedcfa9g","slide":7,"name":"Shape 2","bbox":[0,525.12,960,14.88]}
+{"kind":"shape","id":"sh/kzmdova1","slide":7,"name":"Shape 3","bbox":[29.76,496.32,808.32,26.88]}
+{"kind":"shape","id":"sh/l0vuh0rm","slide":7,"name":"Shape 4","bbox":[29.76,494.4,900.48,0]}
+{"kind":"textbox","id":"sh/eh0ba1sr","slide":7,"name":"Text 5","text":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textPreview":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textChars":44,"textLines":1,"bbox":[43.2,496.32,576,26.88]}
+{"kind":"textbox","id":"sh/fi9c369c","slide":7,"name":"Text 6","text":"Page 6 / 7","textPreview":"Page 6 / 7","textChars":10,"textLines":1,"bbox":[758.4,496.32,171.84,26.88]}
+{"kind":"image","id":"im/wz6dk3it","slide":7,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"notes","id":"nt/gnmp4jqx","slide":7,"text":""}
+{"kind":"slide","id":"sl/fu1gfa1s","slide":8,"title":"Conclusion","textShapes":9}
+{"kind":"textbox","id":"sh/g72x4zyd","slide":8,"name":"Text 0","text":"Conclusion","textPreview":"Conclusion","textChars":10,"textLines":1,"bbox":[132.48,8.64,792,38.4]}
+{"kind":"textbox","id":"sh/ri9g7uhw","slide":8,"name":"Text 1","text":"TrainingIT demonstrates one coherent storefront and CRM","textPreview":"TrainingIT demonstrates one coherent storefront and CRM","textChars":55,"textLines":1,"bbox":[134.4,48,792,28.8]}
+{"kind":"shape","id":"sh/6h0fypgb","slide":8,"name":"Shape 2","bbox":[0,525.12,960,14.88]}
+{"kind":"shape","id":"sh/tkby9kzm","slide":8,"name":"Shape 3","bbox":[29.76,496.32,808.32,26.88]}
+{"kind":"shape","id":"sh/sjix0zy1","slide":8,"name":"Shape 4","bbox":[29.76,494.4,900.48,0]}
+{"kind":"textbox","id":"sh/je9g3ahk","slide":8,"name":"Text 5","text":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textPreview":"Raul Veca   -   WEST UNIVERSITY OF TIMIȘOARA","textChars":44,"textLines":1,"bbox":[43.2,496.32,576,26.88]}
+{"kind":"textbox","id":"sh/id0fu50z","slide":8,"name":"Text 6","text":"Page 7 / 7","textPreview":"Page 7 / 7","textChars":10,"textLines":1,"bbox":[758.4,496.32,171.84,26.88]}
+{"kind":"shape","id":"sh/o7ydoret","slide":8,"name":"Shape 7","bbox":[40.32,109.44,436.8,32.64]}
+{"kind":"textbox","id":"sh/98rehwve","slide":8,"name":"Text 8","text":"Implemented","textPreview":"Implemented","textChars":11,"textLines":1,"bbox":[52.8,109.44,411.84,32.64]}
+{"kind":"shape","id":"sh/m5gvmhwn","slide":8,"name":"Shape 9","bbox":[40.32,142.08,436.8,289.92]}
+{"kind":"textbox","id":"sh/n6pwfmd8","slide":8,"name":"Text 10","text":"Learner portal: catalogue, purchase, reviews and tutoring.\nCRM portal: contacts, purchases, invoices, analytics and issues.\nEvent-driven domain: automated lead scoring and invoicing.\nLive SSE statistics, imports and multi-format exports.\nOptional Claude assistant, recommendations and translation.","textPreview":"Learner portal: catalogue, purchase, reviews and tutoring. | CRM portal: contacts, purchases, invoices, analytics and issues. | Event-dri...","textChars":297,"textLines":5,"bbox":[55.68,148.8,406.08,276.48]}
+{"kind":"shape","id":"sh/0jydkreh","slide":8,"name":"Shape 11","bbox":[482.88,109.44,436.8,32.64]}
+{"kind":"textbox","id":"sh/1k7edwv2","slide":8,"name":"Text 12","text":"Validated and next steps","textPreview":"Validated and next steps","textChars":24,"textLines":1,"bbox":[495.36,109.44,411.84,32.64]}
+{"kind":"shape","id":"sh/ehgvihwr","slide":8,"name":"Shape 13","bbox":[482.88,142.08,436.8,289.92]}
+{"kind":"textbox","id":"sh/zipwbmdc","slide":8,"name":"Text 14","text":"End-to-end flows verified against a real MariaDB instance.\nDuplicate invoices prevented through idempotent processing.\nObserver failures are isolated; optional AI degrades safely.\nNext: automated tests and production-grade authentication.\nNext: richer analytics and cloud deployment.","textPreview":"End-to-end flows verified against a real MariaDB instance. | Duplicate invoices prevented through idempotent processing. | Observer failu...","textChars":283,"textLines":5,"bbox":[498.24,148.8,406.08,276.48]}
+{"kind":"shape","id":"sh/kfixwbe1","slide":8,"name":"Shape 15","bbox":[40.32,410.88,879.36,57.6]}
+{"kind":"textbox","id":"sh/lgbepgvm","slide":8,"name":"Text 16","text":"Each customer action is recorded once and becomes immediately available to the business.","textPreview":"Each customer action is recorded once and becomes immediately available to the business.","textChars":88,"textLines":1,"bbox":[55.68,414.72,848.64,49.92]}
+{"kind":"image","id":"im/yp8rix47","slide":8,"name":"Image 0","bbox":[29.76,0,90.24,90.24]}
+{"kind":"notes","id":"nt/fu1gfa1s","slide":8,"text":""}

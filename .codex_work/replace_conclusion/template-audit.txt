@@ -1,0 +1,7 @@
+Primary deck: C:\Users\raulv\Downloads\5 min_fara_note.pptx (8 slides).
+Secondary source: D:\TrainingIT_site\Powerpoint_Presentation_5_minute.pptx (6 slides).
+Slides 1-7 from the primary deck are preserve-only.
+Primary slide 8 is replaced by secondary slide 6, titled Conclusion.
+The shared master, layout, logo asset, typography and color system are identical across the two decks.
+The final slide page marker is adjusted from Page 6 / 6 to Page 7 / 7 so the replacement fits the primary deck's existing pagination.
+Speaker notes remain empty because the primary deck is the note-free edition.

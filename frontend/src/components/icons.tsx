@@ -46,41 +46,7 @@ export function CloseIcon({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
-export function UserIcon({ className = "h-6 w-6" }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>
-  );
-}
 
-export function UsersIcon({ className = "h-6 w-6" }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M17 21v-2a4 4 0 0 0-3-3.87M9 21v-2a4 4 0 0 1 3-3.87M9 7a3 3 0 1 0 6 0 3 3 0 0 0-6 0z" />
-      <path d="M21 21v-1.5a3.5 3.5 0 0 0-2.5-3.35M3 21v-1.5a3.5 3.5 0 0 1 2.5-3.35" />
-    </svg>
-  );
-}
 
 export function ArrowRightIcon({ className = "h-5 w-5" }: IconProps) {
   return (
@@ -266,19 +232,3 @@ export function FlagIcon({ className = "h-6 w-6" }: IconProps) {
   );
 }
 
-export function TrophyIcon({ className = "h-4 w-4" }: IconProps) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4zM7 4H4v2a3 3 0 0 0 3 3M17 4h3v2a3 3 0 0 1-3 3" />
-    </svg>
-  );
-}

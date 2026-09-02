@@ -1,0 +1,6 @@
+Source deck: TrainingIT_UVT.pptx
+Slide count: 8
+Layout: 16:9 widescreen
+Design system: UVT/TrainingIT branded deck with orange accent, dark navy text, and a pale neutral background.
+Requested edit: Replace the embedded video on slide 7 while retaining its exact frame, centered placement, sizing, and all surrounding slide content.
+Unchanged scope: Slides 1-6 and 8; all slide 7 elements other than the video media bytes and poster image.

@@ -36,10 +36,6 @@ public class ActivityRepository extends AbstractRepository<Activity> {
         return activityDao.findByContactId(contactId);
     }
 
-    public List<Activity> findByOpportunityId(Long oppId) {
-        return activityDao.findByOpportunityId(oppId);
-    }
-
     public List<Activity> findUpcomingForUser(Long userId, int days) {
         return activityDao.findUpcoming(userId, days);
     }

@@ -32,25 +32,4 @@ public class EmailNotificationFactory implements NotificationFactory {
                 "Mult succes!\nEchipa Training IT";
         return new Notification(contact.getEmail(), subject, body, CHANNEL);
     }
-
-    @Override
-    public Notification createSessionReminder(Contact contact, String sessionDetails) {
-        String subject = "Reminder sesiune curs";
-        String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
-                "This is a reminder for tomorrow's session:\n\n" +
-                sessionDetails + "\n\n" +
-                "Ne vedem cu drag!\nEchipa Training IT";
-        return new Notification(contact.getEmail(), subject, body, CHANNEL);
-    }
-
-    @Override
-    public Notification createFollowUp(Contact contact, String reason) {
-        String subject = "Follow-up: " + reason;
-        String body = "Salut " + contact.getFullName().orElse("") + ",\n\n" +
-                "We're glad to be in touch again.\n" +
-                reason + "\n\n" +
-                "Please reply when you have a moment.\n\n" +
-                "Thank you!\nThe Training IT Team";
-        return new Notification(contact.getEmail(), subject, body, CHANNEL);
-    }
 }

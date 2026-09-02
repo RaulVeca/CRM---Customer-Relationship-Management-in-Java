@@ -1,0 +1,356 @@
+P001 [Normal] GHID DE RECAPITULARE
+P002 [Normal] TrainingIT
+P003 [Normal] Conspect explicat pentru lucrarea de licență
+P004 [Normal] Aplicație web full-stack pentru comercializarea cursurilor IT și administrarea integrată a relațiilor cu clienții
+P006 [Heading 2] Cum se folosește acest ghid
+P007 [Normal] Pentru recapitulare rapidă: citește casetele „Ideea centrală”, „De reținut” și „Clarificare”.
+P008 [Normal] Pentru susținere: folosește secțiunile „Cum explic oral” și răspunsurile scurte din anexă.
+P009 [Normal] Pentru partea tehnică: urmărește legătura dintre straturi, evenimente, observatori și baza de date.
+P010 [Heading 2] Date-cheie ale soluției
+P012 [Normal] Document de studiu • 2026
+P014 [Heading 1] Hartă de lectură
+P015 [Normal] Conspectul urmărește capitolele discutate și păstrează numerele din lucrarea de licență. Capitolele 3 și 4 nu au fost incluse deoarece nu au făcut parte din fragmentele conspectate în conversație.
+P018 [Heading 1] Capitolul 1. Introducere și obiective
+P019 [Heading 2] Contextul domeniului
+P020 [Normal] Sectorul tehnologiei informației este unul dintre cele mai dinamice domenii ale pieței muncii. În acest context, învățarea continuă nu mai este doar o opțiune, ci o necesitate profesională. Cererea pentru cursuri online de programare a crescut, iar furnizorii de formare își comercializează serviciile tot mai frecvent direct pe internet.
+P021 [Normal] O companie care vinde cursuri online trebuie să rezolve simultan două categorii de nevoi. Prima este experiența clientului: prezentarea cursurilor, înscrierea, plata și suportul. A doua este activitatea internă: cunoașterea clienților, urmărirea etapelor de vânzare, facturarea, analiza veniturilor și soluționarea problemelor.
+P024 [Heading 2] Soluția propusă
+P025 [Normal] TrainingIT este o aplicație web care reunește cele două preocupări într-un singur produs. La suprafață funcționează ca o piață modernă de cursuri IT: utilizatorul își creează cont, consultă catalogul, cumpără, scrie recenzii și rezervă ședințe individuale cu traineri. În spate, aceleași acțiuni alimentează automat un sistem CRM folosit de echipa companiei.
+P026 [Normal] Înregistrarea creează un contact și un lead în CRM.
+P027 [Normal] Cumpărarea unui curs creează înscrierea și o afișează în istoricul administrativ.
+P028 [Normal] Rezervarea unei ședințe individuale poate genera automat o factură.
+P029 [Normal] Raportarea unei probleme creează imediat o sesizare pentru administratori.
+P030 [Normal] Evenimentele importante pot actualiza scoruri, statistici și jurnalul de audit.
+P031 [Heading 2] Obiectivul principal
+P032 [Normal] Obiectivul lucrării este proiectarea și implementarea unei aplicații web apropiate de forma unui produs real, capabilă să comercializeze cursuri de programare și să mențină transparent o evidență CRM completă a activității clienților.
+P033 [Heading 3] Obiective concrete
+P034 [Normal] realizarea unui portal public pentru catalog, cumpărare, recenzii și programarea ședințelor individuale;
+P035 [Normal] realizarea unui portal administrativ pentru contacte, cursuri, achiziții, facturi, analize, angajați și probleme;
+P036 [Normal] organizarea logicii serverului în jurul șabloanelor de proiectare și al unui nucleu bazat pe evenimente;
+P037 [Normal] integrarea opțională a unui asistent AI pentru recomandări și traducere, fără blocarea aplicației când serviciul lipsește;
+P038 [Normal] stocarea persistentă a datelor operaționale și CRM într-o bază de date relațională.
+P040 [Heading 1] Capitolul 2. Problema abordată și soluțiile similare
+P041 [Heading 2] Așteptările cursantului
+P042 [Normal] Un potențial cursant se așteaptă la experiența simplă a unui magazin online modern. El trebuie să poată înțelege rapid ce cursuri există, cât costă, cui se adresează și cum au fost evaluate de alți participanți. Procesul de cumpărare și programare trebuie să fie clar, iar raportarea unei probleme trebuie să fie ușoară.
+P043 [Normal] navigare clară și informații ușor de comparat;
+P044 [Normal] cont unic și cumpărare rapidă;
+P045 [Normal] recenzii credibile, permise numai după achiziție;
+P046 [Normal] calendar corect pentru ședințele individuale;
+P047 [Normal] canal simplu pentru solicitarea ajutorului.
+P048 [Heading 2] Nevoile companiei
+P049 [Normal] În spatele magazinului, compania trebuie să organizeze o activitate comercială completă. Ea urmărește leadurile și apropierea lor de cumpărare, păstrează istoricul tranzacțiilor, calculează reducerile angajaților companiilor partenere, emite facturi și exportă date pentru contabilitate.
+P050 [Normal] evaluarea leadurilor prin stare și scor;
+P051 [Normal] urmărirea achizițiilor și a veniturilor;
+P052 [Normal] analiza leadurilor pierdute și a înscrierilor abandonate;
+P053 [Normal] măsurarea interesului pentru cursuri prin accesări și rate de conversie;
+P054 [Normal] administrarea clienților corporate și a echipelor lor de angajați.
+P055 [Heading 2] Riscul sistemelor separate
+P056 [Normal] Atunci când magazinul și CRM-ul sunt aplicații diferite, fiecare punct de sincronizare poate produce pierderi sau diferențe de date. O achiziție poate exista în magazin, dar nu și în CRM; reducerea poate apărea pe factură, dar nu în istoricul comercial; o sesizare poate rămâne izolată de echipa care gestionează relația cu clientul.
+P058 [Heading 2] Abordări similare
+P061 [Heading 2] Delimitarea rolurilor
+P062 [Normal] TrainingIT este o aplicație unitară cu două portaluri. Rolurile USER și ADMIN sunt separate, iar accesarea unei rute rezervate celuilalt rol conduce la redirecționarea utilizatorului către propriul portal.
+P064 [Heading 1] Capitolul 5. Arhitectura sistemului
+P065 [Normal] Aplicația este organizată în straturi care comunică prin API-uri REST și printr-un flux de evenimente în timp real. Un serviciu AI extern poate fi conectat opțional. Separarea responsabilităților face sistemul mai ușor de înțeles, testat și extins.
+P067 [Heading 2] Front-end
+P068 [Normal] Front-endul este o aplicație Next.js și React care afișează atât portalul clientului, cât și portalul administratorului. În browser este păstrat tipul sesiunii, USER sau ADMIN. Un mecanism de protejare a rutelor verifică accesul, iar un client REST tipizat comunică cu serverul.
+P069 [Normal] apelează endpointurile backendului prin cereri HTTP;
+P070 [Normal] se abonează la fluxul SSE pentru statisticile publice actualizate în timp real;
+P071 [Normal] gestionează tema luminoasă sau întunecată;
+P072 [Normal] oferă selectorul pentru traducerea dinamică a paginii.
+P073 [Heading 2] Back-end
+P074 [Normal] Backendul este un serviciu Spring Boot care expune controllere sub ruta /api/. Controllerele sunt intenționat subțiri: verifică datele primite și trimit execuția către nivelul de domeniu. Operațiile CRM principale sunt centralizate prin CrmFacade, în timp ce autentificarea, AI-ul, trainerii și rapoartele folosesc servicii specializate.
+P076 [Heading 2] Nivelul de domeniu și logica de afaceri
+P077 [Normal] Nivelul de domeniu reprezintă centrul aplicației. Aici sunt implementate regulile care stabilesc cum funcționează produsul: reducerile, disponibilitatea trainerilor, crearea înscrierilor, emiterea facturilor, scorurile leadurilor și schimbările de stare.
+P078 [Normal] operațiile de scriere sunt încapsulate sub formă de comenzi;
+P079 [Normal] serviciile de domeniu coordonează regulile și entitățile;
+P080 [Normal] EventBus publică evenimente și notifică observatorii;
+P081 [Normal] repository-urile și DAO-urile asigură accesul la date.
+P083 [Heading 2] Persistența
+P084 [Normal] Toate datele sunt stocate în MariaDB. Accesul se face prin driverul JDBC și prin poolul de conexiuni HikariCP, care reutilizează eficient conexiunile. Schema cuprinde atât tabelele CRM, cât și tabelele funcționalităților web și este creată sau actualizată la pornirea aplicației.
+P086 [Heading 2] Controlul accesului
+P087 [Normal] Vizitatorul neautentificat poate deschide numai ecranele de autentificare, înregistrare și recuperare a parolei.
+P088 [Normal] La autentificare, adresa de e-mail este verificată în evidențele administratorilor, contactelor și angajaților.
+P089 [Normal] Sistemul creează o sesiune USER sau ADMIN și deschide portalul corespunzător.
+P090 [Normal] Pentru un angajat, sistemul identifică sau creează contactul și aplică reducerea companiei partenere.
+P091 [Heading 1] Capitolul 6. Portalurile și funcționalitățile aplicației
+P092 [Heading 2] Autentificare și înregistrare
+P093 [Normal] Aplicația este protejată, iar un vizitator neautentificat ajunge numai la ecranele Log in, Register și Forgot password. Formularul de înregistrare este împărțit pe categorii: date personale, date de contact, adresă, profil de învățare, parolă și consimțământ GDPR obligatoriu.
+P094 [Normal] Înregistrarea creează în CRM un contact de tip INDIVIDUAL, calculează scorul de lead și autentifică automat utilizatorul. La conectare, serverul verifică parola, stabilește rolul și transmite portalul de destinație.
+P095 [Heading 2] Portalul clientului
+P096 [Heading 3] Catalogul de cursuri
+P097 [Normal] Pagina principală a portalului afișează un salut personalizat și patru valori actualizate prin SSE: numărul de cursuri, numărul de cursanți, evaluarea medie și disponibilitatea mentoratului individual. Catalogul este o grilă filtrabilă de carduri.
+P098 [Normal] cardul poate fi extins pentru descrierea completă;
+P099 [Normal] sunt afișate evaluarea medie și numărul recenziilor;
+P100 [Normal] utilizatorul poate deschide pagina recenziilor;
+P101 [Normal] butonul Enroll permite cumpărarea rapidă;
+P102 [Normal] prima extindere a cardului este numărată pentru analiza ratei de accesare;
+P103 [Normal] un chestionar AI opțional recomandă cursuri după interese, nivel și obiectiv.
+P104 [Heading 3] My Courses și recenziile
+P105 [Normal] Pagina My Courses este biblioteca personală a cursantului și afișează numai cursurile cumpărate de acesta. Recenziile pot fi scrise exclusiv aici, ceea ce leagă natural recenzia de o achiziție reală. Pentru fiecare curs cumpărat există o singură evaluare de la 1 la 5 și un comentariu; retrimiterea actualizează recenzia anterioară.
+P106 [Heading 3] Rezervarea ședințelor individuale
+P107 [Normal] Alegerea trainerului.
+P108 [Normal] Alegerea zilei disponibile.
+P109 [Normal] Alegerea orei de început și a duratei.
+P110 [Normal] Confirmarea rezervării și efectuarea plății.
+P111 [Normal] Trainerii lucrează de luni până sâmbătă, între 08:00 și 20:00. Zilele trecute, duminicile și zilele complet ocupate sunt dezactivate. Tariful este de 10 dolari pe oră, iar angajații partenerilor primesc automat reducerea configurată, afișată împreună cu prețul inițial.
+P112 [Normal] confirmarea rezervă intervalul și generează factura;
+P113 [Normal] intervalul devine indisponibil pentru ceilalți utilizatori;
+P114 [Normal] anularea din My Sessions eliberează intervalul.
+P115 [Heading 3] Asistent și raportarea problemelor
+P116 [Normal] Butonul rotund din colțul dreapta-jos deschide asistentul conversațional Claude. Butonul cu steag din stânga-jos deschide formularul Report an issue. Sesizarea ajunge imediat în secțiunea Issues, împreună cu numele și e-mailul utilizatorului.
+P117 [Heading 2] Portalul de administrare
+P119 [Heading 2] Funcții disponibile pe toate paginile
+P120 [Normal] Selectorul de traducere folosește Claude pentru conținutul static și dinamic, păstrând numele, e-mailurile și numerele.
+P121 [Normal] Comutatorul light/dark schimbă instantaneu tema și memorează local alegerea, aplicând-o înainte de prima afișare pentru a evita clipirea temei greșite.
+P123 [Heading 1] Capitolul 7. Tehnologiile utilizate
+P124 [Normal] TrainingIT este o aplicație full-stack deoarece include interfața din browser, serverul care implementează regulile, baza de date și mecanismele de comunicare dintre aceste componente.
+P126 [Heading 2] De ce nu este folosit un ORM
+P127 [Normal] Nivelul de domeniu folosește repository-uri și DAO-uri scrise manual. Această alegere păstrează SQL-ul explicit și face vizibile șabloanele de proiectare folosite pentru accesul la date. Dezavantajul este că dezvoltatorul trebuie să scrie și să întrețină mai mult cod de infrastructură.
+P129 [Heading 1] Capitolul 8. Implementarea și modelul de date
+P130 [Heading 2] Organizarea codului
+P131 [Normal] Codul serverului conține aproximativ 11.500 de linii Java, organizate pe responsabilități: builders, commands, DAOs, factories, models, observers, patterns, repositories, services, strategies, validation și web. Clientul cuprinde aproximativ cincizeci de module TypeScript și React.
+P132 [Heading 2] Nucleul bazat pe evenimente
+P133 [Normal] Comportamentul „o acțiune, mai multe reacții” este realizat prin șablonul Observer și EventBus. După finalizarea unei operații importante, serviciul publică un eveniment. EventBus notifică fiecare observator înregistrat, iar observatorii reacționează independent.
+P136 [Heading 2] Idempotență și izolarea erorilor
+P137 [Normal] Crearea facturii este idempotentă: dacă există deja o factură pentru ședință, sistemul nu generează una nouă. În plus, eroarea observatorului este izolată. O problemă la facturare este înregistrată în log, dar nu anulează rezervarea care a produs evenimentul.
+P139 [Heading 2] Modelul de date
+P140 [Normal] Modelul comun include atât entitățile CRM, cât și entitățile funcționalităților web. Contact poate fi o persoană INDIVIDUAL sau o companie CORPORATE. Companiile au Employee, iar cursurile oferă CourseSession. Enrollment asociază un contact cu o sesiune de curs.
+P141 [Normal] Opportunity și Activity modelează procesul comercial;
+P142 [Normal] Trainer și MediationSession modelează ședințele individuale;
+P143 [Normal] ședințele individuale pot genera SessionInvoice;
+P144 [Normal] recenziile sunt stocate direct în Enrollment prin rating și feedback.
+P145 [Heading 2] De ce recenzia este în Enrollment
+P146 [Normal] Structura impune natural o singură recenzie pentru perechea contact–curs. O nouă trimitere înlocuiește evaluarea anterioară. Valorile 1–5 reprezintă evaluări valide, iar 0 înseamnă că utilizatorul nu a evaluat încă acel curs.
+P148 [Heading 2] Ordinea corectă contact–înscriere
+P149 [Normal] La înregistrare, utilizatorul este creat ca contact în CRM.
+P150 [Normal] La cumpărare, serverul caută contactul după e-mail.
+P151 [Normal] Dacă nu îl găsește, îl creează înainte de continuarea fluxului.
+P152 [Normal] Serverul identifică sau creează sesiunea cursului.
+P153 [Normal] Abia apoi creează Enrollment și publică evenimentul de înscriere.
+P155 [Heading 2] Integrarea AI
+P156 [Normal] ClaudeClient este un wrapper subțire peste SDK-ul oficial Anthropic. Cheia este citită din configurare. Dacă lipsește, clientul rămâne neinițializat, isEnabled() întoarce false, iar endpointurile raportează că funcția este oprită în loc să producă o eroare fatală.
+P157 [Normal] asistent conversațional pentru întrebări despre cursuri și înscriere;
+P158 [Normal] chestionar de recomandare pentru vizitatori;
+P159 [Normal] recomandări de formare pentru angajații unei companii;
+P160 [Normal] traducerea dinamică a paginii.
+P161 [Heading 2] SSE, statistici și documente
+P162 [Normal] Statisticile publice sunt transmise browserului prin Server-Sent Events. Broadcasterul recalculează valorile cât timp există cel puțin un client conectat și transmite numai modificările. Astfel, pagina se actualizează fără interogări periodice.
+P163 [Normal] Apache POI este utilizat pentru fișiere Excel, iar OpenPDF pentru facturi și exporturi PDF. Aceleași biblioteci susțin importul angajaților și exporturile administrative.
+P164 [Heading 1] Capitolul 9. Testarea aplicației
+P165 [Heading 2] Strategia de testare
+P166 [Normal] Corectitudinea TrainingIT depinde mai ales de propagarea completă a unei acțiuni prin sistem. De aceea, testarea s-a concentrat pe validarea datelor, robustețea nucleului bazat pe evenimente și verificarea funcțională a fluxurilor end-to-end.
+P167 [Heading 2] Validarea pe două niveluri
+P171 [Heading 2] Robustețea nucleului bazat pe evenimente
+P172 [Normal] Robustețea înseamnă capacitatea sistemului de a rămâne stabil și previzibil atunci când apar erori, evenimente repetate sau servicii indisponibile. Au fost verificate explicit următoarele comportamente:
+P173 [Normal] evenimentul repetat nu generează facturi duplicate;
+P174 [Normal] eroarea observatorului de facturare nu anulează rezervarea;
+P175 [Normal] lipsa cheii API dezactivează funcțiile AI fără a afecta restul aplicației;
+P176 [Normal] ștergerea unei sesizări necesită confirmarea explicită a acțiunii ireversibile.
+P177 [Heading 2] Fluxurile testate manual
+P179 [Normal] Testele au fost executate pe o instanță funcțională conectată la o bază de date MariaDB reală. Proiectul include spring-boot-starter-test ca bază pentru o suită automată viitoare, însă acoperirea completă cu teste unitare și de integrare rămâne o direcție de dezvoltare.
+P181 [Heading 1] Capitolul 10. Scenarii de utilizare
+P182 [Heading 2] Alexandru – cursant individual
+P183 [Normal] Alexandru lucrează în vânzări și dorește să treacă în IT, dar nu știe de unde să înceapă. Asistentul îi recomandă două cursuri pentru începători. El se înregistrează, apare în CRM ca lead cu scor calculat, cumpără cursul mai accesibil și rezervă o ședință individuală. Factura este produsă automat.
+P185 [Heading 2] Cristina – client venit prin recomandare
+P186 [Normal] Cristina este dezvoltator junior și ajunge prin recomandarea unui prieten, ceea ce contribuie la un scor ridicat. Ea solicită direct cursuri avansate, află despre ședințele individuale și cumpără rapid. Scenariul ilustrează valoarea comercială a recomandărilor și costul redus de achiziție al acestor clienți.
+P188 [Heading 2] BankTech Solutions – client corporate
+P189 [Normal] Administratorul importă zeci de angajați dintr-un fișier Excel și solicită recomandări AI pentru întreaga echipă. În CRM este creată o oportunitate B2B. Angajații cumpără cu reducerea automată de 60%, iar fiecare ședință individuală generează factura corespunzătoare.
+P191 [Heading 2] Fluxul comun de cumpărare și recenzie
+P192 [Normal] Identificarea sau crearea contactului.
+P193 [Normal] Identificarea sau crearea sesiunii cursului.
+P194 [Normal] Salvarea Enrollment.
+P195 [Normal] Publicarea evenimentului de înscriere.
+P196 [Normal] Recalcularea statisticilor și trimiterea valorilor modificate prin SSE.
+P197 [Normal] La recenzie, verificarea achiziției anterioare.
+P198 [Normal] Salvarea evaluării și comentariului în Enrollment.
+P199 [Heading 1] Capitolul 11. Concluzii și dezvoltări viitoare
+P200 [Heading 2] Rezultatul lucrării
+P201 [Normal] TrainingIT demonstrează că un magazin de cursuri și un CRM pot fi realizate ca un singur produs coerent. Cele două portaluri folosesc același backend și același model de date, astfel încât fiecare acțiune este înregistrată o singură dată și devine imediat disponibilă proceselor administrative relevante.
+P202 [Normal] Vizitatorul devine lead la înregistrare și client la prima achiziție. Cumpărările, recenziile, ședințele și sesizările sunt reflectate automat în portalul administratorului. Nucleul bazat pe evenimente permite reacții multiple fără cuplarea directă a fiecărei operații de toate efectele sale secundare.
+P203 [Heading 2] Îndeplinirea obiectivelor
+P204 [Normal] portal public complet pentru descoperirea și cumpărarea cursurilor;
+P205 [Normal] portal administrativ organizat în șapte secțiuni;
+P206 [Normal] nivel de domeniu bazat pe șabloane clasice și evenimente;
+P207 [Normal] persistența datelor în MariaDB;
+P208 [Normal] funcții AI și traducere disponibile opțional;
+P209 [Normal] comportament controlat când serviciile opționale lipsesc.
+P211 [Heading 2] Direcții viitoare
+P213 [Heading 1] Anexa A. Glosar explicat
+P215 [Heading 1] Anexa B. Răspunsuri scurte pentru susținere
+TABLE 1
+Ideea centrală: TrainingIT reunește magazinul online de cursuri și sistemul CRM într-o singură aplicație, cu același backend și același model de date. O acțiune a clientului este înregistrată o singură dată și poate declanșa automat mai multe reacții administrative.
+TABLE 2
+Componentă | Tehnologie / rol
+Client | Next.js 16, React 19, TypeScript 5 și Tailwind CSS 4
+Server | Java 17 și Spring Boot 3.5
+Date | MariaDB, JDBC și HikariCP
+Arhitectură | REST, SSE, evenimente și șabloane de proiectare orientate pe obiecte
+AI opțional | Anthropic Claude pentru asistent, recomandări și traducere
+TABLE 3
+Secțiune | Subiect | Întrebarea la care răspunde
+Cap. 1 | Context, soluție și obiective | De ce este necesar produsul
+Cap. 2 | Problema și abordările similare | De ce integrarea magazin–CRM este dificilă
+Cap. 5 | Arhitectura | Cum comunică front-endul, backendul, domeniul și baza de date
+Cap. 6 | Funcționalitățile | Ce poate face utilizatorul și ce poate face administratorul
+Cap. 7 | Tehnologiile | Cu ce este construită aplicația și de ce
+Cap. 8 | Implementarea | Cum sunt folosite evenimentele, observatorii și modelul de date
+Cap. 9 | Testarea | Ce s-a verificat și cum se comportă sistemul la erori
+Cap. 10 | Scenarii | Cum se vede soluția în utilizare reală
+Cap. 11 | Concluzii | Rezultate și dezvoltări viitoare
+Anexe | Glosar și răspunsuri scurte | Pregătire pentru întrebările de la susținere
+TABLE 4
+Fir logic: Nevoie comercială → aplicație unificată → arhitectură pe straturi → reacții automate → verificare prin scenarii și teste.
+TABLE 5
+Nevoie | Soluție obișnuită | Exemple de informații
+Vânzarea cursurilor | Platformă e-commerce | catalog, preț, recenzii, înscriere, plată
+Relația cu clientul | Sistem CRM | contacte, leaduri, achiziții, venituri, solicitări
+TABLE 6
+Problema de fond: În mod obișnuit, magazinul online și CRM-ul sunt două programe diferite, conectate prin integrări care se pot defecta sau pot produce date neconcordante.
+TABLE 7
+Cum explic oral: Lucrarea nu prezintă doar un magazin de cursuri și nici doar un CRM. Contribuția principală este unificarea lor, astfel încât aceeași acțiune să fie văzută imediat atât de client, cât și de companie.
+TABLE 8
+Consecință: Reconcilierea manuală este lentă, repetitivă și predispusă la erori. TrainingIT elimină această reconciliere printr-un model comun de date.
+TABLE 9
+Categorie | Punct forte | Limită / diferență
+Udemy / Coursera | Catalog, recenzii și cumpărare bine dezvoltate | Sunt agregatoare; furnizorul individual nu deține integral relația și nu are propriul CRM integrat
+Moodle | Livrarea și urmărirea conținutului educațional | Comerțul electronic și CRM-ul sunt funcții secundare, adăugate prin extensii
+Salesforce / HubSpot | Contacte, pipeline, scoruri și raportare | Nu au implicit catalog de cursuri, calendar de traineri sau magazin public
+WooCommerce | Poate vinde orice produs, inclusiv cursuri | Tratează cursul ca produs obișnuit și nu înțelege leadurile, tutoratul sau instruirea corporate
+TrainingIT | Magazin și CRM pe același backend și model de date | Soluție specializată pentru cursuri IT, ședințe, reduceri, statistici și recomandări
+TABLE 10
+Platformă agregatoare: O platformă care reunește ofertele mai multor furnizori și intermediază relația cu utilizatorii. Furnizorul nu controlează întotdeauna integral datele, comunicarea și procesele comerciale.
+TABLE 11
+Rol | Cine îl folosește | Acces principal
+USER | cursant individual sau angajat al unei companii | catalog, cursuri cumpărate, recenzii, ședințe și sesizări
+ADMIN | membru al echipei TrainingIT | contacte, cursuri, achiziții, facturi, analize, angajați și probleme
+TABLE 12
+Strat | Responsabilitate | Elemente principale
+Front-end | interfața din browser și experiența celor două portaluri | Next.js, React, sesiune, protecția rutelor, client REST, SSE, temă și traducere
+Back-end web | primește cereri, validează date și deleagă operațiile | Spring Boot, controllere REST, CrmFacade, servicii pentru autentificare, AI, traineri și rapoarte
+Domeniu | aplică regulile de funcționare ale aplicației | comenzi, servicii, EventBus, observatori, repository-uri și DAO-uri
+Persistență | stochează datele operaționale și CRM | MariaDB, JDBC, HikariCP și schemă actualizată la pornire
+Serviciu extern | oferă funcții AI opționale | Anthropic Claude prin SDK-ul Java
+TABLE 13
+Controller subțire: Controllerul nu conține regulile principale ale afacerii. El transformă cererea web într-un apel către serviciul potrivit și returnează răspunsul.
+TABLE 14
+Logică de afaceri: Totalitatea regulilor specifice domeniului care transformă o cerere într-un rezultat corect pentru companie și client. Nu înseamnă interfață și nici acces direct la baza de date.
+TABLE 15
+Persistență: Datele rămân disponibile după oprirea și repornirea aplicației; ele nu sunt păstrate numai în memoria serverului.
+TABLE 16
+Secțiune | Rol
+Contacts | persoane și companii, stări NEW–LOST, scor automat, căutare și export CSV/Excel/PDF
+Courses | vizualizarea internă, tabelară, a catalogului public
+Purchases | istoricul înscrierilor, cursantul, cursul, data, evaluarea și totalul comenzilor
+Invoices | facturile ședințelor individuale, inclusiv reducerile, cu descărcare PDF
+Analytics | indicatori comerciali, interpretări, accesări pe curs și grafice demografice
+Employees | angajați corporate, import Excel cu erori pe rând și recomandări AI pentru echipă
+Issues | sesizări care pot fi rezolvate, redeschise sau șterse după confirmare explicită
+TABLE 17
+Interfață intuitivă: O interfață clară și ușor de folosit de persoane fără pregătire tehnică. Termenul nu demonstrează automat conformitatea cu standardele de accesibilitate precum WCAG.
+TABLE 18
+Zonă | Tehnologie | Motivul utilizării
+Front-end | Next.js 16 și React 19 | componente reutilizabile și experiență unitară pentru ambele portaluri
+Front-end | TypeScript 5 | tipizare statică și identificarea timpurie a erorilor
+Stilizare | Tailwind CSS 4 | temă vizuală personalizată și mod întunecat
+Back-end | Java 17 | implementarea nivelului web și a domeniului orientat pe obiecte
+Back-end | Spring Boot 3.5 | configurare, REST, SSE și conectarea componentelor
+Validare | Spring Validation | reguli declarative pentru payloadurile primite
+Cod Java | Lombok | reducerea codului repetitiv în entități și DTO-uri
+Logging | SLF4J și Logback | mesaje, avertismente și erori
+Bază de date | MariaDB | stocarea relațională a datelor operaționale și CRM
+Acces la date | JDBC și HikariCP | SQL explicit și conexiuni reutilizate
+Documente | Apache POI și OpenPDF | Excel, importuri, exporturi și facturi PDF
+AI | Anthropic Java SDK | asistent, recomandări și traducere, activate numai cu o cheie API
+TABLE 19
+Full-stack: Un sistem care acoperă întregul traseu al datelor: interfață → API → logică de domeniu → bază de date → răspuns către utilizator.
+TABLE 20
+Eveniment | Reacții posibile
+Contact creat | audit, mesaj de bun venit și calcularea scorului inițial
+Înscriere creată | audit, confirmare, actualizarea statisticilor și a stării leadului
+Ședință rezervată | generarea facturii și confirmarea rezervării
+Activitate finalizată | actualizarea procesului comercial
+Stare lead / oportunitate schimbată | audit și actualizarea evidențelor asociate
+TABLE 21
+Avantaj: Serviciul care face rezervarea nu trebuie să cunoască direct toate reacțiile ulterioare. Observatorii pot fi adăugați sau modificați fără a încărca operația principală.
+TABLE 22
+Proprietate | Ce previne | Exemplu
+Idempotență | efecte duplicate | același eveniment nu produce două facturi
+Izolarea erorii | propagarea eșecului secundar | rezervarea rămâne salvată chiar dacă factura eșuează
+Degradare controlată | blocarea aplicației de o funcție opțională | lipsa cheii AI ascunde butoanele, restul continuă
+TABLE 23
+Legătură importantă: Recenzia nu este independentă de achiziție. Sistemul poate verifica faptul că utilizatorul a cumpărat cursul înainte de a-i permite evaluarea.
+TABLE 24
+Clarificare: Contactul nu este creat după înscriere. Enrollment are nevoie de contact pentru a putea fi asociat corect.
+TABLE 25
+Nivel | Ce verifică | Scop
+Client | câmpuri lipsă, confirmarea parolei și consimțământul GDPR | feedback rapid înainte de trimiterea formularului
+Server | regulile Spring Validation pentru payload | protecția API-ului indiferent de client
+Domeniu | lanțul Chain of Responsibility pentru e-mail, telefon, GDPR și tipul contactului | oprirea datelor invalide înainte de baza de date
+TABLE 26
+Spring Validation: Mecanism declarativ prin care adnotările descriu cerințele datelor primite, iar Spring respinge automat cererile invalide.
+TABLE 27
+Chain of Responsibility: Șablon în care datele trec succesiv prin mai mulți verificatori. Fiecare componentă răspunde de o singură regulă și poate opri lanțul când găsește o eroare.
+TABLE 28
+Flux | Rezultat verificat
+Înregistrare | crearea contactului și a leadului cu scor
+Autentificare | direcționarea USER și ADMIN către portalul corect
+Înscriere | apariția imediată în Purchases
+Recenzie | actualizarea evaluării medii a cursului
+Ședință individuală | factură și reducere corectă pentru angajat
+Sesizare | apariția în Issues
+Export | generarea fișierelor CSV, Excel și PDF
+TABLE 29
+Limitare formulată corect: Aplicația a fost verificată funcțional, dar nu trebuie afirmat că există deja o acoperire automată completă. Aceasta este planificată pentru viitor.
+TABLE 30
+Rezultat: Un vizitator nehotărât devine client plătitor în câteva minute, iar compania obține automat contactul, leadul, achiziția și factura.
+TABLE 31
+Rezultat: Sursa leadului poate fi analizată în CRM, iar compania poate observa că recomandările clienților mulțumiți sunt eficiente și ieftine.
+TABLE 32
+Rezultat: O singură companie aduce simultan numeroși cursanți, iar sistemul urmărește echipa, reducerile și facturile fără introducere manuală repetată.
+TABLE 33
+Caracter distinctiv: TrainingIT combină o interfață ușor de folosit, un nucleu CRM bine structurat și un nivel opțional de inteligență artificială într-un singur produs.
+TABLE 34
+Direcție | Extindere propusă
+Testare automată | teste unitare și de integrare pentru comenzi, observatori, strategii, endpointuri și integrare continuă
+Autentificare | tokenuri, parole stocate prin hashing, verificarea e-mailului și resetare prin linkuri care expiră
+Analize | tendințe istorice, cohorte și dashboarduri exportabile
+AI | context bazat pe catalogul live, memorie conversațională și rezumarea sesizărilor
+Implementare în cloud | containerizarea serviciilor, configurare externă, scalare și pregătire pentru producție
+TABLE 35
+Termen | Explicație în contextul TrainingIT
+CRM | Sistem pentru administrarea contactelor, leadurilor, vânzărilor, facturilor și interacțiunilor cu clienții.
+Lead | Persoană sau companie care poate deveni client și este urmărită prin stare și scor.
+Platformă agregatoare | Platformă care reunește ofertele mai multor furnizori și intermediază relația cu utilizatorii.
+Jurnal de audit | Evidență cronologică a acțiunilor importante: cine a făcut acțiunea, când și asupra cărei înregistrări.
+Logică de afaceri | Regulile specifice aplicației: reduceri, disponibilitate, facturare, scoruri și schimbări de stare.
+Full-stack | Sistem care include interfața, backendul, baza de date și comunicarea dintre ele.
+REST API | Interfață HTTP prin care front-endul trimite cereri backendului și primește rezultate.
+SSE | Server-Sent Events; mecanism prin care serverul transmite actualizări în timp real către browser.
+DTO | Obiect utilizat pentru transportul datelor între client, controllere și servicii.
+DAO | Componentă care execută operații directe de acces la baza de date.
+Repository | Abstracție care oferă operații de persistență potrivite domeniului aplicației.
+Observer | Șablon prin care o componentă reacționează la un eveniment fără a fi legată direct de operația care l-a produs.
+EventBus | Mecanism central care publică evenimente și notifică observatorii înregistrați.
+Idempotent | O operație repetată produce același rezultat și nu creează efecte duplicate.
+Spring Validation | Mecanism Spring pentru verificarea declarativă a datelor primite de backend.
+Chain of Responsibility | Șablon care transmite datele printr-un lanț de verificatori, fiecare cu o responsabilitate distinctă.
+Robustețe | Capacitatea sistemului de a rămâne stabil și previzibil în prezența erorilor sau situațiilor neașteptate.
+Degradare controlată | Dezactivarea unei funcții opționale fără blocarea sau afectarea celorlalte funcționalități.
+Interfață intuitivă | Interfață clară și ușor de folosit; afirmația nu echivalează automat cu certificarea accesibilității.
+HikariCP | Pool de conexiuni care reutilizează conexiunile la baza de date pentru eficiență.
+TABLE 36
+Formulare utilă: TrainingIT nu conectează două sisteme independente; implementează două experiențe peste același nucleu și aceeași bază de date.
+TABLE 37
+Întrebare | Răspuns recomandat
+Care este problema principală? | Magazinul online și CRM-ul sunt de obicei separate, iar sincronizarea poate produce date lipsă sau contradictorii.
+Care este contribuția aplicației? | Unifică portalul clientului și CRM-ul pe același backend și model de date, astfel încât acțiunile nu trebuie reconciliate manual.
+Ce înseamnă «o acțiune, mai multe reacții»? | O rezervare sau o achiziție publică un eveniment, iar observatorii pot genera factura, actualiza scorul, scrie auditul și trimite confirmări.
+De ce este util EventBus? | Reduce legăturile directe dintre operația principală și reacțiile secundare, ceea ce face codul mai ușor de extins.
+Ce este jurnalul de audit? | Istoricul acțiunilor importante, util pentru trasabilitate și verificare.
+De ce este idempotentă facturarea? | Pentru ca repetarea accidentală a unui eveniment să nu producă facturi duplicate.
+Ce se întâmplă dacă AI-ul nu este configurat? | Butoanele AI dispar, endpointurile raportează funcția oprită, iar restul aplicației continuă să funcționeze.
+Când este creat contactul? | La înregistrare; iar la cumpărare este căutat sau creat înainte de Enrollment, niciodată după.
+Cum sunt validate datele? | În browser, prin Spring Validation pe server și printr-un lanț Chain of Responsibility pentru datele contactului.
+Care este limita principală a testării? | Fluxurile au fost verificate manual end-to-end, dar suita automată completă rămâne o dezvoltare viitoare.
+De ce aplicația este full-stack? | Include clientul, API-ul, logica de domeniu, persistența și comunicarea în timp real.
+Ce diferențiază TrainingIT de Udemy? | TrainingIT este produsul unui furnizor care își deține relația cu clientul și are propriul CRM integrat; Udemy este o platformă agregatoare.
